@@ -1,0 +1,40 @@
+<ion-menu side="start" menuId="first">
+  <ion-header>
+    <div class="user">
+      <div class="icon">
+        <img src="/assets/person.png" alt="account icon">
+      </div>
+      <div class="account_info">
+        <h6>{{currentStudent?.first_name}} {{currentStudent?.last_name}}</h6>
+        <p>
+          <ion-icon name="person"></ion-icon>Student
+        </p>
+      </div>
+    </div>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item lines="none" (click)=toDashboard()>
+        <ion-icon name="stats"></ion-icon>Dashboard
+      </ion-item>
+      <ion-item lines="none">
+        <div>
+          <ion-icon name="chatboxes"></ion-icon>Messages
+        </div>
+      </ion-item>
+      <ion-item lines="none" (click)="toCourseList()">
+        <ion-icon name="book"></ion-icon>courses
+      </ion-item>
+      <ion-item lines="none" (click)="toTakeQuiz()">
+        <ion-icon name="book"></ion-icon>Exames
+      </ion-item>
+
+      <ion-item lines="none" (click)="logoutUser()">
+        <ion-icon name="log-out"></ion-icon>Log out
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet main>
+
+</ion-router-outlet>

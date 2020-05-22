@@ -1,0 +1,82 @@
+ion-header {
+  height: 30%;
+  background-color: #191923;
+}
+
+ion-header div.user {
+  text-align: center;
+}
+
+ion-header div.user .icon img {
+  height: 103px;
+  margin-top: 30px;
+  background-color: white;
+  border-radius: 30px;
+  text-align: center;
+}
+
+ion-header .account_info {
+  text-align: center;
+}
+
+ion-header .account_info h6 {
+  color: white;
+}
+
+ion-header .account_info p {
+  color: white;
+}
+
+ion-header .account_info p ion-icon {
+  color: brown;
+  margin-right: 5px;
+}
+
+ion-content ion-list ion-item {
+  margin-top: 10px;
+}
+
+ion-content ion-list ion-item ion-icon {
+  margin-right: 10px;
+}
+
+ion-content ion-list ion-item:nth-child(1) ion-icon {
+  color: #0468af;
+}
+
+ion-content ion-list ion-item:nth-child(2) ion-icon {
+  color: #80808094;
+}
+
+ion-content ion-list ion-item:nth-child(3) ion-icon {
+  color: coral;
+}
+
+ion-content ion-list ion-item:nth-child(4) ion-icon {
+  color: #50c6ff;
+}
+
+ion-content ion-list ion-item:nth-child(5) ion-icon {
+  color: #dcd36be8;
+}
+
+ion-content ion-list ion-item:nth-child(6) ion-icon {
+  color: #2e9c3ce8;
+}
+
+ion-content ion-list ion-item:nth-child(7) ion-icon {
+  color: #9c125ee8;
+}
+
+ion-content ion-list ion-item:nth-child(8) ion-icon {
+  color: #301b71e8;
+}
+
+ion-content ion-list ion-item:nth-child(9) {
+  color: #ff0000c7;
+  margin-top: 49%;
+}
+
+ion-content ion-list ion-item:nth-child(9) ion-icon {
+  color: #ff0000c7;
+}

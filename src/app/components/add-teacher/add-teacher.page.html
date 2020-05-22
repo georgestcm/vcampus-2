@@ -1,0 +1,23 @@
+<ion-header>
+  <div class="logo">
+    <img src="assets/vcampus.png" alt="app logo">
+    <p>Add a teacher</p>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="error">
+    <p>{{error}}</p>
+  </div>
+  <ion-label>USERNAME</ion-label>
+  <ion-input type="name" [(ngModel)]="teacher_data.username" required></ion-input>
+  <ion-label>FIRST NAME</ion-label>
+  <ion-input type="name" [(ngModel)]="teacher_data.first_name" required></ion-input>
+  <ion-label>LAST NAME</ion-label>
+  <ion-input type="name" [(ngModel)]="teacher_data.last_name" required></ion-input>
+  <ion-label>PASSWORD</ion-label>
+  <ion-input type="password" [(ngModel)]="teacher_data.password" required></ion-input>
+  <ion-label>RE-ENTER PASSWORD</ion-label>
+  <ion-input type="password" [(ngModel)]="re_password" required></ion-input>
+  <ion-button (click)="addTeacher()">ADD TEACHER</ion-button>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header>
+  <div class="logo">
+    <img src="assets/vcampus.png" alt="app logo">
+    <p>Add an editor</p>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="error">
+    <p>
+      {{error}}
+    </p>
+  </div>
+  <ion-label>USERNAME</ion-label>
+  <ion-input type="name" [(ngModel)]="username"  required></ion-input>
+  <ion-label>FIRST NAME</ion-label>
+  <ion-input type="name" [(ngModel)]="first_name" required></ion-input>
+  <ion-label>LAST NAME</ion-label>
+  <ion-input type="name" [(ngModel)]="last_name" required></ion-input>
+  <ion-button (click)="loginfo()">
+    ADD STAFF
+  </ion-button>
+
+</ion-content>

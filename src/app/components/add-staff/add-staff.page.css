@@ -1,0 +1,53 @@
+ion-header div.logo {
+  display: inline-block;
+  float: left;
+  background-color: #191923;
+  width: 100%;
+}
+
+ion-header div.logo img {
+  height: 30px;
+  margin: 17px 0 0 25px;
+  display: inline-block;
+}
+
+ion-header div.logo p {
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  left: 96px;
+  bottom: 7px;
+}
+
+ion-header ion-toolbar ion-title {
+  text-align: center;
+}
+
+ion-content div.error p {
+  color: #ff0000b8;
+  text-align: center;
+  margin: 20px 0 20px 0;
+}
+
+ion-content ion-label {
+  color: grey;
+  letter-spacing: 1px;
+  margin-left: 25px;
+}
+
+ion-content ion-label:nth-child(1) {
+  margin-top: 15px;
+}
+
+ion-content ion-input {
+  width: 560px;
+  height: 30px;
+  border: 1px solid #8080803d;
+  border-radius: 15px;
+  margin: 0 auto 10px auto;
+}
+
+ion-content ion-button {
+  margin-left: 34%;
+}

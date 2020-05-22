@@ -1,0 +1,51 @@
+ion-header {
+  background-color: #191923;
+  height: 60px;
+}
+
+ion-header div.logo {
+  display: inline-block;
+  float: left;
+}
+
+ion-header div.logo img {
+  height: 40px;
+  margin: 10px 0 0 25px;
+}
+
+ion-header p {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 2px;
+  position: relative;
+  right: 115px;
+}
+
+div.about_wrapper .vcampus_img {
+  margin-top: 80px;
+  text-align: center;
+}
+
+div.about_wrapper .vcampus_img img {
+  height: 120px;
+}
+
+div.about_wrapper .about_text {
+  color: grey;
+}
+
+div.about_wrapper .about_text h5 {
+  text-align: center;
+}
+
+div.about_wrapper .about_text p {
+  width: 70%;
+  margin: auto;
+  font-size: 20px;
+}
+
+div.about_wrapper .about_text p span {
+  color: #0567b0;
+}

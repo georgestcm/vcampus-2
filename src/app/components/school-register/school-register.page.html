@@ -1,0 +1,50 @@
+<ion-header>
+  <div class="logo">
+    <img src="assets/vcampus.png" alt="app logo">
+    <p>School registration</p>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="wrapper">
+    <div class="side_left">
+       <div [ngClass]="(current_page_on_off) ? 'current_page':'current_page_off'" class="login link">
+         <p>LOGIN</p>
+       </div>
+      <div [ngClass]="(!current_page_on_off) ? 'current_page':'current_page_off'" class="add_details link">
+         <p>INFORMATION</p>
+       </div>
+    </div>
+    <div class="add_details_login">
+      <div class="form" [hidden]="!current_page_on_off">
+        <div class="error" >
+          <p>{{error}}</p>
+        </div>
+        <ion-label>USERNAME</ion-label>
+        <ion-input [(ngModel)]="login_user.username" type="username"><ion-icon name="person"></ion-icon></ion-input>
+        <ion-label>PASSWORD</ion-label>
+        <ion-input [(ngModel)]="login_user.password" type="password"><ion-icon name="key"></ion-icon></ion-input>
+        <ion-button (click)="login()" >LOGIN</ion-button>
+      </div>
+            <div [hidden]="current_page_on_off" class="add_details">
+              <div class="error">
+                <p>{{error}}</p>
+              </div>
+              <ion-label>SCHOOL NAME</ion-label>
+              <ion-input [(ngModel)]="save_school_data.school_name" type="username"></ion-input>
+              <ion-label>PRINCIPAL FIRST NAME</ion-label>
+              <ion-input [(ngModel)]="save_school_data.principal_first_name" type="text"></ion-input>
+              <ion-label>PRINCIPAL LAST NAME</ion-label>
+              <ion-input [(ngModel)]="save_school_data.principal_last_name" type="text"></ion-input>
+              <ion-label>ENTER PASSWORD</ion-label>
+              <ion-input [(ngModel)]="save_school_data.password" type="password"></ion-input>
+              <ion-label>RE-ENTER PASSWORD</ion-label>
+              <ion-input [(ngModel)]="re_password" type="password"></ion-input>
+              <ion-label>SCHOOL DESCRIPTION</ion-label>
+              <ion-textarea [(ngModel)]="save_school_data.description" name="name" rows="10" ></ion-textarea>
+              <ion-button (click)="saveNewUser()">
+                SAVE
+              </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

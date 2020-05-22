@@ -1,0 +1,15 @@
+ion-content ion-list ion-item {
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+ion-content ion-list ion-item img {
+  height: 23px;
+  margin-right: 20px;
+}
+
+ion-content ion-list ion-item:hover {
+  transition: 1s;
+  background-color: red;
+}

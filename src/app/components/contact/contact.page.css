@@ -1,0 +1,47 @@
+ion-header {
+  background-color: #191923;
+  height: 60px;
+}
+
+ion-header div.logo {
+  display: inline-block;
+  float: left;
+}
+
+ion-header div.logo img {
+  height: 40px;
+  margin: 10px 0 0 25px;
+}
+
+ion-content {
+  margin: 0;
+}
+
+ion-content .main_wrapper .vcampus_img {
+  margin-top: 80px;
+  text-align: center;
+}
+
+ion-content .main_wrapper .vcampus_img img {
+  height: 120px;
+}
+
+ion-content .main_wrapper .contact {
+  margin-top: 30px;
+  text-align: center;
+  color: grey;
+}
+
+ion-content .main_wrapper .contact a {
+  text-decoration: none;
+  padding: 5px;
+  background-color: #0567b0;
+  transition: 1s;
+  color: white;
+  border-radius: 5px;
+}
+
+ion-content .main_wrapper .contact a:hover {
+  transition: 1s;
+  background-color: #ffcc29;
+}

@@ -1,0 +1,24 @@
+ion-header {
+    background-color: #191923;
+    height: 60px;
+  }
+  
+  ion-header ion-buttons {
+    color: white;
+  }
+  
+  ion-header ion-buttons ion-menu-button {
+    margin-top: 7px;
+    font-size: 25px;
+  }
+  
+  ion-header ion-buttons ion-title {
+    margin-top: 5px;
+  }
+  
+  ion-content div.placeholder {
+    margin-top: 9px;
+    text-align: center;
+    color: grey;
+  }
+  

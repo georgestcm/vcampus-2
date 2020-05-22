@@ -1,0 +1,47 @@
+<ion-menu side="start" menuId="first" contentId="menu-content">
+  <ion-header>
+    <div class="user">
+      <div class="icon">
+        <img src="/assets/person.png" alt="account icon" />
+      </div>
+      <div class="account_info">
+        <h6>{{userName.first_name}} {{userName.last_name}}</h6>
+        <p><ion-icon name="person"></ion-icon>Admin</p>
+      </div>
+    </div>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <!-- <ion-item lines="none">
+        <div><ion-icon name="chatboxes"></ion-icon>Messages</div></ion-item
+      > -->
+      <ion-item lines="none" [routerLink]="['/admin/messages']"
+        ><ion-icon name="chatboxes"></ion-icon>Messages</ion-item
+      >
+
+      <ion-item lines="none" [routerLink]="['/admin/group-chat']"
+        ><ion-icon name="chatboxes"></ion-icon>Group Chat</ion-item
+      >
+
+      <ion-item lines="none" [routerLink]="['/admin/school-list']"
+        ><ion-icon name="home"></ion-icon>Schools</ion-item
+      >
+      <ion-item lines="none" [routerLink]="['/admin/student-list']"
+        ><ion-icon name="people"></ion-icon>Students</ion-item
+      >
+      <ion-item lines="none" [routerLink]="['/admin/teacher-list']"
+        ><ion-icon name="person"></ion-icon>Teachers</ion-item
+      >
+      <ion-item lines="none" [routerLink]="['/admin/courses-list']"
+        ><ion-icon name="book"></ion-icon>courses</ion-item
+      >
+      <ion-item lines="none" [routerLink]="['/admin/permissions']"
+        ><ion-icon name="key"></ion-icon>Permissions</ion-item
+      >
+      <ion-item lines="none" [routerLink]="['']" (click)="logoutUser()"
+        ><ion-icon name="log-out"></ion-icon>Log out</ion-item
+      >
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="menu-content"></ion-router-outlet>

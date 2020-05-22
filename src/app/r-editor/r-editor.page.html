@@ -1,0 +1,27 @@
+<ion-menu side="start" menuId="first">
+  <ion-header>
+    <div class="user">
+      <div class="icon">
+          <img src="/assets/person.png" alt="account icon">
+      </div>
+      <div class="account_info">
+         <h6>{{userName.first_name}} {{userName.last_name}}</h6>
+         <p><ion-icon name="person"></ion-icon>Editor</p>
+      </div>
+    </div>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item lines="none"><div> <ion-icon name="chatboxes"></ion-icon>Messages </div></ion-item>
+      <ion-item lines="none" [routerLink]="['/editor/school-list']"><ion-icon name="home"></ion-icon>Schools</ion-item>
+      <ion-item lines="none" [routerLink]="['/editor/student-list']"><ion-icon name="people" ></ion-icon>Students</ion-item>
+      <ion-item lines="none" [routerLink]="['/editor/teacher-list']"><ion-icon name="person"></ion-icon>Teachers</ion-item>
+      <ion-item lines="none" [routerLink]="['/editor/courses-list']"><ion-icon name="book"></ion-icon>courses</ion-item>
+      <ion-item lines="none"  [routerLink]="['/editor/permissions']"><ion-icon name="key"></ion-icon>Permissions</ion-item>
+      <ion-item lines="none" [routerLink]="['']" (click)="logoutUser()"><ion-icon name="log-out"></ion-icon>Log out</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet main>
+
+</ion-router-outlet>

@@ -1,0 +1,26 @@
+<ion-menu side="start" menuId="first">
+  <ion-header>
+    <div class="user">
+      <div class="icon">
+          <img src="/assets/person.jpg" alt="account icon">
+      </div>
+      <div class="account_info">
+         <h6></h6>
+         <p><ion-icon name="person"></ion-icon>Teacher</p>
+      </div>
+    </div>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item lines="none" [routerLink]="['dashboard']" (click)="toDashboard()"> <ion-icon name="stats"></ion-icon>Dashboard</ion-item>
+      <ion-item lines="none" [routerLink]="['']"><div> <ion-icon name="chatboxes"></ion-icon>Messages </div></ion-item>
+      <ion-item lines="none" [routerLink]="['school-list']" (click)="toSchoolList()"><ion-icon name="home"></ion-icon>Schools</ion-item>
+      <ion-item lines="none" [routerLink]="['student-list']" (click)="toStudentList()"><ion-icon name="people" ></ion-icon>Students</ion-item>
+      <ion-item lines="none" [routerLink]="['courses-list']" (click)="toCourseList()"><ion-icon name="book"></ion-icon>courses</ion-item>
+      <ion-item lines="none" [routerLink]="[]" (click)="logoutUser()"><ion-icon name="log-out"></ion-icon>Log out</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet main>
+
+</ion-router-outlet>

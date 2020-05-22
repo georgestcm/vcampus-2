@@ -1,0 +1,96 @@
+
+<ion-header>
+  <div class="logo">
+    <img src="assets/vcampus.png" alt="app logo">
+  </div>
+  <div class="home_nav" [hidden]="logged_in_or_not">
+    <ul>
+      <li (click)="toAbout()"><span>About us</span></li>
+      <li (click)="toContact()"><span>Contact us</span></li>
+      <li><img src={{flag}} (click)="presentPopover()"alt=""></li>
+    </ul>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="two_color">
+    <div class="blue"></div>
+    <div class="yellow"></div>
+  </div>
+<div class="login_page" >
+  <div class="intro">
+    <img src="/assets/vcampus.png" alt="logo">
+    <p>Modernizing education for all</p>
+  </div>
+   <div class="form_login">
+     <ion-card>
+  <ion-card-header>
+    <ion-card-title> <span>LOGIN</span>
+      <img src="assets/vhands.png" alt="">
+    </ion-card-title>
+    <ion-card-subtitle [hidden]="logged_in_or_not">login as</ion-card-subtitle>
+    <ion-select [hidden]="logged_in_or_not" (ionChange)="getRoleRequest($event)" value="roleRequest" placeholder="click to select a role">
+      <ion-select-option selected>Admin</ion-select-option>
+      <ion-select-option selected>Editor</ion-select-option>
+      <ion-select-option selected>School</ion-select-option>
+      <ion-select-option selected>School staff</ion-select-option>
+      <ion-select-option selected>Teacher</ion-select-option>
+      <ion-select-option selected>Student</ion-select-option>
+    </ion-select>
+    <div class="login_error" [hidden]="error_message.error_red_msg">
+      <div class="error_icon">
+        <ion-icon name="alert"></ion-icon>
+      </div>
+      <div class="error_msg">
+        <p> {{error_message.error}}</p>
+      </div>
+    </div>
+  </ion-card-header>
+
+  <ion-card-content >
+    <div class="notloggedin" [hidden]="logged_in_or_not">
+    <ion-label>USERNAME</ion-label>
+    <ion-input type="username" [(ngModel)]="login_user_data.username" ><ion-icon name="person"></ion-icon></ion-input>
+    <ion-label>PASSWORD</ion-label>
+    <ion-input type="password" [(ngModel)]="login_user_data.password" ><ion-icon name="key"></ion-icon></ion-input>
+    <ion-button (click)="login()" [disabled]="error_message.login_btn">
+      <div class="login_btn_spinner">
+        <div class="spinner">
+          <ion-spinner [hidden]="error_message.spinner" name="crescent"></ion-spinner>
+        </div>
+         <div  [hidden]="error_message.btn_text" class="login_btn_spinner_text">
+           <p>LOGIN </p>
+         </div>
+      </div>
+     </ion-button>
+    <h6>
+      New to Vcampus? <span id="sign_up" [routerLink]="['/register']">Sign up now.</span>
+    </h6>
+    </div>
+    <div class="loggedin" [hidden]="!logged_in_or_not">
+      <p>You are currently logged in as</p>
+      <div class="user_info">
+        <div class="user_img">
+          <img src="/assets/person.jpg" alt="user image">
+        </div>
+        <div class="user_name_role">
+          <p>{{user.first_name}} {{user.last_name}}</p>
+        </div>
+      </div>
+      <div class="continue_or_not_btn">
+        <ion-button color="danger" (click)="signOut()">SIGN OUT</ion-button>
+        <ion-button (click)="continueToAccount()" >CONTINUE</ion-button>
+      </div>
+    </div>
+  </ion-card-content>
+</ion-card>
+   </div>
+   <div class="student_img">
+     <img src="assets/girl.png" alt="">
+   </div>
+  </div>
+  <ion-fab  vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="registerSchool()">
+      <ion-icon name="school"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

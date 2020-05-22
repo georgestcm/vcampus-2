@@ -1,0 +1,44 @@
+ion-header {
+  background-color: #191923;
+  height: 60px;
+  div.logo {
+    display: inline-block;
+    float: left;
+    img {
+      height: 40px;
+      margin: 10px 0 0 25px;
+    }
+  }
+
+}
+ion-content {
+  margin: 0;
+  .main_wrapper {
+    .vcampus_img {
+      margin-top: 80px;
+      text-align: center;
+      img {
+        height: 120px;
+      }
+    }
+    .contact {
+      margin-top: 30px;
+      text-align: center;
+      color: grey;
+      a {
+        text-decoration: none;
+        padding: 5px;
+        background-color:#0567b0;
+        transition: 1s;
+        color: white;
+        border-radius: 5px;
+        &:hover {
+          transition: 1s;
+          background-color: #ffcc29;
+        }
+      }
+    }
+  }
+
+
+}
