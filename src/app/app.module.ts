@@ -43,6 +43,8 @@ import { AddTeacherPage } from "./components/add-teacher/add-teacher.page";
 import { ViewCoursePage } from "./components/view-course/view-course.page";
 import { ChatWindowPage } from "./components/chat/chat-window/chat-window.page";
 import { GroupChatPage } from "./components/chat/group-chat/group-chat.page";
+import { ExamListPage } from "./components/exam-list/exam-list.page";
+import { AddExamPage } from "./r-teacher-components/add-exam/add-exam.page";
 
 import { RouteConfig } from "./route.config";
 import { AuthService } from "./providers/auth.service";
@@ -55,9 +57,6 @@ import { SchoolStaffGuard } from "./providers/auth-guards/schoolstaff.guard";
 import { TokenInterceptorService } from "./providers/interceptors/token-interceptor.service";
 import { CourseService } from "./providers/common-service/course.service";
 import { HttpClientService } from "./providers/http-client.service";
-import { SocketIoModule, SocketIoConfig } from "ng-socket-io";
-
-const config: SocketIoConfig = { url: "http://localhost:3001", options:{} };
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -78,6 +77,8 @@ export function createTranslateLoader(http: HttpClient) {
     AdminPermissionPage,
     ChatWindowPage,
     GroupChatPage,
+    ExamListPage,
+    AddExamPage,
     TeacherListPage,
     StudentListPage,
     SchoolListPage,
@@ -123,7 +124,6 @@ export function createTranslateLoader(http: HttpClient) {
       },
     }),
     AppRoutingModule,
-    SocketIoModule.forRoot(config)
   ],
   providers: [
     RouteConfig,

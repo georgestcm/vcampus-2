@@ -3,7 +3,7 @@ ion-header {
   height: 60px;
 }
 
-ion-header div.title {
+ion-header {
   height: inherit;
   display: flex;
   align-items: center;

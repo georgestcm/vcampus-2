@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+    <ion-title>Add Exam</ion-title>
+  </ion-buttons>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size-md="9" size-sm="12" size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Questions</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="h-300">
+            <ion-grid class="ion-no-padding">
+              <ion-row>
+                <ion-col size="12" class="ion-no-padding"></ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size-md="3" size-sm="12" size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Course details</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-grid class="ion-no-padding">
+              <ion-row>
+                <ion-col size="12" class="ion-no-padding">
+                  <ion-label>Exam Name</ion-label>
+                  <ion-input></ion-input>
+                </ion-col>
+                <ion-col size="12" class="ion-no-padding mt-5">
+                  <ion-label>Exam Description</ion-label>
+                  <ion-textarea rows="6"></ion-textarea>
+                </ion-col>
+                <ion-col size="12" class="ion-no-padding mt-5">
+                  <ion-label>Exam Start</ion-label>
+                  <ion-datetime
+                    displayFormat="MM/DD/YYYY"
+                    min="2020-03-14"
+                    max="2040-12-09"
+                    value="2020-01-01T15:03:46.789"
+                  >
+                  </ion-datetime>
+                </ion-col>
+                <ion-col size="12" class="ion-no-padding mt-5">
+                  <ion-label>Exam End</ion-label>
+                  <ion-datetime
+                    displayFormat="MM/DD/YYYY"
+                    min="2020-03-14"
+                    max="2040-12-09"
+                    value="2020-01-01T15:03:46.789"
+                  >
+                  </ion-datetime>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

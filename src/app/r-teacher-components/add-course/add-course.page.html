@@ -1,9 +1,11 @@
 <ion-header>
-  <div class="title">Add Course</div>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+    <ion-title>Add Course</ion-title>
+  </ion-buttons>
 </ion-header>
 
 <ion-content>
-
   <!-- <div class="wrapper"> -->
   <!-- <div class="add_course"> -->
   <ion-grid class="ion-no-padding">
@@ -18,8 +20,16 @@
               <ion-row>
                 <ion-col size="12">
                   <ion-label>Section</ion-label>
-                  <select class="ml-5 wd-50 custom-selection" name="section" (change)="sectionChanged($event)">
-                    <option *ngFor="let secNo of totalSections" value="{{secNo}}">{{secNo}}</option>
+                  <select
+                    class="ml-5 wd-50 custom-selection"
+                    name="section"
+                    (change)="sectionChanged($event)"
+                  >
+                    <option
+                      *ngFor="let secNo of totalSections"
+                      value="{{secNo}}"
+                      >{{secNo}}</option
+                    >
                   </select>
                 </ion-col>
               </ion-row>
@@ -28,9 +38,12 @@
           <ion-card-content class="h-300">
             <ion-grid class="ion-no-padding">
               <ion-row>
-                <ion-col size="12" class="ion-no-padding ">
-                  <div *ngFor="let section of sectionList; let sectionNo = index" id="{{'section_' + (sectionNo + 1)}}"
-                    class="sections">
+                <ion-col size="12" class="ion-no-padding">
+                  <div
+                    *ngFor="let section of sectionList; let sectionNo = index"
+                    id="{{'section_' + (sectionNo + 1)}}"
+                    class="sections"
+                  >
                     <ion-grid class="ion-no-padding">
                       <ion-row>
                         <!-- <ion-col size-md="12">
@@ -40,44 +53,66 @@
                           </div>
                         </ion-col> -->
                         <ion-col size="12">
-                          <div *ngFor="let chapter of section['chapters']; let chapterNo = index"
-                            class="{{'chapter_' + (chapterNo + 1)}} chapters">
+                          <div
+                            *ngFor="let chapter of section['chapters']; let chapterNo = index"
+                            class="{{'chapter_' + (chapterNo + 1)}} chapters"
+                          >
                             <ion-grid class="ion-no-padding">
                               <ion-row>
                                 <ion-col size-md="10" size-sm="8" size="12">
-                                  <ion-label>Chapter {{chapterNo + 1}}</ion-label>
-                                  <ion-input [(ngModel)]="chapter.chapterName"></ion-input>
-
+                                  <ion-label
+                                    >Chapter {{chapterNo + 1}}</ion-label
+                                  >
+                                  <ion-input
+                                    [(ngModel)]="chapter.chapterName"
+                                  ></ion-input>
                                 </ion-col>
                                 <ion-col size-md="2" size-sm="4" size="12">
-                                  <ion-button class="ion-margin-top" size="small"
-                                    (click)="addNewChapter(sectionNo + 1)">
+                                  <ion-button
+                                    class="ion-margin-top"
+                                    size="small"
+                                    (click)="addNewChapter(sectionNo + 1)"
+                                  >
                                     <ion-icon name="add"></ion-icon>
                                     <!-- Chapter -->
                                   </ion-button>
-                                  <ion-button class="ion-margin-top" size="small" color="danger">
+                                  <ion-button
+                                    class="ion-margin-top"
+                                    size="small"
+                                    color="danger"
+                                  >
                                     <ion-icon name="trash"></ion-icon>
                                     <!-- Chapter -->
                                   </ion-button>
-
                                 </ion-col>
                               </ion-row>
                             </ion-grid>
-                            <div *ngFor="let topic of chapter['topics']; let topicNo = index"
-                              class="{{'topic_' + (topicNo + 1)}} topics">
+                            <div
+                              *ngFor="let topic of chapter['topics']; let topicNo = index"
+                              class="{{'topic_' + (topicNo + 1)}} topics"
+                            >
                               <ion-grid class="ion-no-padding">
                                 <ion-row>
                                   <ion-col size-md="10" size-sm="8" size="12">
                                     <ion-label>Topic {{topicNo + 1}}</ion-label>
-                                    <ion-input [(ngModel)]="topic.topicName"></ion-input>
+                                    <ion-input
+                                      [(ngModel)]="topic.topicName"
+                                    ></ion-input>
                                   </ion-col>
                                   <ion-col size-md="2" size-sm="4" size="12">
-                                    <ion-button size="small" class="ion-margin-top"
-                                      (click)="addNewTopic(chapterNo + 1, sectionNo + 1)">
+                                    <ion-button
+                                      size="small"
+                                      class="ion-margin-top"
+                                      (click)="addNewTopic(chapterNo + 1, sectionNo + 1)"
+                                    >
                                       <ion-icon name="add"></ion-icon>
                                       <!-- Topic -->
                                     </ion-button>
-                                    <ion-button size="small" class="ion-margin-top" color="danger">
+                                    <ion-button
+                                      size="small"
+                                      class="ion-margin-top"
+                                      color="danger"
+                                    >
                                       <ion-icon name="trash"></ion-icon>
                                       <!-- Topic -->
                                     </ion-button>
@@ -85,30 +120,50 @@
                                 </ion-row>
                               </ion-grid>
 
-                              <div *ngFor="let paragraph of topic['paragraphs']; let paragraphNo = index"
-                                class="{{'paragraph_' + (paragraphNo + 1)}} paragraph">
+                              <div
+                                *ngFor="let paragraph of topic['paragraphs']; let paragraphNo = index"
+                                class="{{'paragraph_' + (paragraphNo + 1)}} paragraph"
+                              >
                                 <ion-grid class="ion-no-padding">
                                   <ion-row>
                                     <ion-col size-md="10" size-sm="8" size="12">
-                                      <ion-label>Paragraph {{paragraphNo + 1}}</ion-label>
-                                      <ion-textarea rows="2" [(ngModel)]="paragraph.paragraph"></ion-textarea>
+                                      <ion-label
+                                        >Paragraph {{paragraphNo +
+                                        1}}</ion-label
+                                      >
+                                      <ion-textarea
+                                        rows="2"
+                                        [(ngModel)]="paragraph.paragraph"
+                                      ></ion-textarea>
                                       <div class="supporting_docs">
                                         <div class="file"></div>
                                         <div class="select_file">
-                                          <ion-button class="ion-margin-top" color="danger">
-                                            <ion-icon name="cloud-upload"></ion-icon>
+                                          <ion-button
+                                            class="ion-margin-top"
+                                            color="danger"
+                                          >
+                                            <ion-icon
+                                              name="cloud-upload"
+                                            ></ion-icon>
                                             Select a file
                                           </ion-button>
                                         </div>
                                       </div>
                                     </ion-col>
                                     <ion-col size-md="2" size-sm="4" size="12">
-                                      <ion-button size="small" class="ion-margin-top"
-                                        (click)="addNewParagraph(topicNo + 1,chapterNo + 1, sectionNo + 1)">
+                                      <ion-button
+                                        size="small"
+                                        class="ion-margin-top"
+                                        (click)="addNewParagraph(topicNo + 1,chapterNo + 1, sectionNo + 1)"
+                                      >
                                         <ion-icon name="add"></ion-icon>
                                         <!-- Paragraph -->
                                       </ion-button>
-                                      <ion-button size="small" class="ion-margin-top" color="danger">
+                                      <ion-button
+                                        size="small"
+                                        class="ion-margin-top"
+                                        color="danger"
+                                      >
                                         <ion-icon name="trash"></ion-icon>
                                         <!-- Paragraph -->
                                       </ion-button>
@@ -126,7 +181,6 @@
               </ion-row>
             </ion-grid>
           </ion-card-content>
-
         </ion-card>
         <ion-card>
           <ion-card-content>
@@ -153,7 +207,7 @@
           <ion-card-content>
             <ion-grid class="ion-no-padding">
               <ion-row>
-                <ion-col size="12" class="ion-no-padding ">
+                <ion-col size="12" class="ion-no-padding">
                   <ion-label>Course name</ion-label>
                   <ion-input></ion-input>
                 </ion-col>
@@ -161,7 +215,7 @@
                   <ion-label>Course description</ion-label>
                   <ion-textarea rows="6"></ion-textarea>
                 </ion-col>
-                <ion-col size="12" class="ion-no-padding mt-5 ">
+                <ion-col size="12" class="ion-no-padding mt-5">
                   <ion-label>Course subjects</ion-label>
                   <div class="course_subject">
                     <select name="subject" class="wd-100 custom-selection">
@@ -219,27 +273,36 @@
                 <ion-col size="12" class="ion-no-padding mt-5">
                   <ion-label>Course availability</ion-label>
                   <div class="course_availability">
-
                     <ion-grid class="ion-no-padding">
                       <ion-row>
                         <ion-col size-md="6">
                           <p>from</p>
-                          <ion-datetime displayFormat="MM/DD/YYYY" min="2020-03-14" max="2040-12-09"
-                            value="2020-01-01T15:03:46.789">
+                          <ion-datetime
+                            displayFormat="MM/DD/YYYY"
+                            min="2020-03-14"
+                            max="2040-12-09"
+                            value="2020-01-01T15:03:46.789"
+                          >
                           </ion-datetime>
                         </ion-col>
                         <ion-col size-md="6">
                           <p>To</p>
-                          <ion-datetime displayFormat="MM/DD/YYYY" min="2020-03-14" max="2040-12-09"
-                            value="2020-01-01T15:03:46.789">
+                          <ion-datetime
+                            displayFormat="MM/DD/YYYY"
+                            min="2020-03-14"
+                            max="2040-12-09"
+                            value="2020-01-01T15:03:46.789"
+                          >
                           </ion-datetime>
                         </ion-col>
                       </ion-row>
                     </ion-grid>
 
-                    <ion-checkbox checked="true" class="ion-float-left ion-margin-end"></ion-checkbox>
+                    <ion-checkbox
+                      checked="true"
+                      class="ion-float-left ion-margin-end"
+                    ></ion-checkbox>
                     <span>Repeat yearly</span>
-
                   </div>
                 </ion-col>
                 <!-- <ion-col size-md="12" class="ion-no-padding">
@@ -255,7 +318,6 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
 
   <!-- </div> -->
 </ion-content>

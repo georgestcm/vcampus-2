@@ -32,6 +32,10 @@ export class RTeacherPage implements OnInit {
       this.router.navigate(['rteacher/courses-list'])
     }
 
+    toExamList(){
+      this.router.navigate(['rteacher/exam-list'])
+    }
+
     logoutUser(){
       this.storage.remove('token')
       this.storage.remove('user')

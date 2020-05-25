@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+    <ion-title>Exam List</ion-title>
+  </ion-buttons>
+</ion-header>
+
+<ion-content>
+  <div class="add_exam" [hidden]="addExamOrnot" [routerLink]="['add-exam']">
+    <div class="add">
+      <p>Add a new Exam</p>
+      <ion-icon name="add"></ion-icon>
+    </div>
+  </div>
+  <div class="exams"></div>
+</ion-content>
