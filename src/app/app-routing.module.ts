@@ -25,10 +25,10 @@ import { SchoolGuard } from "./providers/auth-guards/school.guard";
 import { SchoolStaffGuard } from "./providers/auth-guards/schoolstaff.guard";
 import { TeacherGuard } from "./providers/auth-guards/teacher.guard";
 import { StudentGuard } from "./providers/auth-guards/student.guard";
-import { ChatWindowPage } from './components/chat/chat-window/chat-window.page';
-import { GroupChatPage } from './components/chat/group-chat/group-chat.page';
-import { ExamListPage } from './components/exam-list/exam-list.page';
-import { AddExamPage } from './r-teacher-components/add-exam/add-exam.page';
+import { ChatWindowPage } from "./components/chat/chat-window/chat-window.page";
+import { GroupChatPage } from "./components/chat/group-chat/group-chat.page";
+import { ExamListPage } from "./components/exam-list/exam-list.page";
+import { AddExamPage } from "./r-teacher-components/add-exam/add-exam.page";
 
 const routes: Routes = [
   {
@@ -227,7 +227,7 @@ const routes: Routes = [
         pathMatch: "full",
       },
       {
-        path: "exam-list/add-exam",
+        path: "exam/:id",
         component: AddExamPage,
         pathMatch: "full",
       },

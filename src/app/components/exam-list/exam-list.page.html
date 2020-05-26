@@ -6,11 +6,40 @@
 </ion-header>
 
 <ion-content>
-  <div class="add_exam" [hidden]="addExamOrnot" [routerLink]="['add-exam']">
+  <div class="add_exam" [hidden]="addExamOrnot" (click)="addExam()">
     <div class="add">
       <p>Add a new Exam</p>
       <ion-icon name="add"></ion-icon>
     </div>
   </div>
-  <div class="exams"></div>
+  <ion-grid>
+    <ion-row class="exams">
+      <ion-col size="4" *ngFor="let exam of allExams">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle
+              >{{exam.exam_description}}
+              <ion-button
+                class="float-right"
+                size="small"
+                (click)="deleteExam(exam._id)"
+              >
+                <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+              </ion-button>
+            </ion-card-subtitle>
+            <ion-card-title>
+              <ion-nav-link class="cursor-pointer" (click)="viewExam(exam._id)">
+                {{exam.exam_name}}</ion-nav-link
+              >
+            </ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            Start at: {{exam.exam_startDateTime}}<br />
+            Ends at: {{exam.exam_endDateTime}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

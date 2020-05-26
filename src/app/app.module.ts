@@ -45,6 +45,7 @@ import { ChatWindowPage } from "./components/chat/chat-window/chat-window.page";
 import { GroupChatPage } from "./components/chat/group-chat/group-chat.page";
 import { ExamListPage } from "./components/exam-list/exam-list.page";
 import { AddExamPage } from "./r-teacher-components/add-exam/add-exam.page";
+import { AddExamModelPage } from "./r-teacher-components/add-exam-model/add-exam-model.page";
 
 import { RouteConfig } from "./route.config";
 import { AuthService } from "./providers/auth.service";
@@ -79,6 +80,7 @@ export function createTranslateLoader(http: HttpClient) {
     GroupChatPage,
     ExamListPage,
     AddExamPage,
+    AddExamModelPage,
     TeacherListPage,
     StudentListPage,
     SchoolListPage,
@@ -106,6 +108,7 @@ export function createTranslateLoader(http: HttpClient) {
     AddCurriculumPage,
     AddTeacherPage,
     AddSchoolStaffPage,
+    AddExamModelPage,
   ],
   imports: [
     BrowserModule,

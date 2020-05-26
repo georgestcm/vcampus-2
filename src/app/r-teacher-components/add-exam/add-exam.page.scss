@@ -12,6 +12,11 @@ ion-header {
     }
   }
 }
+ion-label {
+  color: grey;
+  font-size: 16px;
+}
+
 ion-content {
   div.wrapper {
     background-color: #80808036;
@@ -26,6 +31,7 @@ ion-content {
         color: grey;
         font-size: 16px;
       }
+      
       .add_course_content {
         padding-left: 5px;
         width: 500px;
@@ -315,8 +321,21 @@ ion-content {
     height: 30px;
   }
 
+  ion-item{
+    text-decoration: none;
+  }
+
   ion-textarea {
     border-radius: 14px;
     border: 1px solid #80808030;
   }
+}
+
+.mar-left-10 {
+  margin-left: 10%;
+}
+
+.m-lr-5{
+  margin-left: 5px;
+  margin-right: 5px;
 }

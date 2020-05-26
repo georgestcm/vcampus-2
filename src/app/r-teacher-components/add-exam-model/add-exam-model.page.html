@@ -1,0 +1,43 @@
+<ion-header>
+  <div class="logo">
+    <img src="assets/vcampus.png" alt="app logo" />
+    <p>Add a Exam</p>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="error">
+    <p>{{error}}</p>
+  </div>
+  <div class="success">
+    <p>{{success}}</p>
+  </div>
+  <ion-label>Exam Name</ion-label>
+  <ion-input type="text" [(ngModel)]="exam.Exam_Name" required></ion-input>
+  <ion-label>Exam Description</ion-label>
+  <ion-input
+    type="text"
+    [(ngModel)]="exam.Exam_Description"
+    required
+  ></ion-input>
+  <ion-label>Exam Start Date</ion-label>
+  <ion-datetime
+    displayFormat="MM/DD/YYYY"
+    min="2020-03-14"
+    max="2040-12-09"
+    [(ngModel)]="exam.Exam_StartDateTime"
+    required
+  >
+  </ion-datetime>
+  <ion-label>Exam End Time</ion-label>
+  <ion-datetime
+    displayFormat="MM/DD/YYYY"
+    min="2020-03-14"
+    max="2040-12-09"
+    [(ngModel)]="exam.Exam_EndDateTime"
+    required
+  >
+  </ion-datetime>
+
+  <ion-button (click)="addExam()">ADD EXAM</ion-button>
+</ion-content>
