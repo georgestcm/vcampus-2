@@ -29,6 +29,7 @@ export class AddExamModelPage implements OnInit {
   }
 
   addExam() {
+    this.success = "";
     if (this.exam.Exam_Name.length === 0) {
       this.error = "Please enter exam name";
     } else if (this.exam.Exam_Description.length === 0) {
@@ -47,9 +48,12 @@ export class AddExamModelPage implements OnInit {
       this.error = "";
       this._examService.postNewExam(this.exam).subscribe(
         (res) => {
-          (this.error = res.msg), 
-          this.initalizeExam();
+          (this.error = res.msg), this.initalizeExam();
           this.success = "Exam saved successfully!";
+
+          setTimeout(() => {
+            this.success = "";
+          }, 5000);
         },
         (err) => (this.error = err.error.msg)
       );

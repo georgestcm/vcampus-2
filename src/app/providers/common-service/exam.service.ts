@@ -7,6 +7,7 @@ import { HttpClientService } from "../http-client.service";
 })
 export class ExamService {
   private postNewExamUrl = "http://localhost:3000/api/post_exam";
+  private putExamUrl = "http://localhost:3000/api/update_exam/";
   private getExamUrl = "http://localhost:3000/api/get_exam/";
   private deleteExamUrl = "http://localhost:3000/api/delete_exam/";
 
@@ -17,6 +18,12 @@ export class ExamService {
 
   postNewExam(data) {
     return this.http.post<any>(this.postNewExamUrl, data);
+  }
+
+  putExam(data, examId) {
+    return this.http.put<any>(this.putExamUrl + examId, data, {
+      params: { examId: examId },
+    });
   }
 
   getExamDetail(data) {
@@ -33,9 +40,14 @@ export class ExamService {
 
   // Questions
   private postNewQuesUrl = "http://localhost:3000/api/post_question";
+  private deleteQuesUrl = "http://localhost:3000/api/delete_question/";
 
   postNewQuestion(data) {
     return this.http.post<any>(this.postNewQuesUrl, data);
+  }
+
+  deleteQuestion(data) {
+    return this.http.delete<any>(this.deleteQuesUrl + data.id);
   }
   // Questions
 }

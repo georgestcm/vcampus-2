@@ -41,11 +41,14 @@ export class ExamListPage implements OnInit {
     const modal = await this.modalController.create({
       component: AddExamModelPage,
     });
+
+    modal.onDidDismiss().then((data) => {
+      this.getAllExams();
+    });
     return await modal.present();
   }
 
   deleteExam(examId) {
-    debugger
     var data = { id: examId };
     this._examService.deleteExam(data).subscribe((res) => {
       this.getAllExams();

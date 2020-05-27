@@ -17,7 +17,7 @@
             <ion-grid class="ion-no-padding">
               <ion-row *ngFor="let question of examDetail['questions']">
                 <ion-col size="12" class="ion-no-padding">
-                  <ion-label>Question {{ question.Question_No}}</ion-label>
+                  <ion-label>Question {{ question.question_no}}</ion-label>
                   <ion-input [(ngModel)]="question.question_title"></ion-input>
                 </ion-col>
                 <ion-col
@@ -42,48 +42,56 @@
                       >
                       <ion-radio
                         class="m-lr-5"
-                        name="ques_options_{{question.question_No}}"
+                        value="{{option.optionid}}"
+                        [checked]="question.correct_answer  === option.optionid"
+                        (ionSelect)="setCorrectAnswer(option.optionid, question.question_no)"
+                        name="ques_options_{{question.question_no}}"
                       ></ion-radio>
                       <ion-input [(ngModel)]="option.option"></ion-input>
                     </ion-item>
                   </ion-radio-group>
                 </ion-col>
                 <ion-col text-right>
-                  <ion-button (click)="saveQuestion(question.question_no)">SAVE QUESTION</ion-button>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-card-content>
-        </ion-card>
-        <ion-card>
-          <ion-card-content>
-            <ion-grid text-center class="ion-no-padding">
-              <ion-row>
-                <ion-col>
-                  <ion-button (click)="addQuestion(lastQuestionNo)">
-                    ADD QUESTION
+                  <ion-button (click)="saveQuestion(question.question_no)"
+                    >SAVE
                   </ion-button>
+                  <ion-button (click)="removeQuestion(question._id)"
+                    >Remove</ion-button
+                  >
                 </ion-col>
               </ion-row>
             </ion-grid>
           </ion-card-content>
         </ion-card>
+
+        <ion-grid text-center class="ion-no-padding">
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="addQuestion(lastQuestionNo)">
+                ADD QUESTION
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-col>
       <ion-col size-md="3" size-sm="12" size="12">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>Course details</ion-card-title>
+            <ion-card-title>Exam details</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <ion-grid class="ion-no-padding">
               <ion-row>
                 <ion-col size="12" class="ion-no-padding">
                   <ion-label>Exam Name</ion-label>
-                  <ion-input [(ngModel)]="examDetail.exam_name"></ion-input>
+                  <ion-input [(ngModel)]="examDetail.Exam_Name"></ion-input>
                 </ion-col>
                 <ion-col size="12" class="ion-no-padding mt-5">
                   <ion-label>Exam Description</ion-label>
-                  <ion-textarea rows="6" [(ngModel)]="examDetail.exam_description"></ion-textarea>
+                  <ion-textarea
+                    rows="6"
+                    [(ngModel)]="examDetail.Exam_Description"
+                  ></ion-textarea>
                 </ion-col>
                 <ion-col size="12" class="ion-no-padding mt-5">
                   <ion-label>Exam Start</ion-label>
@@ -91,7 +99,7 @@
                     displayFormat="MM/DD/YYYY"
                     min="2020-03-14"
                     max="2040-12-09"
-                    [(ngModel)]="examDetail.exam_startDateTime"
+                    [(ngModel)]="examDetail.Exam_StartDateTime"
                   >
                   </ion-datetime>
                 </ion-col>
@@ -101,10 +109,14 @@
                     displayFormat="MM/DD/YYYY"
                     min="2020-03-14"
                     max="2040-12-09"
-                    [(ngModel)]="examDetail.exam_endDateTime"
+                    [(ngModel)]="examDetail.Exam_EndDateTime"
                   >
                   </ion-datetime>
                 </ion-col>
+              </ion-row>
+              <ion-item-divider></ion-item-divider>
+              <ion-row text-center>
+                <ion-button (click)="updateExamDetails()">Save Exam Detail</ion-button>
               </ion-row>
             </ion-grid>
           </ion-card-content>

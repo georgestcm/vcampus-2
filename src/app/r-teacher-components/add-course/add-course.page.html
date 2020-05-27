@@ -64,7 +64,7 @@
                                     >Chapter {{chapterNo + 1}}</ion-label
                                   >
                                   <ion-input
-                                    [(ngModel)]="chapter.chapterName"
+                                    [(ngModel)]="chapter.chapter_name"
                                   ></ion-input>
                                 </ion-col>
                                 <ion-col size-md="2" size-sm="4" size="12">
@@ -96,7 +96,7 @@
                                   <ion-col size-md="10" size-sm="8" size="12">
                                     <ion-label>Topic {{topicNo + 1}}</ion-label>
                                     <ion-input
-                                      [(ngModel)]="topic.topicName"
+                                      [(ngModel)]="topic.topic_name"
                                     ></ion-input>
                                   </ion-col>
                                   <ion-col size-md="2" size-sm="4" size="12">
@@ -121,7 +121,7 @@
                               </ion-grid>
 
                               <div
-                                *ngFor="let paragraph of topic['paragraphs']; let paragraphNo = index"
+                                *ngFor="let paragraph of topic['paragraph']; let paragraphNo = index"
                                 class="{{'paragraph_' + (paragraphNo + 1)}} paragraph"
                               >
                                 <ion-grid class="ion-no-padding">
@@ -133,7 +133,7 @@
                                       >
                                       <ion-textarea
                                         rows="2"
-                                        [(ngModel)]="paragraph.paragraph"
+                                        [(ngModel)]="paragraph.description"
                                       ></ion-textarea>
                                       <div class="supporting_docs">
                                         <div class="file"></div>
@@ -209,16 +209,23 @@
               <ion-row>
                 <ion-col size="12" class="ion-no-padding">
                   <ion-label>Course name</ion-label>
-                  <ion-input></ion-input>
+                  <ion-input [(ngModel)]="course.CourseName"></ion-input>
                 </ion-col>
                 <ion-col size="12" class="ion-no-padding mt-5">
                   <ion-label>Course description</ion-label>
-                  <ion-textarea rows="6"></ion-textarea>
+                  <ion-textarea
+                    rows="6"
+                    [(ngModel)]="course.Description"
+                  ></ion-textarea>
                 </ion-col>
                 <ion-col size="12" class="ion-no-padding mt-5">
                   <ion-label>Course subjects</ion-label>
                   <div class="course_subject">
-                    <select name="subject" class="wd-100 custom-selection">
+                    <select
+                      name="subject"
+                      [(ngModel)]="course.Subject"
+                      class="wd-100 custom-selection"
+                    >
                       <option>None</option>
                       <option>Architecture</option>
                       <option>Art & Culture</option>
@@ -257,7 +264,11 @@
                 <ion-col size="12" class="ion-no-padding mt-5">
                   <ion-label>School selection</ion-label>
                   <div class="school_seletc">
-                    <select name="schools" class="wd-100 custom-selection">
+                    <select
+                      name="schools"
+                      [(ngModel)]="course.School"
+                      class="wd-100 custom-selection"
+                    >
                       <option>None</option>
                     </select>
                   </div>
@@ -265,7 +276,11 @@
                 <ion-col size="12" class="ion-no-padding mt-5">
                   <ion-label>Course curriculum</ion-label>
                   <div class="course_curriculum">
-                    <select name="curriculums" class="wd-100 custom-selection">
+                    <select
+                      name="curriculums"
+                      [(ngModel)]="course.Curriculum"
+                      class="wd-100 custom-selection"
+                    >
                       <option>None</option>
                     </select>
                   </div>
@@ -278,20 +293,20 @@
                         <ion-col size-md="6">
                           <p>from</p>
                           <ion-datetime
+                            [(ngModel)]="course.AvailabilityFrom"
                             displayFormat="MM/DD/YYYY"
                             min="2020-03-14"
                             max="2040-12-09"
-                            value="2020-01-01T15:03:46.789"
                           >
                           </ion-datetime>
                         </ion-col>
                         <ion-col size-md="6">
                           <p>To</p>
                           <ion-datetime
+                            [(ngModel)]="course.AvailabilityTo"
                             displayFormat="MM/DD/YYYY"
                             min="2020-03-14"
                             max="2040-12-09"
-                            value="2020-01-01T15:03:46.789"
                           >
                           </ion-datetime>
                         </ion-col>
@@ -301,6 +316,7 @@
                     <ion-checkbox
                       checked="true"
                       class="ion-float-left ion-margin-end"
+                      [checked]="course.IsRepeatYearly"
                     ></ion-checkbox>
                     <span>Repeat yearly</span>
                   </div>
