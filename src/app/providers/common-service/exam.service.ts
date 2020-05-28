@@ -40,10 +40,17 @@ export class ExamService {
 
   // Questions
   private postNewQuesUrl = "http://localhost:3000/api/post_question";
+  private putQuesUrl = "http://localhost:3000/api/update_question/";
   private deleteQuesUrl = "http://localhost:3000/api/delete_question/";
 
   postNewQuestion(data) {
     return this.http.post<any>(this.postNewQuesUrl, data);
+  }
+
+  putQuestion(data, questionId) {
+    return this.http.put<any>(this.putQuesUrl + questionId, data, {
+      params: { questionId: questionId },
+    });
   }
 
   deleteQuestion(data) {

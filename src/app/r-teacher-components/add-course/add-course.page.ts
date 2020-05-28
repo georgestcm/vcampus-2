@@ -162,85 +162,85 @@ export class AddCoursePage implements OnInit {
   }
 
   saveCourse() {
-    // var data = this.course;
-    // for (let i = 0; i < this.sectionList.length; i++) {
-    //   let section = this.sectionList[i];
-    //   let newSection = {
-    //     SectionId: section.section_no,
-    //     SectionName: section.section_name,
-    //     Chapter: [],
-    //   };
+    var data = this.course;
+    for (let i = 0; i < this.sectionList.length; i++) {
+      let section = this.sectionList[i];
+      let newSection = {
+        SectionId: section.section_no,
+        SectionName: section.section_name,
+        Chapter: [],
+      };
 
-    //   for (let j = 0; j < section.chapters.length; j++) {
-    //     let chapter = section.chapters[j];
-    //     let newChapter = {
-    //       ChapterId: chapter.chapter_no,
-    //       ChapterName: chapter.chapter_name,
-    //       Topics: [],
-    //     };
+      for (let j = 0; j < section.chapters.length; j++) {
+        let chapter = section.chapters[j];
+        let newChapter = {
+          ChapterId: chapter.chapter_no,
+          ChapterName: chapter.chapter_name,
+          Topics: [],
+        };
 
-    //     for (let k = 0; k < chapter.topics.length; k++) {
-    //       let topic = chapter.topics[k];
-    //       let newTopic = {
-    //         TopicId: topic.topic_no,
-    //         TopicName: topic.topic_name,
-    //         Paragraph: [],
-    //       };
+        for (let k = 0; k < chapter.topics.length; k++) {
+          let topic = chapter.topics[k];
+          let newTopic = {
+            TopicId: topic.topic_no,
+            TopicName: topic.topic_name,
+            Paragraph: [],
+          };
 
-    //       for (let l = 0; l < topic.paragraph.length; l++) {
-    //         let para = topic.paragraph[l];
-    //         let newPara = {
-    //           ParagraphDesc: para.description,
-    //           File: para.document,
-    //         };
-    //         newTopic.Paragraph.push(newPara);
-    //       }
-    //       newChapter.Topics.push(newTopic);
-    //     }
-    //     newSection.Chapter.push(newChapter);
-    //   }
-    //   data.Sections.push(newSection);
-    // }
-    // console.clear();
-    // console.dirxml(this.course);
+          for (let l = 0; l < topic.paragraph.length; l++) {
+            let para = topic.paragraph[l];
+            let newPara = {
+              ParagraphDesc: para.description,
+              File: para.document,
+            };
+            newTopic.Paragraph.push(newPara);
+          }
+          newChapter.Topics.push(newTopic);
+        }
+        newSection.Chapter.push(newChapter);
+      }
+      data.Sections.push(newSection);
+    }
+    console.clear();
+    console.dirxml(this.course);
 
-    var newData = {
-      CourseId: 0,
-      UserId: "5ebf8cd2980bbe00173274bd",
-      CourseName: "CourseName",
-      Description: "Description",
-      Subject: "Subject",
-      School: "School",
-      Curriculum: "Curriculum",
-      AvailabilityFrom: "AvailabilityFrom",
-      AvailabilityTo: "AvailabilityTo",
-      IsRepeatYearly: true,
-      Sections: [
-        {
-          SectionId: 0,
-          SectionName: "Section1",
-          Chapter: [
-            {
-              ChapterId: 0,
-              ChapterName: "Chapter1",
-              Topics: [
-                {
-                  TopicId: 0,
-                  TopicName: "Topic1",
-                  Paragraph: [
-                    {
-                      ParagraphDesc: "ParagraphDetail1",
-                      File: "FilePathDetail",
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    };
-    this._course.addCourse(newData).subscribe((res) => {
+    // var newData = {
+    //   CourseId: 0,
+    //   UserId: "5ebf8cd2980bbe00173274bd",
+    //   CourseName: "CourseName",
+    //   Description: "Description",
+    //   Subject: "Subject",
+    //   School: "School",
+    //   Curriculum: "Curriculum",
+    //   AvailabilityFrom: "AvailabilityFrom",
+    //   AvailabilityTo: "AvailabilityTo",
+    //   IsRepeatYearly: true,
+    //   Sections: [
+    //     {
+    //       SectionId: 0,
+    //       SectionName: "Section1",
+    //       Chapter: [
+    //         {
+    //           ChapterId: 0,
+    //           ChapterName: "Chapter1",
+    //           Topics: [
+    //             {
+    //               TopicId: 0,
+    //               TopicName: "Topic1",
+    //               Paragraph: [
+    //                 {
+    //                   ParagraphDesc: "ParagraphDetail1",
+    //                   File: "FilePathDetail",
+    //                 },
+    //               ],
+    //             },
+    //           ],
+    //         },
+    //       ],
+    //     },
+    //   ],
+    // };
+    this._course.addCourse(data).subscribe((res) => {
       debugger
       alert(res.message);
     });
