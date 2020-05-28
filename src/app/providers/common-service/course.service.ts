@@ -39,6 +39,6 @@ export class CourseService {
   }
 
   addCourse(data) {
-    return this.http.post<any>(this.postCurList, data);
+    return this.http.post<any>(this.postNewCourse, data);
   }
 }
