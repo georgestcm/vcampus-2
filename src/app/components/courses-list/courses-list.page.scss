@@ -63,11 +63,27 @@ ion-content {
 }
 
 .courses {
-  width: 79.8%;
-    position: relative;
-    left: 19%;
-    height: 9000px;
-    background: #80808036;
-    border-radius: 5px;
-    margin-top:10px;
+  width: 77.8%;
+  position: relative;
+  left: 12%;
+  height: 9000px;
+  background: #80808036;
+  border-radius: 5px;
+  margin-top: 10px;
 }
+
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+ion-card {
+  background-color: #fff;
+}
+
+.float-right{
+  float: right;
+  clear: both;
+}
+
+

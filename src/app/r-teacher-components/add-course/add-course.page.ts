@@ -69,10 +69,10 @@ export class AddCoursePage implements OnInit {
     var lastChapter =
       selectedSection.chapters[selectedSection.chapters.length - 1];
 
-    if (this.initialLoad) {
-      this.initialLoad = false;
-      return;
-    }
+    // if (this.initialLoad) {
+    //   this.initialLoad = false;
+    //   return;
+    // }
 
     var newChapter = this.initializeChapter(
       selectedSection.chapters.length + 1,
@@ -157,7 +157,7 @@ export class AddCoursePage implements OnInit {
     return {
       paragraph_no: paragraph_no,
       description: "",
-      document: "Demo Path",
+      document: "",
     };
   }
 

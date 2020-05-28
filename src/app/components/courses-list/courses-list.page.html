@@ -1,18 +1,52 @@
 <ion-header>
-    <ion-buttons slot="start">
+  <ion-buttons slot="start">
     <ion-menu-button></ion-menu-button>
     <ion-title>Courses list</ion-title>
-    </ion-buttons>
+  </ion-buttons>
 </ion-header>
 
 <ion-content>
   <div class="add_role" [hidden]="addCourseOrnot" [routerLink]="['add-course']">
-    <div  class="add">
+    <div class="add">
       <p>Add a new Course</p>
       <ion-icon name="add"></ion-icon>
     </div>
   </div>
-  <div class="courses">
+  <ion-grid class="courses">
+    <ion-row>
+      <ion-col
+        size-md="4"
+        size-lg="4"
+        size-sm="12"
+        *ngFor="let course of courses"
+      >
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle
+              >{{ course.description }}
+              <ion-button
+                class="float-right"
+                size="small"
+                (click)="removeCourse(course._id)"
+              >
+                <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+              </ion-button>
+            </ion-card-subtitle>
+            <ion-card-title>
+              <ion-nav-link
+                (click)="viewCourse(course._id)"
+                class="cursor-pointer"
+              >
+                {{ course.name }}</ion-nav-link
+              >
+            </ion-card-title>
+          </ion-card-header>
 
-  </div>
+          <ion-card-content>
+            Total Section: {{course.sections.length}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

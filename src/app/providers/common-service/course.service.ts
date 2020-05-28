@@ -11,7 +11,6 @@ export class CourseService {
     "https://vcampus.herokuapp.com/api/post_curriculum_list";
   private postNewTeacher =
     "https://vcampus.herokuapp.com/api/create_new_teacher";
-  private postNewCourse = "http://local:3000/api/post_course";
 
   constructor(
     private http: HttpClient,
@@ -39,6 +38,10 @@ export class CourseService {
   }
 
   addCourse(data) {
-    return this._httpClient.authPost(this.postNewCourse, data);
+    return this._httpClient.authPost("/post_course", data);
+  }
+
+  getAll() {
+    return this._httpClient.authGet("/get_courses");
   }
 }

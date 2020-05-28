@@ -322,6 +322,13 @@ ion-content ion-input {
   height: 30px;
 }
 
+ion-datetime {
+  border-radius: 14px;
+  border: 1px solid #80808030;
+  height: 30px;
+}
+
+
 ion-content ion-textarea {
   border-radius: 14px;
   border: 1px solid #80808030;

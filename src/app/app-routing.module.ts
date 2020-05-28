@@ -208,6 +208,10 @@ const routes: Routes = [
         component: AddCoursePage,
       },
       {
+        path: "course/:id",
+        component: AddCoursePage,
+      },
+      {
         path: "courses-list",
         component: CoursesListPage,
       },
