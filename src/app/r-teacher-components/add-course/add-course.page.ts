@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Storage } from "@ionic/storage";
 import { CourseService } from "src/app/providers/common-service/course.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-add-course",
@@ -8,41 +9,55 @@ import { CourseService } from "src/app/providers/common-service/course.service";
   styleUrls: ["./add-course.page.scss"],
 })
 export class AddCoursePage implements OnInit {
-  constructor(private storage: Storage, private _course: CourseService) {}
+  constructor(
+    private storage: Storage,
+    private _course: CourseService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   course = {
-    CourseId: 0,
-    CourseName: "",
-    Description: "",
-    Subject: "",
-    UserId: "",
-    School: "",
-    Curriculum: "",
-    AvailabilityFrom: "",
-    AvailabilityTo: "",
-    IsRepeatYearly: false,
+    _id: "",
+    name: "",
+    description: "",
+    subject: "",
+    user: "",
+    school: "",
+    curriculum: "",
+    availability_from: "",
+    availability_to: "",
+    is_repeat_yearly: false,
+    sections: [],
     Sections: [],
   };
 
-  sectionNumber = 1;
-  chapterNumber = 1;
-  topicNumber = 1;
-
   sectionList = [];
-  initialLoad = true;
   lastSection = 0;
   lastSectionId = "";
-
+  courseId = "";
+  userId = "";
   totalSections = [];
 
   ngOnInit() {
     this.storage.get("user").then((val) => {
-      this.course.UserId = val._id;
+      this.course.user = val._id;
+      this.userId = val._id;
     });
 
-    debugger;
+    this.activatedRoute.paramMap.subscribe((params) => {
+      this.courseId = params.get("id");
+      this.getCourse(this.courseId);
+    });
     this.addNewSection();
-    // this.addNewChapter(this.lastSection);
+  }
+
+  getCourse(courseId) {
+    let data = { id: courseId };
+    this._course.getCourse(data).subscribe((res) => {
+      debugger
+      this.course = res;
+
+      this.sectionList = res.sections;
+    });
   }
 
   sectionChanged(eve) {
@@ -60,7 +75,6 @@ export class AddCoursePage implements OnInit {
   // function to add new section ends
 
   addNewChapter(sectionNum) {
-    debugger;
     var sectionIndex = this.sectionList.findIndex(
       (x) => x.section_no == sectionNum
     );
@@ -68,11 +82,6 @@ export class AddCoursePage implements OnInit {
 
     var lastChapter =
       selectedSection.chapters[selectedSection.chapters.length - 1];
-
-    // if (this.initialLoad) {
-    //   this.initialLoad = false;
-    //   return;
-    // }
 
     var newChapter = this.initializeChapter(
       selectedSection.chapters.length + 1,
@@ -83,7 +92,6 @@ export class AddCoursePage implements OnInit {
   }
 
   addNewTopic(chapterNum, sectionNum) {
-    debugger;
     var sectionIndex = this.sectionList.findIndex(
       (x) => x.section_no == sectionNum
     );
@@ -162,11 +170,24 @@ export class AddCoursePage implements OnInit {
   }
 
   saveCourse() {
-    var data = this.course;
+    debugger;
+    var data = {
+      UserId: this.userId,
+      CourseId: this.courseId,
+      CourseName: this.course.name,
+      Description: this.course.description,
+      Subject: this.course.subject,
+      School: this.course.school,
+      Curriculum: this.course.curriculum,
+      AvailabilityFrom: this.course.availability_from,
+      AvailabilityTo: this.course.availability_to,
+      IsRepeatYearly: this.course.is_repeat_yearly,
+      Sections:[]
+    };
     for (let i = 0; i < this.sectionList.length; i++) {
       let section = this.sectionList[i];
       let newSection = {
-        SectionId: section.section_no,
+        SectionId: section._id,
         SectionName: section.section_name,
         Chapter: [],
       };
@@ -174,7 +195,7 @@ export class AddCoursePage implements OnInit {
       for (let j = 0; j < section.chapters.length; j++) {
         let chapter = section.chapters[j];
         let newChapter = {
-          ChapterId: chapter.chapter_no,
+          ChapterId: chapter._id,
           ChapterName: chapter.chapter_name,
           Topics: [],
         };
@@ -182,7 +203,7 @@ export class AddCoursePage implements OnInit {
         for (let k = 0; k < chapter.topics.length; k++) {
           let topic = chapter.topics[k];
           let newTopic = {
-            TopicId: topic.topic_no,
+            TopicId: topic._id,
             TopicName: topic.topic_name,
             Paragraph: [],
           };
@@ -190,8 +211,8 @@ export class AddCoursePage implements OnInit {
           for (let l = 0; l < topic.paragraph.length; l++) {
             let para = topic.paragraph[l];
             let newPara = {
-              ParagraphDesc: para.description,
-              File: para.document,
+              description: para.description,
+              document: para.document,
             };
             newTopic.Paragraph.push(newPara);
           }
@@ -201,48 +222,20 @@ export class AddCoursePage implements OnInit {
       }
       data.Sections.push(newSection);
     }
-    console.clear();
-    console.dirxml(this.course);
 
-    // var newData = {
-    //   CourseId: 0,
-    //   UserId: "5ebf8cd2980bbe00173274bd",
-    //   CourseName: "CourseName",
-    //   Description: "Description",
-    //   Subject: "Subject",
-    //   School: "School",
-    //   Curriculum: "Curriculum",
-    //   AvailabilityFrom: "AvailabilityFrom",
-    //   AvailabilityTo: "AvailabilityTo",
-    //   IsRepeatYearly: true,
-    //   Sections: [
-    //     {
-    //       SectionId: 0,
-    //       SectionName: "Section1",
-    //       Chapter: [
-    //         {
-    //           ChapterId: 0,
-    //           ChapterName: "Chapter1",
-    //           Topics: [
-    //             {
-    //               TopicId: 0,
-    //               TopicName: "Topic1",
-    //               Paragraph: [
-    //                 {
-    //                   ParagraphDesc: "ParagraphDetail1",
-    //                   File: "FilePathDetail",
-    //                 },
-    //               ],
-    //             },
-    //           ],
-    //         },
-    //       ],
-    //     },
-    //   ],
-    // };
-    this._course.addCourse(data).subscribe((res) => {
-      debugger
-      alert(res.message);
-    });
+    if (
+      this.courseId == "" ||
+      this.courseId == null ||
+      this.courseId == undefined
+    ) {
+      this._course.addCourse(data).subscribe((res) => {
+        delete data.CourseId;
+        alert(res.message);
+      });
+    } else {
+      this._course.updateCourse(data, this.courseId).subscribe((res) => {
+        alert(res.message);
+      });
+    }
   }
 }

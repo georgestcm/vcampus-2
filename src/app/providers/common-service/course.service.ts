@@ -41,7 +41,19 @@ export class CourseService {
     return this._httpClient.authPost("/post_course", data);
   }
 
+  updateCourse(data, courseId) {
+    return this._httpClient.authPut(`/update_course/${courseId}`, data, );
+  }
+
   getAll() {
     return this._httpClient.authGet("/get_courses");
+  }
+
+  getCourse(data) {
+    return this._httpClient.authGet("/get_course/" + data.id);
+  }
+
+  removeCourse(data){
+    return this._httpClient.authDelete("/delete_course/" + data.id);
   }
 }

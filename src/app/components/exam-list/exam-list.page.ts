@@ -50,9 +50,11 @@ export class ExamListPage implements OnInit {
 
   deleteExam(examId) {
     var data = { id: examId };
-    this._examService.deleteExam(data).subscribe((res) => {
-      this.getAllExams();
-    });
+    if (confirm("Please confirm?")) {
+      this._examService.deleteExam(data).subscribe((res) => {
+        this.getAllExams();
+      });
+    }
   }
 
   viewExam(examId) {

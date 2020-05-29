@@ -203,13 +203,13 @@
               <ion-row>
                 <ion-col size="12" class="ion-no-padding">
                   <ion-label>Course name</ion-label>
-                  <ion-input [(ngModel)]="course.CourseName"></ion-input>
+                  <ion-input [(ngModel)]="course.name"></ion-input>
                 </ion-col>
                 <ion-col size="12" class="ion-no-padding mt-5">
                   <ion-label>Course description</ion-label>
                   <ion-textarea
                     rows="6"
-                    [(ngModel)]="course.Description"
+                    [(ngModel)]="course.description"
                   ></ion-textarea>
                 </ion-col>
                 <ion-col size="12" class="ion-no-padding mt-5">
@@ -217,7 +217,7 @@
                   <div class="course_subject">
                     <select
                       name="subject"
-                      [(ngModel)]="course.Subject"
+                      [(ngModel)]="course.subject"
                       class="wd-100 custom-selection"
                     >
                       <option>None</option>
@@ -260,7 +260,7 @@
                   <div class="school_seletc">
                     <select
                       name="schools"
-                      [(ngModel)]="course.School"
+                      [(ngModel)]="course.school"
                       class="wd-100 custom-selection"
                     >
                       <option>None</option>
@@ -272,7 +272,7 @@
                   <div class="course_curriculum">
                     <select
                       name="curriculums"
-                      [(ngModel)]="course.Curriculum"
+                      [(ngModel)]="course.curriculum"
                       class="wd-100 custom-selection"
                     >
                       <option>None</option>
@@ -287,7 +287,7 @@
                         <ion-col size-md="6">
                           <p>From</p>
                           <ion-datetime
-                            [(ngModel)]="course.AvailabilityFrom"
+                            [(ngModel)]="course.availability_from"
                             displayFormat="MM/DD/YYYY"
                             min="2020-03-14"
                             max="2040-12-09"
@@ -297,7 +297,7 @@
                         <ion-col size-md="6">
                           <p>To</p>
                           <ion-datetime
-                            [(ngModel)]="course.AvailabilityTo"
+                            [(ngModel)]="course.availability_to"
                             displayFormat="MM/DD/YYYY"
                             min="2020-03-14"
                             max="2040-12-09"
@@ -310,7 +310,8 @@
                     <ion-checkbox
                       checked="true"
                       class="ion-float-left ion-margin-end"
-                      [checked]="course.IsRepeatYearly"
+                      [(ngModel)]="course.is_repeat_yearly"
+                      [checked]="course.is_repeat_yearly"
                     ></ion-checkbox>
                     <span>Repeat yearly</span>
                   </div>

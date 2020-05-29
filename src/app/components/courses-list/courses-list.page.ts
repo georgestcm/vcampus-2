@@ -29,6 +29,7 @@ export class CoursesListPage implements OnInit {
   }
 
   getCourses() {
+    this.courses = [];
     this._course.getAll().subscribe((res) => {
       this.courses = res;
     });
@@ -39,6 +40,10 @@ export class CoursesListPage implements OnInit {
   }
 
   removeCourse(courseId) {
-    alert("Course will be removed");
+    if (confirm("Please confirm?")) {
+      this._course.removeCourse({ id: courseId }).subscribe((res) => {
+        this.getCourses();
+      });
+    }
   }
 }
