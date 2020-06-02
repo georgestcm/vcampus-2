@@ -59,6 +59,12 @@ import { TokenInterceptorService } from "./providers/interceptors/token-intercep
 import { CourseService } from "./providers/common-service/course.service";
 import { HttpClientService } from "./providers/http-client.service";
 
+import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
+
+let config : SocketIoConfig = {
+  url:"http://localhost:9992", options:{}
+}
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
@@ -119,6 +125,7 @@ export function createTranslateLoader(http: HttpClient) {
       driverOrder: ["localstorage", "sqlite", "websql"],
     }),
     IonicModule.forRoot(),
+    SocketIoModule.forRoot(config),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

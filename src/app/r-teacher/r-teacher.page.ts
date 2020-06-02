@@ -36,6 +36,10 @@ export class RTeacherPage implements OnInit {
       this.router.navigate(['rteacher/exam-list'])
     }
 
+    toGroupChat(){
+      this.router.navigate(['rteacher/group-chat'])
+    }
+
     logoutUser(){
       this.storage.remove('token')
       this.storage.remove('user')

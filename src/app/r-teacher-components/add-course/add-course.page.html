@@ -70,16 +70,14 @@
                                   (click)="addNewChapter(sectionNo + 1)"
                                 >
                                   <ion-icon name="add"></ion-icon>
-                                  <!-- Chapter -->
                                 </ion-button>
-                                <ion-button
+                                <!-- <ion-button
                                   class="ion-margin-top"
                                   size="small"
                                   color="danger"
                                 >
                                   <ion-icon name="trash"></ion-icon>
-                                  <!-- Chapter -->
-                                </ion-button>
+                                </ion-button> -->
                               </ion-col>
                             </ion-row>
                           </ion-grid>
@@ -104,14 +102,13 @@
                                     <ion-icon name="add"></ion-icon>
                                     <!-- Topic -->
                                   </ion-button>
-                                  <ion-button
+                                  <!-- <ion-button
                                     size="small"
                                     class="ion-margin-top"
                                     color="danger"
                                   >
                                     <ion-icon name="trash"></ion-icon>
-                                    <!-- Topic -->
-                                  </ion-button>
+                                  </ion-button> -->
                                 </ion-col>
                               </ion-row>
                             </ion-grid>
@@ -133,7 +130,14 @@
                                     <div class="supporting_docs">
                                       <div class="file"></div>
                                       <div class="select_file">
-                                        <ion-button
+                                        <input
+                                          type="file"
+                                          name="{{'file_' + (paragraphNo + 1)"
+                                          #file
+                                          (change)="handleInputChange($event,paragraphNo + 1, topicNo + 1,chapterNo + 1, sectionNo + 1)"
+                                        />
+                                        
+                                        <!-- <ion-button
                                           class="ion-margin-top"
                                           color="danger"
                                         >
@@ -141,7 +145,7 @@
                                             name="cloud-upload"
                                           ></ion-icon>
                                           Select a file
-                                        </ion-button>
+                                        </ion-button> -->
                                       </div>
                                     </div>
                                   </ion-col>
@@ -154,14 +158,13 @@
                                       <ion-icon name="add"></ion-icon>
                                       <!-- Paragraph -->
                                     </ion-button>
-                                    <ion-button
+                                    <!-- <ion-button
                                       size="small"
                                       class="ion-margin-top"
                                       color="danger"
                                     >
                                       <ion-icon name="trash"></ion-icon>
-                                      <!-- Paragraph -->
-                                    </ion-button>
+                                    </ion-button> -->
                                   </ion-col>
                                 </ion-row>
                               </ion-grid>

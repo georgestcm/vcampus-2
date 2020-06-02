@@ -45,7 +45,13 @@ export class AddCoursePage implements OnInit {
 
     this.activatedRoute.paramMap.subscribe((params) => {
       this.courseId = params.get("id");
-      this.getCourse(this.courseId);
+      if (
+        this.courseId != null &&
+        this.courseId != undefined &&
+        this.courseId != ""
+      ) {
+        this.getCourse(this.courseId);
+      }
     });
     this.addNewSection();
   }
@@ -53,7 +59,7 @@ export class AddCoursePage implements OnInit {
   getCourse(courseId) {
     let data = { id: courseId };
     this._course.getCourse(data).subscribe((res) => {
-      debugger
+      debugger;
       this.course = res;
 
       this.sectionList = res.sections;
@@ -75,65 +81,39 @@ export class AddCoursePage implements OnInit {
   // function to add new section ends
 
   addNewChapter(sectionNum) {
-    var sectionIndex = this.sectionList.findIndex(
-      (x) => x.section_no == sectionNum
-    );
-    var selectedSection = this.sectionList[sectionIndex];
-
-    var lastChapter =
-      selectedSection.chapters[selectedSection.chapters.length - 1];
-
+    var selectedSection = this.sectionList[sectionNum - 1];
     var newChapter = this.initializeChapter(
       selectedSection.chapters.length + 1,
       1,
       1
     );
-    this.sectionList[sectionIndex].chapters.push(newChapter);
+    this.sectionList[sectionNum - 1].chapters.push(newChapter);
   }
 
   addNewTopic(chapterNum, sectionNum) {
-    var sectionIndex = this.sectionList.findIndex(
-      (x) => x.section_no == sectionNum
-    );
-    var selectedSection = this.sectionList[sectionIndex];
+    var selectedSection = this.sectionList[sectionNum - 1];
 
-    var chapterIndex = selectedSection.chapters.findIndex(
-      (x) => x.chapter_no == chapterNum
-    );
-    var selectedChapter = selectedSection.chapters[chapterIndex];
-
-    var lastTopic = selectedChapter.topics[selectedChapter.topics.length - 1];
+    var selectedChapter = selectedSection.chapters[chapterNum - 1];
 
     var newTopic = this.initializeTopic(selectedChapter.topics.length + 1, 1);
 
-    this.sectionList[sectionIndex].chapters[chapterIndex].topics.push(newTopic);
+    this.sectionList[sectionNum - 1].chapters[chapterNum - 1].topics.push(
+      newTopic
+    );
   }
 
   addNewParagraph(topicNum, chapterNum, sectionNum) {
-    var sectionIndex = this.sectionList.findIndex(
-      (x) => x.section_no == sectionNum
-    );
-    var selectedSection = this.sectionList[sectionIndex];
+    var selectedSection = this.sectionList[sectionNum - 1];
 
-    var chapterIndex = selectedSection.chapters.findIndex(
-      (x) => x.chapter_no == chapterNum
-    );
-    var selectedChapter = selectedSection.chapters[chapterIndex];
+    var selectedChapter = selectedSection.chapters[chapterNum - 1];
 
-    var topicIndex = selectedChapter.topics.findIndex(
-      (x) => x.topic_no == topicNum
-    );
-    var selectedTopic = selectedChapter.topics[topicIndex];
-
-    var lastParagraph =
-      selectedTopic.paragraph[selectedTopic.paragraph.length - 1];
-
+    var selectedTopic = selectedChapter.topics[topicNum - 1];
     var newParagraph = this.initializeParagraph(
       selectedTopic.paragraph.length + 1
     );
 
-    this.sectionList[sectionIndex].chapters[chapterIndex].topics[
-      topicIndex
+    this.sectionList[sectionNum - 1].chapters[chapterNum - 1].topics[
+      topicNum - 1
     ].paragraph.push(newParagraph);
   }
 
@@ -170,7 +150,6 @@ export class AddCoursePage implements OnInit {
   }
 
   saveCourse() {
-    debugger;
     var data = {
       UserId: this.userId,
       CourseId: this.courseId,
@@ -182,31 +161,50 @@ export class AddCoursePage implements OnInit {
       AvailabilityFrom: this.course.availability_from,
       AvailabilityTo: this.course.availability_to,
       IsRepeatYearly: this.course.is_repeat_yearly,
-      Sections:[]
+      Sections: [],
     };
     for (let i = 0; i < this.sectionList.length; i++) {
       let section = this.sectionList[i];
       let newSection = {
-        SectionId: section._id,
+        SectionId: "",
         SectionName: section.section_name,
         Chapter: [],
       };
+      if (
+        section._id != undefined &&
+        section._id != null &&
+        section._id != ""
+      ) {
+        newSection.SectionId = section._id;
+      }
 
       for (let j = 0; j < section.chapters.length; j++) {
         let chapter = section.chapters[j];
         let newChapter = {
-          ChapterId: chapter._id,
+          ChapterId: "",
           ChapterName: chapter.chapter_name,
           Topics: [],
         };
 
+        if (
+          chapter._id != undefined &&
+          chapter._id != null &&
+          chapter._id != ""
+        ) {
+          newChapter.ChapterId = chapter._id;
+        }
+
         for (let k = 0; k < chapter.topics.length; k++) {
           let topic = chapter.topics[k];
           let newTopic = {
-            TopicId: topic._id,
+            TopicId: "",
             TopicName: topic.topic_name,
             Paragraph: [],
           };
+
+          if (topic._id != undefined && topic._id != null && topic._id != "") {
+            newTopic.TopicId = topic._id;
+          }
 
           for (let l = 0; l < topic.paragraph.length; l++) {
             let para = topic.paragraph[l];
@@ -233,9 +231,33 @@ export class AddCoursePage implements OnInit {
         alert(res.message);
       });
     } else {
+      console.clear();
+      console.log(data);
       this._course.updateCourse(data, this.courseId).subscribe((res) => {
         alert(res.message);
       });
     }
+  }
+
+  handleInputChange(event, paragraphNum, topicNum, chapterNum, sectionNum) {
+    var file = event.target.files[0];
+    this.getBase64(file, (base64Content) => {
+      this.sectionList[sectionNum - 1].chapters[chapterNum - 1].topics[
+        topicNum - 1
+      ].paragraph[paragraphNum - 1].document = base64Content;
+    });
+  }
+
+  getBase64(file, callback) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      reader.result;
+      callback(reader.result);
+    };
+    reader.onerror = function (error) {
+      alert("Error occured, details: " + error);
+      return null;
+    };
   }
 }

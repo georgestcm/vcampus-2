@@ -14,6 +14,7 @@
     <ion-list>
       <ion-item lines="none" [routerLink]="['dashboard']" (click)="toDashboard()"> <ion-icon name="stats"></ion-icon>Dashboard</ion-item>
       <ion-item lines="none" [routerLink]="['']"><div> <ion-icon name="chatboxes"></ion-icon>Messages </div></ion-item>
+      <ion-item lines="none" (click)="toGroupChat()"><div> <ion-icon name="chatboxes"></ion-icon>Group Chat </div></ion-item>
       <ion-item lines="none" [routerLink]="['school-list']" (click)="toSchoolList()"><ion-icon name="home"></ion-icon>Schools</ion-item>
       <ion-item lines="none" [routerLink]="['student-list']" (click)="toStudentList()"><ion-icon name="people" ></ion-icon>Students</ion-item>
       <ion-item lines="none" [routerLink]="['courses-list']" (click)="toCourseList()"><ion-icon name="book"></ion-icon>Courses</ion-item>
