@@ -50,6 +50,10 @@ export class RStudentsPage implements OnInit {
     this.router.navigate(['rstudents/courses-list'])
   }
 
+  toGroupChat(){
+    this.router.navigate(['rstudents/group-chat'])
+  }
+
   logoutUser() {
     this.storage.remove('token')
     this.storage.remove('user')

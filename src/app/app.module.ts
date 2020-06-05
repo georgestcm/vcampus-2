@@ -62,7 +62,7 @@ import { HttpClientService } from "./providers/http-client.service";
 import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
 
 let config : SocketIoConfig = {
-  url:"http://localhost:9992", options:{}
+  url:"http://localhost:4000", options:{}
 }
 
 export function createTranslateLoader(http: HttpClient) {

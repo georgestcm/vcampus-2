@@ -13,6 +13,7 @@
   <ion-content>
     <ion-list>
       <ion-item lines="none"><div> <ion-icon name="chatboxes"></ion-icon>Messages </div></ion-item>
+      <ion-item lines="none" (click)="toGroupChat()"><ion-icon name="chatboxes" ></ion-icon>Group Chat</ion-item>
       <ion-item lines="none" [routerLink]="['/rschool/student-list']"><ion-icon name="people" ></ion-icon>Students</ion-item>
       <ion-item lines="none" [routerLink]="['/rschool/teacher-list']"><ion-icon name="person"></ion-icon>Teachers</ion-item>
       <ion-item lines="none" [routerLink]="['/rschool/courses-list']"><ion-icon name="book"></ion-icon>courses</ion-item>

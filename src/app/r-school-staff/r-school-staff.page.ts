@@ -37,6 +37,10 @@ export class RSchoolStaffPage implements OnInit {
       this.router.navigate(['rschoolstaff/courses-list'])
     }
 
+    toGroupChat(){
+      this.router.navigate(['rschoolstaff/group-chat'])
+    }
+
     logoutUser(){
       this.storage.remove('token')
       this.storage.remove('user')

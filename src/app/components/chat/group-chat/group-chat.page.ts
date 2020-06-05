@@ -16,15 +16,14 @@ export class GroupChatPage implements OnInit {
   messages = [];
 
   ngOnInit() {
-    debugger;
     this.socket.connect();
 
     let name = `User-${new Date().getTime()}`;
     this.currentUser = name;
 
-    this.socket.emit("username", name);
+    this.socket.emit("set-name", name);
 
-    this.socket.fromEvent("username").subscribe((data) => {
+    this.socket.fromEvent("users-changed").subscribe((data) => {
       let user = data["user"];
       if (data["event"] === "left") {
         let userIndex = this.userList.indexOf(user);
@@ -38,7 +37,7 @@ export class GroupChatPage implements OnInit {
       }
     });
 
-    this.socket.fromEvent("chat_message").subscribe((msg) => {
+    this.socket.fromEvent("message").subscribe((msg) => {
       console.log("New: ", msg);
       this.messages.push(msg);
     });

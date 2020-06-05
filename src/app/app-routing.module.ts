@@ -169,6 +169,11 @@ const routes: Routes = [
         component: AdminPermissionPage,
         pathMatch: "full",
       },
+      {
+        path: "group-chat",
+        component: GroupChatPage,
+        pathMatch: "full",
+      },
     ],
   },
   {
@@ -194,6 +199,11 @@ const routes: Routes = [
       {
         path: "permissions",
         component: AdminPermissionPage,
+        pathMatch: "full",
+      },
+      {
+        path: "group-chat",
+        component: GroupChatPage,
         pathMatch: "full",
       },
     ],
@@ -255,6 +265,11 @@ const routes: Routes = [
       {
         path: "take-quiz",
         component: TakeQuizPage,
+        pathMatch: "full",
+      },
+      {
+        path: "group-chat",
+        component: GroupChatPage,
         pathMatch: "full",
       },
     ],
