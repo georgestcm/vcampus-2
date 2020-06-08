@@ -14,6 +14,7 @@ export class GroupChatPage implements OnInit {
 
   userList = [];
   messages = [];
+  message = "";
 
   ngOnInit() {
     this.socket.connect();
@@ -21,26 +22,21 @@ export class GroupChatPage implements OnInit {
     let name = `User-${new Date().getTime()}`;
     this.currentUser = name;
 
-    this.socket.emit("set-name", name);
+    this.socket.emit("username", name);
 
-    this.socket.fromEvent("users-changed").subscribe((data) => {
-      let user = data["user"];
-      if (data["event"] === "left") {
-        let userIndex = this.userList.indexOf(user);
-        if (userIndex > -1) {
-          this.userList.splice(userIndex, 1);
-        }
-        this.showToast("User left: " + user);
-      } else {
-        this.userList.push(user);
-        this.showToast("User joined: " + user);
-      }
+    this.socket.fromEvent("is_online").subscribe((message) => {
+      
     });
 
-    this.socket.fromEvent("message").subscribe((msg) => {
-      console.log("New: ", msg);
-      this.messages.push(msg);
-    });
+    // this.socket.fromEvent("message").subscribe((msg) => {
+    //   console.log("New: ", msg);
+    //   this.messages.push(msg);
+    // });
+  }
+
+  sendMessage() {
+    this.socket.emit("send-message", { text: this.message });
+    this.message = "";
   }
 
   ionViewWillLeave() {
