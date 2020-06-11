@@ -1,5 +1,6 @@
 ion-header {
-  height: 30%;
+  /* height: 30%; */
+height: 220px;
   background-color: #191923;
 }
 

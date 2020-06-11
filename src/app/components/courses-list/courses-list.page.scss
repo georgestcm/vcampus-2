@@ -29,7 +29,7 @@ ion-content {
   background-color: #8080801f;
   border-radius: 5px;
   margin: 15px;
-  position: fixed;
+  // position: fixed;
   .add {
     color: grey;
     display: flex;
@@ -63,13 +63,19 @@ ion-content {
 }
 
 .courses {
-  width: 77.8%;
-  position: relative;
-  left: 12%;
-  height: 9000px;
-  background: #80808036;
-  border-radius: 5px;
-  margin-top: 10px;
+  // width: 77.8%;
+  // position: relative;
+  // left: 12%;
+  // height: 9000px;
+  // background: #80808036;
+  // border-radius: 5px;
+  // margin-top: 10px;
+   width: calc(100% - 250px);
+    position: relative;
+    margin-left: 250px;
+    height: 100%;
+    background: #80808036;
+    border-radius: 5px;
 }
 
 
@@ -79,6 +85,7 @@ ion-content {
 
 ion-card {
   background-color: #fff;
+  height: 100%;
 }
 
 .float-right{
@@ -87,3 +94,19 @@ ion-card {
 }
 
 
+.fixed-top{
+  position:absolute;
+  top: 5px;
+  right: 5px;
+}
+.width95{
+  width: calc(100% - 40px);
+}
+.sc-ion-card-md-h{
+  margin: 0px !important;
+}
+.bg-light, body ,.ion-page{
+  background-color: #80808036;
+}.mt-5{
+  margin-top: 5px;
+}

@@ -1,11 +1,53 @@
 <ion-header>
   <ion-buttons slot="start">
     <ion-menu-button></ion-menu-button>
-    <ion-title>Exam List</ion-title>
+    <!-- <ion-title>Exam List</ion-title> -->
   </ion-buttons>
 </ion-header>
+<ion-content class="bg-light">
+  <!-- <ion-grid class="courses"> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xs="12">
+        <ion-title no-padding class="ion-float-left mt-5">Exam list</ion-title>
+        <ion-button class="ion-float-right" size="" [hidden]=" addExamOrnot" (click)="addExam()">
+          <ion-icon ios="add" md="md-trash"></ion-icon> Add a new Exam
+        </ion-button>
+        <!-- <div class="add_exam" [hidden]="addExamOrnot" (click)="addExam()">
+          <div class="add">
+            <p>Add a new Exam</p>
+            <ion-icon name="add"></ion-icon>
+          </div>
+        </div> -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-lg="3" size-md="4" size-sm="12" size-xs="12" *ngFor="let exam of allExams">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="width95">
+              <ion-nav-link class="cursor-pointer" (click)="viewExam(exam._id)">
+                {{exam.Exam_Name}}</ion-nav-link>
+            </ion-card-title>
 
-<ion-content>
+            <ion-button class="fixed-top" size="small" (click)="deleteExam(exam._id)">
+              <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+            </ion-button>
+            <ion-card-subtitle>{{exam.Exam_Description}}
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            Start at: {{exam.Exam_StartDateTime}}<br />
+            Ends at: {{exam.Exam_EndDateTime}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
+<!-- <ion-content>
   <div class="add_exam" [hidden]="addExamOrnot" (click)="addExam()">
     <div class="add">
       <p>Add a new Exam</p>
@@ -42,4 +84,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-</ion-content>
+</ion-content> -->

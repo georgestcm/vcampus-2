@@ -24,17 +24,16 @@ ion-content div.placeholder {
 
 ion-card {
   background-color: #fff;
+  height: 100%;
 }
 
 .cursor-pointer{
   cursor: pointer;
 }
 
-.float-right{
-  float: right;
-  clear: both;
+.mt-5{
+  margin-top: 5px;
 }
-
 .add_exam {
   display: inline-block;
   box-sizing: border-box;
@@ -43,7 +42,7 @@ ion-card {
   background-color: #8080801f;
   border-radius: 5px;
   margin: 15px;
-  position: fixed;
+  // position: fixed;
   .add {
     color: grey;
     display: flex;
@@ -120,4 +119,19 @@ ion-card {
   resize: none;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.fixed-top{
+  position:absolute;
+  top: 5px;
+  right: 5px;
+}
+.width95{
+  width: calc(100% - 40px);
+}
+.sc-ion-card-md-h{
+  margin: 0px !important;
+}
+.bg-light, body ,.ion-page{
+  background-color: #80808036;
 }
