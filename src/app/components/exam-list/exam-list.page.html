@@ -11,7 +11,7 @@
       <ion-col size-xs="12">
         <ion-title no-padding class="ion-float-left mt-5">Exam list</ion-title>
         <ion-button class="ion-float-right" size="" [hidden]=" addExamOrnot" (click)="addExam()">
-          <ion-icon ios="add" md="md-trash"></ion-icon> Add a new Exam
+          <ion-icon name="add"></ion-icon> Add a new Exam
         </ion-button>
         <!-- <div class="add_exam" [hidden]="addExamOrnot" (click)="addExam()">
           <div class="add">
@@ -30,7 +30,7 @@
                 {{exam.Exam_Name}}</ion-nav-link>
             </ion-card-title>
 
-            <ion-button class="fixed-top" size="small" (click)="deleteExam(exam._id)">
+            <ion-button class="fixed-top" color="danger" size="small" (click)="deleteExam(exam._id)">
               <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
             </ion-button>
             <ion-card-subtitle>{{exam.Exam_Description}}
