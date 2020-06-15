@@ -6,15 +6,12 @@ import { AdminPermissionPage } from "./adminComponents/admin-permission/admin-pe
 import { SchoolListPage } from "./components/school-list/school-list.page";
 import { StudentListPage } from "./components/student-list/student-list.page";
 import { TeacherListPage } from "./components/teacher-list/teacher-list.page";
-import { CoursesListPage } from "./components/courses-list/courses-list.page";
 import { LoginPage } from "./components/login/login.page";
 import { REditorPage } from "./r-editor/r-editor.page";
 import { RSchoolPage } from "./r-school/r-school.page";
 import { RSchoolStaffPage } from "./r-school-staff/r-school-staff.page";
 import { RTeacherPage } from "./r-teacher/r-teacher.page";
 import { RStudentsPage } from "./r-students/r-students.page";
-import { TakeQuizPage } from "./r-student-components/take-quiz/take-quiz/take-quiz.page";
-import { AddCoursePage } from "./r-teacher-components/add-course/add-course.page";
 import { AboutPage } from "./components/about/about.page";
 import { ContactPage } from "./components/contact/contact.page";
 import { RegisterPage } from "./components/register/register.page";
@@ -27,8 +24,6 @@ import { TeacherGuard } from "./providers/auth-guards/teacher.guard";
 import { StudentGuard } from "./providers/auth-guards/student.guard";
 import { ChatWindowPage } from "./components/chat/chat-window/chat-window.page";
 import { GroupChatPage } from "./components/chat/group-chat/group-chat.page";
-import { ExamListPage } from "./components/exam-list/exam-list.page";
-import { AddExamPage } from "./r-teacher-components/add-exam/add-exam.page";
 
 const routes: Routes = [
   {
@@ -90,11 +85,7 @@ const routes: Routes = [
         component: TeacherListPage,
         pathMatch: "full",
       },
-      {
-        path: "courses-list",
-        component: CoursesListPage,
-        pathMatch: "full",
-      },
+
       {
         path: "permissions",
         component: AdminPermissionPage,
@@ -132,11 +123,7 @@ const routes: Routes = [
         component: TeacherListPage,
         pathMatch: "full",
       },
-      {
-        path: "courses-list",
-        component: CoursesListPage,
-        pathMatch: "full",
-      },
+
       {
         path: "permissions",
         component: AdminPermissionPage,
@@ -159,11 +146,7 @@ const routes: Routes = [
         component: TeacherListPage,
         pathMatch: "full",
       },
-      {
-        path: "courses-list",
-        component: CoursesListPage,
-        pathMatch: "full",
-      },
+ 
       {
         path: "permissions",
         component: AdminPermissionPage,
@@ -191,11 +174,7 @@ const routes: Routes = [
         component: TeacherListPage,
         pathMatch: "full",
       },
-      {
-        path: "courses-list",
-        component: CoursesListPage,
-        pathMatch: "full",
-      },
+
       {
         path: "permissions",
         component: AdminPermissionPage,
@@ -213,18 +192,8 @@ const routes: Routes = [
     component: RTeacherPage,
     canActivate: [TeacherGuard],
     children: [
-      {
-        path: "courses-list/add-course",
-        component: AddCoursePage,
-      },
-      {
-        path: "course/:id",
-        component: AddCoursePage,
-      },
-      {
-        path: "courses-list",
-        component: CoursesListPage,
-      },
+
+
       {
         path: "permissions",
         component: AdminPermissionPage,
@@ -235,16 +204,8 @@ const routes: Routes = [
         component: ChatWindowPage,
         pathMatch: "full",
       },
-      {
-        path: "exam-list",
-        component: ExamListPage,
-        pathMatch: "full",
-      },
-      {
-        path: "exam/:id",
-        component: AddExamPage,
-        pathMatch: "full",
-      },
+
+
       {
         path: "group-chat",
         component: GroupChatPage,
@@ -257,16 +218,8 @@ const routes: Routes = [
     component: RStudentsPage,
     canActivate: [StudentGuard],
     children: [
-      {
-        path: "courses-list",
-        component: CoursesListPage,
-        pathMatch: "full",
-      },
-      {
-        path: "take-quiz",
-        component: TakeQuizPage,
-        pathMatch: "full",
-      },
+
+
       {
         path: "group-chat",
         component: GroupChatPage,

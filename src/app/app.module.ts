@@ -21,7 +21,6 @@ import { AdminPermissionPage } from "./adminComponents/admin-permission/admin-pe
 import { SchoolListPage } from "./components/school-list/school-list.page";
 import { StudentListPage } from "./components/student-list/student-list.page";
 import { TeacherListPage } from "./components/teacher-list/teacher-list.page";
-import { CoursesListPage } from "./components/courses-list/courses-list.page";
 import { AddCurriculumPage } from "./components/add-curriculum/add-curriculum.page";
 import { RSchoolPage } from "./r-school/r-school.page";
 import { LoginPage } from "./components/login/login.page";
@@ -32,10 +31,8 @@ import { REditorPage } from "./r-editor/r-editor.page";
 import { StudentPageCourseListPage } from "./components/student-page-course-list/student-page-course-list.page";
 import { AddSchoolPage } from "./components/add-school/add-school.page";
 import { RSchoolStaffPage } from "./r-school-staff/r-school-staff.page";
-import { AddCoursePage } from "./r-teacher-components/add-course/add-course.page";
 import { RTeacherPage } from "./r-teacher/r-teacher.page";
 import { RStudentsPage } from "./r-students/r-students.page";
-import { TakeQuizPage } from "./r-student-components/take-quiz/take-quiz/take-quiz.page";
 import { AddStaffPage } from "./components/add-staff/add-staff.page";
 import { SchoolRegisterPage } from "./components/school-register/school-register.page";
 import { AddSchoolStaffPage } from "./components/add-school-staff/add-school-staff.page";
@@ -43,9 +40,6 @@ import { AddTeacherPage } from "./components/add-teacher/add-teacher.page";
 import { ViewCoursePage } from "./components/view-course/view-course.page";
 import { ChatWindowPage } from "./components/chat/chat-window/chat-window.page";
 import { GroupChatPage } from "./components/chat/group-chat/group-chat.page";
-import { ExamListPage } from "./components/exam-list/exam-list.page";
-import { AddExamPage } from "./r-teacher-components/add-exam/add-exam.page";
-import { AddExamModelPage } from "./r-teacher-components/add-exam-model/add-exam-model.page";
 
 import { RouteConfig } from "./route.config";
 import { AuthService } from "./providers/auth.service";
@@ -77,26 +71,20 @@ export function createTranslateLoader(http: HttpClient) {
     RSchoolStaffPage,
     RTeacherPage,
     RStudentsPage,
-    TakeQuizPage,
     RegisterPage,
     LanguageSelectPage,
     AdminPage,
     AdminPermissionPage,
     ChatWindowPage,
     GroupChatPage,
-    ExamListPage,
-    AddExamPage,
-    AddExamModelPage,
     TeacherListPage,
     StudentListPage,
     SchoolListPage,
-    CoursesListPage,
     StudentPageCourseListPage,
     LoginPage,
     AddSchoolPage,
     REditorPage,
     RSchoolPage,
-    AddCoursePage,
     AddStaffPage,
     SchoolRegisterPage,
     AddCurriculumPage,
@@ -114,7 +102,6 @@ export function createTranslateLoader(http: HttpClient) {
     AddCurriculumPage,
     AddTeacherPage,
     AddSchoolStaffPage,
-    AddExamModelPage,
   ],
   imports: [
     BrowserModule,
