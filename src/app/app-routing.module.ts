@@ -24,6 +24,8 @@ import { TeacherGuard } from "./providers/auth-guards/teacher.guard";
 import { StudentGuard } from "./providers/auth-guards/student.guard";
 import { ChatWindowPage } from "./components/chat/chat-window/chat-window.page";
 import { GroupChatPage } from "./components/chat/group-chat/group-chat.page";
+import { CoursesListPage } from './components/courses-list/courses-list.page';
+import { AddCoursePage } from './r-teacher/add-course/add-course.page';
 
 const routes: Routes = [
   {
@@ -193,7 +195,14 @@ const routes: Routes = [
     canActivate: [TeacherGuard],
     children: [
 
-
+      {
+        path:"courses-list/add-course",
+        component:AddCoursePage
+      },
+      {
+        path: 'courses-list',
+        component: CoursesListPage
+      },
       {
         path: "permissions",
         component: AdminPermissionPage,
