@@ -73,6 +73,10 @@ const routes: Routes = [
     canActivate: [AdminGuard],
     children: [
       {
+        path: 'courses-list',
+        component: CoursesListPage
+      },
+      {
         path: "school-list",
         component: SchoolListPage,
         pathMatch: "full",
@@ -139,6 +143,10 @@ const routes: Routes = [
     canActivate: [SchoolGuard],
     children: [
       {
+        path: 'courses-list',
+        component: CoursesListPage
+      },
+      {
         path: "student-list",
         component: StudentListPage,
         pathMatch: "full",
@@ -166,6 +174,10 @@ const routes: Routes = [
     component: RSchoolStaffPage,
     canActivate: [SchoolStaffGuard],
     children: [
+      {
+        path: 'courses-list',
+        component: CoursesListPage
+      },
       {
         path: "student-list",
         component: StudentListPage,
