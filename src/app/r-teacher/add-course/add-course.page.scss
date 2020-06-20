@@ -298,3 +298,18 @@ div.select_file {
     border: 1px solid #80808030;
   }
 }
+
+.left-side{
+  width: 40%;
+  float: left;
+}
+.right-side{
+  width: 40%;
+  float: right;
+}
+.left-side div{
+  padding: 5px;
+}
+.right-side div{
+  padding:5px;
+}

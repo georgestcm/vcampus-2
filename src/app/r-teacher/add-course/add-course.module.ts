@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { AddCoursePageRoutingModule } from './add-course-routing.module';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { AddCoursePageRoutingModule } from './add-course-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    AddCoursePageRoutingModule
+    AddCoursePageRoutingModule,
+    NgbModule
   ],
   declarations: []
 })
