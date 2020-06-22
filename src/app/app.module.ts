@@ -54,6 +54,11 @@ import { SchoolStaffGuard } from "./providers/auth-guards/schoolstaff.guard";
 import { TokenInterceptorService } from "./providers/interceptors/token-interceptor.service";
 import { CourseService } from "./providers/common-service/course.service";
 import { HttpClientService } from "./providers/http-client.service";
+import {MatTreeModule} from '@angular/material/tree';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
 
 import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
 
@@ -125,6 +130,11 @@ export function createTranslateLoader(http: HttpClient) {
       },
     }),
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MatTreeModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [
     RouteConfig,

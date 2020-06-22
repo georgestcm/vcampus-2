@@ -299,17 +299,14 @@ div.select_file {
   }
 }
 
-.left-side{
-  width: 40%;
-  float: left;
+.mat-form-field {
+  margin-right: 4px;
 }
-.right-side{
-  width: 40%;
-  float: right;
+.mat-tree-node button{
+  margin-left: 5px;
 }
-.left-side div{
-  padding: 5px;
+.txt{
+  border:solid 1px black;
+
 }
-.right-side div{
-  padding:5px;
-}
+
