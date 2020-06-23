@@ -2,129 +2,156 @@
 <div class="title">Add Course</div>
 </ion-header>
 <ion-content>
-
   <div class="row">
-    <div class="col-md-8">
-    <div class="card" >
-      <div class="card-header">
-        Section & Topic Details
-      </div>
-      <div class="card-body">
-        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-          <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
-            <button mat-icon-button disabled></button>
-            <mat-label>{{node.item}}</mat-label>
-            <!-- <mat-checkbox class="checklist-leaf-node"
-                          [checked]="checklistSelection.isSelected(node)"
-                          (change)="todoLeafItemSelectionToggle(node)">{{node.item}}</mat-checkbox> -->
-          </mat-tree-node>
-        
-          <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>
-            <button mat-icon-button disabled></button>
-            <mat-form-field>
-              <!-- <mat-label>New item...</mat-label> -->
-              <input class="form-control txt" matInput #itemValue placeholder="Add new item">
-            </mat-form-field>
-            <button mat-flat-button color="primary" (click)="saveNode(node, itemValue.value)">Save</button>
-          </mat-tree-node>
-        
-          <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
-            <button mat-icon-button matTreeNodeToggle
-                    [attr.aria-label]="'toggle ' + node.filename">
-              <mat-icon class="mat-icon-rtl-mirror">
-                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-              </mat-icon>
-            </button>
-            <mat-label>{{node.item}}</mat-label>
-            <!-- <mat-checkbox [checked]="descendantsAllSelected(node)"
-                          [indeterminate]="descendantsPartiallySelected(node)"
-                          (change)="todoItemSelectionToggle(node)">{{node.item}}</mat-checkbox> -->
-            <button mat-icon-button color="warn" (click)="addNewItem(node)"><mat-icon>add</mat-icon></button>
-          </mat-tree-node>
-        </mat-tree>
-        
-        </div>
-    </div>
-    </div>
-    <div class="col-md-4">
+  <div class="col-md-5">
       <div class="card" >
         <div class="card-header">
           Course Detail
         </div>
-        <div class="card-body">
-    
-      <form>
-        <div class="form-group">
-          <label for="courseName">Course Name</label>
-          <input type="text" class="form-control" id="courseName" placeholder="Enter Course Name">
+        <div class="card-body"> 
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Course</span>
+          </div>
+          <input type="text" class="form-control" placeholder="Enter Topic" aria-label="Enter Course Name" aria-describedby="button-addon2">
         </div>
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input type="text" class="form-control" id="subject" placeholder="Enter Subject">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Subject</span>
+          </div>
+          <input type="text" class="form-control" placeholder="Enter Subject" aria-label="Enter Subject" aria-describedby="button-addon2">
         </div>
-        <div class="form-group">
-          <label for="Description">Description</label>
-          <textarea class="form-control" rows="2" id="description" placeholder="Enter Description"></textarea>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Description</span>
+          </div>
+          <textarea class="form-control" rows="3" id="description" placeholder="Enter Description"></textarea>
         </div>
-        <div class="form-group">
-          <label for="availableFrom">Available From</label>
-          <input type="date" class="form-control" id="availableFrom">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Available From</span>
+          </div>
+          <input type="date" class="form-control"  aria-label="Enter Subject" aria-describedby="button-addon2">
         </div>
-        <div class="form-group">
-          <label for="Description">Available To</label>
-          <input type="date" class="form-control" id="availableTo" >
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Available To</span>
+          </div>
+          <input type="date" class="form-control"  aria-label="Enter Subject" aria-describedby="button-addon2">
         </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="repeatYearly">
-          <label class="form-check-label" for="repeatYearly">Repeat Yearly</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            
+            <div class="input-group-text">
+              <input type="checkbox" aria-label="Repeat Yearly">
+            </div>
+            <span class="input-group-text" >Repeat Yearly?</span>
+          </div>
+          <input type="text" class="form-control" disabled aria-label="Text input with checkbox">
         </div>
-      </form>
-      <input type="button" class="btn btn-sm btn-success" value="Save Course" />
         </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- <div class="row">
-  <div class="col-md-5">
-  
+      </div>   
 </div>
 <div class="col-md-7">
   <div class="card" >
     <div class="card-header">
       Section & Paragraph
     </div>
-  <section *ngFor="let block of blocks; let i = index;">
     <div class="card-body">
-      <div class="form-group">
-        <label for="courseName">Section </label>
-        <input type="text" class="form-control" [(ngModel)]="block.section[i].sectionName" id="chapter" placeholder="Enter section name">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Section</span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="courseModel.section" placeholder="Enter Section" aria-label="Enter Section" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" (click)="onAddSection(courseModel.section);" type="button" >Add</button>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="ddlSection">Choose Section</label>
+        </div>
+        <select class="custom-select" id="ddlSection" (change)="onSectionChange($event.target.value)">
+          <option value="">--Choose Section--</option>
+          <option *ngFor="let section of sectionList" value={{section.sectionName}}>
+            {{section.sectionName}}
+          </option>
+        </select>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" >Chapter</span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="courseModel.chapter"  placeholder="Enter Chapter" aria-label="Enter Chapter" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" (click)="onAddChapter(courseModel.chapter);" type="button" >Add</button>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="ddlChapter">Choose Chapter</label>
+        </div>
+        <select class="custom-select" id="ddlChapter" (change)="onChpaterChange($event.target.value)">
+          <option value="">--Choose Chapter--</option>
+          <option *ngFor="let chapter of chapterList" value={{chapter.chapterName}}>
+            {{chapter.chapterName}}
+          </option>
+        </select>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01">Topic</span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="courseModel.topicName" placeholder="Enter Topic" aria-label="Enter Topic" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" (click)="onAddTopic(courseModel.topicName)" >Add</button>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="ddlTopic">Choose Topic</label>
+        </div>
+        <select class="custom-select" id="ddlTopic" (change)="onTopicChange($event.target.value)">
+          <option value="">--Choose Topic--</option>
+          <option *ngFor="let topic of topicList" value={{topic.topicName}}>
+            {{topic.topicName}}
+          </option>
+        </select>
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Paragraph</span>
+        </div>
+        <textarea rows="3" [(ngModel)]="courseModel.paragraph" class="form-control" id="paragraph" placeholder="Enter paragraph"></textarea>
       </div>
       <div class="form-group">
-        <label for="chapter">Chapter </label>
-        <input type="text" class="form-control" [(ngModel)]="block.section[i].chapter[0].chapterName" id="chapter" placeholder="Enter chapter name">
+        <input type="button" (click)="onAddParagraph(courseModel.paragraph)" class="btn btn-sm btn-primary float-right" value="Add Paragarph" />
       </div>
-      <div class="form-group">
-        <label for="topic">Topic</label>
-        <input type="text" class="form-control" [(ngModel)]="block.section[i].chapter[0].topic[0].topicName" id="topic" placeholder="Enter topic name">
+      <div class="form-group">&nbsp;</div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="ddlParagraph">Choose Paragraph</label>
+        </div>
+        <select class="custom-select" id="ddlParagraph" (change)="onParagraphChange($event.target.value)">
+          <option value="">--Choose Paragraph--</option>
+          <option *ngFor="let paragraph of paragraphList" value={{paragraph.paragraphName}}>
+            {{paragraph.paragraphName}}
+          </option>
+        </select>
       </div>
-      <div class="form-group">
-        <label for="paragraph">Paragraph</label>
-        <input type="button" class="btn btn-sm btn-secondary float-right" value="Add Paragarph" />
-        <textarea rows="3" [(ngModel)]="block.section[i].chapter[0].topic[0].paragraph[0].paragraphName" class="form-control" id="paragraph" placeholder="Enter paragraph"></textarea>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01">Supporting Docs</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="topic">Upload Document</label>
-        <input type="file" class="form-control" id="supportingDocs" placeholder="Upload File">
-      </div>
-      <input type="button" class="btn btn-sm btn-success float-left" value="Add New Block" />
+      <input type="button" class="btn btn-success float-left" value="Save Course" />
     </div>
-  </section>
   </div>
 </div>
-</div> -->
-
-
+</div>
 <!-- <pre>{{blocks | json}}</pre> -->
   </ion-content>

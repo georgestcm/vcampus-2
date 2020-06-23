@@ -60,6 +60,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
 
 let config : SocketIoConfig = {
@@ -134,7 +136,8 @@ export function createTranslateLoader(http: HttpClient) {
     MatTreeModule,
     MatCheckboxModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule
   ],
   providers: [
     RouteConfig,
