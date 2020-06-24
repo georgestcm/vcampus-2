@@ -11,44 +11,46 @@
         <div class="card-body"> 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupFileAddon01">Course</span>
+            <span class="input-group-text"  id="inputGroupFileAddon01">Course</span>
           </div>
-          <input type="text" class="form-control" placeholder="Enter Topic" aria-label="Enter Course Name" aria-describedby="button-addon2">
+          <input type="text" required class="form-control" [(ngModel)]="courseModel.courseName" placeholder="Enter Topic" aria-label="Enter Course Name" aria-describedby="button-addon2">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupFileAddon01">Subject</span>
           </div>
-          <input type="text" class="form-control" placeholder="Enter Subject" aria-label="Enter Subject" aria-describedby="button-addon2">
+          <input type="text" required  class="form-control" [(ngModel)]="courseModel.subject" placeholder="Enter Subject" aria-label="Enter Subject" aria-describedby="button-addon2">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupFileAddon01">Description</span>
           </div>
-          <textarea class="form-control" rows="3" id="description" placeholder="Enter Description"></textarea>
+          <textarea class="form-control" required rows="3" id="description" [(ngModel)]="courseModel.description" placeholder="Enter Description"></textarea>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupFileAddon01">Available From</span>
           </div>
-          <input type="date" class="form-control"  aria-label="Enter Subject" aria-describedby="button-addon2">
+          <input type="date" required class="form-control" [(ngModel)]="courseModel.availableFrom"  aria-label="Available From" aria-describedby="button-addon2">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupFileAddon01">Available To</span>
           </div>
-          <input type="date" class="form-control"  aria-label="Enter Subject" aria-describedby="button-addon2">
+          <input type="date" required class="form-control" [(ngModel)]="courseModel.availableTo" aria-label="Available To" aria-describedby="button-addon2">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             
             <div class="input-group-text">
-              <input type="checkbox" aria-label="Repeat Yearly">
+              <input type="checkbox" [(ngModel)]="courseModel.repeatYearly" aria-label="Repeat Yearly">
             </div>
             <span class="input-group-text" >Repeat Yearly?</span>
           </div>
           <input type="text" class="form-control" disabled aria-label="Text input with checkbox">
         </div>
+         <!-- For Debugging Purpose Only -->
+        <pre>{{sectionJSON | json}}</pre>
         </div>
       </div>   
 </div>
@@ -62,7 +64,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Section</span>
         </div>
-        <input type="text" class="form-control" [(ngModel)]="courseModel.section" placeholder="Enter Section" aria-label="Enter Section" aria-describedby="button-addon2">
+        <input type="text" required class="form-control" [(ngModel)]="courseModel.section" placeholder="Enter Section" aria-label="Enter Section" aria-describedby="button-addon2">
         <div class="input-group-append">
           <button class="btn btn-primary" (click)="onAddSection(courseModel.section);" type="button" >Add</button>
         </div>
@@ -71,7 +73,7 @@
         <div class="input-group-prepend">
           <label class="input-group-text" for="ddlSection">Choose Section</label>
         </div>
-        <select class="custom-select" id="ddlSection" (change)="onSectionChange($event.target.value)">
+        <select class="custom-select" required id="ddlSection" (change)="onSectionChange($event.target.value)">
           <option value="">--Choose Section--</option>
           <option *ngFor="let section of sectionList" value={{section.sectionName}}>
             {{section.sectionName}}
@@ -82,7 +84,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" >Chapter</span>
         </div>
-        <input type="text" class="form-control" [(ngModel)]="courseModel.chapter"  placeholder="Enter Chapter" aria-label="Enter Chapter" aria-describedby="button-addon2">
+        <input type="text" required class="form-control" [(ngModel)]="courseModel.chapter"  placeholder="Enter Chapter" aria-label="Enter Chapter" aria-describedby="button-addon2">
         <div class="input-group-append">
           <button class="btn btn-primary" (click)="onAddChapter(courseModel.chapter);" type="button" >Add</button>
         </div>
@@ -91,7 +93,7 @@
         <div class="input-group-prepend">
           <label class="input-group-text" for="ddlChapter">Choose Chapter</label>
         </div>
-        <select class="custom-select" id="ddlChapter" (change)="onChpaterChange($event.target.value)">
+        <select class="custom-select" required id="ddlChapter" (change)="onChapterChange($event.target.value)">
           <option value="">--Choose Chapter--</option>
           <option *ngFor="let chapter of chapterList" value={{chapter.chapterName}}>
             {{chapter.chapterName}}
@@ -102,7 +104,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupFileAddon01">Topic</span>
         </div>
-        <input type="text" class="form-control" [(ngModel)]="courseModel.topicName" placeholder="Enter Topic" aria-label="Enter Topic" aria-describedby="button-addon2">
+        <input type="text" required class="form-control" [(ngModel)]="courseModel.topicName" placeholder="Enter Topic" aria-label="Enter Topic" aria-describedby="button-addon2">
         <div class="input-group-append">
           <button class="btn btn-primary" type="button" (click)="onAddTopic(courseModel.topicName)" >Add</button>
         </div>
@@ -111,7 +113,7 @@
         <div class="input-group-prepend">
           <label class="input-group-text" for="ddlTopic">Choose Topic</label>
         </div>
-        <select class="custom-select" id="ddlTopic" (change)="onTopicChange($event.target.value)">
+        <select class="custom-select" required id="ddlTopic" (change)="onTopicChange($event.target.value)">
           <option value="">--Choose Topic--</option>
           <option *ngFor="let topic of topicList" value={{topic.topicName}}>
             {{topic.topicName}}
@@ -122,7 +124,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Paragraph</span>
         </div>
-        <textarea rows="3" [(ngModel)]="courseModel.paragraph" class="form-control" id="paragraph" placeholder="Enter paragraph"></textarea>
+        <textarea rows="3" required [(ngModel)]="courseModel.paragraph" class="form-control" id="paragraph" placeholder="Enter paragraph"></textarea>
       </div>
       <div class="form-group">
         <input type="button" (click)="onAddParagraph(courseModel.paragraph)" class="btn btn-sm btn-primary float-right" value="Add Paragarph" />
@@ -153,5 +155,4 @@
   </div>
 </div>
 </div>
-<!-- <pre>{{blocks | json}}</pre> -->
-  </ion-content>
+</ion-content>
