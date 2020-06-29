@@ -60,7 +60,12 @@
           </div>
           <input type="text" class="form-control" disabled aria-label="Text input with checkbox">
         </div>
-
+        <div [style.display]="showSuccess ? 'block' : 'none'"  class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>{{statusMessage}}</strong>
+          <button type="button" class="close" (click)="showSuccess=false" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
          <!-- For Debugging Purpose Only -->
         <!-- <pre>{{sectionJSON | json}}</pre> -->
         </div>
@@ -162,7 +167,34 @@
           <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
         </div>
       </div>
-      <input type="submit" class="btn btn-success float-left" [disabled]="!f.valid" value="Save Course" />
+      <div >
+        <input type="submit" class="btn btn-success float-left" [disabled]="!f.valid"  value="Save Course" />
+        <div *ngIf="showLoading">
+          <div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-success" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-danger" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-warning" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-info" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-dark" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <a class="btn btn-warning float-right" [routerLink]="['/rteacher/courses-list']">Go to Course List</a>
+      </div>
+      
     </div>
   </div>
 </div>

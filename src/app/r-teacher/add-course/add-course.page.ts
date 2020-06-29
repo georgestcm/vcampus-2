@@ -1,6 +1,8 @@
 import { Component, OnInit, Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { AddCourseModel } from "./add-course.model";
+import { CourseService } from 'src/app/providers/common-service/course.service';
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: "app-add-course",
@@ -26,10 +28,17 @@ export class AddCoursePage implements OnInit {
   selectedParagraph : string;
   validationError : any= { formValid :true, validationField:'', errorMessage:''};
   successNotification : any = { visible : false, successMessage :''};
+  userId : "";
+  showLoading = false;
+  showSuccess = false;
+  statusMessage = "";
 
-  constructor() {}
+  constructor(private courseService: CourseService, private storage : Storage) {}
 
   ngOnInit() {
+    this.storage.get('user').then((val) => {
+      this.userId = val._id;
+    });
     this.courseModel = {
       courseName: "",
       subject: "",
@@ -46,8 +55,12 @@ export class AddCoursePage implements OnInit {
       chapterDropdown : "",
       topicDropdown : "",
       paragraphDropdown : "",
-      sectionDetails: {}
+      sections: {},
+      userId :"",
+      school : "",
+      curriculum :"",
     };
+    console.log(localStorage.getItem('access_token'));
   }
   
   onAddSection(sec) {
@@ -182,8 +195,23 @@ export class AddCoursePage implements OnInit {
   }
 
   onSubmit(){
-    this.courseModel.sectionDetails = this.sectionJSON;
+    this.courseModel.sections = this.sectionJSON;
+    this.courseModel.userId = this.userId;
     console.log(this.courseModel);
+    this.showLoading = true;
+    this.courseService.addCourse(this.courseModel).subscribe(res=> {
+       console.log(res);
+       this.courseModel = {};
+       this.showLoading = false;
+       this.showSuccess =true;
+       this.statusMessage=res.message;
+       //
+    },err => {
+      console.log(err);
+      this.showSuccess =true;
+       this.statusMessage="Something went wrong!";
+      this.showLoading = false;
+    });
   }
 }
 

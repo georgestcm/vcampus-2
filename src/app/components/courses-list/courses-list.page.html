@@ -12,7 +12,55 @@
       <ion-icon name="add"></ion-icon>
     </div>
   </div>
-  <div class="courses">
+  <div class="courses" style="background-color: white;">
 
+    <div *ngIf="showLoading" class="d-flex align-items-center">
+      <strong>Loading...</strong>
+      <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+    </div>
+
+    <table class="table  table-bordered table-striped table-dark">
+      <thead >
+      <tr class="table-danger">
+      <th>
+        #
+      </th>
+      <th>
+        Course
+      </th>
+      <th>
+        Subject
+      </th>
+      <th>
+        Description
+      </th>
+      <th>
+        Avail. From
+      </th>
+      <th>
+        Avail. To
+      </th>
+      <!-- <th>
+        Repeat Yearly ?
+      </th> -->
+      <th>
+      </th>
+    </tr>
+  </thead>
+    <tr *ngFor="let course of courseList; let i=index">
+      <td>{{i +1 }}</td>
+      <td>{{ course.name}}</td>
+      <td> {{course.subject}}</td>
+      <td>{{course.description}}</td>
+      <td>{{course.availability_from}}</td>
+      <td>{{course.availability_to}}</td>
+      <!-- <td>
+        <input type="checkbox" checked="course.is_repeat_yearly" disabled>
+      </td> -->
+      <td>
+        <button class="btn btn-sm btn-primary">Edit</button>
+      </td>
+    </tr>
+    </table>
   </div>
 </ion-content>
