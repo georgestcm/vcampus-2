@@ -202,6 +202,12 @@ export class AddCoursePage implements OnInit {
     this.courseService.addCourse(this.courseModel).subscribe(res=> {
        console.log(res);
        this.courseModel = {};
+       this.sectionJSON = [];
+       this.sectionList =[];
+       this.topicList = [];
+       this.chapterList = [];
+       this.paragraphList = [];
+       
        this.showLoading = false;
        this.showSuccess =true;
        this.statusMessage=res.message;

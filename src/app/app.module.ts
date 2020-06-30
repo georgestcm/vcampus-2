@@ -63,6 +63,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
+import { CourseDetailModalComponent } from './components/course-detail-modal/course-detail-modal.component';
 
 let config : SocketIoConfig = {
   url:"http://localhost:4000", options:{}
@@ -101,7 +102,8 @@ export function createTranslateLoader(http: HttpClient) {
     AddSchoolStaffPage,
     ViewCoursePage,
     CoursesListPage,
-    AddCoursePage
+    AddCoursePage,
+    CourseDetailModalComponent
   ],
   entryComponents: [
     LanguageSelectPage,
@@ -113,6 +115,7 @@ export function createTranslateLoader(http: HttpClient) {
     AddCurriculumPage,
     AddTeacherPage,
     AddSchoolStaffPage,
+    CourseDetailModalComponent
   ],
   imports: [
     BrowserModule,

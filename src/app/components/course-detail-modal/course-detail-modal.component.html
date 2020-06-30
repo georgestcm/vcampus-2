@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-header">
+        Course Detail
+        <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
+    </div>
+    <div class="card-body">
+        <div *ngFor="let section of courseData.sections">
+            <div><b>Section: </b>{{section.section_name}}</div>
+            <div *ngFor="let chapter of section.chapters">
+                <div style="margin-left: 5%;"><b>Chapter: </b>{{chapter.chapter_name}}</div>
+                <div *ngFor="let topic of chapter.topics">
+                    <div style="margin-left: 10%;"><b>Topic: </b>{{topic.topic_name}}</div>
+                    <div *ngFor="let paragraph of topic.paragraph">
+                        <div style="margin-left: 15%;"><b>Paragraph: </b>{{paragraph.paragraphName}}</div>
+                        <div style="margin-left: 15%;"><b>Docs: </b>{{paragraph.supportingDocs}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

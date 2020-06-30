@@ -48,7 +48,7 @@
     </tr>
   </thead>
     <tr *ngFor="let course of courseList; let i=index">
-      <td>{{i +1 }}</td>
+      <td>{{i+1}}</td>
       <td>{{ course.name}}</td>
       <td> {{course.subject}}</td>
       <td>{{course.description}}</td>
@@ -58,7 +58,12 @@
         <input type="checkbox" checked="course.is_repeat_yearly" disabled>
       </td> -->
       <td>
-        <button class="btn btn-sm btn-primary">Edit</button>
+        <button class="btn btn-sm btn-warning">
+          <ion-icon name="md-create"></ion-icon>
+        </button>
+        <button (click)="showModal(course);" class="btn btn-sm btn-success">
+          <ion-icon name="information-circle"></ion-icon>
+        </button>
       </td>
     </tr>
     </table>
