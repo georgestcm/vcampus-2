@@ -3,6 +3,7 @@ import { Storage } from '@ionic/storage';
 import { CourseService } from 'src/app/providers/common-service/course.service';
 import { ModalController } from '@ionic/angular';
 import { CourseDetailModalComponent } from '../course-detail-modal/course-detail-modal.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.page.html',
@@ -11,7 +12,7 @@ import { CourseDetailModalComponent } from '../course-detail-modal/course-detail
 export class CoursesListPage implements OnInit {
 
   constructor(private storage: Storage, private courseService : CourseService, 
-    private modalController: ModalController) { }
+    private modalController: ModalController, private router: Router) { }
   addCourseOrnot;
   courseList : any;
   showLoading : boolean = true;
@@ -34,6 +35,10 @@ export class CoursesListPage implements OnInit {
   })
   }
 
+  onEditClick(course){
+    this.router.navigate(['/add-course']);
+    //this.router.navigateByUrl('/add-course');
+  }
   async showModal(data) {
     const modal = await this.modalController.create({
       component: CourseDetailModalComponent,

@@ -3,6 +3,7 @@ import { BehaviorSubject } from "rxjs";
 import { AddCourseModel } from "./add-course.model";
 import { CourseService } from 'src/app/providers/common-service/course.service';
 import { Storage } from "@ionic/storage";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-add-course",
@@ -32,10 +33,22 @@ export class AddCoursePage implements OnInit {
   showLoading = false;
   showSuccess = false;
   statusMessage = "";
+  courserId : string;
 
-  constructor(private courseService: CourseService, private storage : Storage) {}
+  constructor(private courseService: CourseService, private storage : Storage,private route: ActivatedRoute) {}
 
   ngOnInit() {
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.courserId = this.route.snapshot.paramMap.get('id');
+      this.courseService.getCourse(this.courserId).subscribe( res => {
+        console.log(res);
+        this.prepareModel(res);
+      },err => {
+        console.log(err);
+      });
+    }
+    
+ 
     this.storage.get('user').then((val) => {
       this.userId = val._id;
     });
@@ -194,30 +207,59 @@ export class AddCoursePage implements OnInit {
    this.selectedParagraph = value;
   }
 
+  prepareModel(model){
+    this.courseModel.courseName = model.name;
+    this.courseModel.subject = model.subject;
+    this.courseModel.availableFrom = model.availability_from;
+    this.courseModel.availableTo = model.availability_to;
+    this.courseModel.description = model.description;
+    this.courseModel.repeatYearly = model.is_repeat_yearly;
+    for( let i=0; i<model.sections.length; i++){
+       this.sectionList.push({id : i+1, sectionName :model.sections[i].section_name});
+       for(let j=0; j<model.sections[i].chapters.length; j++){
+         this.chapterList.push({id : j+1, chapterName : model.sections[i].chapters[j].chapter_name});
+         for( let k =0; k<model.sections[i].chapters[j].topics.length; k++ ){
+           this.topicList.push({ id : k+1, topicName : model.sections[i].chapters[j].topics[k].topic_name });
+           for( let l =0; l< model.sections[i].chapters[j].topics[k].paragraph.length; l++){
+             this.paragraphList.push({ id : l+1, paragraphName : model.sections[i].chapters[j].topics[k].paragraph[l].paragraphName, supportingDocs : model.sections[i].chapters[j].topics[k].paragraph[l].supportingDocs })
+           }
+         }
+       }
+    }
+  }
+
   onSubmit(){
     this.courseModel.sections = this.sectionJSON;
     this.courseModel.userId = this.userId;
     console.log(this.courseModel);
     this.showLoading = true;
-    this.courseService.addCourse(this.courseModel).subscribe(res=> {
-       console.log(res);
-       this.courseModel = {};
-       this.sectionJSON = [];
-       this.sectionList =[];
-       this.topicList = [];
-       this.chapterList = [];
-       this.paragraphList = [];
-       
-       this.showLoading = false;
+    if(this.courserId == null){
+      //Save 
+      this.courseService.addCourse(this.courseModel).subscribe(res=> {
+        console.log(res);
+        this.courseModel = {};
+        this.sectionJSON = [];
+        this.sectionList =[];
+        this.topicList = [];
+        this.chapterList = [];
+        this.paragraphList = [];
+        
+        this.showLoading = false;
+        this.showSuccess =true;
+        this.statusMessage=res.message;
+        //
+     },err => {
+       console.log(err);
        this.showSuccess =true;
-       this.statusMessage=res.message;
-       //
-    },err => {
-      console.log(err);
-      this.showSuccess =true;
-       this.statusMessage="Something went wrong!";
-      this.showLoading = false;
-    });
+        this.statusMessage="Something went wrong!";
+       this.showLoading = false;
+     });
+    }
+    else
+    {
+      //update
+    }
+    
   }
 }
 

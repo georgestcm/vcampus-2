@@ -3,7 +3,8 @@
         Course Detail
         <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
     </div>
-    <div class="card-body">
+    <div class="card-body" style="height:400px;overflow: auto !important;">
+        <div >
         <div *ngFor="let section of courseData.sections">
             <div><b>Section: </b>{{section.section_name}}</div>
             <div *ngFor="let chapter of section.chapters">
@@ -18,4 +19,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>
