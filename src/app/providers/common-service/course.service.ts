@@ -55,7 +55,7 @@ export class CourseService {
     return this._httpClient.authGet("/course/get/" + id);
   }
 
-  removeCourse(data){
-    return this._httpClient.authDelete("/delete_course/" + data.id);
+  removeCourse(id){
+    return this._httpClient.authDelete("/course/delete/" + id);
   }
 }

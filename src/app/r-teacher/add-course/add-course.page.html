@@ -81,7 +81,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Section *</span>
         </div>
-        <input type="text" class="form-control" required name="section" [(ngModel)]="courseModel.section" placeholder="Enter Section" aria-label="Enter Section" aria-describedby="button-addon2">
+        <input type="text" class="form-control"  name="section" [(ngModel)]="courseModel.section" placeholder="Enter Section" aria-label="Enter Section" aria-describedby="button-addon2">
         <div class="input-group-append">
           <button class="btn btn-primary" (click)="onAddSection(courseModel.section);" type="button" >Add</button>
         </div>
@@ -90,7 +90,7 @@
         <div class="input-group-prepend">
           <label class="input-group-text" for="ddlSection">Choose Section *</label>
         </div>
-        <select class="custom-select" required name="sectionDropdown"  [(ngModel)]="courseModel.sectionDropdown" id="ddlSection" (change)="onSectionChange($event.target.value)">
+        <select class="custom-select" [required]="courserId ==null" name="sectionDropdown"  [(ngModel)]="courseModel.sectionDropdown" id="ddlSection" (change)="onSectionChange($event.target.value)">
           <option value="">--Choose Section--</option>
           <option *ngFor="let section of sectionList" value={{section.sectionName}}>
             {{section.sectionName}}
@@ -101,7 +101,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" >Chapter *</span>
         </div>
-        <input type="text" class="form-control" required name="chapter" [(ngModel)]="courseModel.chapter"  placeholder="Enter Chapter" aria-label="Enter Chapter" aria-describedby="button-addon2">
+        <input type="text" class="form-control"  name="chapter" [(ngModel)]="courseModel.chapter"  placeholder="Enter Chapter" aria-label="Enter Chapter" aria-describedby="button-addon2">
         <div class="input-group-append">
           <button class="btn btn-primary" (click)="onAddChapter(courseModel.chapter);" type="button" >Add</button>
         </div>
@@ -110,7 +110,7 @@
         <div class="input-group-prepend">
           <label class="input-group-text" for="ddlChapter">Choose Chapter *</label>
         </div>
-        <select class="custom-select" required name="ddlChapter" [(ngModel)]="courseModel.chapterDropdown" id="ddlChapter" (change)="onChapterChange($event.target.value)">
+        <select class="custom-select" [required]="courserId ==null" name="ddlChapter" [(ngModel)]="courseModel.chapterDropdown" id="ddlChapter" (change)="onChapterChange($event.target.value)">
           <option value="">--Choose Chapter--</option>
           <option *ngFor="let chapter of chapterList" value={{chapter.chapterName}}>
             {{chapter.chapterName}}
@@ -121,7 +121,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupFileAddon01">Topic *</span>
         </div>
-        <input type="text" required name="topic" class="form-control" [(ngModel)]="courseModel.topicName" placeholder="Enter Topic" aria-label="Enter Topic" aria-describedby="button-addon2">
+        <input type="text" name="topic" class="form-control" [(ngModel)]="courseModel.topicName" placeholder="Enter Topic" aria-label="Enter Topic" aria-describedby="button-addon2">
         <div class="input-group-append">
           <button class="btn btn-primary" type="button" (click)="onAddTopic(courseModel.topicName)" >Add</button>
         </div>
@@ -130,7 +130,7 @@
         <div class="input-group-prepend">
           <label class="input-group-text" for="ddlTopic">Choose Topic *</label>
         </div>
-        <select class="custom-select" required name="topicDropdown" [(ngModel)]="courseModel.topicDropdown" id="ddlTopic" (change)="onTopicChange($event.target.value)">
+        <select class="custom-select" [required]="courserId ==null" name="topicDropdown" [(ngModel)]="courseModel.topicDropdown" id="ddlTopic" (change)="onTopicChange($event.target.value)">
           <option value="">--Choose Topic--</option>
           <option *ngFor="let topic of topicList" value={{topic.topicName}}>
             {{topic.topicName}}
@@ -141,7 +141,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Paragraph *</span>
         </div>
-        <textarea rows="3" required name="paragraph" [(ngModel)]="courseModel.paragraph" class="form-control" id="paragraph" placeholder="Enter paragraph"></textarea>
+        <textarea rows="3" name="paragraph" [(ngModel)]="courseModel.paragraph" class="form-control" id="paragraph" placeholder="Enter paragraph"></textarea>
       </div>
       <div class="form-group">
         <input type="button" (click)="onAddParagraph(courseModel.paragraph)" class="btn btn-sm btn-primary float-right" value="Add Paragarph" />
@@ -163,8 +163,12 @@
           <span class="input-group-text" id="inputGroupFileAddon01">Supporting Docs</span>
         </div>
         <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+          <input type="file" class="custom-file-input" name="file" ng2FileSelect [uploader]="uploader" aria-describedby="inputGroupFileAddon01">
           <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
+        <div class="input-group-append">
+        <button class="btn btn-primary" type="button" (click)="uploader.uploadAll()" 
+          [disabled]="!uploader.getNotUploadedItems().length"  >Upload</button>
         </div>
       </div>
       <div >
@@ -192,6 +196,7 @@
             <span class="sr-only">Loading...</span>
           </div>
         </div>
+        
         <a class="btn btn-warning float-right" [routerLink]="['/rteacher/courses-list']">Go to Course List</a>
       </div>
       

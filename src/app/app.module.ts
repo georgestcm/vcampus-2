@@ -64,7 +64,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
 import { CourseDetailModalComponent } from './components/course-detail-modal/course-detail-modal.component';
-
+import { FileUploadModule } from 'ng2-file-upload';
 let config : SocketIoConfig = {
   url:"http://localhost:4000", options:{}
 }
@@ -103,7 +103,7 @@ export function createTranslateLoader(http: HttpClient) {
     ViewCoursePage,
     CoursesListPage,
     AddCoursePage,
-    CourseDetailModalComponent
+    CourseDetailModalComponent,
   ],
   entryComponents: [
     LanguageSelectPage,
@@ -121,6 +121,7 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    FileUploadModule,
     IonicStorageModule.forRoot({
       name: "__mydb",
       driverOrder: ["localstorage", "sqlite", "websql"],

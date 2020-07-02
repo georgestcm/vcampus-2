@@ -4,6 +4,7 @@ import { AddCourseModel } from "./add-course.model";
 import { CourseService } from 'src/app/providers/common-service/course.service';
 import { Storage } from "@ionic/storage";
 import { ActivatedRoute } from '@angular/router';
+import {  FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: "app-add-course",
@@ -34,10 +35,19 @@ export class AddCoursePage implements OnInit {
   showSuccess = false;
   statusMessage = "";
   courserId : string;
+  public uploader:FileUploader = new FileUploader({url: 'http://localhost:3000/api/course/uploadDocs', itemAlias: 'file'});
 
   constructor(private courseService: CourseService, private storage : Storage,private route: ActivatedRoute) {}
 
   ngOnInit() {
+    //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
+    this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
+    //overide the onCompleteItem property of the uploader so we are 
+    //able to deal with the server response.
+    this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+         console.log("ImageUpload:uploaded:", item, status, response);
+     };
+
     if (this.route.snapshot.paramMap.get('id')) {
       this.courserId = this.route.snapshot.paramMap.get('id');
       this.courseService.getCourse(this.courserId).subscribe( res => {
@@ -227,7 +237,11 @@ export class AddCoursePage implements OnInit {
        }
     }
   }
-
+  
+ fileUpload(){
+ 
+  //const URL = 'http://localhost:3000/api/course/uploadDocs';
+ }
   onSubmit(){
     this.courseModel.sections = this.sectionJSON;
     this.courseModel.userId = this.userId;
@@ -258,6 +272,16 @@ export class AddCoursePage implements OnInit {
     else
     {
       //update
+      this.courseService.updateCourse(this.courseModel, this.courserId).subscribe((res) =>{
+        console.log(res);
+        this.showLoading = false;
+        this.showSuccess =true;
+        this.statusMessage="Course updated successfully!";
+      }, (err)=>{
+        this.showSuccess =true;
+        this.statusMessage="Something went wrong while updating!";
+       this.showLoading = false;
+      })
     }
     
   }

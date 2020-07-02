@@ -46,5 +46,19 @@ export class CoursesListPage implements OnInit {
     });
     return await modal.present();
   }
+  deleteCourse(id){
+    if(confirm("Are you sure to delete ? ")) {
+      this.courseService.removeCourse(id).subscribe(res => {
+       const query = this.courseList.find( a=> a._id == id);
+       const index = this.courseList.indexOf(query);
+       this.courseList.splice(index,1);
+       alert("Course removed.");
+      },
+       err =>{ console.log(err); 
+        alert("Something went wrong while deleting.")}
+        );
+    }
+    
+  }
 
 }

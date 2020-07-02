@@ -58,12 +58,17 @@
         <input type="checkbox" checked="course.is_repeat_yearly" disabled>
       </td> -->
       <td>
+        <ion-buttons>
         <button class="btn btn-sm btn-warning" [routerLink]="['add-course', {'id': course._id}]">
           <ion-icon name="md-create"></ion-icon>
         </button>
         <button (click)="showModal(course);" class="btn btn-sm btn-success">
           <ion-icon name="information-circle"></ion-icon>
         </button>
+        <button (click)="deleteCourse(course._id, course.name);" class="btn btn-sm btn-danger">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-buttons>
       </td>
     </tr>
     </table>
