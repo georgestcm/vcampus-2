@@ -8,7 +8,7 @@ ion-header {
         height: 103px;
         margin-top: 30px;
         background-color: white;
-        border-radius: 30px;
+        border-radius: 50%;
         text-align: center;
       }
     }
@@ -37,45 +37,35 @@ ion-list {
     }
     &:nth-child(1){
       ion-icon {
-        color: #0468af;
+        color: coral;
       }
     }
     &:nth-child(2){
       ion-icon {
-        color: #80808094;
+        color: #50c6ff;
       }
     }
     &:nth-child(3){
       ion-icon {
-        color: coral;
+        color: #dcd36be8;
       }
     }
     &:nth-child(4){
       ion-icon {
-        color: #50c6ff;
+        color: #2e9c3ce8;
       }
     }
     &:nth-child(5){
       ion-icon {
-        color: #dcd36be8;
+        color: #9c125ee8;
       }
     }
     &:nth-child(6){
       ion-icon {
-        color: #2e9c3ce8;
-      }
-    }
-    &:nth-child(7){
-      ion-icon {
-        color: #9c125ee8;
-      }
-    }
-    &:nth-child(8){
-      ion-icon {
         color: #301b71e8;
       }
     }
-    &:nth-child(9){
+    &:nth-child(7){
       color: #ff0000c7;
       margin-top: 49%;
       ion-icon {
