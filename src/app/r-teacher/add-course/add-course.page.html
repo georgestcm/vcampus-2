@@ -147,30 +147,8 @@
         <input type="button" (click)="onAddParagraph(courseModel.paragraph)" class="btn btn-sm btn-primary float-right" value="Add Paragarph" />
       </div>
       <div class="form-group">&nbsp;</div>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="ddlParagraph">Choose Paragraph</label>
-        </div>
-        <select class="custom-select" name="paragraphDropdown" [(ngModel)]="courseModel.paragraphDropdown" id="ddlParagraph" (change)="onParagraphChange($event.target.value)">
-          <option value="">--Choose Paragraph--</option>
-          <option *ngFor="let paragraph of paragraphList" value={{paragraph.paragraphName}}>
-            {{paragraph.paragraphName}}
-          </option>
-        </select>
-      </div>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupFileAddon01">Supporting Docs</span>
-        </div>
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" name="file" ng2FileSelect [uploader]="uploader" aria-describedby="inputGroupFileAddon01">
-          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-        </div>
-        <div class="input-group-append">
-        <button class="btn btn-primary" type="button" (click)="uploader.uploadAll()" 
-          [disabled]="!uploader.getNotUploadedItems().length"  >Upload</button>
-        </div>
-      </div>
+      
+     
       <div >
         <input type="submit" class="btn btn-success float-left" [disabled]="!f.valid"  value="Save Course" />
         <div *ngIf="showLoading">

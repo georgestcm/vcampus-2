@@ -5,6 +5,8 @@ import { CourseService } from 'src/app/providers/common-service/course.service';
 import { Storage } from "@ionic/storage";
 import { ActivatedRoute } from '@angular/router';
 import {  FileUploader } from 'ng2-file-upload';
+import { FileUploadModalComponent } from 'src/app/components/file-upload-modal/file-upload-modal.component';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: "app-add-course",
@@ -37,7 +39,9 @@ export class AddCoursePage implements OnInit {
   courserId : string;
   public uploader:FileUploader = new FileUploader({url: 'http://localhost:3000/api/course/uploadDocs', itemAlias: 'file'});
 
-  constructor(private courseService: CourseService, private storage : Storage,private route: ActivatedRoute) {}
+  constructor(private courseService: CourseService, 
+    private storage : Storage,private route: ActivatedRoute,
+    private modalController: ModalController) {}
 
   ngOnInit() {
     //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
@@ -52,6 +56,7 @@ export class AddCoursePage implements OnInit {
       this.courserId = this.route.snapshot.paramMap.get('id');
       this.courseService.getCourse(this.courserId).subscribe( res => {
         console.log(res);
+        //this.showModal(res);
         this.prepareModel(res);
       },err => {
         console.log(err);
@@ -83,7 +88,6 @@ export class AddCoursePage implements OnInit {
       school : "",
       curriculum :"",
     };
-    console.log(localStorage.getItem('access_token'));
   }
   
   onAddSection(sec) {
@@ -104,6 +108,7 @@ export class AddCoursePage implements OnInit {
     this.sectionJSON.push(json);
     this.successNotification.visible=true;
     this.successNotification.successMessage = "Section added.";
+    this.courseModel.section="";
   }
 
   onSectionChange(value) {
@@ -141,6 +146,7 @@ export class AddCoursePage implements OnInit {
     }
     this.successNotification.visible=true;
     this.successNotification.successMessage = "Chapter added.";
+    this.courseModel.chapter="";
   }
 
   onChapterChange(value) {
@@ -176,6 +182,7 @@ export class AddCoursePage implements OnInit {
     }
     this.successNotification.visible=true;
     this.successNotification.successMessage = "Topic added.";
+    this.courseModel.paragraph="";
   }
 
   onTopicChange(value) {
@@ -211,6 +218,7 @@ export class AddCoursePage implements OnInit {
     }
     this.successNotification.visible=true;
     this.successNotification.successMessage = "Paragraph added.";
+    this.courseModel.topic="";
   }
 
   onParagraphChange(value) {
@@ -238,10 +246,6 @@ export class AddCoursePage implements OnInit {
     }
   }
   
- fileUpload(){
- 
-  //const URL = 'http://localhost:3000/api/course/uploadDocs';
- }
   onSubmit(){
     this.courseModel.sections = this.sectionJSON;
     this.courseModel.userId = this.userId;
@@ -261,6 +265,8 @@ export class AddCoursePage implements OnInit {
         this.showLoading = false;
         this.showSuccess =true;
         this.statusMessage=res.message;
+         this.getCourseById(res._id);
+
         //
      },err => {
        console.log(err);
@@ -284,6 +290,21 @@ export class AddCoursePage implements OnInit {
       })
     }
     
+  }
+  async showModal(data) {
+    const modal = await this.modalController.create({
+      component: FileUploadModalComponent,
+      componentProps : {"courseData":data}
+    });
+    return await modal.present();
+  }
+  getCourseById(id){
+    this.courseService.getCourse(id).subscribe( res => {
+      console.log(res);
+      this.showModal(res);
+    },err => {
+      console.log(err);
+    });
   }
 }
 

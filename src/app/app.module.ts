@@ -65,6 +65,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
 import { CourseDetailModalComponent } from './components/course-detail-modal/course-detail-modal.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { FileUploadModalComponent } from './components/file-upload-modal/file-upload-modal.component';
 let config : SocketIoConfig = {
   url:"http://localhost:4000", options:{}
 }
@@ -104,6 +105,7 @@ export function createTranslateLoader(http: HttpClient) {
     CoursesListPage,
     AddCoursePage,
     CourseDetailModalComponent,
+    FileUploadModalComponent
   ],
   entryComponents: [
     LanguageSelectPage,
@@ -115,7 +117,8 @@ export function createTranslateLoader(http: HttpClient) {
     AddCurriculumPage,
     AddTeacherPage,
     AddSchoolStaffPage,
-    CourseDetailModalComponent
+    CourseDetailModalComponent,
+    FileUploadModalComponent
   ],
   imports: [
     BrowserModule,
