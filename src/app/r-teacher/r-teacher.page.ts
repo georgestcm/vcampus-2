@@ -14,10 +14,6 @@ export class RTeacherPage implements OnInit {
   }
 
   userData;
-  toDashboard(){
-     this.router.navigate(['rteacher/dashboard'])
-   }
-
 
     toSchoolList(){
       this.router.navigate(['rteacher/school-list'])
