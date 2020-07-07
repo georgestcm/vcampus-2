@@ -87,7 +87,11 @@ const routes: Routes = [
         component: TeacherListPage,
         pathMatch: "full",
       },
-
+      {
+        path: "courses-list",
+        component: CoursesListPage,
+        pathMatch: "full",
+      },
       {
         path: "permissions",
         component: AdminPermissionPage,
@@ -103,6 +107,7 @@ const routes: Routes = [
         component: GroupChatPage,
         pathMatch: "full",
       },
+      
     ],
   },
   {

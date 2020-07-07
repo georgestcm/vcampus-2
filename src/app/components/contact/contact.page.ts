@@ -7,16 +7,24 @@ import { AlertController } from '@ionic/angular';
 })
 export class ContactPage implements OnInit {
 
+  mailSent : boolean = false;
+  message : string ="";
+  mailModel : any ={};
   constructor(public alertController: AlertController) { }
 
   ngOnInit() {
   }
   async presentAlertSent() {
       const alert = await this.alertController.create({
-        message: 'Message was sent',
+        message: 'Message sent, we will get back to you shortly.',
         buttons: ['OK']
       });
 
       await alert.present();
     }
+
+    onSubmit(){
+
+    }
+
 }

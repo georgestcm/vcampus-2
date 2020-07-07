@@ -6,12 +6,18 @@
 </ion-header>
 
 <ion-content>
-  <div class="error">
+  <!-- <div class="error">
     <p>{{error}}</p>
+  </div> -->
+  <div [style.display]="showNotification ? 'block' : 'none'"  class="alert alert-secondary alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="close" (click)="showNotification=false" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <ion-label>USERNAME</ion-label>
   <ion-input type="name" [(ngModel)]="username" required></ion-input>
   <ion-button (click)="AddSchool()">
-    ADD SCHOOL
+    {{buttonText}}
   </ion-button>
 </ion-content>
