@@ -34,7 +34,7 @@ export class AddSchoolPage implements OnInit {
         res=> {
           console.log(res),
           this.showNotification = true;
-          this.message = res.message;
+          this.message = `School with the username of ${this.username} has been added`;
           //this.error = `School with the username of ${this.username} has been added`,
           this.username = '';
           this.buttonText="ADD SCHOOL";
