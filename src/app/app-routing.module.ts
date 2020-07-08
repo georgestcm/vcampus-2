@@ -136,6 +136,11 @@ const routes: Routes = [
         component: AdminPermissionPage,
         pathMatch: "full",
       },
+      {
+        path: "courses-list",
+        component: CoursesListPage,
+        pathMatch: "full",
+      }
     ],
   },
   {
@@ -164,6 +169,11 @@ const routes: Routes = [
         component: GroupChatPage,
         pathMatch: "full",
       },
+      {
+        path: "courses-list",
+        component: CoursesListPage,
+        pathMatch: "full",
+      }
     ],
   },
   {
