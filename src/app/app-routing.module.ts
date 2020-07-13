@@ -22,10 +22,11 @@ import { SchoolGuard } from "./providers/auth-guards/school.guard";
 import { SchoolStaffGuard } from "./providers/auth-guards/schoolstaff.guard";
 import { TeacherGuard } from "./providers/auth-guards/teacher.guard";
 import { StudentGuard } from "./providers/auth-guards/student.guard";
-import { ChatWindowPage } from "./components/chat/chat-window/chat-window.page";
-import { GroupChatPage } from "./components/chat/group-chat/group-chat.page";
+ import { ChatPage } from "./components/chat/chat/chat.page";
+// import { GroupChatPage } from "./components/chat/group-chat/group-chat.page";
 import { CoursesListPage } from './components/courses-list/courses-list.page';
 import { AddCoursePage } from './r-teacher/add-course/add-course.page';
+import { UsersAndgroupPage } from "./components/chat/usersandgroup/usersandgroup.page";
 
 const routes: Routes = [
   {
@@ -97,16 +98,21 @@ const routes: Routes = [
         component: AdminPermissionPage,
         pathMatch: "full",
       },
-      {
-        path: "messages",
-        component: ChatWindowPage,
+      // {
+      //   path: "messages",
+      //   component: ChatWindowPage,
+      //   pathMatch: "full",
+      // },
+       {
+        path: "chat",
+        component: ChatPage,
         pathMatch: "full",
       },
       {
-        path: "group-chat",
-        component: GroupChatPage,
-        pathMatch: "full",
-      },
+        path :"usersandgroup",
+        component:UsersAndgroupPage,
+        pathMatch:"full"
+      }
       
     ],
   },
@@ -164,15 +170,20 @@ const routes: Routes = [
         component: AdminPermissionPage,
         pathMatch: "full",
       },
+      // {
+      //   path: "group-chat",
+      //   component: GroupChatPage,
+      //   pathMatch: "full",
+      // },
       {
-        path: "group-chat",
-        component: GroupChatPage,
+        path: "chat",
+        component: ChatPage,
         pathMatch: "full",
       },
       {
-        path: "courses-list",
-        component: CoursesListPage,
-        pathMatch: "full",
+        path :"usersandgroup",
+        component:UsersAndgroupPage,
+        pathMatch:"full"
       }
     ],
   },
@@ -198,10 +209,15 @@ const routes: Routes = [
         pathMatch: "full",
       },
       {
-        path: "group-chat",
-        component: GroupChatPage,
+        path: "chat",
+        component: ChatPage,
         pathMatch: "full",
       },
+      {
+        path :"usersandgroup",
+        component:UsersAndgroupPage,
+        pathMatch:"full"
+      }
     ],
   },
   {
@@ -223,18 +239,21 @@ const routes: Routes = [
         component: AdminPermissionPage,
         pathMatch: "full",
       },
+      // {
+      //   path: "message",
+      //   component: ChatWindowPage,
+      //   pathMatch: "full",
+      // },
       {
-        path: "message",
-        component: ChatWindowPage,
+        path: "chat",
+        component: ChatPage,
         pathMatch: "full",
       },
-
-
       {
-        path: "group-chat",
-        component: GroupChatPage,
-        pathMatch: "full",
-      },
+        path :"usersandgroup",
+        component:UsersAndgroupPage,
+        pathMatch:"full"
+      }
     ],
   },
   {
@@ -242,13 +261,16 @@ const routes: Routes = [
     component: RStudentsPage,
     canActivate: [StudentGuard],
     children: [
-
-
       {
-        path: "group-chat",
-        component: GroupChatPage,
+        path: "chat",
+        component: ChatPage,
         pathMatch: "full",
       },
+      {
+        path :"usersandgroup",
+        component:UsersAndgroupPage,
+        pathMatch:"full"
+      }
     ],
   },
   {
@@ -315,6 +337,11 @@ const routes: Routes = [
         (m) => m.ViewCoursePageModule
       ),
   },
+  // {
+  //   path: 'chat',
+  //   loadChildren: () => import('./components/chat/chat/chat.module').then( m => m.ChatPageModule)
+  // },
+
 ];
 
 @NgModule({

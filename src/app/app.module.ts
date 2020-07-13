@@ -38,10 +38,10 @@ import { SchoolRegisterPage } from "./components/school-register/school-register
 import { AddSchoolStaffPage } from "./components/add-school-staff/add-school-staff.page";
 import { AddTeacherPage } from "./components/add-teacher/add-teacher.page";
 import { ViewCoursePage } from "./components/view-course/view-course.page";
-import { ChatWindowPage } from "./components/chat/chat-window/chat-window.page";
-import { GroupChatPage } from "./components/chat/group-chat/group-chat.page";
+import { ChatPage } from "./components/chat/chat/chat.page";
 import {CoursesListPage} from './components/courses-list/courses-list.page';
 import { AddCoursePage } from './r-teacher/add-course/add-course.page';
+import { UsersAndgroupPage } from "./components/chat/usersandgroup/usersandgroup.page";
 
 import { RouteConfig } from "./route.config";
 import { AuthService } from "./providers/auth.service";
@@ -86,8 +86,7 @@ export function createTranslateLoader(http: HttpClient) {
     LanguageSelectPage,
     AdminPage,
     AdminPermissionPage,
-    ChatWindowPage,
-    GroupChatPage,
+    ChatPage,
     TeacherListPage,
     StudentListPage,
     SchoolListPage,
@@ -105,7 +104,8 @@ export function createTranslateLoader(http: HttpClient) {
     CoursesListPage,
     AddCoursePage,
     CourseDetailModalComponent,
-    FileUploadModalComponent
+    FileUploadModalComponent,
+    UsersAndgroupPage
   ],
   entryComponents: [
     LanguageSelectPage,

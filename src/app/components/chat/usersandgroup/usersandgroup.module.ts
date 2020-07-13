@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
 
-import { AdminMessageRoutingModule } from './admin-message-routing.module';
+import { UsersandgroupPageRoutingModule } from './usersandgroup-routing.module';
 
+import { UsersandgroupPage } from './usersandgroup.page';
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminMessageRoutingModule
-  ]
+    UsersandgroupPageRoutingModule
+  ],
+  declarations: [UsersandgroupPage]
 })
-export class AdminMessageModule { }
+export class UsersandgroupPageModule {}
