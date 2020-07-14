@@ -51,7 +51,7 @@ export class RStudentsPage implements OnInit {
   }
 
   toGroupChat(){
-    this.router.navigate(['rstudents/group-chat'])
+    this.router.navigate(['rstudents/usersandgroup'])
   }
 
   logoutUser() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: 'app-chat',
@@ -8,7 +9,14 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class ChatPage implements OnInit {
 
-  constructor(public actionSheetController: ActionSheetController) { }
+  role:number;
+  constructor(public actionSheetController: ActionSheetController, private storage : Storage) { }
+  
+  ngOnInit() {
+    this.storage.get('role').then((val) => {
+      this.role = val;
+    });
+  }
   async showActionItem() {
     const actionSheet = await this.actionSheetController.create({
       header: 'Send To Chat',
@@ -49,10 +57,16 @@ export class ChatPage implements OnInit {
     });
     await actionSheet.present();
   }
-  ngOnInit() {
-  }
+  
 
   onClickAttachment(){
     this.showActionItem();
+  }
+  onClickSend(){
+    if(this.role<=2){
+      //Broadcast
+    }else{
+      //send message
+    }
   }
 }

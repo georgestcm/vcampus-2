@@ -33,7 +33,7 @@ export class RTeacherPage implements OnInit {
     }
 
     toGroupChat(){
-      this.router.navigate(['rteacher/group-chat'])
+      this.router.navigate(['rteacher/usersandgroup'])
     }
 
     logoutUser(){

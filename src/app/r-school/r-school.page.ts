@@ -31,7 +31,7 @@ export class RSchoolPage implements OnInit {
     }
 
     toGroupChat(){
-      this.router.navigate(['rschool/group-chat'])
+      this.router.navigate(['rschool/usersandgroup'])
     }
 
     

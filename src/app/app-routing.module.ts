@@ -146,6 +146,16 @@ const routes: Routes = [
         path: "courses-list",
         component: CoursesListPage,
         pathMatch: "full",
+      },
+      {
+        path: "chat",
+        component: ChatPage,
+        pathMatch: "full",
+      },
+      {
+        path :"usersandgroup",
+        component:UsersAndgroupPage,
+        pathMatch:"full"
       }
     ],
   },
@@ -170,11 +180,6 @@ const routes: Routes = [
         component: AdminPermissionPage,
         pathMatch: "full",
       },
-      // {
-      //   path: "group-chat",
-      //   component: GroupChatPage,
-      //   pathMatch: "full",
-      // },
       {
         path: "chat",
         component: ChatPage,
@@ -239,11 +244,6 @@ const routes: Routes = [
         component: AdminPermissionPage,
         pathMatch: "full",
       },
-      // {
-      //   path: "message",
-      //   component: ChatWindowPage,
-      //   pathMatch: "full",
-      // },
       {
         path: "chat",
         component: ChatPage,

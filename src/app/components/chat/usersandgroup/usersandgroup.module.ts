@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { UsersandgroupPageRoutingModule } from './usersandgroup-routing.module';
 
-import { UsersandgroupPage } from './usersandgroup.page';
+import { UsersAndgroupPage } from './usersandgroup.page';
 
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import { UsersandgroupPage } from './usersandgroup.page';
     IonicModule,
     UsersandgroupPageRoutingModule
   ],
-  declarations: [UsersandgroupPage]
+  declarations: [UsersAndgroupPage]
 })
 export class UsersandgroupPageModule {}

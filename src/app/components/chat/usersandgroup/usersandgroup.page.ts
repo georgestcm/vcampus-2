@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: 'app-usersandgroup',
@@ -8,18 +9,24 @@ import { Router } from '@angular/router';
 })
 export class UsersAndgroupPage implements OnInit {
 
-  selectedSegment :string ="users";
+  selectedSegment :string ="";
   userList: Array<any> = []; 
   groupList: Array<any> = [];
-  constructor(private route: Router) { }
+  role:number;
+  constructor(private route: Router, private storage : Storage) { }
 
   ngOnInit() {
-    
+    this.storage.get('role').then((val) => {
+      this.role = val;
+      if(this.role <=2){
+        this.selectedSegment ="group";
+      }else{
+        this.selectedSegment ="users";
+      }
+    });
   }
   segmentChanged(ev: any) {
     this.selectedSegment = ev.detail.value;
-    console.log('Segment changed', ev);
-    console.log(ev.detail.value);
   }
   navigateToChat(){
     this.route.navigate(['admin/chat']);
