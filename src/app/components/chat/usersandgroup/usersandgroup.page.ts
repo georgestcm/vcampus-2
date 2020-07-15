@@ -13,6 +13,7 @@ export class UsersAndgroupPage implements OnInit {
   userList: Array<any> = []; 
   groupList: Array<any> = [];
   role:number;
+  showSearch : boolean = false;
   constructor(private route: Router, private storage : Storage) { }
 
   ngOnInit() {

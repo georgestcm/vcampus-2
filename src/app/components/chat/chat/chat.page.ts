@@ -10,6 +10,7 @@ import { Storage } from "@ionic/storage";
 export class ChatPage implements OnInit {
 
   role:number;
+  showSearch : boolean = false;
   constructor(public actionSheetController: ActionSheetController, private storage : Storage) { }
   
   ngOnInit() {
