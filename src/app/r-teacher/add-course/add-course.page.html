@@ -20,6 +20,21 @@
           Course Detail
         </div>
         <div class="card-body"> 
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"  id="inputGroupFileAddon01">School *</span>
+            </div>
+
+             <select class="custom-select" required name="schoolDropdown"  
+             [(ngModel)]="courseModel.school" id="ddlSchool" 
+             (change)="onSchoolChange($event.target.value)">
+              <option value="">--Choose School--</option>
+              <option *ngFor="let school of schoolList" value={{school.school.school_name}}>
+                {{school.school.school_name}}
+              </option>
+            </select>
+
+          </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text"  id="inputGroupFileAddon01">Course *</span>

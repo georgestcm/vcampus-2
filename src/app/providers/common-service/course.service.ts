@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { HttpClientService } from "../http-client.service";
-
+import { environment} from "../../../environments/environment"
 @Injectable({
   providedIn: "root",
 })
@@ -10,7 +10,7 @@ export class CourseService {
   private postCurList =
     "https://vcampus.herokuapp.com/api/post_curriculum_list";
   private postNewTeacher =
-    "https://vcampus.herokuapp.com/api/create_new_teacher";
+    environment.apiUrl+"/create_new_teacher";
 
 
   constructor(
@@ -38,9 +38,22 @@ export class CourseService {
     });
   }
 
+  getAllTeacher(username){
+    return this._httpClient.authGet("/get_all_teachers?username="+username);
+  }
+
+  addTeacherToSchool(schoolId, teacherId){
+    return this._httpClient.authPut("/add_teacher_to_school", 
+    {teacherId : teacherId, schoolId : schoolId });
+  }
+
   addCourse(data) {
     console.log(data);
     return this._httpClient.authPost("/course/save", data);
+  }
+
+  getSchoolsByTeacherId(teacherId){
+    return this._httpClient.authGet("/get_schools_by_teacherId?teacherId="+teacherId);
   }
 
   updateCourse(data, courseId) {

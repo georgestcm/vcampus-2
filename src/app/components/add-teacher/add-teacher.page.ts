@@ -12,16 +12,20 @@ export class AddTeacherPage implements OnInit {
 
   constructor(private storage: Storage,
     private _course: CourseService) { }
-  error;
+  error='';
+  txtUserName ="";
   re_password = '';
   teacher_data = {
+    id: '',
     username: '',
     first_name: '',
     last_name: '',
     password: '',
     roles: 5
   }
+  showLoading : boolean=false;
   myCurrentId;
+  teacherData : any;
   ngOnInit() {
     this.storage.get('user').then((val) => {
       this.myCurrentId = val._id;
@@ -49,6 +53,7 @@ export class AddTeacherPage implements OnInit {
         this.teacher_data.password.trim()
         this.re_password.trim()
         this.error = ''
+        this.showLoading=true;
         this._course.createNewTeacher(this.teacher_data, this.myCurrentId)
           .subscribe(
             res => (
@@ -58,14 +63,63 @@ export class AddTeacherPage implements OnInit {
               this.teacher_data.first_name = ' ',
               this.teacher_data.last_name = ' ',
               this.teacher_data.password = '',
-              this.re_password = ''
+              this.re_password = '',
+              this.showLoading =false
             ),
-            err => (
+            err => {
               this.error = err.error.msg
-            )
+              this.showLoading=false;
+            }
           )
       }
     }
+  }
+
+  onClickSearch(){
+    if(this.txtUserName.length ==0){
+      this.error="Username is required!";
+      return;
+    }
+    this.error="";
+    this.showLoading = true;
+    this._course.getAllTeacher(this.txtUserName).subscribe(res => 
+      { 
+        this.showLoading = false;
+        if(res.length ==0){
+          this.error = `No teacher found, for user ${this.txtUserName} !`;
+        }
+        console.log(res);
+        this.teacher_data.username = res[0].username;
+        this.teacher_data.first_name = res[0].first_name;
+        this.teacher_data.last_name = res[0].last_name;
+        this.teacher_data.id = res[0]._id;
+      }, err=>{ 
+        this.error ="Something went wrong, while getting teacher!";
+        console.log(err);
+        this.showLoading = false;
+      });
+  }
+  onClickAdd(){
+    if(this.myCurrentId.length == 0 && this.teacher_data.id.length ==0){
+      this.error = "Username is required.";
+      return;
+    }
+    this.showLoading =true;
+    this._course.addTeacherToSchool(this.myCurrentId,this.teacher_data.id).subscribe(res => {
+      this.error = res.msg;
+      this.teacher_data.username = '';
+      this.teacher_data.first_name = '';
+      this.teacher_data.last_name = '';
+      this.teacher_data.password = '';
+      this.re_password = '';
+      this.txtUserName ="";
+      this.teacher_data.id="";
+      this.showLoading =false;
+    },err =>{
+      console.log(err);
+      this.showLoading =false;
+      this.error = err.error.msg;
+    });
   }
 
 }

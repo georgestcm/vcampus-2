@@ -42,7 +42,7 @@ export class AddCoursePage implements OnInit {
   constructor(private courseService: CourseService, 
     private storage : Storage,private route: ActivatedRoute,
     private modalController: ModalController) {}
-
+    schoolList :any;
   ngOnInit() {
     //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
     this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
@@ -66,7 +66,14 @@ export class AddCoursePage implements OnInit {
  
     this.storage.get('user').then((val) => {
       this.userId = val._id;
-    });
+      this.courseService.getSchoolsByTeacherId(this.userId).subscribe(res =>{
+        console.log(res);
+        this.schoolList = res;
+      }, err => {
+        console.log(err);
+      })
+    }); 
+
     this.courseModel = {
       courseName: "",
       subject: "",
@@ -223,6 +230,10 @@ export class AddCoursePage implements OnInit {
 
   onParagraphChange(value) {
    this.selectedParagraph = value;
+  }
+
+  onSchoolChange(value){
+    this.courseModel.school = value;
   }
 
   prepareModel(model){
