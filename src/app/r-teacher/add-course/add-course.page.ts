@@ -67,7 +67,7 @@ export class AddCoursePage implements OnInit {
     this.storage.get('user').then((val) => {
       this.userId = val._id;
       this.courseService.getSchoolsByTeacherId(this.userId).subscribe(res =>{
-        console.log(res);
+       
         this.schoolList = res;
       }, err => {
         console.log(err);
