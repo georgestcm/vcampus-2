@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import {  FileUploader } from 'ng2-file-upload';
 import { FileUploadModalComponent } from 'src/app/components/file-upload-modal/file-upload-modal.component';
 import { ModalController } from '@ionic/angular';
+import { environment} from '../../../environments/environment'
 
 @Component({
   selector: "app-add-course",
@@ -37,7 +38,7 @@ export class AddCoursePage implements OnInit {
   showSuccess = false;
   statusMessage = "";
   courserId : string;
-  public uploader:FileUploader = new FileUploader({url: 'http://localhost:3000/api/course/uploadDocs', itemAlias: 'file'});
+  public uploader:FileUploader = new FileUploader({url: environment.apiUrl+'/course/uploadDocs', itemAlias: 'file'});
 
   constructor(private courseService: CourseService, 
     private storage : Storage,private route: ActivatedRoute,

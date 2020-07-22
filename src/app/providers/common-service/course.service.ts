@@ -60,6 +60,10 @@ export class CourseService {
     return this._httpClient.authPut(`/course/update/${courseId}`, data, );
   }
 
+  getSupportingDocs(fileName) {
+    return this._httpClient.authGet(`/course/readFile/${fileName}`, );
+  }
+
   getAll() {
     return this._httpClient.authGet("/course/getall");
   }

@@ -21,6 +21,7 @@ export class FileUploadModalComponent implements OnInit {
   fileUploaded =false;
   message ="";
   fileName = "";
+  showUploading = false;
 
   constructor(private modalController: ModalController, 
     private navParams: NavParams, private http: HttpClientService) {
@@ -36,9 +37,11 @@ export class FileUploadModalComponent implements OnInit {
       this.fileUploaded =true;
       if(status ==200){
         this.message= "File uploaded successfully."
+        this.showUploading=false;
       }
       else{
         this.message= "Something went wrong! please try again later."
+        this.showUploading=false;
       }
   };
   }
@@ -76,10 +79,12 @@ console.log(id);
 }
 
 onUpload(){
+
   if(this.topicId ==null && this.paragraphId == null){
     alert("Topic & Paragraph Selection is required.");
     return;
   }
+  this.showUploading=true;
   this.uploader.onBuildItemForm = (fileItem: any, form: any) => {
     form.append('topicId' , this.topicId);
     form.append('paragraphId' , this.paragraphId);
