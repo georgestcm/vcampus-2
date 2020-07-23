@@ -14,7 +14,7 @@
                     <div *ngFor="let paragraph of topic.paragraph">
                         <div style="margin-left: 15%;"><b>Paragraph: </b>{{paragraph.paragraphName}}</div>
                         <div style="margin-left: 15%;"><b>Docs: </b>
-                            <a *ngIf="paragraph.supportingDocs" [href]="''+ imageURL+'/'+paragraph.supportingDocs" target="blank">{{paragraph.supportingDocs}}</a>
+                            <a *ngIf="paragraph.supportingDocs" [href]="''+ fileURL+'/'+paragraph.supportingDocs" target="blank">{{paragraph.supportingDocs}}</a>
                         </div>
                     </div>
                 </div>

@@ -56,7 +56,7 @@ export class AddCoursePage implements OnInit {
     if (this.route.snapshot.paramMap.get('id')) {
       this.courserId = this.route.snapshot.paramMap.get('id');
       this.courseService.getCourse(this.courserId).subscribe( res => {
-        console.log(res);
+        //console.log(res);
         //this.showModal(res);
         this.prepareModel(res);
       },err => {
@@ -244,6 +244,7 @@ export class AddCoursePage implements OnInit {
     this.courseModel.availableTo = model.availability_to;
     this.courseModel.description = model.description;
     this.courseModel.repeatYearly = model.is_repeat_yearly;
+    this.courseModel.school = model.school;
     for( let i=0; i<model.sections.length; i++){
        this.sectionList.push({id : i+1, sectionName :model.sections[i].section_name});
        for(let j=0; j<model.sections[i].chapters.length; j++){
