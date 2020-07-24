@@ -8,6 +8,7 @@ import {  FileUploader } from 'ng2-file-upload';
 import { FileUploadModalComponent } from 'src/app/components/file-upload-modal/file-upload-modal.component';
 import { ModalController } from '@ionic/angular';
 import { environment} from '../../../environments/environment'
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: "app-add-course",
@@ -42,7 +43,7 @@ export class AddCoursePage implements OnInit {
 
   constructor(private courseService: CourseService, 
     private storage : Storage,private route: ActivatedRoute,
-    private modalController: ModalController) {}
+    private modalController: ModalController, private datepipe: DatePipe) {}
     schoolList :any;
   ngOnInit() {
     //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
@@ -56,7 +57,7 @@ export class AddCoursePage implements OnInit {
     if (this.route.snapshot.paramMap.get('id')) {
       this.courserId = this.route.snapshot.paramMap.get('id');
       this.courseService.getCourse(this.courserId).subscribe( res => {
-        //console.log(res);
+        console.log(res);
         //this.showModal(res);
         this.prepareModel(res);
       },err => {
@@ -70,6 +71,7 @@ export class AddCoursePage implements OnInit {
       this.courseService.getSchoolsByTeacherId(this.userId).subscribe(res =>{
        
         this.schoolList = res;
+        //console.log(res);
       }, err => {
         console.log(err);
       })
@@ -240,8 +242,8 @@ export class AddCoursePage implements OnInit {
   prepareModel(model){
     this.courseModel.courseName = model.name;
     this.courseModel.subject = model.subject;
-    this.courseModel.availableFrom = model.availability_from;
-    this.courseModel.availableTo = model.availability_to;
+    this.courseModel.availableFrom = this.datepipe.transform(model.availability_from, 'yyyy-MM-dd');
+    this.courseModel.availableTo = this.datepipe.transform(model.availability_to, 'yyyy-MM-dd');
     this.courseModel.description = model.description;
     this.courseModel.repeatYearly = model.is_repeat_yearly;
     this.courseModel.school = model.school;
