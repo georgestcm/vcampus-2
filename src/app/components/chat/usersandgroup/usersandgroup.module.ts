@@ -15,6 +15,6 @@ import { UsersAndgroupPage } from './usersandgroup.page';
     IonicModule,
     UsersandgroupPageRoutingModule
   ],
-  declarations: [UsersAndgroupPage]
+  declarations: []
 })
 export class UsersandgroupPageModule {}
