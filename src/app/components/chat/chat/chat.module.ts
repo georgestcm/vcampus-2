@@ -12,6 +12,6 @@ import { ChatPage } from './chat.page';
     FormsModule,
     IonicModule
   ],
-  declarations: [ChatPage]
+  declarations: []
 })
 export class ChatPageModule {}
