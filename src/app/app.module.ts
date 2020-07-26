@@ -61,6 +61,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common'
 
 import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
 import { CourseDetailModalComponent } from './components/course-detail-modal/course-detail-modal.component';
@@ -159,6 +160,7 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherGuard,
     SchoolStaffGuard,
     HttpClientService,
+    DatePipe,
     TokenInterceptorService,
     {
       provide: HTTP_INTERCEPTORS,
