@@ -10,7 +10,17 @@ export class RTeacherPage implements OnInit {
 
   constructor(private router: Router,private storage: Storage) { }
 
+  userName = {
+    first_name:'',
+    last_name:''
+  }
+
   ngOnInit() {
+    this.storage.get('user').then((val) => {
+      console.log(val);
+    this.userName.first_name = val.first_name;
+    this.userName.last_name = val.last_name;
+  })
   }
 
   userData;

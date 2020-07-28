@@ -24,22 +24,33 @@
             <div class="input-group-prepend">
               <span class="input-group-text"  id="inputGroupFileAddon01">School *</span>
             </div>
-
              <select class="custom-select" required name="schoolDropdown"  
              [(ngModel)]="courseModel.school" id="ddlSchool" 
              (change)="onSchoolChange($event.target.value)">
               <option value="">--Choose School--</option>
-              <option *ngFor="let school of schoolList" value={{school.school.school_name}}>
+              <option *ngFor="let school of schoolList" value={{school.school._schoolId}}>
                 {{school.school.school_name}}
               </option>
             </select>
-
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"  id="inputGroupFileAddon01">Curriculum *</span>
+            </div>
+             <select class="custom-select" required name="curriculumDropdown"  
+             [(ngModel)]="courseModel.curriculum" id="ddlCurriculum" 
+             (change)="onCurriculumChange($event.target.value)">
+              <option value="">--Choose curriculum--</option>
+              <option *ngFor="let curr of curriculumList" value={{curr}}>
+                {{curr}}
+              </option>
+            </select>
           </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text"  id="inputGroupFileAddon01">Course *</span>
           </div>
-          <input type="text" name="courseName" required class="form-control" [(ngModel)]="courseModel.courseName" placeholder="Enter Topic" aria-label="Enter Course Name" aria-describedby="button-addon2">
+          <input type="text" name="courseName" required class="form-control" [(ngModel)]="courseModel.courseName" placeholder="Enter Course Name" aria-label="Enter Course Name" aria-describedby="button-addon2">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">

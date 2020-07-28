@@ -22,7 +22,7 @@ export class AddCoursePage implements OnInit {
   topicList: Array<any> = [];
   paragraphList: Array<any> = [];
   docList: Array<any> = [];
-
+  curriculumList : Array<any> =[];
   sectionJSON: Array<any> = [];
   sectionQuery: any;
   chapterQuery : any;
@@ -68,10 +68,9 @@ export class AddCoursePage implements OnInit {
  
     this.storage.get('user').then((val) => {
       this.userId = val._id;
-      this.courseService.getSchoolsByTeacherId(this.userId).subscribe(res =>{
-       
+      this.courseService.getSchoolsByTeacherId(this.userId).subscribe(res =>{  
         this.schoolList = res;
-        //console.log(res);
+        console.log(res);
       }, err => {
         console.log(err);
       })
@@ -97,7 +96,7 @@ export class AddCoursePage implements OnInit {
       userId :"",
       school : "",
       curriculum :"",
-    };
+    };  
   }
   
   onAddSection(sec) {
@@ -192,7 +191,7 @@ export class AddCoursePage implements OnInit {
     }
     this.successNotification.visible=true;
     this.successNotification.successMessage = "Topic added.";
-    this.courseModel.paragraph="";
+    this.courseModel.topicName="";
   }
 
   onTopicChange(value) {
@@ -228,7 +227,7 @@ export class AddCoursePage implements OnInit {
     }
     this.successNotification.visible=true;
     this.successNotification.successMessage = "Paragraph added.";
-    this.courseModel.topic="";
+    this.courseModel.paragraph="";
   }
 
   onParagraphChange(value) {
@@ -236,9 +235,17 @@ export class AddCoursePage implements OnInit {
   }
 
   onSchoolChange(value){
+    this.curriculumList =[];
     this.courseModel.school = value;
+    if(value != ""){     
+       const list = this.schoolList.find(a => a.school._schoolId==value).school;
+       this.curriculumList = list.curriculums;
+    }    
   }
-
+  
+  onCurriculumChange(value){
+    this.courseModel.curriculum = value;
+  }
   prepareModel(model){
     this.courseModel.courseName = model.name;
     this.courseModel.subject = model.subject;
@@ -247,6 +254,11 @@ export class AddCoursePage implements OnInit {
     this.courseModel.description = model.description;
     this.courseModel.repeatYearly = model.is_repeat_yearly;
     this.courseModel.school = model.school;
+
+    const list = this.schoolList.find(a => a.school._schoolId==model.school).school;
+    this.curriculumList = list.curriculums;
+    this.courseModel.curriculum = model.curriculum;
+    console.log(this.courseModel.school);
     for( let i=0; i<model.sections.length; i++){
        this.sectionList.push({id : i+1, sectionName :model.sections[i].section_name});
        for(let j=0; j<model.sections[i].chapters.length; j++){

@@ -48,7 +48,6 @@ export class CourseService {
   }
 
   addCourse(data) {
-    console.log(data);
     return this._httpClient.authPost("/course/save", data);
   }
 
@@ -58,6 +57,10 @@ export class CourseService {
 
   updateCourse(data, courseId) {
     return this._httpClient.authPut(`/course/update/${courseId}`, data, );
+  }
+
+  getCourseBySchoolId(schoolId) {
+    return this._httpClient.authGet(`/course/getCoursesBySchoolId/${schoolId}`);
   }
 
   getSupportingDocs(fileName) {
