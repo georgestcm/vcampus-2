@@ -19,10 +19,10 @@ export class AddSchoolPage implements OnInit {
   ngOnInit() {
   }
 
-  AddSchool(){ 
+  AddSchool(){
     this.school = {
       username: this.username.trim(),
-      password:environment.presetPassword,
+      password:"12345",
       roles:3
     }
     if(this.username.length===0){

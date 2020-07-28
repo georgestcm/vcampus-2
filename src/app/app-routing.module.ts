@@ -50,7 +50,7 @@ const routes: Routes = [
   },
   {
     path: "rschool",
-    redirectTo: "rschool/courses-list",
+    redirectTo: "rschool/permissions",
     pathMatch: "full",
   },
   {
@@ -113,7 +113,7 @@ const routes: Routes = [
         component:UsersAndgroupPage,
         pathMatch:"full"
       }
-      
+
     ],
   },
   {
@@ -174,7 +174,7 @@ const routes: Routes = [
         component: TeacherListPage,
         pathMatch: "full",
       },
- 
+
       {
         path: "permissions",
         component: AdminPermissionPage,

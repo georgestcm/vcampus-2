@@ -144,7 +144,7 @@ export class LoginPage implements OnInit {
             this.storage.set('user', res.user),
             this.storage.set('token', res.token),
             this.storage.set('role', res.role),
-            this.router.navigate([`${this.routeDirect}/courses-list`]),
+            this.router.navigate([`${this.routeDirect}`]),
             this.login_user_data.username = '',
             this.login_user_data.password = ''
           ),
