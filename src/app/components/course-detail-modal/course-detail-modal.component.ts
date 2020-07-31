@@ -12,6 +12,7 @@ export class CourseDetailModalComponent implements OnInit {
 
   courseData : any= {};
   fileURL : string ="";
+  
   constructor(private modalController: ModalController, 
     private navParams: NavParams, private courseService:CourseService) {
     console.log(navParams.get('courseData'));
@@ -20,7 +21,7 @@ export class CourseDetailModalComponent implements OnInit {
 
   ngOnInit() {
    this.fileURL = environment.apiUrl+"/course/readFile";
-   console.log(this.fileURL);
+   //console.log(this.fileURL);
   }
   dismiss() {
     this.modalController.dismiss({

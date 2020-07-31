@@ -62,6 +62,7 @@ import {MatIconModule} from '@angular/material/icon';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common'
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
 import { CourseDetailModalComponent } from './components/course-detail-modal/course-detail-modal.component';
@@ -126,6 +127,7 @@ export function createTranslateLoader(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     FileUploadModule,
+    EditorModule,
     IonicStorageModule.forRoot({
       name: "__mydb",
       driverOrder: ["localstorage", "sqlite", "websql"],

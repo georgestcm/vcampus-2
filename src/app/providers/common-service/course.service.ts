@@ -63,6 +63,10 @@ export class CourseService {
     return this._httpClient.authGet(`/course/getCoursesBySchoolId/${schoolId}`);
   }
 
+  getMediaByUserId(userId) {
+    return this._httpClient.authGet(`/course/findMediaByUserId/${userId}`);
+  }
+
   getSupportingDocs(fileName) {
     return this._httpClient.authGet(`/course/readFile/${fileName}`, );
   }

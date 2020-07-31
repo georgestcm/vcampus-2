@@ -11,6 +11,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+  
   <form #f="ngForm" class="form"
     (ngSubmit)="onSubmit()" >
   <div class="row"> 
@@ -166,10 +167,14 @@
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">Paragraph *</span>
+          <input type="button" value="Add Media" class="btn btn-sm btn-primary" (click)="onClickAddMedia()">
         </div>
-        <textarea rows="3" name="paragraph" [(ngModel)]="courseModel.paragraph" class="form-control" id="paragraph" placeholder="Enter paragraph"></textarea>
+        <editor style="width: 100%;" name="paragraph" [init]="initMCE" 
+        [(ngModel)]="courseModel.paragraph"></editor>
+        <!-- <textarea rows="3"  name="paragraph" [(ngModel)]="courseModel.paragraph" class="form-control" id="paragraph" placeholder="Enter paragraph"></textarea> -->
       </div>
       <div class="form-group">
+        <!-- <pre>{{courseModel.paragraph | json}}</pre> -->
         <input type="button" (click)="onAddParagraph(courseModel.paragraph)" class="btn btn-sm btn-primary float-right" value="Add Paragarph" />
       </div>
       <div class="form-group">&nbsp;</div>

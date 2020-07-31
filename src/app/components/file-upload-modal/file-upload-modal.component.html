@@ -10,7 +10,7 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="input-group mb-3">
+    <!-- <div class="input-group mb-3">
       <div class="input-group-prepend">
         <label class="input-group-text" for="ddlParagraph">Choose Paragraph</label>
       </div>
@@ -34,19 +34,24 @@
           {{paragraph.paragraphName}}
         </option>
       </select>
-    </div>
-
+    </div> -->
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupFileAddon01">Supporting Docs</span>
+        <label class="input-group-text" for="title">Media Title*</label>
+      </div>
+      <input type="text" class="form-control" name="title" [(ngModel)]="title">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon01">Add Media*</span>
       </div>
       <div class="custom-file">
         <input type="file" (change)="onFileChange($event)" class="custom-file-input" name="file" ng2FileSelect [uploader]="uploader" >
         <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
       </div>
       <div class="input-group-append">
-      <button class="btn btn-primary" type="button" (click)="onUpload();" 
-        [disabled]="!uploader.getNotUploadedItems().length && paragraphId && topicId">Upload</button>
+      <button class="btn btn-primary" type="button" (click)="onUploadMedia();" 
+        [disabled]="!uploader.getNotUploadedItems().length && title">Upload</button>
       </div>
     </div>
     <div class="input-group mb-3">
@@ -54,6 +59,13 @@
         <ion-icon ios="ios-attach" md="md-attach"></ion-icon>{{fileName}}
       </ion-label> 
     </div>
+    <table class="table" *ngIf="mediaList.length>0">
+      <tr *ngFor="let m of mediaList; let i=index">
+    <td>
+      <a href="m.fileName" target="blank">{{m.fileName}}</a>
+    </td>
+      </tr>
+    </table>
 
     <div *ngIf="showUploading">
       <div class="spinner-grow text-primary" role="status">

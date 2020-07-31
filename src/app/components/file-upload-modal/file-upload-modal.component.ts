@@ -22,18 +22,27 @@ export class FileUploadModalComponent implements OnInit {
   message ="";
   fileName = "";
   showUploading = false;
-
+  title ="";
+  userId = "";
+  mediaList: Array<any> = [];
+  fileURL : string="";
   constructor(private modalController: ModalController, 
     private navParams: NavParams, private http: HttpClientService) {
     //console.log(navParams.get('courseData'));
     this.courseData = navParams.get('courseData');
+    this.userId = navParams.get("userId");
+    console.log(this.userId);
+    if(this.courseData !=null)
     this.prepareModal(this.courseData);
    }
 
   ngOnInit() {
+    this.fileURL = environment.apiUrl+"/course/readFile";
     this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
       console.log("ImageUpload:uploaded:", item, status, response);
+      console.log(response);  
+      this.mediaList.push({fileName : this.fileURL+"/"+response});
       this.fileUploaded =true;
       if(status ==200){
         this.message= "File uploaded successfully."
@@ -79,7 +88,6 @@ console.log(id);
 }
 
 onUpload(){
-
   if(this.topicId ==null && this.paragraphId == null){
     alert("Topic & Paragraph Selection is required.");
     return;
@@ -88,6 +96,22 @@ onUpload(){
   this.uploader.onBuildItemForm = (fileItem: any, form: any) => {
     form.append('topicId' , this.topicId);
     form.append('paragraphId' , this.paragraphId);
+   };
+  this.uploader.uploadAll();
+  this.fileName="";
+}
+
+
+onUploadMedia(){
+  if(this.title ==null ){
+    alert("Title is required.");
+    return;
+  }
+  this.showUploading=true;
+  this.uploader.onBuildItemForm = (fileItem: any, form: any) => {
+    form.append('title' , this.title);
+    form.append('userId' , this.userId);
+    //form.append('paragraphId' , this.paragraphId);
    };
   this.uploader.uploadAll();
   this.fileName="";

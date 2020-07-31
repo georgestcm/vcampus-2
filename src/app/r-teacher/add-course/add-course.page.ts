@@ -7,8 +7,10 @@ import { ActivatedRoute } from '@angular/router';
 import {  FileUploader } from 'ng2-file-upload';
 import { FileUploadModalComponent } from 'src/app/components/file-upload-modal/file-upload-modal.component';
 import { ModalController } from '@ionic/angular';
-import { environment} from '../../../environments/environment'
+//import { environment} from '../../../environments/environment'
 import { DatePipe } from '@angular/common'
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: "app-add-course",
@@ -39,13 +41,33 @@ export class AddCoursePage implements OnInit {
   showSuccess = false;
   statusMessage = "";
   courserId : string;
+  mediaList: Array<any> = [];
+  initMCE :any;
   public uploader:FileUploader = new FileUploader({url: environment.apiUrl+'/course/uploadDocs', itemAlias: 'file'});
 
   constructor(private courseService: CourseService, 
     private storage : Storage,private route: ActivatedRoute,
     private modalController: ModalController, private datepipe: DatePipe) {}
     schoolList :any;
-  ngOnInit() {
+    fileURL : string="";
+    ngOnInit() {
+      this.initMCE ={
+        height: 400,
+        menubar: true,
+        plugins: [
+          'advlist autolink lists link image charmap print preview anchor',
+          'searchreplace visualblocks code fullscreen',
+          'insertdatetime media table paste code help wordcount'
+        ],
+        image_list: this.mediaList,
+        media_list:this.mediaList,
+      toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+      image_advtab: true,
+      content_css: '//www.tiny.cloud/css/codepen.min.css'
+      
+    }
+    this.fileURL = environment.apiUrl+"/course/readFile";
+    
     //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
     this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
     //overide the onCompleteItem property of the uploader so we are 
@@ -70,7 +92,12 @@ export class AddCoursePage implements OnInit {
       this.userId = val._id;
       this.courseService.getSchoolsByTeacherId(this.userId).subscribe(res =>{  
         this.schoolList = res;
-        console.log(res);
+        this.courseService.getMediaByUserId(this.userId).subscribe(res =>{
+          res.forEach(element => {
+            this.mediaList.push({title :element.title, value : this.fileURL+"/"+ element.fileName});
+          });
+          this.initMCE.image_list = this.mediaList;
+        });
       }, err => {
         console.log(err);
       })
@@ -200,6 +227,7 @@ export class AddCoursePage implements OnInit {
   }
 
   onAddParagraph(value) {
+    console.log(value);
     if(this.courseModel.topicDropdown==''){
       this.validationError.formField = "Choose Topic";
       this.validationError.formValid = false;
@@ -272,6 +300,10 @@ export class AddCoursePage implements OnInit {
        }
     }
   }
+
+  onClickAddMedia(){
+    this.showAddMediaModal();
+  }
   
   onSubmit(){
     this.courseModel.sections = this.sectionJSON;
@@ -292,7 +324,7 @@ export class AddCoursePage implements OnInit {
         this.showLoading = false;
         this.showSuccess =true;
         this.statusMessage=res.message;
-         this.getCourseById(res._id);
+        //this.getCourseById(res._id);
 
         //
      },err => {
@@ -322,6 +354,26 @@ export class AddCoursePage implements OnInit {
     const modal = await this.modalController.create({
       component: FileUploadModalComponent,
       componentProps : {"courseData":data}
+    });
+    return await modal.present();
+  }
+
+  
+  async showAddMediaModal() {
+    const modal = await this.modalController.create({
+      component: FileUploadModalComponent,
+      componentProps : {"courseData":null, "userId":this.userId}
+    });
+    modal.onDidDismiss().then(data => {
+      this.mediaList=[];
+      this.courseService.getMediaByUserId(this.userId).subscribe(res =>{
+        console.log(res);
+        res.forEach(element => {
+          console.log(element);
+          this.mediaList.push({title :element.title, value : this.fileURL+"/"+ element.fileName});
+        });
+        this.initMCE.image_list = this.mediaList;
+      });
     });
     return await modal.present();
   }
