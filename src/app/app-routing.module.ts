@@ -27,7 +27,7 @@ import { StudentGuard } from "./providers/auth-guards/student.guard";
 import { CoursesListPage } from './components/courses-list/courses-list.page';
 import { AddCoursePage } from './r-teacher/add-course/add-course.page';
 import { UsersAndgroupPage } from "./components/chat/usersandgroup/usersandgroup.page";
-
+import { DashboardPage } from './components/dashboard/dashboard.page';
 const routes: Routes = [
   {
     path: "",
@@ -98,11 +98,11 @@ const routes: Routes = [
         component: AdminPermissionPage,
         pathMatch: "full",
       },
-      // {
-      //   path: "messages",
-      //   component: ChatWindowPage,
-      //   pathMatch: "full",
-      // },
+      {
+        path: "dashboard",
+        component: DashboardPage,
+        pathMatch: "full",
+      },
        {
         path: "chat",
         component: ChatPage,
@@ -156,7 +156,12 @@ const routes: Routes = [
         path :"usersandgroup",
         component:UsersAndgroupPage,
         pathMatch:"full"
-      }
+      },
+      {
+        path: "dashboard",
+        component: DashboardPage,
+        pathMatch: "full",
+      },
     ],
   },
   {
@@ -189,7 +194,12 @@ const routes: Routes = [
         path :"usersandgroup",
         component:UsersAndgroupPage,
         pathMatch:"full"
-      }
+      },
+      {
+        path: "dashboard",
+        component: DashboardPage,
+        pathMatch: "full",
+      },
     ],
   },
   {
@@ -222,7 +232,12 @@ const routes: Routes = [
         path :"usersandgroup",
         component:UsersAndgroupPage,
         pathMatch:"full"
-      }
+      },
+      {
+        path: "dashboard",
+        component: DashboardPage,
+        pathMatch: "full",
+      },
     ],
   },
   {
@@ -253,7 +268,12 @@ const routes: Routes = [
         path :"usersandgroup",
         component:UsersAndgroupPage,
         pathMatch:"full"
-      }
+      },
+      {
+        path: "dashboard",
+        component: DashboardPage,
+        pathMatch: "full",
+      },
     ],
   },
   {
@@ -270,7 +290,12 @@ const routes: Routes = [
         path :"usersandgroup",
         component:UsersAndgroupPage,
         pathMatch:"full"
-      }
+      },
+      {
+        path: "dashboard",
+        component: DashboardPage,
+        pathMatch: "full",
+      },
     ],
   },
   {
@@ -337,6 +362,11 @@ const routes: Routes = [
         (m) => m.ViewCoursePageModule
       ),
   },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./components/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+
   // {
   //   path: 'chat',
   //   loadChildren: () => import('./components/chat/chat/chat.module').then( m => m.ChatPageModule)

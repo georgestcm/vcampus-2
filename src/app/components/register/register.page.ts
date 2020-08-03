@@ -7,7 +7,6 @@ import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/providers/auth.service';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -22,13 +21,16 @@ export class RegisterPage implements OnInit {
     private storage: Storage,
     private router: Router) { }
 
+    schoolList : any;
   studentRegistration = {
     first_name: "",
     last_name: "",
     username: "",
     email: "",
+    new_password:"",
     password: "",
     roles: [6],
+    school_id:""
   }
 
   password = {
@@ -40,6 +42,12 @@ export class RegisterPage implements OnInit {
   selectedSchool = '';
   loading;
   ngOnInit() {
+    this._auth.getAllSchools().subscribe(res => {
+      console.log(res);
+      this.schoolList = res;
+    },err =>{
+      console.log(err);
+    })
   }
 
   logData() {
@@ -144,25 +152,25 @@ export class RegisterPage implements OnInit {
         this.presentAlert("Enter a password that has more then 5 characters to continue")
       } else if (this.password.reEnter.length < 5) {
         this.loadingController.dismiss();
-        this.presentAlert("Re-enter your password.They do not match")
+        this.presentAlert("Confirm your password.They do not match")
       } else if (Object.is(this.password.reEnter, this.studentRegistration.password)) {
         this._auth.registerStudent(this.studentRegistration)
           .subscribe(
-            res => (
-              console.log(res),
-              this.user = res.user,
-              console.log(JSON.stringify(res.user)),
-              this.storage.set('user', res.user),
-              this.storage.set('token', res.token),
-              this.storage.set('role', res.role),
-              this.loadingController.dismiss(),
-              this.router.navigate(['rstudents/dashboard']),
-              this.studentRegistration.first_name = '',
-              this.studentRegistration.last_name = '',
-              this.studentRegistration.username = '',
-              this.studentRegistration.email = '',
-              this.studentRegistration.password = ''
-            ),
+            res => {
+              //console.log(res)
+              //this.user = res.user,
+              //console.log(JSON.stringify(res.user)),
+              this.storage.set('user', res.registerUser)
+              this.storage.set('token', res.token)
+              this.storage.set('role', res.registerUser.roles[0])
+              this.loadingController.dismiss()
+              this.router.navigate(['rstudents/dashboard'])
+              // this.studentRegistration.first_name = '',
+              // this.studentRegistration.last_name = '',
+              // this.studentRegistration.username = '',
+              // this.studentRegistration.email = '',
+              // this.studentRegistration.password = ''
+            },
             err => (
               this.presentAlert(err.error),
               console.log(err),
@@ -171,10 +179,8 @@ export class RegisterPage implements OnInit {
           )
         console.log(this.studentRegistration)
       } else {
-        this.presentAlert("Re-enter your password.They do not match")
+        this.presentAlert("Password and confirm password doesn't match, please try again")
       }
-
-
     })
 
   }

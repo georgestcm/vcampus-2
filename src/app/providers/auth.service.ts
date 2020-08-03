@@ -32,6 +32,9 @@ export class AuthService {
   createUser(userData) {
     return this._httpClient.post('/register', userData);
   }
+  getAllSchools(){
+    return this._httpClient.get('/get_all_schools');
+  }
   loggedIn() {
     return this.storage.get('token').then((token) => {
       if (token) {

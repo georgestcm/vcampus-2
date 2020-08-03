@@ -6,38 +6,133 @@
   </div>
 </ion-header>
 
-<ion-content>
-  <div class="main_wrapper">
-    <ion-card>
+<ion-content padding>
+  
+  <div class="row">
+    <div class="col-md-4" style="vertical-align: middle;">
+      <!-- <span>STUDENT REGISTRATION</span> -->
+      <img src="assets/vhands.png" alt="">
+    </div>
+    <div class="col-md-8">
+  <!-- <div class="main_wrapper" > -->
+    <!-- <ion-card>
   <ion-card-header>
-   <ion-card-title> <span>STUDENT REGISTRATION</span>
-     <img src="assets/vhands.png" alt="">
-   </ion-card-title>
+   <ion-card-title>  -->
+     
+   <!-- </ion-card-title>
    
-  </ion-card-header>
+  </ion-card-header> -->
 
-  <ion-card-content>
-   <ion-label>FIRST NAME</ion-label>
+  <!-- <ion-card-content style="min-height: 300px;overflow: auto;"> -->
+    <div class="form-group">
+      <label  for="firstName">First Name *</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <ion-icon name="person"></ion-icon>
+          </div>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="studentRegistration.first_name" id="firstName" name="firstName" placeholder="First Name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label  for="lastName">Last Name *</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <ion-icon name="person"></ion-icon>
+          </div>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="studentRegistration.last_name" id="lastName" name="lastName" placeholder="Last Name">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label  for="userName">User Name *</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <ion-icon name="contact"></ion-icon>
+          </div>
+        </div>
+        <input type="text" [(ngModel)]="studentRegistration.username" class="form-control" id="userName" name="userName" placeholder="Username">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label  for="email">Email *</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <ion-icon name="mail"></ion-icon>
+          </div>
+        </div>
+        <input type="email" class="form-control" [(ngModel)]="studentRegistration.email" id="email" name="email" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label  for="password">Password *</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <ion-icon name="key"></ion-icon>
+          </div>
+        </div>
+        <input type="password" class="form-control" [(ngModel)]="studentRegistration.password" id="password" name="password" placeholder="Password">
+      </div>
+    </div>
+    <div class="form-group">
+      <label  for="confirmPassword">Confirm Password *</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <ion-icon name="key"></ion-icon>
+          </div>
+        </div>
+        <input type="password" class="form-control" [(ngModel)]="this.password.reEnter" id="confirmPassword" name="confirmPassword" placeholder="Password">     
+      </div>
+      <!-- <small style="color: red;" *ngIf="studentRegistration.password.length>0 && studentRegistration.new_password != studentRegistration.password">Password and confirm password doesn't match!</small> -->
+    </div>
+    <div class="form-group">
+      <label  for="confirmPassword">Choose School *</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <ion-icon name="school"></ion-icon>
+          </div>
+        </div>
+        <select [(ngModel)]="studentRegistration.school_id" class="form-control" name="ddlSchool">
+          <option value="">---Select---</option>
+          <option *ngFor="let school of schoolList" value={{school._id}}>
+            {{school.school.school_name}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <ion-button (click)="presentLoading()" >REGISTER</ion-button>
+  </div>
+</div>
+
+   <!-- <ion-label>FIRST NAME</ion-label>
    <ion-input type="name" [(ngModel)]="studentRegistration.first_name" required><ion-icon name="person"></ion-icon></ion-input>
    <ion-label>LAST NAME</ion-label>
    <ion-input type="name" [(ngModel)]="studentRegistration.last_name" required><ion-icon name="person"></ion-icon></ion-input>
    <ion-label>USERNAME</ion-label>
-   <ion-input type="name" [(ngModel)]="studentRegistration.username" required><ion-icon name="contact"></ion-icon></ion-input>
-   <ion-label>EMAIL</ion-label>
+   <ion-input type="name" [(ngModel)]="studentRegistration.username" required><ion-icon name="contact"></ion-icon></ion-input> -->
+   <!-- <ion-label>EMAIL</ion-label>
    <ion-input type="email" [(ngModel)]="studentRegistration.email" required><ion-icon name="mail"></ion-icon></ion-input>
    <ion-label>PASSWORD</ion-label>
    <ion-input type="password" type="password"[(ngModel)]="studentRegistration.password" required><ion-icon name="key"></ion-icon></ion-input>
-   <ion-label>RE-ENTER PASSWORD</ion-label>
-   <ion-input type="password" [(ngModel)]="this.password.reEnter" required><ion-icon name="key"></ion-icon></ion-input>
+   <ion-label>RE-ENTER PASSWORD</ion-label> -->
+   <!-- <ion-input type="password" [(ngModel)]="this.password.reEnter" required><ion-icon name="key"></ion-icon></ion-input>
    <p><span>School selection</span></p>
    <ion-select  (ionChange)="viewCourses($event)" placeholder="Select a school">
       <ion-select-option value="uni1">University One</ion-select-option>
       <ion-select-option value="uni2">University Two</ion-select-option>
     </ion-select>
-    <p id="view_course" (click)="presentModal()" [hidden]="viewCoursesOrNot">View course list</p>
-   <ion-button (click)="presentLoading()" >REGISTER</ion-button>
-  </ion-card-content>
-  </ion-card>
-  </div>
-
+    <p id="view_course" (click)="presentModal()" [hidden]="viewCoursesOrNot">View course list</p> -->
+   
+  <!-- </ion-card-content>
+  </ion-card> -->
+ 
 </ion-content>

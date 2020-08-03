@@ -42,6 +42,7 @@ import { ChatPage } from "./components/chat/chat/chat.page";
 import {CoursesListPage} from './components/courses-list/courses-list.page';
 import { AddCoursePage } from './r-teacher/add-course/add-course.page';
 import { UsersAndgroupPage } from "./components/chat/usersandgroup/usersandgroup.page";
+import { DashboardPage } from './components/dashboard/dashboard.page';
 
 import { RouteConfig } from "./route.config";
 import { AuthService } from "./providers/auth.service";
@@ -107,7 +108,8 @@ export function createTranslateLoader(http: HttpClient) {
     AddCoursePage,
     CourseDetailModalComponent,
     FileUploadModalComponent,
-    UsersAndgroupPage
+    UsersAndgroupPage,
+    DashboardPage
   ],
   entryComponents: [
     LanguageSelectPage,
