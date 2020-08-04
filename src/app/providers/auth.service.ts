@@ -35,6 +35,15 @@ export class AuthService {
   getAllSchools(){
     return this._httpClient.get('/get_all_schools');
   }
+
+  getAllSchoolsForAdmin(){
+    return this._httpClient.get('/get_all_schools_for_admin');
+  }
+
+  getAllStudents(schoolId){
+    return this._httpClient.get('/get_all_students/'+schoolId);
+  }
+
   loggedIn() {
     return this.storage.get('token').then((token) => {
       if (token) {

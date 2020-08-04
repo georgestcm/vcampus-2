@@ -52,12 +52,12 @@
     <ion-input type="username" [(ngModel)]="login_user_data.username" ><ion-icon name="person"></ion-icon></ion-input>
     <ion-label>PASSWORD</ion-label>
     <ion-input type="password" [(ngModel)]="login_user_data.password" ><ion-icon name="key"></ion-icon></ion-input>
-    <ion-button (click)="login()" [disabled]="error_message.login_btn">
+    <ion-button (click)="login()" [disabled]="spinner==true">
       <div class="login_btn_spinner">
         <div class="spinner">
-          <ion-spinner [hidden]="error_message.spinner" name="crescent"></ion-spinner>
+          <ion-spinner [hidden]="spinner==false" name="crescent"></ion-spinner>
         </div>
-         <div  [hidden]="error_message.btn_text" class="login_btn_spinner_text">
+         <div  [hidden]="spinner==true" class="login_btn_spinner_text">
            <p>LOGIN </p>
          </div>
       </div>

@@ -9,8 +9,6 @@ import { ModalController } from '@ionic/angular';
 import { SchoolRegisterPage } from 'src/app/components/school-register/school-register.page';
 import { AuthService } from 'src/app/providers/auth.service';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -33,12 +31,13 @@ export class LoginPage implements OnInit {
   roleRequestNumber;
   role;
   currentUserRoute;
+  userRole =0;
   login_user_data = {
     username: '',
     password: '',
     role_request: null
   }
-
+  spinner : boolean =false;
   error_message = {
     error: '',
     error_red_msg: true,
@@ -56,24 +55,28 @@ export class LoginPage implements OnInit {
   loaderToShow;
   routeDirect;
   ngOnInit() {
+    
+    this.storage.get("role").then(res => {
+      this.userRole = res !=null ? res :0;
+    });
 
     Promise.all([this.storage.get('language'), this.storage.get('user'), this.storage.get('token')]).then(values => {
       values[0] === 'en' ? this.flag = '/assets/icon/en.png' : this.flag = '/assets/icon/fr.png'
       values[2] ? this.logged_in_or_not = true : this.logged_in_or_not = false;
       values[1] ? this.user = values[1] : this.user;
-      if (values[1].roles[0] === 1) {
-        this.currentUserRoute = "admin"
-      } else if (values[1].roles[0] === 2) {
-        this.currentUserRoute = "editor"
-      } else if (values[1].roles[0] === 3) {
-        this.currentUserRoute = "rschool"
-      } else if (values[1].roles[0] === 4) {
-        this.currentUserRoute = "rschoolstaff"
-      } else if (values[1].roles[0] === 5) {
-        this.currentUserRoute = "rteacher"
-      } else if (values[1].roles[0] === 6) {
-        this.currentUserRoute = "rstudents"
-      }
+      // if (values[1].roles[0] === 1) {
+      //   this.currentUserRoute = "admin"
+      // } else if (values[1].roles[0] === 2) {
+      //   this.currentUserRoute = "editor"
+      // } else if (values[1].roles[0] === 3) {
+      //   this.currentUserRoute = "rschool"
+      // } else if (values[1].roles[0] === 4) {
+      //   this.currentUserRoute = "rschoolstaff"
+      // } else if (values[1].roles[0] === 5) {
+      //   this.currentUserRoute = "rteacher"
+      // } else if (values[1].roles[0] === 6) {
+      //   this.currentUserRoute = "rstudents"
+      // }
     })
   }
 
@@ -137,18 +140,22 @@ export class LoginPage implements OnInit {
     } else {
       this.login_user_data.username.trim()
       this.login_user_data.password.trim()
+      this.spinner=true;
       this._auth.loginUser(this.login_user_data)
         .subscribe(
           res => (
+            this.spinner=false,
             this.user = res.user,
             this.storage.set('user', res.user),
             this.storage.set('token', res.token),
             this.storage.set('role', res.role),
-            this.router.navigate([`${this.routeDirect}`]),
+            //this.router.navigate([`${this.routeDirect}`]),
+            this.continueToAccount(res.role),
             this.login_user_data.username = '',
             this.login_user_data.password = ''
           ),
           err => (
+            this.spinner=false,
             this.error_message.error = err.error,
             this.error_message.error_red_msg = false,
             this.error_message.btn_text = false,
@@ -166,8 +173,36 @@ export class LoginPage implements OnInit {
     this.logged_in_or_not = false;
   }
 
-  continueToAccount() {
-    this.router.navigate([`${this.currentUserRoute}/courses-list`])
+  continueToAccount(role=0) {
+    if(this.userRole == 0){
+      this.userRole = role;
+    }
+    switch(this.userRole){
+      case 6:
+      this.router.navigate(['rstudents/dashboard']);
+      break;
+      case 5:
+      this.router.navigate(['rteacher/courses-list']);
+      break;
+      case 4:
+      this.router.navigate(['rschoolstaff/student-list']);
+      break;
+      case 3:
+      this.router.navigate(['rschool/student-list']);
+      break;
+      case 2:
+      this.router.navigate(['editor/school-list']);
+      break;
+      case 1:
+      this.router.navigate(['admin/school-list']);
+      break;
+      default:
+        this.router.navigate(['error']);
+        break;
+    }
+    // case 6:
+    // this.router.navigate([`${this.currentUserRoute}/courses-list`]);
+    // break
   }
 
   toAbout() {
