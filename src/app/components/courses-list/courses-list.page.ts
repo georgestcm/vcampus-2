@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CoursesListPage implements OnInit {
 
-  constructor(private storage: Storage, private courseService : CourseService, 
+  constructor(private storage: Storage, private courseService : CourseService,
     private modalController: ModalController, private router: Router) { }
   addCourseOrnot;
   courseList : Array<any>=[];
@@ -31,22 +31,26 @@ export class CoursesListPage implements OnInit {
   });
 
   this.storage.get('user').then((val) => {
-    this.courseService.getSchoolsByTeacherId(val._id).subscribe(res =>{  
+    this.courseService.getSchoolsByTeacherId(val._id).subscribe(res =>{
       this.schoolList = res;
     }, err => {
       console.log(err);
     })
-  }); 
+  });
 
   //  this.courseService.getAll().subscribe( (data) => {
   //    console.log(data);
   //   this.courseList = data;
   //   this.showLoading = false;
   //  },
-  //  err => { 
+  //  err => {
   //    console.log(err);
   //    this.showLoading = false;
   // })
+  }
+
+  ionViewWillEnter(){
+    this.onClickFind()
   }
 
   onSchoolChange(val){
@@ -61,7 +65,7 @@ export class CoursesListPage implements OnInit {
      this.courseList = data;
      this.showLoading = false;
     },
-    err => { 
+    err => {
       console.log(err);
       this.showLoading = false;
    })
@@ -70,7 +74,7 @@ export class CoursesListPage implements OnInit {
      this.courseList = data;
      this.showLoading = false;
     },
-    err => { 
+    err => {
       console.log(err);
       this.showLoading = false;
    })
@@ -96,11 +100,11 @@ export class CoursesListPage implements OnInit {
        this.courseList.splice(index,1);
        alert("Course removed.");
       },
-       err =>{ console.log(err); 
+       err =>{ console.log(err);
         alert("Something went wrong while deleting.")}
         );
     }
-    
+
   }
 
 }
