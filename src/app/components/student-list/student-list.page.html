@@ -6,9 +6,6 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-refresher slot="fixed" >
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
   <div class="placeholder" >
     <table class="table  table-bordered table-striped " >
       <thead >
@@ -42,7 +39,7 @@
       <td>{{student.last_name}}</td>
       <td>{{student.email}}</td>
       <td>{{student.phone_number}}</td>
-     
+
       <!-- <td>
         <ion-buttons>
         <button class="btn btn-sm btn-warning" [routerLink]="['add-course', {'id': course._id}]">

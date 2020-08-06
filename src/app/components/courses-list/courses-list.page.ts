@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/providers/auth.service';
 })
 export class CoursesListPage implements OnInit {
 
-  constructor(private storage: Storage, private courseService : CourseService, 
+  constructor(private storage: Storage, private courseService : CourseService,
     private modalController: ModalController, private router: Router, private _auth : AuthService) { }
   addCourseOrnot;
   courseList : Array<any>=[];
@@ -32,13 +32,13 @@ export class CoursesListPage implements OnInit {
   
  if(this.role == 5){
   this.storage.get('user').then((val) => {
-    this.courseService.getSchoolsByTeacherId(val._id).subscribe(res =>{  
+    this.courseService.getSchoolsByTeacherId(val._id).subscribe(res =>{
       this.schoolList = res;
     }, err => {
       console.log(err);
     })
   }); 
-} else if(this.role <=4){
+} else {
   this._auth.getAllSchools().subscribe(res => {
     console.log(res);
     this.schoolList = res;
@@ -52,10 +52,15 @@ export class CoursesListPage implements OnInit {
   //   this.courseList = data;
   //   this.showLoading = false;
   //  },
-  //  err => { 
+  //  err => {
   //    console.log(err);
   //    this.showLoading = false;
   // })
+  }
+
+  ionViewWillEnter(){
+    if(this.role !=5)
+    this.onClickFind()
   }
 
   onSchoolChange(val){
@@ -70,7 +75,7 @@ export class CoursesListPage implements OnInit {
      this.courseList = data;
      this.showLoading = false;
     },
-    err => { 
+    err => {
       console.log(err);
       this.showLoading = false;
    })
@@ -79,7 +84,7 @@ export class CoursesListPage implements OnInit {
      this.courseList = data;
      this.showLoading = false;
     },
-    err => { 
+    err => {
       console.log(err);
       this.showLoading = false;
    })
@@ -105,11 +110,11 @@ export class CoursesListPage implements OnInit {
        this.courseList.splice(index,1);
        alert("Course removed.");
       },
-       err =>{ console.log(err); 
+       err =>{ console.log(err);
         alert("Something went wrong while deleting.")}
         );
     }
-    
+
   }
 
 }

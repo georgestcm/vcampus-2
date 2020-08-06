@@ -1,6 +1,5 @@
 ion-header {
-  /* height: 30%; */
-height: 220px;
+  height: 220px;
   background-color: #191923;
 }
 
@@ -41,35 +40,35 @@ ion-content ion-list ion-item ion-icon {
   margin-right: 10px;
 }
 
-ion-content ion-list ion-item:nth-child(1) ion-icon {
+ion-content ion-list ion-item:nth-child(2) ion-icon {
   color: coral;
 }
 
-ion-content ion-list ion-item:nth-child(2) ion-icon {
+ion-content ion-list ion-item:nth-child(3) ion-icon {
   color: #50c6ff;
 }
 
-ion-content ion-list ion-item:nth-child(3) ion-icon {
+ion-content ion-list ion-item:nth-child(4) ion-icon {
   color: #dcd36be8;
 }
 
-ion-content ion-list ion-item:nth-child(4) ion-icon {
+ion-content ion-list ion-item:nth-child(5) ion-icon {
   color: #2e9c3ce8;
 }
 
-ion-content ion-list ion-item:nth-child(5) ion-icon {
+ion-content ion-list ion-item:nth-child(6) ion-icon {
   color: #9c125ee8;
 }
 
-ion-content ion-list ion-item:nth-child(6) ion-icon {
+ion-content ion-list ion-item:nth-child(7) ion-icon {
   color: #301b71e8;
 }
 
-ion-content ion-list ion-item:nth-child(7) {
+ion-content ion-list ion-item:nth-child(8) {
   color: #ff0000c7;
   margin-top: 49%;
 }
 
-ion-content ion-list ion-item:nth-child(7) ion-icon {
+ion-content ion-list ion-item:nth-child(8) ion-icon {
   color: #ff0000c7;
 }
