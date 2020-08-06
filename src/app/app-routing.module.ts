@@ -200,6 +200,11 @@ const routes: Routes = [
         component: DashboardPage,
         pathMatch: "full",
       },
+      {
+        path: "courses-list",
+        component: CoursesListPage,
+        pathMatch: "full",
+      },
     ],
   },
   {
@@ -236,6 +241,11 @@ const routes: Routes = [
       {
         path: "dashboard",
         component: DashboardPage,
+        pathMatch: "full",
+      },
+      {
+        path: "courses-list",
+        component: CoursesListPage,
         pathMatch: "full",
       },
     ],

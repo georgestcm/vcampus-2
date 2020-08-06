@@ -4,6 +4,7 @@ import { CourseService } from 'src/app/providers/common-service/course.service';
 import { ModalController } from '@ionic/angular';
 import { CourseDetailModalComponent } from '../course-detail-modal/course-detail-modal.component';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/providers/auth.service';
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.page.html',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 export class CoursesListPage implements OnInit {
 
   constructor(private storage: Storage, private courseService : CourseService, 
-    private modalController: ModalController, private router: Router) { }
+    private modalController: ModalController, private router: Router, private _auth : AuthService) { }
   addCourseOrnot;
   courseList : Array<any>=[];
   showLoading : boolean = false;
@@ -28,8 +29,8 @@ export class CoursesListPage implements OnInit {
     } else {
       this.addCourseOrnot = true;
     }
-  });
-
+  
+ if(this.role == 5){
   this.storage.get('user').then((val) => {
     this.courseService.getSchoolsByTeacherId(val._id).subscribe(res =>{  
       this.schoolList = res;
@@ -37,7 +38,15 @@ export class CoursesListPage implements OnInit {
       console.log(err);
     })
   }); 
-
+} else if(this.role <=4){
+  this._auth.getAllSchools().subscribe(res => {
+    console.log(res);
+    this.schoolList = res;
+  },err =>{
+    console.log(err);
+  })
+}
+});
   //  this.courseService.getAll().subscribe( (data) => {
   //    console.log(data);
   //   this.courseList = data;
