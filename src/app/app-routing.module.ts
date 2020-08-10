@@ -28,6 +28,9 @@ import { CoursesListPage } from './components/courses-list/courses-list.page';
 import { AddCoursePage } from './r-teacher/add-course/add-course.page';
 import { UsersAndgroupPage } from "./components/chat/usersandgroup/usersandgroup.page";
 import { DashboardPage } from './components/dashboard/dashboard.page';
+import { StudentCoursePage } from './components/student-course/student-course.page';
+import { StudentCourseViewPage } from './components/student-course-view/student-course-view.page';
+
 const routes: Routes = [
   {
     path: "",
@@ -306,6 +309,16 @@ const routes: Routes = [
         component: DashboardPage,
         pathMatch: "full",
       },
+      {
+        path: "student-course",
+        component: StudentCoursePage,
+        pathMatch: "full",
+      },
+      {
+        path: "student-course-view",
+        component: StudentCourseViewPage,
+        pathMatch: "full",
+      },
     ],
   },
   {
@@ -376,6 +389,18 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: () => import('./components/dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
+  {
+    path: 'student-course',
+    loadChildren: () => import('./components/student-course/student-course.module').then( m => m.StudentCoursePageModule)
+  },
+  {
+    path: 'student-course-view',
+    loadChildren: () => import('./components/student-course-view/student-course-view.module').then( m => m.StudentCourseViewPageModule)
+  },
+
+
+  
+
 
   // {
   //   path: 'chat',

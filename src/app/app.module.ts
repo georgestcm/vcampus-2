@@ -43,6 +43,8 @@ import {CoursesListPage} from './components/courses-list/courses-list.page';
 import { AddCoursePage } from './r-teacher/add-course/add-course.page';
 import { UsersAndgroupPage } from "./components/chat/usersandgroup/usersandgroup.page";
 import { DashboardPage } from './components/dashboard/dashboard.page';
+import { StudentCoursePage } from './components/student-course/student-course.page'
+import { StudentCourseViewPage } from './components/student-course-view/student-course-view.page'
 
 import { RouteConfig } from "./route.config";
 import { AuthService } from "./providers/auth.service";
@@ -109,7 +111,9 @@ export function createTranslateLoader(http: HttpClient) {
     CourseDetailModalComponent,
     FileUploadModalComponent,
     UsersAndgroupPage,
-    DashboardPage
+    DashboardPage,
+    StudentCoursePage,
+    StudentCourseViewPage
   ],
   entryComponents: [
     LanguageSelectPage,

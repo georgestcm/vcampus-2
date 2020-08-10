@@ -179,7 +179,7 @@ export class LoginPage implements OnInit {
     }
     switch(this.userRole){
       case 6:
-      this.router.navigate(['rstudents/dashboard']);
+      this.router.navigate(['rstudents/student-course']);
       break;
       case 5:
       this.router.navigate(['rteacher/courses-list']);
