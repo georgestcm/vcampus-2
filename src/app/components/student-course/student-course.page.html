@@ -6,9 +6,27 @@
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="showLoading" class="d-flex align-items-center">
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+    </div>
+    <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+  </div>
   
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-sm-3"  *ngFor="let course of courseList">
+      <div class="card" style="width: 100%; margin-top:10px;">
+        <img src="https://leverageedu.com/blog/wp-content/uploads/2019/10/BBA-MBA-Integrated-Course.png" class="card-img-top" alt="...">
+        <div class="card-body" style="height: 100px;">
+          <h5 class="card-title">{{course.name}}</h5>
+          <p class="card-text">{{(course.description.length>55)? (course.description | slice:0:55)+'...':(course.description)}}</p>
+        </div>
+        <div class="card-body">
+          <button (click)="onClickStartLearning(course._id)" class="btn btn-sm btn-success">Start Learning</button>        
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-md-3">
       <div class="card" style="width: 100%">
         <img src="https://leverageedu.com/blog/wp-content/uploads/2019/10/BBA-MBA-Integrated-Course.png" class="card-img-top" alt="...">
         <div class="card-body">
@@ -19,8 +37,8 @@
           <button (click)="onClickStartLearning()" class="btn btn-sm btn-success">Start Learning</button>        
         </div>
       </div>
-    </div>
-    <div class="col-md-3">
+    </div> -->
+    <!-- <div class="col-md-3">
       <div class="card" style="width: 100%">
         <img src="https://leverageedu.com/blog/wp-content/uploads/2019/10/BBA-MBA-Integrated-Course.png" class="card-img-top" alt="...">
         <div class="card-body">
@@ -31,8 +49,8 @@
           <button (click)="onClickStartLearning()" class="btn btn-sm btn-success">Start Learning</button>        
         </div>
       </div>
-    </div>
-    <div class="col-md-3">
+    </div> -->
+    <!-- <div class="col-md-3">
       <div class="card" style="width: 100%">
         <img src="https://leverageedu.com/blog/wp-content/uploads/2019/10/BBA-MBA-Integrated-Course.png" class="card-img-top" alt="...">
         <div class="card-body">
@@ -43,19 +61,7 @@
           <button (click)="onClickStartLearning()" class="btn btn-sm btn-success">Start Learning</button>        
         </div>
       </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card" style="width: 100%">
-        <img src="https://leverageedu.com/blog/wp-content/uploads/2019/10/BBA-MBA-Integrated-Course.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Course Name</h5>
-          <p class="card-text">Course description</p>
-        </div>
-        <div class="card-body">
-          <button (click)="onClickStartLearning()" class="btn btn-sm btn-success">Start Learning</button>        
-        </div>
-      </div>
-    </div>
+    </div> -->
   </div>
 
   

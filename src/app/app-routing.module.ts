@@ -93,7 +93,8 @@ const routes: Routes = [
       },
       {
         path: "courses-list",
-        component: CoursesListPage,
+        //component: CoursesListPage,
+        component: StudentCoursePage,
         pathMatch: "full",
       },
       {
@@ -115,7 +116,12 @@ const routes: Routes = [
         path :"usersandgroup",
         component:UsersAndgroupPage,
         pathMatch:"full"
-      }
+      },
+      {
+        path: "student-course-view",
+        component: StudentCourseViewPage,
+        pathMatch: "full",
+      },
 
     ],
   },
@@ -147,7 +153,8 @@ const routes: Routes = [
       },
       {
         path: "courses-list",
-        component: CoursesListPage,
+        component: StudentCoursePage,
+        //component: CoursesListPage,
         pathMatch: "full",
       },
       {
@@ -163,6 +170,11 @@ const routes: Routes = [
       {
         path: "dashboard",
         component: DashboardPage,
+        pathMatch: "full",
+      },
+      {
+        path: "student-course-view",
+        component: StudentCourseViewPage,
         pathMatch: "full",
       },
     ],
@@ -205,7 +217,13 @@ const routes: Routes = [
       },
       {
         path: "courses-list",
-        component: CoursesListPage,
+        component: StudentCoursePage,
+        //component: CoursesListPage,
+        pathMatch: "full",
+      },
+      {
+        path: "student-course-view",
+        component: StudentCourseViewPage,
         pathMatch: "full",
       },
     ],
@@ -248,7 +266,12 @@ const routes: Routes = [
       },
       {
         path: "courses-list",
-        component: CoursesListPage,
+        component: StudentCoursePage,//CoursesListPage,
+        pathMatch: "full",
+      },
+      {
+        path: "student-course-view",
+        component: StudentCourseViewPage,
         pathMatch: "full",
       },
     ],
@@ -287,6 +310,7 @@ const routes: Routes = [
         component: DashboardPage,
         pathMatch: "full",
       },
+      
     ],
   },
   {

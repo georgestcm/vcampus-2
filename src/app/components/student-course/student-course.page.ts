@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CourseService } from 'src/app/providers/common-service/course.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-student-course',
@@ -8,11 +10,55 @@ import { Router } from '@angular/router';
 })
 export class StudentCoursePage implements OnInit {
 
-  constructor(private route : Router) { }
+  courseList  :any;
+  showLoading : boolean = false;
+  userRole : number;
+  constructor(private router : Router, private courseService : CourseService, private storage: Storage,) { }
 
   ngOnInit() {
+    this.storage.get("role").then(res => {
+      this.userRole = res !=null ? res :0;
+    });
+    this.loadAllCourse();
   }
-  onClickStartLearning(){
-    this.route.navigate(['rstudents/student-course-view']);
+  onClickStartLearning(id){
+    switch(this.userRole){
+      case 6:
+      this.router.navigate(['rstudents/student-course-view',{'id': id}]);
+      break;
+      case 5:
+      this.router.navigate(['rteacher/student-course-view',{'id': id}]);
+      break;
+      case 4:
+      this.router.navigate(['rschoolstaff/student-course-view',{'id': id}]);
+      break;
+      case 3:
+      this.router.navigate(['rschool/student-course-view',{'id': id}]);
+      break;
+      case 2:
+      this.router.navigate(['editor/student-course-view',{'id': id}]);
+      break;
+      case 1:
+      this.router.navigate(['admin/student-course-view',{'id': id}]);
+      break;
+      default:
+        this.router.navigate(['error']);
+        break;
+    }
+    //this.router.navigate(['rstudents/student-course-view',{'id': id}]);
+  }
+  loadAllCourse(){
+    this.showLoading =true;
+    this.courseService.getAll().subscribe( (data) => {
+      this.courseList = data;
+      this.showLoading =false;
+      //console.log(data);
+      //this.showLoading = false;
+     },
+     err => {
+       console.log(err);
+       this.showLoading =false;
+       //this.showLoading = false;
+    })
   }
 }

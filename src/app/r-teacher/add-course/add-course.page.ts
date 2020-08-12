@@ -7,7 +7,6 @@ import { ActivatedRoute } from '@angular/router';
 import {  FileUploader } from 'ng2-file-upload';
 import { FileUploadModalComponent } from 'src/app/components/file-upload-modal/file-upload-modal.component';
 import { ModalController } from '@ionic/angular';
-//import { environment} from '../../../environments/environment'
 import { DatePipe } from '@angular/common'
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { environment } from 'src/environments/environment';
