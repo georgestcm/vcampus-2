@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeacherService } from './teacher.service';
 
 @Component({
   selector: 'app-teacher-list',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teacher-list.page.scss'],
 })
 export class TeacherListPage implements OnInit {
-
-  constructor() { }
+  teacherList : any;
+  constructor(private teacherService : TeacherService) { }
 
   ngOnInit() {
+    this.getAllTeachers();
+  }
+  getAllTeachers(){
+    this.teacherService.getAllTeacherForAdmin().subscribe((data) =>{
+      this.teacherList = data;
+      console.log(data);
+    },err =>{
+
+    });
   }
 
 }

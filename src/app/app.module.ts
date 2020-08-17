@@ -62,6 +62,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
+import { TeacherService} from 'src/app/components/teacher-list/teacher.service';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common'
@@ -71,6 +72,7 @@ import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
 import { CourseDetailModalComponent } from './components/course-detail-modal/course-detail-modal.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { FileUploadModalComponent } from './components/file-upload-modal/file-upload-modal.component';
+import { from } from 'rxjs';
 let config : SocketIoConfig = {
   url:"http://localhost:4000", options:{}
 }
@@ -175,6 +177,7 @@ export function createTranslateLoader(http: HttpClient) {
       useClass: TokenInterceptorService,
       multi: true,
     },
+    TeacherService
   ],
   bootstrap: [AppComponent],
 })

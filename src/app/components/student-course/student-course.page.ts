@@ -13,6 +13,7 @@ export class StudentCoursePage implements OnInit {
   courseList  :any;
   showLoading : boolean = false;
   userRole : number;
+  searchText : string ="";
   constructor(private router : Router, private courseService : CourseService, private storage: Storage,) { }
 
   ngOnInit() {
@@ -61,4 +62,16 @@ export class StudentCoursePage implements OnInit {
        //this.showLoading = false;
     })
   }
+  onClickFind(){
+    this.showLoading = true;
+    this.courseService.getCourseCourseName(this.searchText).subscribe((data) =>{
+      this.courseList = data;
+      this.showLoading =false;
+    },err =>{
+      console.log(err);
+       this.showLoading =false;
+    });
+  }
+
+  
 }
