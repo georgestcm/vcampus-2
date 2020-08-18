@@ -14,4 +14,8 @@ export class TeacherService {
     getAllTeacherForAdmin(){
       return this._httpClient.authGet("/getAllTeacherForAdmin");
     }
+    
+    updateTeacher(request){
+      return this._httpClient.authPut("/updateTeacher",request);
+    }
 }

@@ -6,6 +6,12 @@
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="showLoading" class="d-flex align-items-center">
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+    </div>
+    <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+  </div>
   <div class="placeholder" >
     <table class="table  table-bordered table-striped " >
       <thead >
@@ -28,11 +34,9 @@
       <th>
         Phone
       </th>
-      <!-- <th>
-        Repeat Yearly ?
-      </th> -->
-      <!-- <th>
-      </th> -->
+      
+      <th>
+      </th>
     </tr>
   </thead>
     <tr *ngFor="let teacher of teacherList; let i=index">
@@ -42,22 +46,20 @@
       <td>{{teacher.last_name}}</td>
       <td>{{teacher.email}}</td>
       <td>{{teacher.phone_number}}</td>
-      <!-- <td>
-        <input type="checkbox" checked="course.is_repeat_yearly" disabled>
-      </td> -->
-      <!-- <td>
+      
+      <td>
         <ion-buttons>
-        <button class="btn btn-sm btn-warning" [routerLink]="['add-course', {'id': course._id}]">
+        <button class="btn btn-sm btn-warning" (click)="onClickEdit(teacher)" >
           <ion-icon name="md-create"></ion-icon>
         </button>
-        <button (click)="showModal(course);" class="btn btn-sm btn-success">
+        <!-- <button  class="btn btn-sm btn-success">
           <ion-icon name="information-circle"></ion-icon>
-        </button>
-        <button (click)="deleteCourse(course._id);" class="btn btn-sm btn-danger">
+        </button> -->
+        <button (click)="onClickDelete(teacher)" class="btn btn-sm btn-danger">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-buttons>
-      </td> -->
+      </td>
     </tr>
     </table>
   </div>

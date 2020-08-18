@@ -72,7 +72,8 @@ import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
 import { CourseDetailModalComponent } from './components/course-detail-modal/course-detail-modal.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { FileUploadModalComponent } from './components/file-upload-modal/file-upload-modal.component';
-import { from } from 'rxjs';
+import { EditTeacherModalComponent} from './components/edit-teacher-modal/edit-teacher-modal.component';
+import { EditSchoolModalComponent } from './components/edit-school-modal/edit-school-modal.component';
 let config : SocketIoConfig = {
   url:"http://localhost:4000", options:{}
 }
@@ -115,7 +116,9 @@ export function createTranslateLoader(http: HttpClient) {
     UsersAndgroupPage,
     DashboardPage,
     StudentCoursePage,
-    StudentCourseViewPage
+    StudentCourseViewPage,
+    EditTeacherModalComponent,
+    EditSchoolModalComponent
   ],
   entryComponents: [
     LanguageSelectPage,
@@ -128,7 +131,9 @@ export function createTranslateLoader(http: HttpClient) {
     AddTeacherPage,
     AddSchoolStaffPage,
     CourseDetailModalComponent,
-    FileUploadModalComponent
+    FileUploadModalComponent,
+    EditTeacherModalComponent,
+    EditSchoolModalComponent
   ],
   imports: [
     BrowserModule,
