@@ -15,6 +15,6 @@ import { StudentCourseViewPage } from './student-course-view.page';
     IonicModule,
     StudentCourseViewPageRoutingModule
   ],
-  declarations: [StudentCourseViewPage]
+  declarations: []
 })
 export class StudentCourseViewPageModule {}
