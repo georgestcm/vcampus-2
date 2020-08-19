@@ -61,4 +61,8 @@ export class AuthService {
   saveSchoolData(schoolData) {
     return this._httpClient.post('/save_school_data', schoolData);
   }
+
+  updateSchoolData(schoolData) {
+    return this._httpClient.authPut('/updateSchoolDetail', schoolData);
+  }
 }

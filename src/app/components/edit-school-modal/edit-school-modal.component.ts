@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { TeacherService } from '../teacher-list/teacher.service';
+import { AuthService } from 'src/app/providers/auth.service';
 
 @Component({
   selector: 'app-edit-school-modal',
@@ -21,7 +22,7 @@ export class EditSchoolModalComponent implements OnInit {
   showProgress : boolean =false;
 
   constructor(private modalController: ModalController, 
-      private navParams: NavParams, private teacherService : TeacherService) { 
+      private navParams: NavParams, public _auth: AuthService) { 
     this.schoolData = navParams.get('schoolData');
     console.log(this.schoolData);
     this.schoolModel ={
@@ -42,20 +43,20 @@ export class EditSchoolModalComponent implements OnInit {
 }
 
 onClickSave(){
-  // console.log(this.teacherModel);
-  // if(this.teacherModel.first_name =="" || this.teacherModel.last_name =="" || this.teacherModel.email==null || this.teacherModel.phone_number==null){
-  //   alert("All fields are required!");
-  //   return;
-  // }
-  // this.showProgress = true;
-  // this.teacherService.updateTeacher(this.teacherModel).subscribe((data) =>{
-  //   console.log(data);
-  //   this.success =true;
-  //   this.showProgress = false;
-  // },err =>{
-  //   this.showProgress = false;
-  //   this.success =false;
-  // })
+ 
+  if(this.schoolModel.principal_first_name =="" || this.schoolModel.principal_last_name =="" || this.schoolModel.school_name==null || this.schoolModel.description==null){
+    alert("All fields are required!");
+    return;
+  }
+  this.showProgress = true;
+  this._auth.updateSchoolData(this.schoolModel).subscribe((data) =>{
+    console.log(data);
+    this.success =true;
+    this.showProgress = false;
+  },err =>{
+    this.showProgress = false;
+    this.success =false;
+  })
 }
 
 }
