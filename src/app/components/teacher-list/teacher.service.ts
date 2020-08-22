@@ -18,4 +18,16 @@ export class TeacherService {
     updateTeacher(request){
       return this._httpClient.authPut("/updateTeacher",request);
     }
+
+    getAllAdminStaff(){
+      return this._httpClient.authGet("/getAllAdminStaff");
+    }
+
+    updateStaff(request){
+      return this._httpClient.authPut("/updateStaffDetail",request);
+    }
+
+    deleteUserPermanent(id){
+      return this._httpClient.authDelete("/deleteUserPermanent/"+id);
+    }
 }

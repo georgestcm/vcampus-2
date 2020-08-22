@@ -45,6 +45,7 @@ import { UsersAndgroupPage } from "./components/chat/usersandgroup/usersandgroup
 import { DashboardPage } from './components/dashboard/dashboard.page';
 import { StudentCoursePage } from './components/student-course/student-course.page'
 import { StudentCourseViewPage } from './components/student-course-view/student-course-view.page'
+import { StaffListPage} from './components/staff-list/staff-list.page';
 
 import { RouteConfig } from "./route.config";
 import { AuthService } from "./providers/auth.service";
@@ -74,6 +75,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { FileUploadModalComponent } from './components/file-upload-modal/file-upload-modal.component';
 import { EditTeacherModalComponent} from './components/edit-teacher-modal/edit-teacher-modal.component';
 import { EditSchoolModalComponent } from './components/edit-school-modal/edit-school-modal.component';
+import { EditStaffModalComponent } from './components/edit-staff-modal/edit-staff-modal.component';
 let config : SocketIoConfig = {
   url:"http://localhost:4000", options:{}
 }
@@ -118,7 +120,9 @@ export function createTranslateLoader(http: HttpClient) {
     StudentCoursePage,
     StudentCourseViewPage,
     EditTeacherModalComponent,
-    EditSchoolModalComponent
+    EditSchoolModalComponent,
+    StaffListPage,
+    EditStaffModalComponent
   ],
   entryComponents: [
     LanguageSelectPage,
@@ -133,7 +137,8 @@ export function createTranslateLoader(http: HttpClient) {
     CourseDetailModalComponent,
     FileUploadModalComponent,
     EditTeacherModalComponent,
-    EditSchoolModalComponent
+    EditSchoolModalComponent,
+    EditStaffModalComponent
   ],
   imports: [
     BrowserModule,

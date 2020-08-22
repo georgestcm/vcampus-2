@@ -30,6 +30,8 @@ import { UsersAndgroupPage } from "./components/chat/usersandgroup/usersandgroup
 import { DashboardPage } from './components/dashboard/dashboard.page';
 import { StudentCoursePage } from './components/student-course/student-course.page';
 import { StudentCourseViewPage } from './components/student-course-view/student-course-view.page';
+import { StaffListPage } from './components/staff-list/staff-list.page';
+
 
 const routes: Routes = [
   {
@@ -122,6 +124,11 @@ const routes: Routes = [
         component: StudentCourseViewPage,
         pathMatch: "full",
       },
+      {
+        path: "staff-list",
+        component: StaffListPage,
+        pathMatch: "full",
+      },
 
     ],
   },
@@ -175,6 +182,11 @@ const routes: Routes = [
       {
         path: "student-course-view",
         component: StudentCourseViewPage,
+        pathMatch: "full",
+      },
+      {
+        path: "staff-list",
+        component: StaffListPage,
         pathMatch: "full",
       },
     ],
@@ -421,6 +433,11 @@ const routes: Routes = [
     path: 'student-course-view',
     loadChildren: () => import('./components/student-course-view/student-course-view.module').then( m => m.StudentCourseViewPageModule)
   },
+  {
+    path: 'staff-list',
+    loadChildren: () => import('./components/staff-list/staff-list.module').then( m => m.StaffListPageModule)
+  },
+
 
 
   

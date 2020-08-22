@@ -40,7 +40,16 @@ export class TeacherListPage implements OnInit {
   }
   
   onClickDelete(teacher){
-
+    if(confirm(`Are you sure want to delete ${teacher.first_name} ${teacher.last_name} ?`)){
+      this.showLoading =true;
+    this.teacherService.deleteUserPermanent(teacher._id).subscribe((data) =>{
+      alert("Staff deleted successfully.")
+      this.getAllTeachers();
+      this.showLoading =false;
+    },err =>{
+      this.showLoading =false;
+    });
+    }
   }
 
 }
