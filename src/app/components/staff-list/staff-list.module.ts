@@ -15,6 +15,6 @@ import { StaffListPage } from './staff-list.page';
     IonicModule,
     StaffListPageRoutingModule
   ],
-  declarations: [StaffListPage]
+  declarations: []
 })
 export class StaffListPageModule {}
