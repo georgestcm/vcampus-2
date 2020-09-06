@@ -1,20 +1,17 @@
 <ion-header>
-  <div class="logo">
-    <img src="assets/vcampus.png" alt="app logo">
+  <div class="header">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </div>
 </ion-header>
 
 <ion-content>
 <div class="main_wrapper">
-  
+
   <div class="contact">
   <!-- You can contact us by clicking <a href="mailto:georgestcm@gmail.com" target="_top">here</a> -->
  <div class="row">
-   <div class="col-md-5">
-    <div class="vcampus_img">
-      <img src="assets/vcampus.png" alt="company logo">
-    </div>
-   </div>
    <div class="col-md-6">
     <div class="card">
       <div class="card-header">
@@ -47,17 +44,17 @@
           </div>
           <textarea class="form-control" name="description" required rows="4" id="message" [(ngModel)]="mailModel.message" placeholder="Enter Your Message"></textarea>
         </div>
-  
+
         <input type="submit" class="btn btn-success float-left btn-large" [disabled]="!f.valid"  value="Send Mail" />
         <br>
-    
+
     </div>
       </form>
     </div>
    </div>
  </div>
-  
-  
+
+
   </div>
 </div>
 </ion-content>
