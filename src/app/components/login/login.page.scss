@@ -133,8 +133,9 @@
        display: flex;
        align-items: center;
        div.error_icon {
-         display: inline-block;
-         float: left;
+         display: flex;
+         justify-content: center;
+         align-items: center;
          width: 10%;
          background-color:#ff0000a8;
          height: inherit;
@@ -142,9 +143,6 @@
          ion-icon {
            color: white;
            font-size: 20px;
-           position: relative;
-           left: 10px;
-           top: 6px;
          }
        }
 
@@ -304,5 +302,59 @@
         color:#ffcc29;
       }
     }
+  }
+}
+
+
+@media screen and (max-width:768px){
+  ion-header {
+    div.logo {
+      display:none;
+    }
+    div.home_nav {
+      ul {
+        li {
+          &:nth-child(1){
+            display:none;
+          }
+          &:nth-child(2){
+          }
+        }
+      }
+    }
+  }
+
+  ion-content {
+    .student_img {
+      display:none;
+    }
+    .form_login {
+      display: flex !important;
+    justify-content: center;
+      width:100%;
+      ion-card {
+        width:65%;
+        height: 410px;
+        ion-card-content {
+          ion-input {
+            width:100% !important;
+          }
+        }
+      }
+    }
+    .two_color {
+      display:none;
+    }
+    .form_login {
+      ion-card {
+        //width: 400px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:767px) {
+  ion-fab {
+    display: none !important;
   }
 }

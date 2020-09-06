@@ -153,8 +153,9 @@ ion-content .login_page .form_login ion-card ion-card-header div.login_error {
 }
 
 ion-content .login_page .form_login ion-card ion-card-header div.login_error div.error_icon {
-  display: inline-block;
-  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 10%;
   background-color: #ff0000a8;
   height: inherit;
@@ -164,9 +165,6 @@ ion-content .login_page .form_login ion-card ion-card-header div.login_error div
 ion-content .login_page .form_login ion-card ion-card-header div.login_error div.error_icon ion-icon {
   color: white;
   font-size: 20px;
-  position: relative;
-  left: 10px;
-  top: 6px;
 }
 
 ion-content .login_page .form_login ion-card ion-card-header div.login_error div.error_msg {
@@ -324,4 +322,37 @@ ion-content div.two_color div.blue {
 
 ion-content ion-fab ion-fab-button ion-icon {
   color: #ffcc29;
+}
+
+@media screen and (max-width: 768px) {
+  ion-header div.logo {
+    display: none;
+  }
+  ion-header div.home_nav ul li:nth-child(1) {
+    display: none;
+  }
+  ion-content .student_img {
+    display: none;
+  }
+  ion-content .form_login {
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+  }
+  ion-content .form_login ion-card {
+    width: 65%;
+    height: 410px;
+  }
+  ion-content .form_login ion-card ion-card-content ion-input {
+    width: 100% !important;
+  }
+  ion-content .two_color {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  ion-fab {
+    display: none !important;
+  }
 }
