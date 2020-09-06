@@ -1,12 +1,15 @@
 ion-header {
-  background-color: #191923;
-  height: 60px;
-  div.logo {
-    display: inline-block;
-    float: left;
-    img {
-      height: 40px;
-      margin: 10px 0 0 25px;
+  .header {
+    background-color: #191923;
+    height: 60px;
+    width: 100%;
+    ion-buttons {
+      ion-back-button {
+        color: white;
+        margin-top: 8px;
+        --background-hover: rgba(255, 255, 255, 0.25);
+        margin-left: 10px;
+      }
     }
   }
 
@@ -14,11 +17,13 @@ ion-header {
 ion-content {
   margin: 0;
   .main_wrapper {
+    //display: flex;
+    justify-content: center;
     .vcampus_img {
       margin-top: 80px;
       text-align: center;
       img {
-        height: 120px;
+        height: 100px;
       }
     }
     .contact {
@@ -36,6 +41,9 @@ ion-content {
           transition: 1s;
           background-color: #ffcc29;
         }
+      }
+      .row {
+        justify-content: center;
       }
     }
   }
