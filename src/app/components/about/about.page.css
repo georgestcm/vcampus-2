@@ -1,26 +1,14 @@
-ion-header {
+ion-header .header {
   background-color: #191923;
   height: 60px;
+  width: 100%;
 }
 
-ion-header div.logo {
-  display: inline-block;
-  float: left;
-}
-
-ion-header div.logo img {
-  height: 40px;
-  margin: 10px 0 0 25px;
-}
-
-ion-header p {
-  text-align: center;
+ion-header .header ion-buttons ion-back-button {
   color: white;
-  font-weight: bold;
-  font-size: 18px;
-  letter-spacing: 2px;
-  position: relative;
-  right: 115px;
+  margin-top: 8px;
+  --background-hover: rgba(255, 255, 255, 0.25);
+  margin-left: 10px;
 }
 
 div.about_wrapper .vcampus_img {
@@ -29,15 +17,16 @@ div.about_wrapper .vcampus_img {
 }
 
 div.about_wrapper .vcampus_img img {
-  height: 120px;
+  height: 90px;
 }
 
 div.about_wrapper .about_text {
   color: grey;
 }
 
-div.about_wrapper .about_text h5 {
+div.about_wrapper .about_text h3 {
   text-align: center;
+  text-transform: uppercase;
 }
 
 div.about_wrapper .about_text p {
