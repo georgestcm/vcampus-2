@@ -128,3 +128,8 @@ ion-content .main_wrapper ion-card ion-card-content p span {
   height: 50px;
   font-size: 15px;
 }
+
+.col-md-4 {
+  display: flex;
+  justify-content: center;
+}
