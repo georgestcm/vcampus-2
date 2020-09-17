@@ -142,8 +142,8 @@ export class RegisterPage implements OnInit {
         this.loadingController.dismiss();
         this.presentAlert("Enter a username to continue")
       } else if (this.studentRegistration.email.length === 0) {
-        this.loadingController.dismiss();
-        this.presentAlert("Enter a email to continue")
+        //this.loadingController.dismiss();
+        //this.presentAlert("Enter a email to continue")
       } else if (!this.studentRegistration.email.includes("@")) {
         this.loadingController.dismiss();
         this.presentAlert("Enter a valid email to continue")
@@ -159,7 +159,7 @@ export class RegisterPage implements OnInit {
             res => {
               //console.log(res)
               //this.user = res.user,
-              //console.log(JSON.stringify(res.user)),
+              //console.log(JSON.stringify(sres.user)),
               this.storage.set('user', res.registerUser)
               this.storage.set('token', res.token)
               this.storage.set('role', res.registerUser.roles[0])

@@ -13,13 +13,13 @@
     <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
   </div>
   <div class="row">
-    <div class="col-md-10">
-     <input type="text" [(ngModel)]="searchText" name="searchText" class="form-control" 
+    <div class="input-group mb-3">
+     <input type="text" [(ngModel)]="searchText" name="searchText" class="form-control input-group-prepend" 
      placeholder="Enter Course name to search ">
-    </div>
-    <div class="col-md-2">
-      <button class="btn btn-primary " (click)="onClickFind()">Find</button> &nbsp;
-      <button class="btn btn-info " slot="end" (click)="loadAllCourse()">Show All</button>
+    
+    
+      <button  class="btn btn-primary input-group-append" (click)="onClickFind()">Find</button> &nbsp;
+      <button class="btn btn-info input-group-append" slot="end" (click)="loadAllCourse()">Show All</button>
     </div>
   </div>
   
