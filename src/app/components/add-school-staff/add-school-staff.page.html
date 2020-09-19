@@ -11,5 +11,8 @@
   </div>
   <ion-label>USERNAME</ion-label>
   <ion-input type="name" [(ngModel)]="username" required></ion-input>
-  <ion-button>ADD STAFF</ion-button>
+  <div>
+  <ion-button>ADD STAFF</ion-button><br>
+  <ion-button color="danger" (click)="dismiss()">Close</ion-button>
+</div>
 </ion-content>

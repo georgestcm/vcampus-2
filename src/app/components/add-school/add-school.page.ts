@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/providers/auth.service';
 import { environment } from 'src/environments/environment'
 
@@ -9,7 +10,7 @@ import { environment } from 'src/environments/environment'
 })
 export class AddSchoolPage implements OnInit {
 
-  constructor(public _auth: AuthService) { }
+  constructor(public _auth: AuthService,private modalController: ModalController) { }
   error;
   username;
   school;
@@ -18,6 +19,12 @@ export class AddSchoolPage implements OnInit {
   buttonText : string ="ADD SCHOOL";
   ngOnInit() {
   }
+
+  dismiss() {
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+}
 
   AddSchool(){
     this.school = {

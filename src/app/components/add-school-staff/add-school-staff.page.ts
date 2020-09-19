@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-school-staff',
@@ -7,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddSchoolStaffPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalController : ModalController) { }
  error;
  username;
   ngOnInit() {
   }
 
+  dismiss() {
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+}
 }

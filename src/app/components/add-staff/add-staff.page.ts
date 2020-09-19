@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/providers/auth.service';
 
 
@@ -9,7 +10,7 @@ import { AuthService } from 'src/app/providers/auth.service';
 })
 export class AddStaffPage implements OnInit {
 
-  constructor(public _auth: AuthService) { }
+  constructor(public _auth: AuthService, private modalController: ModalController) { }
 
   ngOnInit() {
   }
@@ -19,6 +20,13 @@ export class AddStaffPage implements OnInit {
   last_name = '';
   user_staff_info;
   error;
+
+  dismiss() {
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+}
+
   loginfo() {
 
     this.password = this.last_name + "admin";

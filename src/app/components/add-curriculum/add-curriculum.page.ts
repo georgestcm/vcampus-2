@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { CourseService } from 'src/app/providers/common-service/course.service';
 
@@ -11,7 +12,7 @@ import { CourseService } from 'src/app/providers/common-service/course.service';
 export class AddCurriculumPage implements OnInit {
 
   constructor(private storage: Storage,
-    private _course: CourseService) { }
+    private _course: CourseService, private modalController : ModalController) { }
   error;
   myCurrentSchoolId;
   curList = []
@@ -26,6 +27,11 @@ export class AddCurriculumPage implements OnInit {
     })
   }
 
+  dismiss() {
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+}
   getCurr(id) {
     this._course.getCurriculumList(id)
       .subscribe(

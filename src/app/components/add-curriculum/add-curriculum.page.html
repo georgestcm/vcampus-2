@@ -17,5 +17,6 @@
     <ion-item *ngFor="let curriculum of curList" lines="full"> {{curriculum}} </ion-item>
   </ng-container>
   <ion-input type="name" [(ngModel)]="addCur.curriculum" required></ion-input>
-  <ion-button (click)="addCurr()">ADD CURRICULUM</ion-button>
+  <ion-button  (click)="addCurr()">ADD CURRICULUM</ion-button>
+  <ion-button (click)="dismiss()" color="danger">Close</ion-button>
 </ion-content>

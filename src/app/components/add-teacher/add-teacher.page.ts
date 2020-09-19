@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { CourseService } from 'src/app/providers/common-service/course.service';
 
@@ -11,7 +12,7 @@ import { CourseService } from 'src/app/providers/common-service/course.service';
 export class AddTeacherPage implements OnInit {
 
   constructor(private storage: Storage,
-    private _course: CourseService) { }
+    private _course: CourseService, private modalController : ModalController) { }
   error='';
   txtUserName ="";
   re_password = '';
@@ -31,6 +32,12 @@ export class AddTeacherPage implements OnInit {
       this.myCurrentId = val._id;
     })
   }
+
+  dismiss() {
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+}
 
   addTeacher() {
     if (this.teacher_data.username.length === 0) {
