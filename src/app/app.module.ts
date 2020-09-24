@@ -76,9 +76,9 @@ import { FileUploadModalComponent } from './components/file-upload-modal/file-up
 import { EditTeacherModalComponent} from './components/edit-teacher-modal/edit-teacher-modal.component';
 import { EditSchoolModalComponent } from './components/edit-school-modal/edit-school-modal.component';
 import { EditStaffModalComponent } from './components/edit-staff-modal/edit-staff-modal.component';
-let config : SocketIoConfig = {
-  url:"http://localhost:4000", options:{}
-}
+import { ChatService } from './providers/chat.service';
+
+const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -187,7 +187,8 @@ export function createTranslateLoader(http: HttpClient) {
       useClass: TokenInterceptorService,
       multi: true,
     },
-    TeacherService
+    TeacherService,
+    ChatService
   ],
   bootstrap: [AppComponent],
 })

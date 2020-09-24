@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
+import { ChatService } from 'src/app/providers/chat.service';
 
 @Component({
   selector: 'app-chat',
@@ -11,7 +13,18 @@ export class ChatPage implements OnInit {
 
   role:number;
   showSearch : boolean = false;
-  constructor(public actionSheetController: ActionSheetController, private storage : Storage) { }
+  username : string='';
+  fullName : string='Send Message';
+  constructor(public actionSheetController: ActionSheetController, private storage : Storage, 
+    private chatService : ChatService, private route : ActivatedRoute) {
+
+      if (this.route.snapshot.paramMap.get('username')) {
+        this.username = this.route.snapshot.paramMap.get('username');
+        this.fullName = this.route.snapshot.paramMap.get('name');
+        this.chatService.setUserName(this.username);
+      }
+
+     }
   
   ngOnInit() {
     this.storage.get('role').then((val) => {
@@ -64,6 +77,8 @@ export class ChatPage implements OnInit {
     this.showActionItem();
   }
   onClickSend(){
+    this.chatService.setUserName("Rajeev");
+    //console.log(this.chatService.getMessage());
     if(this.role<=2){
       //Broadcast
     }else{
