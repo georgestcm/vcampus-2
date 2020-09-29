@@ -40,35 +40,43 @@ ion-content ion-list ion-item ion-icon {
   margin-right: 10px;
 }
 
+ion-content ion-list ion-item:nth-child(1) ion-icon {
+  color: #191924;
+}
+
 ion-content ion-list ion-item:nth-child(2) ion-icon {
-  color: coral;
+  color: #191924;
 }
 
 ion-content ion-list ion-item:nth-child(3) ion-icon {
-  color: #50c6ff;
+  color: #191924;
 }
 
 ion-content ion-list ion-item:nth-child(4) ion-icon {
-  color: #dcd36be8;
+  color: #191924;
 }
 
 ion-content ion-list ion-item:nth-child(5) ion-icon {
-  color: #2e9c3ce8;
+  color: #191924;
 }
 
 ion-content ion-list ion-item:nth-child(6) ion-icon {
-  color: #9c125ee8;
+  color: #191924;
 }
 
 ion-content ion-list ion-item:nth-child(7) ion-icon {
-  color: #301b71e8;
+  color: #191924;
 }
 
-ion-content ion-list ion-item:nth-child(8) {
+ion-content ion-list ion-item:nth-child(8) ion-icon {
+  color: #191924;
+}
+
+ion-content ion-list ion-item:nth-child(9) {
   color: #ff0000c7;
   margin-top: 49%;
 }
 
-ion-content ion-list ion-item:nth-child(8) ion-icon {
+ion-content ion-list ion-item:nth-child(9) ion-icon {
   color: #ff0000c7;
 }
