@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { AddCurriculumPage } from 'src/app/components/add-curriculum/add-curriculum.page'
 import { AddSchoolStaffPage } from 'src/app/components/add-school-staff/add-school-staff.page'
 import { AddTeacherPage } from 'src/app/components/add-teacher/add-teacher.page'
+import { CodeGeneratorPage } from 'src/app/components/code-generator/code-generator.page'
 @Component({
   selector: 'app-admin-permission',
   templateUrl: './admin-permission.page.html',
@@ -64,4 +65,10 @@ export class AdminPermissionPage implements OnInit {
     return await modal.present();
   }
 
+  async addCodeGenerator() {
+    const modal = await this.modalController.create({
+      component: CodeGeneratorPage
+    });
+    return await modal.present();
+  }
 }
