@@ -10,7 +10,7 @@ export class CourseService {
   private postCurList =
     "https://vcampus.herokuapp.com/api/post_curriculum_list";
   private postNewTeacher =
-    environment.apiUrl+"/create_new_teacher";
+    environment.apiUrl+"api/create_new_teacher";
 
 
   constructor(
@@ -39,51 +39,51 @@ export class CourseService {
   }
 
   getAllTeacher(username){
-    return this._httpClient.authGet("/get_all_teachers?username="+username);
+    return this._httpClient.authGet("api/get_all_teachers?username="+username);
   }
 
   addTeacherToSchool(schoolId, teacherId){
-    return this._httpClient.authPut("/add_teacher_to_school", 
+    return this._httpClient.authPut("api/add_teacher_to_school",
     {teacherId : teacherId, schoolId : schoolId });
   }
 
   addCourse(data) {
-    return this._httpClient.authPost("/course/save", data);
+    return this._httpClient.authPost("api/course/save", data);
   }
 
   getSchoolsByTeacherId(teacherId){
-    return this._httpClient.authGet("/get_schools_by_teacherId?teacherId="+teacherId);
+    return this._httpClient.authGet("api/get_schools_by_teacherId?teacherId="+teacherId);
   }
 
   updateCourse(data, courseId) {
-    return this._httpClient.authPut(`/course/update/${courseId}`, data, );
+    return this._httpClient.authPut(`api/course/update/${courseId}`, data, );
   }
 
   getCourseBySchoolId(schoolId) {
-    return this._httpClient.authGet(`/course/getCoursesBySchoolId/${schoolId}`);
+    return this._httpClient.authGet(`api/course/getCoursesBySchoolId/${schoolId}`);
   }
 
   getMediaByUserId(userId) {
-    return this._httpClient.authGet(`/course/findMediaByUserId/${userId}`);
+    return this._httpClient.authGet(`api/course/findMediaByUserId/${userId}`);
   }
 
   getSupportingDocs(fileName) {
-    return this._httpClient.authGet(`/course/readFile/${fileName}`, );
+    return this._httpClient.authGet(`api/course/readFile/${fileName}`, );
   }
 
   getCourseCourseName(searchText) {
-    return this._httpClient.authGet(`/course/findCoursesByCourseName/${searchText}`);
+    return this._httpClient.authGet(`api/course/findCoursesByCourseName/${searchText}`);
   }
 
   getAll() {
-    return this._httpClient.authGet("/course/getall");
+    return this._httpClient.authGet("api/course/getall");
   }
 
   getCourse(id) {
-    return this._httpClient.authGet("/course/get/" + id);
+    return this._httpClient.authGet("api/course/get/" + id);
   }
 
   removeCourse(id){
-    return this._httpClient.authDelete("/course/delete/" + id);
+    return this._httpClient.authDelete("api/course/delete/" + id);
   }
 }

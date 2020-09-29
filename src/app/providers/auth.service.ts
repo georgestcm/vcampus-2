@@ -23,25 +23,25 @@ export class AuthService {
   }
 
   loginUser(user) {
-    return this._httpClient.post('/login', user);
+    return this._httpClient.post('api/login', user);
   }
 
   registerStudent(studentData) {
-    return this._httpClient.post('/register', studentData);
+    return this._httpClient.post('api/register', studentData);
   }
   createUser(userData) {
-    return this._httpClient.post('/register', userData);
+    return this._httpClient.post('api/register', userData);
   }
   getAllSchools(){
-    return this._httpClient.get('/get_all_schools');
+    return this._httpClient.get('api/get_all_schools');
   }
 
   getAllSchoolsForAdmin(){
-    return this._httpClient.get('/get_all_schools_for_admin');
+    return this._httpClient.get('api/get_all_schools_for_admin');
   }
 
   getAllStudents(schoolId){
-    return this._httpClient.get('/get_all_students/'+schoolId);
+    return this._httpClient.get('api/get_all_students/'+schoolId);
   }
 
   loggedIn() {
@@ -55,14 +55,14 @@ export class AuthService {
   }
 
   getRegisterSchool(schoolData) {
-    return this._httpClient.post('/register_school_login', schoolData);
+    return this._httpClient.post('api/register_school_login', schoolData);
   }
 
   saveSchoolData(schoolData) {
-    return this._httpClient.post('/save_school_data', schoolData);
+    return this._httpClient.post('api/save_school_data', schoolData);
   }
 
   updateSchoolData(schoolData) {
-    return this._httpClient.authPut('/updateSchoolDetail', schoolData);
+    return this._httpClient.authPut('api/updateSchoolDetail', schoolData);
   }
 }
