@@ -17,6 +17,12 @@
       <ion-icon (click)="addSchoolAdmin()" name="add"></ion-icon>
     </div>
   </div>
+  <div class="add_role" [hidden]="adminOrNot">
+    <div class="add">
+      <p>Code generator</p>
+      <ion-icon (click)="addCodeGenerator()" name="add"></ion-icon>
+    </div>
+  </div>
   <div class="add_role" (click)="AddStaffSchool()" [hidden]="!adminOrNot">
     <div class="add">
       <p>Add a staff</p>
