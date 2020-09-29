@@ -44,6 +44,10 @@ export class AuthService {
     return this._httpClient.get('api/get_all_students/'+schoolId);
   }
 
+  getListOfStudents(){
+    return this._httpClient.get('/student_list');
+  }
+
   loggedIn() {
     return this.storage.get('token').then((token) => {
       if (token) {
