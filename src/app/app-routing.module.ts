@@ -437,6 +437,10 @@ const routes: Routes = [
     path: 'staff-list',
     loadChildren: () => import('./components/staff-list/staff-list.module').then( m => m.StaffListPageModule)
   },
+  {
+    path: 'code-generator',
+    loadChildren: () => import('./components/code-generator/code-generator.module').then( m => m.CodeGeneratorPageModule)
+  },
 
 
 
