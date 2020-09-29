@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/api',
+  apiUrl: 'http://localhost:3000/',
   imageUrl: 'http://localhost:3000/uploads',
   presetPassword :"12345"
 };
