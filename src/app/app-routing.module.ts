@@ -322,7 +322,7 @@ const routes: Routes = [
         component: DashboardPage,
         pathMatch: "full",
       },
-      
+
     ],
   },
   {
@@ -438,13 +438,13 @@ const routes: Routes = [
     loadChildren: () => import('./components/staff-list/staff-list.module').then( m => m.StaffListPageModule)
   },
   {
-    path: 'code-generator',
-    loadChildren: () => import('./components/code-generator/code-generator.module').then( m => m.CodeGeneratorPageModule)
+    path: 'generator',
+    loadChildren: () => import('./components/generator-login/generator-login.module').then( m => m.GeneratorLoginPageModule)
   },
 
 
 
-  
+
 
 
   // {
