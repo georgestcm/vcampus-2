@@ -36,6 +36,7 @@ import { RStudentsPage } from "./r-students/r-students.page";
 import { AddStaffPage } from "./components/add-staff/add-staff.page";
 import { SchoolRegisterPage } from "./components/school-register/school-register.page";
 import { AddSchoolStaffPage } from "./components/add-school-staff/add-school-staff.page";
+import { CodeGeneratorPage } from "./components/code-generator/code-generator.page";
 import { AddTeacherPage } from "./components/add-teacher/add-teacher.page";
 import { ViewCoursePage } from "./components/view-course/view-course.page";
 import { ChatPage } from "./components/chat/chat/chat.page";
@@ -110,6 +111,7 @@ export function createTranslateLoader(http: HttpClient) {
     AddCurriculumPage,
     AddTeacherPage,
     AddSchoolStaffPage,
+    CodeGeneratorPage,
     ViewCoursePage,
     CoursesListPage,
     AddCoursePage,
