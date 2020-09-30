@@ -1,9 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>code-generator</ion-title>
+    <ion-title>Code Generator</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div class="error">
+    <p>
+      {{error}}
+    </p>
+  </div>
+  <ion-label>USERNAME</ion-label>
+  <ion-input type="name" [(ngModel)]="username"  required></ion-input>
+  <ion-label>FIRST NAME</ion-label>
+  <ion-input type="name" [(ngModel)]="first_name" required></ion-input>
+  <ion-label>LAST NAME</ion-label>
+  <ion-input type="name" [(ngModel)]="last_name" required></ion-input>
+  <ion-button (click)="loginfo()">
+    ADD CODE GENERATOR
+  </ion-button>
+  <ion-button color="danger" (click)="dismiss()">
+    CLOSE
+  </ion-button>
 </ion-content>

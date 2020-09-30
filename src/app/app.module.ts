@@ -140,7 +140,8 @@ export function createTranslateLoader(http: HttpClient) {
     FileUploadModalComponent,
     EditTeacherModalComponent,
     EditSchoolModalComponent,
-    EditStaffModalComponent
+    EditStaffModalComponent,
+    CodeGeneratorPage
   ],
   imports: [
     BrowserModule,

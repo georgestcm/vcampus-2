@@ -13,19 +13,23 @@ export class ChatService implements OnInit {
     //this.socket.connect();
   }
 
-  sendMessage(msg: string){
-    this.socket.emit("send message", msg);
+  sendMessage(msg: any){
+    this.socket.emit("send-message", msg);
+    //  this.socket.fromEvent('message').subscribe((data : any) => {
+    //   console.log(data);
+    //   //return data;
+    // });
 }
 
 setUserName(userName: string){
   this.socket.emit("set-name", userName);
   this.socket.fromEvent('user-changed').subscribe( (data : any) =>{
     console.log(data);
-  } )
+  });
 }
  getMessage() {
      return this.socket
-         .fromEvent("is_online")
+         .fromEvent("message")
          .pipe(map((data : any) =>  data));
 }
 }
