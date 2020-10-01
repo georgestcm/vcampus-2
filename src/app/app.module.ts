@@ -22,6 +22,7 @@ import { SchoolListPage } from "./components/school-list/school-list.page";
 import { StudentListPage } from "./components/student-list/student-list.page";
 import { TeacherListPage } from "./components/teacher-list/teacher-list.page";
 import { AddCurriculumPage } from "./components/add-curriculum/add-curriculum.page";
+import {GenDashboardPage } from "./components/gen-dashboard/gen-dashboard.page";
 import { RSchoolPage } from "./r-school/r-school.page";
 import { LoginPage } from "./components/login/login.page";
 import { AboutPage } from "./components/about/about.page";
@@ -55,6 +56,7 @@ import { EditorGuard } from "./providers/auth-guards/editor.guard";
 import { SchoolGuard } from "./providers/auth-guards/school.guard";
 import { StudentGuard } from "./providers/auth-guards/student.guard";
 import { TeacherGuard } from "./providers/auth-guards/teacher.guard";
+import { GeneratorGuard} from "./providers/auth-guards/generator.guard";
 import { SchoolStaffGuard } from "./providers/auth-guards/schoolstaff.guard";
 import { TokenInterceptorService } from "./providers/interceptors/token-interceptor.service";
 import { CourseService } from "./providers/common-service/course.service";
@@ -104,6 +106,7 @@ export function createTranslateLoader(http: HttpClient) {
     SchoolListPage,
     StudentPageCourseListPage,
     LoginPage,
+    GenDashboardPage,
     AddSchoolPage,
     REditorPage,
     RSchoolPage,
@@ -184,6 +187,7 @@ export function createTranslateLoader(http: HttpClient) {
     SchoolGuard,
     StudentGuard,
     TeacherGuard,
+    GeneratorGuard,
     SchoolStaffGuard,
     HttpClientService,
     DatePipe,

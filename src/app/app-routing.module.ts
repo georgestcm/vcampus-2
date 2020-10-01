@@ -13,6 +13,7 @@ import { RSchoolStaffPage } from "./r-school-staff/r-school-staff.page";
 import { RTeacherPage } from "./r-teacher/r-teacher.page";
 import { RStudentsPage } from "./r-students/r-students.page";
 import { AboutPage } from "./components/about/about.page";
+import {GenDashboardPage } from "./components/gen-dashboard/gen-dashboard.page";
 import { ContactPage } from "./components/contact/contact.page";
 import { RegisterPage } from "./components/register/register.page";
 import { StudentPageCourseListPage } from "./components/student-page-course-list/student-page-course-list.page";
@@ -20,6 +21,7 @@ import { AdminGuard } from "./providers/auth-guards/admin.guard";
 import { EditorGuard } from "./providers/auth-guards/editor.guard";
 import { SchoolGuard } from "./providers/auth-guards/school.guard";
 import { SchoolStaffGuard } from "./providers/auth-guards/schoolstaff.guard";
+import { GeneratorGuard} from "./providers/auth-guards/generator.guard";
 import { TeacherGuard } from "./providers/auth-guards/teacher.guard";
 import { StudentGuard } from "./providers/auth-guards/student.guard";
  import { ChatPage } from "./components/chat/chat/chat.page";
@@ -456,7 +458,9 @@ const routes: Routes = [
   },
   {
     path: 'gen-dashboard',
-    loadChildren: () => import('./gen-dashboard/gen-dashboard.module').then( m => m.GenDashboardPageModule)
+    component: GenDashboardPage,
+    canActivate:[GeneratorGuard]
+
   },
   {
     path: 'generate-course-code',
