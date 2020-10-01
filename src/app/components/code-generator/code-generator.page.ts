@@ -34,7 +34,7 @@ export class CodeGeneratorPage implements OnInit {
 
 loginfo() {
 
-  this.password = this.last_name + "12345";
+  this.password = this.last_name + "generator";
   this.user_info = {
     username: this.username,
     first_name: this.first_name,

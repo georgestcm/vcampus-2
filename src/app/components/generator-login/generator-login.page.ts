@@ -26,8 +26,6 @@ export class GeneratorLoginPage implements OnInit {
       public modalController: ModalController
   ) { }
 
-  ngOnInit() {
-  }
 
   franceFlag = '/assets/icon/fr.png'
   englishFlag = '/assets/icon/en.png'
@@ -159,7 +157,8 @@ export class GeneratorLoginPage implements OnInit {
     }
     switch(this.userRole){
       case 7:
-      this.router.navigate(['generator/gen_dashboard']);
+      // this.router.navigate(['generator/gen_dashboard']);
+      this.router.navigate(['/gen-dashboard']);
       break;
       default:
         this.router.navigate(['error']);

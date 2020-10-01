@@ -31,6 +31,7 @@ import { DashboardPage } from './components/dashboard/dashboard.page';
 import { StudentCoursePage } from './components/student-course/student-course.page';
 import { StudentCourseViewPage } from './components/student-course-view/student-course-view.page';
 import { StaffListPage } from './components/staff-list/staff-list.page';
+import { GeneratorLoginPage } from './components/generator-login/generator-login.page';
 
 
 const routes: Routes = [
@@ -357,6 +358,18 @@ const routes: Routes = [
       },
     ],
   },
+  // {
+  //   path: "generator",
+  //   component: GeneratorLoginPage,
+  //   //canActivate: [StudentGuard],
+  //   children: [
+  //     {
+  //       path: "gen_dashboard",
+  //       component: ChatPage,
+  //       pathMatch: "full",
+  //     },
+  //   ],
+  // },
   {
     path: "register",
     component: RegisterPage,
@@ -441,6 +454,11 @@ const routes: Routes = [
     path: 'generator',
     loadChildren: () => import('./components/generator-login/generator-login.module').then( m => m.GeneratorLoginPageModule)
   },
+  {
+    path: 'gen-dashboard',
+    loadChildren: () => import('./gen-dashboard/gen-dashboard.module').then( m => m.GenDashboardPageModule)
+  },
+
 
 
 
