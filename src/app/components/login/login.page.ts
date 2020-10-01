@@ -55,7 +55,7 @@ export class LoginPage implements OnInit {
   loaderToShow;
   routeDirect;
   ngOnInit() {
-    
+
     this.storage.get("role").then(res => {
       this.userRole = res !=null ? res :0;
     });
@@ -178,6 +178,9 @@ export class LoginPage implements OnInit {
       this.userRole = role;
     }
     switch(this.userRole){
+      case 7:
+      this.router.navigate(['/gen-dashboard']);
+      break;
       case 6:
       this.router.navigate(['rstudents/student-course']);
       break;
@@ -200,9 +203,6 @@ export class LoginPage implements OnInit {
         this.router.navigate(['error']);
         break;
     }
-    // case 6:
-    // this.router.navigate([`${this.currentUserRoute}/courses-list`]);
-    // break
   }
 
   toAbout() {
