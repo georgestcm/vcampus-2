@@ -21,11 +21,6 @@ export class CodeGeneratorPage implements OnInit {
   ngOnInit() {
   }
   
-
- 
-
- 
-
   dismiss() {
     this.modalController.dismiss({
       'dismissed': true

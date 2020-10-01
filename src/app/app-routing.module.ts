@@ -458,6 +458,11 @@ const routes: Routes = [
     path: 'gen-dashboard',
     loadChildren: () => import('./gen-dashboard/gen-dashboard.module').then( m => m.GenDashboardPageModule)
   },
+  {
+    path: 'generate-course-code',
+    loadChildren: () => import('./components/generate-course-code/generate-course-code.module').then( m => m.GenerateCourseCodePageModule)
+  },
+
 
 
 
