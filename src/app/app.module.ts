@@ -78,6 +78,7 @@ import { EditTeacherModalComponent} from './components/edit-teacher-modal/edit-t
 import { EditSchoolModalComponent } from './components/edit-school-modal/edit-school-modal.component';
 import { EditStaffModalComponent } from './components/edit-staff-modal/edit-staff-modal.component';
 import { ChatService } from './providers/chat.service';
+import { GenerateCourseCodeModalComponent } from './components/generate-course-code-modal/generate-course-code-modal.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
 
@@ -124,7 +125,8 @@ export function createTranslateLoader(http: HttpClient) {
     EditTeacherModalComponent,
     EditSchoolModalComponent,
     StaffListPage,
-    EditStaffModalComponent
+    EditStaffModalComponent,
+    GenerateCourseCodeModalComponent
   ],
   entryComponents: [
     LanguageSelectPage,
@@ -141,7 +143,8 @@ export function createTranslateLoader(http: HttpClient) {
     EditTeacherModalComponent,
     EditSchoolModalComponent,
     EditStaffModalComponent,
-    CodeGeneratorPage
+    CodeGeneratorPage,
+    GenerateCourseCodeModalComponent
   ],
   imports: [
     BrowserModule,

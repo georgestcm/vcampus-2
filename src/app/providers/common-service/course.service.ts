@@ -86,4 +86,13 @@ export class CourseService {
   removeCourse(id){
     return this._httpClient.authDelete("api/course/delete/" + id);
   }
+
+  saveCourseCode(data) {
+    
+    return this._httpClient.authPost("api/generate_course_code", data);
+  }
+
+  getAllCourseCode() {
+    return this._httpClient.authGet("api/get_all_course_code");
+  }
 }

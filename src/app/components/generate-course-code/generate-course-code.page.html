@@ -1,9 +1,66 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
     <ion-title>Generate Course Code</ion-title>
-  </ion-toolbar>
+    </ion-buttons>
 </ion-header>
 
 <ion-content>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="add_role" (click)="showCourseCodeGeneratorModal()" >
+        <div class="add">
+          <p>Generate Course Code</p>
+          <ion-icon name="add"></ion-icon>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-10">
+      
+  <div class="table-responsive-sm" style="margin-top: 10px;">
+    <table class="table  table-bordered table-striped " >
+      <thead >
+      <tr class="table-primary">
+      <th>
+        #
+      </th>
+      <th style="width:20%">
+        Course Code
+      </th>
+      <th style="width:20%">
+        Valid From
+      </th>
+      <th style="width:22%">
+        Valid To
+      </th>
+      
+      <!-- <th>
+      </th> -->
+    </tr>
+  </thead>
+    <tr *ngFor="let code of courseCodeList; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{code.courseCode}}</td>
+      <td> {{code.courseCodeValidFrom}}</td>
+      <td>{{code.courseCodeValidTo}}</td>
 
+      <!-- <td>
+        <ion-buttons>
+        <button class="btn btn-sm btn-warning" [routerLink]="['add-course', {'id': course._id}]">
+          <ion-icon name="md-create"></ion-icon>
+        </button>
+        <button (click)="showModal(course);" class="btn btn-sm btn-success">
+          <ion-icon name="information-circle"></ion-icon>
+        </button>
+        <button (click)="deleteCourse(course._id);" class="btn btn-sm btn-danger">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-buttons>
+      </td> -->
+    </tr>
+    </table>
+  </div>
+  
+</div>
+</div>
 </ion-content>
