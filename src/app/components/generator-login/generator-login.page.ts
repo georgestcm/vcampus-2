@@ -157,7 +157,7 @@ export class GeneratorLoginPage implements OnInit {
     }
     switch(this.userRole){
       case 7:
-      this.router.navigate(['/gen-dashboard']);
+      this.router.navigate(['/generate-course-code']);
       break;
       default:
         this.router.navigate(['error']);
