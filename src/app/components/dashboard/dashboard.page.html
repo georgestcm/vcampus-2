@@ -5,7 +5,65 @@
   </ion-buttons>
 </ion-header>
 
-<ion-content>
-  
+<ion-content padding>
+
+  <div [style.display]="message != '' ? 'block' : 'none'"  class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="close" (click)="message=''" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="form-group row">
+        <label for="courseCode" class="col-sm-3 col-form-label">Enter Course Code</label>
+        <div class="col-sm-5">
+          <input type="text" [(ngModel)]="courseCode" class="form-control" id="courseCode" placeholder="Course Code">
+        </div>
+        <div class="col-sm-3">
+         <button class="btn btn-primary" (click)="onEnrollCourse()">Enroll Course</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive-sm" style="margin-top: 10px;">
+    <table class="table  table-bordered table-striped " >
+      <thead >
+      <tr class="table-primary">
+      <th>
+        #
+      </th>
+      <th style="width:20%">
+        Course Code
+      </th>
+      <th style="width:20%">
+        Course Name
+      </th>
+      <th style="width:20%">
+        Valid From
+      </th>
+      <th style="width:22%">
+        Valid To
+      </th>
+      
+       
+    </tr>
+  </thead>
+    <tr *ngFor="let code of courseList; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{code.courseCode}}</td>
+      <td>{{code.course?.name}}</td>
+      <td> {{code.courseCodeValidFrom | date :'dd-MM-yyyy'}}</td>
+      <td>{{code.courseCodeValidTo |date :'dd-MM-yyyy'}}</td>
+
+     
+    </tr>
+    </table>
+  </div>
+
 
 </ion-content>

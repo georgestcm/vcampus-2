@@ -88,11 +88,18 @@ export class CourseService {
   }
 
   saveCourseCode(data) {
-    
     return this._httpClient.authPost("api/generate_course_code", data);
   }
 
   getAllCourseCode() {
     return this._httpClient.authGet("api/get_all_course_code");
+  }
+
+  enrollStudentForCourse(data) {
+    return this._httpClient.authPut("api/student_course_enrollment", data);
+  }
+
+  getAllEnrolledCourse(studentId) {
+    return this._httpClient.authGet("api/get_all_enrolled_course/"+studentId);
   }
 }

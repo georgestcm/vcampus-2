@@ -28,11 +28,11 @@
       <div class="card" style="width: 100%; margin-top:10px;">
         <img src="https://leverageedu.com/blog/wp-content/uploads/2019/10/BBA-MBA-Integrated-Course.png" class="card-img-top" alt="...">
         <div class="card-body" style="height: 100px;">
-          <h5 class="card-title">{{course.name}}</h5>
-          <p class="card-text">{{(course.description.length>55)? (course.description | slice:0:55)+'...':(course.description)}}</p>
+          <h5 class="card-title">{{course.course?.name}}</h5>
+          <p class="card-text">{{(course.course?.description.length>55)? (course.course?.description | slice:0:55)+'...':(course.course?.description)}}</p>
         </div>
         <div class="card-body">
-          <button (click)="onClickStartLearning(course._id)" class="btn btn-sm btn-success">Start Learning</button>        
+          <button (click)="onClickStartLearning(course.course?._id)" class="btn btn-sm btn-success">Start Learning</button>        
         </div>
       </div>
     </div>

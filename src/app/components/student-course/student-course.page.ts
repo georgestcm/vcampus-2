@@ -14,13 +14,20 @@ export class StudentCoursePage implements OnInit {
   showLoading : boolean = false;
   userRole : number;
   searchText : string ="";
+  studentId : string;
   constructor(private router : Router, private courseService : CourseService, private storage: Storage,) { }
 
   ngOnInit() {
     this.storage.get("role").then(res => {
       this.userRole = res !=null ? res :0;
     });
-    this.loadAllCourse();
+
+    this.storage.get("user").then(res => {
+      this.studentId = res._id;
+      this.getAllEnrolledCourse();
+    });
+
+    //this.loadAllCourse();
   }
   onClickStartLearning(id){
     switch(this.userRole){
@@ -73,5 +80,15 @@ export class StudentCoursePage implements OnInit {
     });
   }
 
+  getAllEnrolledCourse(){
+   
+    this.courseService.getAllEnrolledCourse(this.studentId).subscribe( res =>{
+      console.log(res);
+      this.courseList = res;
+    },err =>{
+      console.log(err);
+     // this.message = err.error.msg;
+    })
+  }
   
 }

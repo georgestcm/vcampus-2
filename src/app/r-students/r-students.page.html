@@ -20,10 +20,10 @@
       <ion-item lines="none" [routerLink]="['/rstudents/chat']">
           <ion-icon name="chatboxes"></ion-icon>Messages
       </ion-item>
-      <ion-item lines="none" [routerLink]="['/rstudents/chat']">
+      <ion-item lines="none" [routerLink]="['/rstudents/usersandgroup']">
           <ion-icon name="chatboxes"></ion-icon>Group Chat
       </ion-item>
-      <ion-item lines="none" (click)="toCourseList()">
+      <ion-item lines="none" [routerLink]="['/rstudents/student-course']">
         <ion-icon name="book"></ion-icon>courses
       </ion-item>
       <ion-item lines="none" (click)="toTakeQuiz()">
