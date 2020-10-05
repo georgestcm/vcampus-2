@@ -11,6 +11,7 @@ import { GenerateCourseCodeModalComponent } from '../generate-course-code-modal/
 export class GenerateCourseCodePage implements OnInit {
 
   courseCodeList : any;
+  showLoading : boolean = false;
   constructor(private modalController :  ModalController, private courseService : CourseService) { }
 
   ngOnInit() {
@@ -30,10 +31,13 @@ export class GenerateCourseCodePage implements OnInit {
   }
 
   getAllCourseCode(){
+    this.showLoading=true;
     this.courseService.getAllCourseCode().subscribe(data =>{
    this.courseCodeList = data;
+   this.showLoading=false;
     },err =>{
-  
+      console.log(err);
+      this.showLoading=false;
     });
   }
 
