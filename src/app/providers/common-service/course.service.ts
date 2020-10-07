@@ -19,15 +19,11 @@ export class CourseService {
   ) {}
 
   getCurriculumList(id) {
-    return this.http.get<any>(this.getCurList, {
-      params: {
-        _id: id,
-      },
-    });
+    return this._httpClient.authGet("api/get_curriculam_by_school/"+id);
   }
 
   postCur(data) {
-    return this.http.post<any>(this.postCurList, data);
+    return this._httpClient.authPost("api/save_curriculam", data);
   }
 
   createNewTeacher(data, id) {

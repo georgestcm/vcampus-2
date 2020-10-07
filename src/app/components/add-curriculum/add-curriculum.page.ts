@@ -15,15 +15,16 @@ export class AddCurriculumPage implements OnInit {
     private _course: CourseService, private modalController : ModalController) { }
   error;
   myCurrentSchoolId;
-  curList = []
-  addCur = {
-    _id: '',
+  curList: any;
+  curriculamModel = {
+    school: '',
     curriculum: ''
   }
   ngOnInit() {
     this.storage.get('user').then((val) => {
       this.myCurrentSchoolId = val._id;
       this.getCurr(val._id)
+      
     })
   }
 
@@ -35,29 +36,32 @@ export class AddCurriculumPage implements OnInit {
   getCurr(id) {
     this._course.getCurriculumList(id)
       .subscribe(
-        res => (
-          this.curList.push(res)
-        ),
+        res => {
+          this.curList = res;
+          console.log(res);
+          //this.curList.push(res)
+        },
         err => (
           console.log(err)
         )
       )
   }
 
-  addCurr() {
-    this.addCur._id = this.myCurrentSchoolId
-    if (this.addCur.curriculum.length === 0) {
+  saveCurriculam() {
+    this.curriculamModel.school = this.myCurrentSchoolId
+    if (this.curriculamModel.curriculum.length === 0) {
       this.error = "Please write a curriculum"
     } else {
-      this.addCur.curriculum.trim().charAt(0).toUpperCase()
-      this._course.postCur(this.addCur)
+      this.curriculamModel.curriculum.trim().charAt(0).toUpperCase()
+      this._course.postCur(this.curriculamModel)
         .subscribe(
           res => (
             this.getCurr(this.myCurrentSchoolId),
             console.log(res)
           ),
           err => (
-            this.error = err.error
+            this.error = err.error,
+            console.log(this.error)
           )
         )
     }
