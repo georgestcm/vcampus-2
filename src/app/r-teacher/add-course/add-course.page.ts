@@ -265,8 +265,13 @@ export class AddCoursePage implements OnInit {
     this.curriculumList =[];
     this.courseModel.school = value;
     if(value != ""){     
-       const list = this.schoolList.find(a => a.school._schoolId==value).school;
-       this.curriculumList = list.curriculums;
+      this.courseService.getCurriculumList(value).subscribe( res =>{
+        this.curriculumList = res;
+      },err =>{
+        console.log('Error while getting curriculam');
+      })
+      //  const list = this.schoolList.find(a => a.school._schoolId==value).school;
+      //  this.curriculumList = list.curriculums;
     }    
   }
   

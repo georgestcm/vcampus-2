@@ -12,14 +12,14 @@ export class GenerateCourseCodeModalComponent implements OnInit {
   courseCodeModal = {
     courseCode: "",
     school: "",
-    course: "",
+    curriculum: "",
     courseCodeValidFrom: "",
     courseCodeValidTo: "",
   };
   schoolList: [];
-  courseList: [];
+  curriculumList: [];
   loadingSchool = "Loading School...";
-  loadingCourse = "--Select Course---";
+  loadingCourse = "--Select Curriculum---";
   courseCodeList: any;
 
   constructor(
@@ -40,14 +40,14 @@ export class GenerateCourseCodeModalComponent implements OnInit {
       }
     );
 
-    this.getAllCourseCode();
+    //this.getAllCourseCode();
   }
 
   dismiss() {
     this.courseCodeModal = {
       courseCode: "",
       school: "",
-      course: "",
+      curriculum: "",
       courseCodeValidFrom: "",
       courseCodeValidTo: "",
     };
@@ -69,32 +69,34 @@ export class GenerateCourseCodeModalComponent implements OnInit {
     );
   }
 
-  getAllCourseCode() {
-    this.courseService.getAllCourseCode().subscribe(
-      (data) => {
-        this.courseCodeList = data;
-      },
-      (err) => {}
-    );
-  }
+  // getAllCourseCode() {
+  //   this.courseService.getAllCourseCode().subscribe(
+  //     (data) => {
+  //       console.log("getAllCourseCode");
+  //       this.courseCodeList = data;
+  //       console.log(data);
+  //     },
+  //     (err) => {}
+  //   );
+  // }
 
   onSchoolChange(schoolId) {
     console.log(schoolId);
-    this.loadingCourse = "Loading Course...";
-    this.courseService.getCourseBySchoolId(schoolId).subscribe(
+    this.loadingCourse = "Loading Curriculum...";
+    this.courseService.getCurriculumList(schoolId).subscribe(
       (res) => {
         console.log(res);
-        this.courseList = res;
-        this.loadingCourse = "---Select Course---";
+        this.curriculumList = res;
+        this.loadingCourse = "---Select Curriculum---";
       },
       (err) => {
         console.log(err);
-        this.loadingCourse = "Loading Course...";
+        this.loadingCourse = "Loading Curriculum...";
       }
     );
   }
 
-  onCourseChange(id) {
+  onCurriculumChange(id) {
     this.courseCodeModal.courseCode = Math.random().toString(36).substr(2, 7);
   }
 }

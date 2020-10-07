@@ -42,8 +42,8 @@
              [(ngModel)]="courseModel.curriculum" id="ddlCurriculum" 
              (change)="onCurriculumChange($event.target.value)">
               <option value="">--Choose curriculum--</option>
-              <option *ngFor="let curr of curriculumList" value={{curr}}>
-                {{curr}}
+              <option *ngFor="let curr of curriculumList" value={{curr._id}}>
+                {{curr.curriculum}
               </option>
             </select>
           </div>

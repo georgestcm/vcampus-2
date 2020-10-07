@@ -34,6 +34,7 @@ export class GenerateCourseCodePage implements OnInit {
     this.showLoading=true;
     this.courseService.getAllCourseCode().subscribe(data =>{
    this.courseCodeList = data;
+   console.log(data);
    this.showLoading=false;
     },err =>{
       console.log(err);
