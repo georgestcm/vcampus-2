@@ -91,6 +91,7 @@ export class AddCoursePage implements OnInit {
       this.userId = val._id;
       this.courseService.getSchoolsByTeacherId(this.userId).subscribe(res =>{  
         this.schoolList = res;
+        console.log(res);
         this.courseService.getMediaByUserId(this.userId).subscribe(res =>{
           res.forEach(element => {
             this.mediaList.push({title :element.title, value : this.fileURL+"/"+ element.fileName});
@@ -267,6 +268,7 @@ export class AddCoursePage implements OnInit {
     if(value != ""){     
       this.courseService.getCurriculumList(value).subscribe( res =>{
         this.curriculumList = res;
+        console.log(res);
       },err =>{
         console.log('Error while getting curriculam');
       })

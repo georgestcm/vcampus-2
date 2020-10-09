@@ -69,6 +69,10 @@ export class CoursesListPage implements OnInit {
     }
   }
   onClickFind(){
+    if(this.schoolId == undefined){
+      alert("Please choose school to continue.");
+      return;
+    }
     this.showLoading = true;
     if(this.role == 5){
     this.courseService.getCourseBySchoolId(this.schoolId).subscribe( (data) => {
