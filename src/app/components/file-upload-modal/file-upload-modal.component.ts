@@ -3,6 +3,7 @@ import { ModalController, NavParams } from '@ionic/angular';
 import {  FileUploader, FileItem } from 'ng2-file-upload';
 import { environment } from 'src/environments/environment';
 import { HttpClientService } from 'src/app/providers/http-client.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-file-upload-modal',
@@ -26,7 +27,7 @@ export class FileUploadModalComponent implements OnInit {
   userId = "";
   mediaList: Array<any> = [];
   fileURL : string="";
-  constructor(private modalController: ModalController, 
+  constructor(public translate: TranslateService,private modalController: ModalController, 
     private navParams: NavParams, private http: HttpClientService) {
     //console.log(navParams.get('courseData'));
     this.courseData = navParams.get('courseData');
@@ -41,7 +42,7 @@ export class FileUploadModalComponent implements OnInit {
     this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
       console.log("ImageUpload:uploaded:", item, status, response);
-      console.log(response);  
+      console.log(response);
       this.mediaList.push({fileName : this.fileURL+"/"+response});
       this.fileUploaded =true;
       if(status ==200){
@@ -78,7 +79,7 @@ onTopicChange(id){
     console.log(this.topicList[i].paragraph);
     for(let j=0; j< this.topicList[i].paragraph.length; j++){
       this.paragraphList.push(this.topicList[i].paragraph[j]);
-    }  
+    }
    }
  }
 }
@@ -116,7 +117,7 @@ onUploadMedia(){
   this.uploader.uploadAll();
   this.fileName="";
 }
-onFileChange(event) {    
+onFileChange(event) {
   this.fileName = event.target.files[0].name;
 }
 }
