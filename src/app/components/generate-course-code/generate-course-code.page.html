@@ -1,7 +1,7 @@
 <ion-header>
   <ion-buttons slot="start">
     <ion-menu-button></ion-menu-button>
-    <ion-title>Generate Course Code</ion-title>
+    <ion-title>{{'Generate_course_code.title' | translate}}</ion-title>
     </ion-buttons>
 </ion-header>
 
@@ -12,19 +12,19 @@
     </div>
     <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
   </div>
-  
+
   <div class="row">
     <div class="col-md-2">
       <div class="add_role" (click)="showCourseCodeGeneratorModal()" >
         <div class="add">
-          <p>Generate Course Code</p>
+          <p>{{'Generate_course_code.title' | translate}}</p>
           <ion-icon name="add"></ion-icon>
         </div>
     </div>
-    
+
     </div>
     <div class="col-md-10">
-      
+
   <div class="table-responsive-sm" style="margin-top: 10px;">
     <table class="table  table-bordered table-striped " >
       <thead >
@@ -33,18 +33,18 @@
         #
       </th>
       <th style="width:20%">
-        Curriculum
+        {{'Generate_course_code.curriculum' | translate}}
       </th>
       <th style="width:20%">
-        Course Code
+        {{'Generate_course_code.course_code' | translate}}
       </th>
       <th style="width:20%">
-        Valid From
+        {{'Generate_course_code.valid_from' | translate}}
       </th>
       <th style="width:22%">
-        Valid To
+        {{'Generate_course_code.valid_to' | translate}}
       </th>
-      
+
       <!-- <th>
       </th> -->
     </tr>
@@ -58,7 +58,7 @@
     </tr>
     </table>
   </div>
-  
+
 </div>
 </div>
 </ion-content>

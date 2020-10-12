@@ -7,7 +7,7 @@
       <div class="account_info">
         <h6>{{currentGenerator?.first_name}} {{currentGenerator?.last_name}}</h6>
         <p>
-          <ion-icon name="person"></ion-icon>Student
+          <ion-icon name="person"></ion-icon>{{'Gen_dashboard.student' | translate}}
         </p>
       </div>
     </div>
@@ -15,15 +15,15 @@
   <ion-content>
     <ion-list>
       <ion-item lines="none"  [routerLink]="['/gen-dashboard']">
-        <ion-icon name="stats"></ion-icon>Dashboard
+        <ion-icon name="stats"></ion-icon>{{'Gen_dashboard.dashboard' | translate}}
       </ion-item>
 
       <ion-item lines="none"  [routerLink]="['/generate-course-code']">
-        <ion-icon name="stats"></ion-icon>Generate Code
+        <ion-icon name="stats"></ion-icon>{{'Gen_dashboard.generate_code' | translate}}
       </ion-item>
-      
+
       <ion-item lines="none" (click)="logoutUser()">
-        <ion-icon name="log-out"></ion-icon>Log out
+        <ion-icon name="log-out"></ion-icon>{{'Gen_dashboard.log_out' | translate}}
       </ion-item>
     </ion-list>
   </ion-content>

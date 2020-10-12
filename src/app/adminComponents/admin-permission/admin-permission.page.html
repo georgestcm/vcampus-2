@@ -1,43 +1,44 @@
 <ion-header>
     <ion-buttons slot="start">
     <ion-menu-button></ion-menu-button>
-    <ion-title>Permissions</ion-title>
+    <ion-title>{{'Permissions.permission' | translate}}</ion-title>
     </ion-buttons>
 </ion-header>
 <ion-content>
   <div class="add_role" [hidden]="adminOrNot">
     <div class="add">
-      <p>Add admin staff</p>
+      <p>{{'Permissions.add_admin_staff' | translate}}</p>
       <ion-icon (click)="addStaffAdmin()" name="add"></ion-icon>
     </div>
   </div>
   <div class="add_role" [hidden]="adminOrNot">
     <div class="add">
-      <p>Add a school</p>
+      <p>{{'Permissions.add_a_school' | translate}}</p>
       <ion-icon (click)="addSchoolAdmin()" name="add"></ion-icon>
     </div>
   </div>
   <div class="add_role" [hidden]="adminOrNot">
     <div class="add">
-      <p>Code generator</p>
+      <p>{{'Permissions.code_generator' | translate}}
+        </p>
       <ion-icon (click)="addCodeGenerator()" name="add"></ion-icon>
     </div>
   </div>
   <div class="add_role" (click)="AddStaffSchool()" [hidden]="!adminOrNot">
     <div class="add">
-      <p>Add a staff</p>
+      <p>{{'Permissions.add_a_staff' | translate}}</p>
       <ion-icon name="add"></ion-icon>
     </div>
   </div>
   <div class="add_role" (click)="addTeacher()" [hidden]="!adminOrNot">
     <div class="add">
-      <p>Add a teacher</p>
+      <p>{{'Permissions.add_a_teacher' | translate}}</p>
       <ion-icon name="add"></ion-icon>
     </div>
   </div>
   <div class="add_role" (click)="addCurriculum()" [hidden]="!adminOrNot">
     <div class="add">
-      <p>Curriculum</p>
+      <p>{{'Permissions.curriculum' | translate}}</p>
       <ion-icon name="add"></ion-icon>
     </div>
   </div>

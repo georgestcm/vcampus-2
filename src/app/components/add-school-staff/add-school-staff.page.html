@@ -1,7 +1,7 @@
 <ion-header>
   <div class="logo">
     <img src="assets/vcampus.png" alt="app logo">
-    <p>Add a school staff</p>
+    <p>{{'Add_school_staff.title' | translate}}</p>
   </div>
 </ion-header>
 
@@ -9,10 +9,10 @@
   <div class="error">
     <p>{{error}}</p>
   </div>
-  <ion-label>USERNAME</ion-label>
+  <ion-label>{{'Add_school_staff.username' | translate}}</ion-label>
   <ion-input type="name" [(ngModel)]="username" required></ion-input>
   <div>
-  <ion-button>ADD STAFF</ion-button><br>
-  <ion-button color="danger" (click)="dismiss()">Close</ion-button>
+  <ion-button>{{'Add_school_staff.add_staff' | translate}}</ion-button><br>
+  <ion-button color="danger" (click)="dismiss()">{{'Add_school_staff.close' | translate}}</ion-button>
 </div>
 </ion-content>

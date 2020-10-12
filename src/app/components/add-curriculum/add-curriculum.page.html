@@ -1,7 +1,7 @@
 <ion-header>
   <div class="logo">
     <img src="assets/vcampus.png" alt="app logo">
-    <p>Add a curriculum</p>
+    <p>{{'Add_curriculum.title' | translate }}</p>
   </div>
 </ion-header>
 
@@ -10,13 +10,13 @@
     <p>{{error}}</p>
   </div>
   <ng-template #elseTemplate>
-    <p>This school has no curriculum</p>
+    <p>This school has no curriculum{{'Add_curriculum.noCur' | translate }}</p>
  </ng-template>
   <ng-container class="curriculum_list" *ngIf="curList !==null; else elseTemplate">
-    <h3>Curriculum list</h3>
+    <h3>{{'Add_curriculum.curList' | translate }}</h3>
     <ion-item *ngFor="let curriculum of curList" lines="full"> {{curriculum.curriculum}} </ion-item>
   </ng-container>
   <ion-input type="name" [(ngModel)]="curriculamModel.curriculum" required></ion-input>
-  <ion-button  (click)="saveCurriculam()">ADD CURRICULUM</ion-button>
-  <ion-button (click)="dismiss()" color="danger">Close</ion-button>
+  <ion-button  (click)="saveCurriculam()">{{'Add_curriculum.addCur' | translate }}</ion-button>
+  <ion-button (click)="dismiss()" color="danger">{{'Add_curriculum.close' | translate }}</ion-button>
 </ion-content>

@@ -1,19 +1,19 @@
 <div class="card">
     <div class="card-header">
-        Course Detail
+        Course Detail {{'Course_detail_modal.title' | translate}}
         <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
     </div>
     <div class="card-body" style="height:400px;overflow: auto !important;">
         <div >
-            <div><b>Curriculum: </b>{{courseData.curriculum}}</div>
+            <div><b>{{'Course_detail_modal.curriculum' | translate}}: </b>{{courseData.curriculum}}</div>
         <div *ngFor="let section of courseData.sections">
-            <div><b>Section: </b>{{section.section_name}}</div>
+            <div><b>{{'Course_detail_modal.section' | translate}}: </b>{{section.section_name}}</div>
             <div *ngFor="let chapter of section.chapters">
-                <div style="margin-left: 5%;"><b>Chapter: </b>{{chapter.chapter_name}}</div>
+                <div style="margin-left: 5%;"><b>{{'Course_detail_modal.chapter' | translate}}: </b>{{chapter.chapter_name}}</div>
                 <div *ngFor="let topic of chapter.topics">
-                    <div style="margin-left: 10%;"><b>Topic: </b>{{topic.topic_name}}</div>
+                    <div style="margin-left: 10%;"><b>{{'Course_detail_modal.topic' | translate}}: </b>{{topic.topic_name}}</div>
                     <div *ngFor="let paragraph of topic.paragraph">
-                        <div style="margin-left: 15%;"><b>Paragraph: </b>
+                        <div style="margin-left: 15%;"><b>{{'Course_detail_modal.paragraph' | translate}}: </b>
                             <div style="border: 1px solid #123456; padding: 5px;">
                             <div [innerHTML]="paragraph.paragraphName"></div>
                         </div>

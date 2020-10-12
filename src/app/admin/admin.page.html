@@ -6,7 +6,7 @@
       </div>
       <div class="account_info">
         <h6>{{userName.first_name}} {{userName.last_name}}</h6>
-        <p><ion-icon name="person"></ion-icon>Admin</p>
+        <p><ion-icon name="person"></ion-icon>{{'Admin.admin' | translate}}</p>
       </div>
     </div>
   </ion-header>
@@ -16,33 +16,33 @@
         <div><ion-icon name="chatboxes"></ion-icon>Messages</div></ion-item
       > -->
       <ion-item lines="none" [routerLink]="['/admin/chat']"
-        ><ion-icon name="chatboxes"></ion-icon>Messages</ion-item
+        [hidden]=true><ion-icon name="chatboxes"></ion-icon>{{'Admin.Messages' | translate}}</ion-item
       >
 
       <ion-item lines="none" [routerLink]="['/admin/usersandgroup']"
-        ><ion-icon name="chatboxes"></ion-icon>Group Chat</ion-item
+        [hidden]=true><ion-icon name="chatboxes"></ion-icon>{{'Admin.Group_chat' | translate}}</ion-item
       >
 
       <ion-item lines="none" [routerLink]="['/admin/school-list']"
-        ><ion-icon name="home"></ion-icon>Schools</ion-item
+        ><ion-icon name="home"></ion-icon>{{'Admin.Schools' | translate}}</ion-item
       >
       <ion-item lines="none" [routerLink]="['/admin/staff-list']"
-        ><ion-icon name="person"></ion-icon>School Staff</ion-item
+        ><ion-icon name="person"></ion-icon>{{'Admin.School_Staff' | translate}}</ion-item
       >
       <ion-item lines="none" [routerLink]="['/admin/student-list']"
-        ><ion-icon name="people"></ion-icon>Students</ion-item
+        ><ion-icon name="people"></ion-icon>{{'Admin.Students' | translate}}</ion-item
       >
       <ion-item lines="none" [routerLink]="['/admin/teacher-list']"
-        ><ion-icon name="person"></ion-icon>Teachers</ion-item
+        ><ion-icon name="person"></ion-icon>{{'Admin.Teachers' | translate}}</ion-item
       >
       <ion-item lines="none" [routerLink]="['/admin/courses-list']"
-        ><ion-icon name="book"></ion-icon>courses</ion-item
+        ><ion-icon name="book"></ion-icon>{{'Admin.courses' | translate}}</ion-item
       >
       <ion-item lines="none" [routerLink]="['/admin/permissions']"
-        ><ion-icon name="key"></ion-icon>Permissions</ion-item
+        ><ion-icon name="key"></ion-icon>{{'Admin.Permissions' | translate}}</ion-item
       >
       <ion-item lines="none" [routerLink]="['']" (click)="logoutUser()"
-        ><ion-icon name="log-out"></ion-icon>Log out</ion-item
+        ><ion-icon name="log-out"></ion-icon>{{'Admin.Log_out' | translate}}</ion-item
       >
     </ion-list>
   </ion-content>

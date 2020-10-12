@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-      File Upload
+      {{'File_upload_modal.title' | translate}}
       <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
   </div>
   <div class="card-body" style="height:400px;overflow: auto !important;">
@@ -14,7 +14,7 @@
       <div class="input-group-prepend">
         <label class="input-group-text" for="ddlParagraph">Choose Paragraph</label>
       </div>
-      <select class="custom-select" name="topicsDropdown"  id="ddlParagraph" 
+      <select class="custom-select" name="topicsDropdown"  id="ddlParagraph"
       (change)="onTopicChange($event.target.value)">
         <option value="">--Choose Topic--</option>
         <option *ngFor="let topic of topicList" value={{topic._id}}>
@@ -27,7 +27,7 @@
       <div class="input-group-prepend">
         <label class="input-group-text" for="ddlParagraph">Choose Paragraph</label>
       </div>
-      <select class="custom-select" name="paragraphDropdown" id="ddlParagraph" 
+      <select class="custom-select" name="paragraphDropdown" id="ddlParagraph"
       (change)="onParagraphChange($event.target.value)">
         <option value="">--Choose Paragraph--</option>
         <option *ngFor="let paragraph of paragraphList" value={{paragraph._id}}>
@@ -37,27 +37,27 @@
     </div> -->
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <label class="input-group-text" for="title">Media Title*</label>
+        <label class="input-group-text" for="title">{{'File_upload_modal.media_title' | translate}}*</label>
       </div>
       <input type="text" class="form-control" name="title" [(ngModel)]="title">
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupFileAddon01">Add Media*</span>
+        <span class="input-group-text" id="inputGroupFileAddon01">{{'File_upload_modal.add_media' | translate}}*</span>
       </div>
       <div class="custom-file">
         <input type="file" (change)="onFileChange($event)" class="custom-file-input" name="file" ng2FileSelect [uploader]="uploader" >
-        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        <label class="custom-file-label" for="inputGroupFile01">{{'File_upload_modal.choose_file' | translate}}</label>
       </div>
       <div class="input-group-append">
-      <button class="btn btn-primary" type="button" (click)="onUploadMedia();" 
-        [disabled]="!uploader.getNotUploadedItems().length && title">Upload</button>
+      <button class="btn btn-primary" type="button" (click)="onUploadMedia();"
+        [disabled]="!uploader.getNotUploadedItems().length && title">{{'File_upload_modal.upload' | translate}}</button>
       </div>
     </div>
     <div class="input-group mb-3">
       <ion-label *ngIf="fileName.length>0">
         <ion-icon ios="ios-attach" md="md-attach"></ion-icon>{{fileName}}
-      </ion-label> 
+      </ion-label>
     </div>
     <table class="table" *ngIf="mediaList.length>0">
       <tr *ngFor="let m of mediaList; let i=index">
@@ -69,25 +69,25 @@
 
     <div *ngIf="showUploading">
       <div class="spinner-grow text-primary" role="status">
-        <span class="sr-only">Uploading...</span>
+        <span class="sr-only">{{'File_upload_modal.uploading' | translate}}</span>
       </div>
       <div class="spinner-grow text-secondary" role="status">
-        <span class="sr-only">Uploading...</span>
+        <span class="sr-only">{{'File_upload_modal.uploading' | translate}}</span>
       </div>
       <div class="spinner-grow text-success" role="status">
-        <span class="sr-only">Uploading...</span>
+        <span class="sr-only">{{'File_upload_modal.uploading' | translate}}</span>
       </div>
       <div class="spinner-grow text-danger" role="status">
-        <span class="sr-only">Uploading...</span>
+        <span class="sr-only">{{'File_upload_modal.uploading' | translate}}</span>
       </div>
       <div class="spinner-grow text-warning" role="status">
-        <span class="sr-only">Uploading...</span>
+        <span class="sr-only">{{'File_upload_modal.uploading' | translate}}</span>
       </div>
       <div class="spinner-grow text-info" role="status">
-        <span class="sr-only">Uploading...</span>
+        <span class="sr-only">{{'File_upload_modal.uploading' | translate}}</span>
       </div>
       <div class="spinner-grow text-dark" role="status">
-        <span class="sr-only">Uploading...</span>
+        <span class="sr-only">{{'File_upload_modal.uploading' | translate}}</span>
       </div>
     </div>
 
