@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.page.html',
@@ -10,7 +11,7 @@ export class ContactPage implements OnInit {
   mailSent : boolean = false;
   message : string ="";
   mailModel : any ={};
-  constructor(public alertController: AlertController) { }
+  constructor(public alertController: AlertController,public translate: TranslateService) { }
 
   ngOnInit() {
   }

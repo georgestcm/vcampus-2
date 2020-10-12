@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-school-staff',
@@ -8,7 +9,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class AddSchoolStaffPage implements OnInit {
 
-  constructor(private modalController : ModalController) { }
+  constructor(private modalController : ModalController,public translate: TranslateService) { }
  error;
  username;
   ngOnInit() {

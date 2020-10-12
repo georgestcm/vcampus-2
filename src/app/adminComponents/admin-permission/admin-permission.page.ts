@@ -3,6 +3,7 @@ import { AddSchoolPage } from 'src/app/components/add-school/add-school.page';
 import { AddStaffPage } from 'src/app/components/add-staff/add-staff.page';
 import { ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { TranslateService } from '@ngx-translate/core';
 import { AddCurriculumPage } from 'src/app/components/add-curriculum/add-curriculum.page'
 import { AddSchoolStaffPage } from 'src/app/components/add-school-staff/add-school-staff.page'
 import { AddTeacherPage } from 'src/app/components/add-teacher/add-teacher.page'
@@ -15,7 +16,7 @@ import { CodeGeneratorPage } from 'src/app/components/code-generator/code-genera
 export class AdminPermissionPage implements OnInit {
 
   constructor(public modalController: ModalController,
-    private storage: Storage) { }
+    private storage: Storage,public translate: TranslateService) { }
 
   adminOrNot;
   ngOnInit() {
@@ -24,7 +25,6 @@ export class AdminPermissionPage implements OnInit {
         this.adminOrNot = true;
       } else {
         this.adminOrNot = false;
-        console.log('not seen')
       }
     });
   }

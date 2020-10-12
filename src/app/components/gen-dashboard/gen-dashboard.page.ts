@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
-
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-gen-dashboard',
   templateUrl: './gen-dashboard.page.html',
@@ -11,7 +11,7 @@ export class GenDashboardPage implements OnInit {
 
   public userData: any;
   public currentGenerator: any;
-  constructor(private router: Router, private storage: Storage) { }
+  constructor(public translate: TranslateService,private router: Router, private storage: Storage) { }
 
   ngOnInit() {
     this.storage.get('user').then((val) => {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { TeacherService } from '../teacher-list/teacher.service';
 import { AuthService } from 'src/app/providers/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-school-modal',
@@ -21,8 +22,8 @@ export class EditSchoolModalComponent implements OnInit {
   };
   showProgress : boolean =false;
 
-  constructor(private modalController: ModalController, 
-      private navParams: NavParams, public _auth: AuthService) { 
+  constructor(public translate: TranslateService,private modalController: ModalController, 
+      private navParams: NavParams, public _auth: AuthService) {
     this.schoolData = navParams.get('schoolData');
     console.log(this.schoolData);
     this.schoolModel ={
@@ -43,7 +44,7 @@ export class EditSchoolModalComponent implements OnInit {
 }
 
 onClickSave(){
- 
+
   if(this.schoolModel.principal_first_name =="" || this.schoolModel.principal_last_name =="" || this.schoolModel.school_name==null || this.schoolModel.description==null){
     alert("All fields are required!");
     return;

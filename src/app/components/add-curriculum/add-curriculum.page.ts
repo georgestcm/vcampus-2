@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { TranslateService } from '@ngx-translate/core';
 import { CourseService } from 'src/app/providers/common-service/course.service';
 
 
@@ -12,7 +13,7 @@ import { CourseService } from 'src/app/providers/common-service/course.service';
 export class AddCurriculumPage implements OnInit {
 
   constructor(private storage: Storage,
-    private _course: CourseService, private modalController : ModalController) { }
+    private _course: CourseService,public translate: TranslateService, private modalController : ModalController) { }
   error;
   myCurrentSchoolId;
   curList: any;
@@ -24,7 +25,7 @@ export class AddCurriculumPage implements OnInit {
     this.storage.get('user').then((val) => {
       this.myCurrentSchoolId = val._id;
       this.getCurr(val._id)
-      
+
     })
   }
 

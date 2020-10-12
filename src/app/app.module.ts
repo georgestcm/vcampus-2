@@ -84,7 +84,7 @@ import { GenerateCourseCodeModalComponent } from './components/generate-course-c
 
 const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
 
-export function createTranslateLoader(http: HttpClient) {
+export function CreateTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
 
@@ -164,7 +164,7 @@ export function createTranslateLoader(http: HttpClient) {
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: createTranslateLoader,
+        useFactory: CreateTranslateLoader,
         deps: [HttpClient],
       },
     }),

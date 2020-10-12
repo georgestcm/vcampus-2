@@ -5,6 +5,7 @@ import { ModalController } from '@ionic/angular';
 import { CourseDetailModalComponent } from '../course-detail-modal/course-detail-modal.component';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/providers/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.page.html',
@@ -12,7 +13,7 @@ import { AuthService } from 'src/app/providers/auth.service';
 })
 export class CoursesListPage implements OnInit {
 
-  constructor(private storage: Storage, private courseService : CourseService,
+  constructor(public translate: TranslateService,private storage: Storage, private courseService : CourseService,
     private modalController: ModalController, private router: Router, private _auth : AuthService) { }
   addCourseOrnot;
   courseList : Array<any>=[];
@@ -29,7 +30,7 @@ export class CoursesListPage implements OnInit {
     } else {
       this.addCourseOrnot = true;
     }
-  
+
  if(this.role == 5){
   this.storage.get('user').then((val) => {
     this.courseService.getSchoolsByTeacherId(val._id).subscribe(res =>{
@@ -37,7 +38,7 @@ export class CoursesListPage implements OnInit {
     }, err => {
       console.log(err);
     })
-  }); 
+  });
 } else {
   this._auth.getAllSchools().subscribe(res => {
     console.log(res);

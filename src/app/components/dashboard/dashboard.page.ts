@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CourseService } from 'src/app/providers/common-service/course.service';
 import { Storage } from '@ionic/storage';
 import { DatePipe } from '@angular/common'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +18,7 @@ export class DashboardPage implements OnInit {
   courseCodeResponse : any;
   courseList : any;
 
-  constructor(private storage: Storage, private courseService : CourseService, private datepipe: DatePipe) { }
+  constructor(public translate: TranslateService,private storage: Storage, private courseService : CourseService, private datepipe: DatePipe) { }
 
   ngOnInit() {
     this.storage.get('role').then((val) => {
@@ -27,8 +28,8 @@ export class DashboardPage implements OnInit {
   this.storage.get('user').then((val) => {
     this.studentId= val._id;
     this.getAllEnrolledCourse();
-  }); 
-   
+  });
+
 }
 
   onEnrollCourse(){
@@ -47,7 +48,7 @@ export class DashboardPage implements OnInit {
   }
 
   getAllEnrolledCourse(){
-   
+
     this.courseService.getAllEnrolledCourse(this.studentId).subscribe( res =>{
       console.log(res);
       this.courseList = res;

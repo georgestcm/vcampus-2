@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CourseService } from 'src/app/providers/common-service/course.service';
 import { GenerateCourseCodeModalComponent } from '../generate-course-code-modal/generate-course-code-modal.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-generate-course-code',
@@ -12,7 +13,7 @@ export class GenerateCourseCodePage implements OnInit {
 
   courseCodeList : any;
   showLoading : boolean = false;
-  constructor(private modalController :  ModalController, private courseService : CourseService) { }
+  constructor(public translate: TranslateService,private modalController :  ModalController, private courseService : CourseService) { }
 
   ngOnInit() {
     this.getAllCourseCode();
@@ -27,7 +28,7 @@ export class GenerateCourseCodePage implements OnInit {
     });
     return await modal.present();
 
-    
+
   }
 
   getAllCourseCode(){
