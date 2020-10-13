@@ -34,6 +34,7 @@ import { StudentCoursePage } from './components/student-course/student-course.pa
 import { StudentCourseViewPage } from './components/student-course-view/student-course-view.page';
 import { StaffListPage } from './components/staff-list/staff-list.page';
 import { GeneratorLoginPage } from './components/generator-login/generator-login.page';
+import { ExamPage } from './components/exam/exam.page';
 
 
 const routes: Routes = [
@@ -325,6 +326,11 @@ const routes: Routes = [
         component: DashboardPage,
         pathMatch: "full",
       },
+      {
+        path: "exam",
+        component: ExamPage,
+        pathMatch: "full",
+      },
 
     ],
   },
@@ -466,6 +472,11 @@ const routes: Routes = [
     path: 'generate-course-code',
     loadChildren: () => import('./components/generate-course-code/generate-course-code.module').then( m => m.GenerateCourseCodePageModule)
   },
+  {
+    path: 'exam',
+    loadChildren: () => import('./components/exam/exam.module').then( m => m.ExamPageModule)
+  },
+
 
 
 

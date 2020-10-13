@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header">
+      Add New Question
+      <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
+  </div>
+  <div class="card-body" style="height:400px;overflow: auto !important;">
+    <form #f="ngForm" class="form"
+    (ngSubmit)="onSubmit()" >
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"  id="inputGroupFileAddon01">School *</span>
+      </div>
+       <select class="custom-select" required name="schoolDropdown"  
+       [(ngModel)]="questionModal.school" id="ddlSchool" 
+       (change)="onSchoolChange($event.target.value)">
+        <option value="">{{loadingSchool}}</option>
+        <option *ngFor="let school of schoolList" value={{school._id}}>
+          {{school.school.school_name}}
+        </option>
+      </select>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"  id="inputGroupFileAddon01">Curriculum *</span>
+      </div>
+       <select class="custom-select" required name="courseDropdown"  
+       [(ngModel)]="questionModal.curriculum" id="ddlCourse" 
+       (change)="onCurriculumChange($event.target.value)">
+        <option value="">{{loadingCourse}}</option>
+        <option *ngFor="let curr of curriculumList" value={{curr._id}}>
+          {{curr.curriculum}}
+        </option>
+      </select>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"  id="inputGroupFileAddon01">Course Code *</span>
+      </div>
+      <input type="text" [(ngModel)]="questionModal.courseCode" name="courseCode"  readonly class="form-control">      
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"  id="inputGroupFileAddon01">Valid From *</span>
+      </div>
+      <input type="date" [(ngModel)]="questionModal.courseCodeValidFrom" name="validFrom"  class="form-control">      
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"  id="inputGroupFileAddon01">Valid To *</span>
+      </div>
+      <input type="date" name="validTo" [(ngModel)]="questionModal.courseCodeValidTo"  class="form-control">      
+    </div>
+
+    <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="Save Course Code" />
+    </form>
+</div>
+</div>

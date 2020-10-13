@@ -39,7 +39,7 @@ export class RTeacherPage implements OnInit {
     }
 
     toExamList(){
-      this.router.navigate(['rteacher/exam-list'])
+      this.router.navigate(['rteacher/exam'])
     }
 
     toGroupChat(){
