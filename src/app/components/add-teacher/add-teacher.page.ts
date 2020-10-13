@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { CourseService } from 'src/app/providers/common-service/course.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { CourseService } from 'src/app/providers/common-service/course.service';
 })
 export class AddTeacherPage implements OnInit {
 
-  constructor(private storage: Storage,
+  constructor(private storage: Storage,public translate: TranslateService,
     private _course: CourseService, private modalController : ModalController) { }
   error='';
   txtUserName ="";
@@ -89,8 +90,8 @@ export class AddTeacherPage implements OnInit {
     }
     this.error="";
     this.showLoading = true;
-    this._course.getAllTeacher(this.txtUserName).subscribe(res => 
-      { 
+    this._course.getAllTeacher(this.txtUserName).subscribe(res =>
+      {
         this.showLoading = false;
         if(res.length ==0){
           this.error = `No teacher found, for user ${this.txtUserName} !`;
@@ -100,7 +101,7 @@ export class AddTeacherPage implements OnInit {
         this.teacher_data.first_name = res[0].first_name;
         this.teacher_data.last_name = res[0].last_name;
         this.teacher_data.id = res[0]._id;
-      }, err=>{ 
+      }, err=>{
         this.error ="Something went wrong, while getting teacher!";
         console.log(err);
         this.showLoading = false;

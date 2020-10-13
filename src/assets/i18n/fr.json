@@ -1,5 +1,178 @@
 {
     "login": {
-        "username": "NOM D'UTILISATEUR"
+        "username": "NOM D'UTILISATEUR",
+        "password":"MOT DE PASSE",
+        "login":"S'IDENTIFIER",
+        "new_to_campus":"Nouveau sur Vcampus?",
+        "signUp":"S'inscrire maintenant",
+        "loginAs":"Se connecter en tant que",
+        "selectRole":"cliquez ici pour sélectionner le rôle",
+        "roles":["Admin","Éditeur","École","Personnel de l'école","Professeur","Étudiant"],
+        "modernizingText":"Moderniser l'éducation pour tous",
+        "aboutUs":"À PROPOS DE NOUS",
+        "contactUs":"NOUS CONTACTER",
+        "currentlyLogin":"Vous êtes actuellement connecté en tant que"
+    },
+    "aboutUs": {
+      "title":"À propos de nous",
+      "about_details":"Bienvenue sur vCAMPUS, votre plateforme d'apprentissage numéro un du 21e siècle axée sur la modernisation de l'éducation pour tous. Un lieu virtuel pour tout ce qui concerne l'apprentissage en ligne, la formation à distance, la formation professionnelle en entreprise, la formation continue, l'apprentissage virtuel au lycée et à l'université. Nous nous engageons à vous offrir le meilleur du système de gestion de l'apprentissage (LMS), en mettant l'accent sur trois caractéristiques, à savoir: la fiabilité, le service client et l'unicité.Fondé en 2015 par le Dr Landry Deuboue, vCAMPUS a parcouru un long chemin depuis ses débuts aux États-Unis. Lorsque le fondateur de vCAMPUS a débuté, sa passion pour l'amélioration de l'éducation pour tous l'a conduit à mener des recherches intenses sur les systèmes éducatifs du monde entier, en discutant avec des acteurs de divers systèmes éducatifs sur différents continents. Ce travail de base lui a donné l'impulsion pour transformer le travail acharné et l'inspiration en une plate-forme d'éducation en ligne en plein essor. Nous servons maintenant des clients du monde entier qui sont ravis de faire partie de cette aile innovante et révolutionnaire de l'industrie de l'éducation.Nous espérons que vous apprécierez notre environnement d'apprentissage autant que nous aimons vous les offrir. Si vous avez des questions ou des commentaires, n'hésitez pas à nous contacter.Cordialement,",
+      "Ceo_name":"Dr Landry Deuboue. Fondateur et PDG"
+    },
+    "Admin": {
+      "admin":"Administrateur",
+      "Messages":"Messages",
+      "Group_Chat":"Discussion de groupe",
+      "Schools":"Écoles",
+      "School_Staff":"Personnel des écoles",
+      "Students":"Étudiants",
+      "Teachers":"Enseignants",
+      "courses":"Cours",
+      "Permissions":"Autorisations",
+      "Log_out":"Se déconnecter"
+    },
+    "Permissions":{
+      "permission":"Autorisations",
+      "add_admin_staff":"Personnel admin..",
+      "add_a_school":"Ajouter école",
+      "code_generator":"Générateur de code",
+      "add_a_staff":"Ajouter une portée",
+      "add_a_teacher":"Ajouter un enseignant",
+      "curriculum":"Curriculum"
+    },
+    "Add_curriculum":{
+      "title":"Ajouter un curriculum",
+      "noCur":"Cette école n'a pas de programme",
+      "curList":"Liste des programmes",
+      "addCur":"AJOUTER UN PROGRAMME",
+      "close":"Fermer"
+    },
+    "Add_school":{
+      "title":"Ajouter une école",
+      "username":"Nom d'utilisateur",
+      "close":"Fermer"
+    },
+    "Add_school_staff":{
+      "title":"Ajouter un personnel scolaire",
+      "username":"NOM D'UTILISATEUR",
+      "add_staff":"Ajouter ",
+      "close":"Fermer"
+    },
+    "Add_staff":{
+      "title":"Ajouter un éditeur",
+      "username":"NOM D'UTILISATEUR",
+      "first_name":"PRÉNOM",
+      "last_name":"NOM DE FAMILLE",
+      "add_staff_btn":"AJOUTER",
+      "close":"FERMER"
+    },
+    "Add_teacher": {
+      "title":"Ajouter un enseignant",
+      "search_text":"Chercher",
+      "add_to_school":"Ajouter à l'école",
+      "or":"Ou",
+      "wait":"S'il vous plaît, attendez..",
+      "username":"Nom d'utilisateur",
+      "first_name":"Prénom",
+      "last_name":"Nom de famille",
+      "password":"Mot de passe",
+      "password_confirm":"Confirmez le mot de passe",
+      "add_teacher":"Ajouter un nouveau professeur",
+      "close":"Fermer"
+    },
+    "Code_generator":{
+      "title":"Ajouter un générateur de code",
+      "username":"Nom d'utilisateur",
+      "first_name":"Prénom",
+      "last_name":"Nom de famille",
+      "add_code_generator":"AJOUTER UN GÉNÉRATEUR DE CODE",
+      "close":"Fermer"
+    },
+    "Contact":{
+      "title":"Nous contacter",
+      "name":"Nom",
+      "email":"Email",
+      "message":"Message"
+    },
+    "Course_detail_modal":{
+      "title":"Détail du cours",
+      "curriculum":"Curriculum",
+      "section":"Section",
+      "chapter":"Chapitre",
+      "topic":"Sujet",
+      "paragraph":"Paragraphe"
+    },
+    "Courses_list":{
+      "title":"Liste des cours",
+      "add_new_course":"Ajouter de nouveaux cours",
+      "choose_school":"Choisissez l'école",
+      "select":"Sélectionner",
+      "find_courses":"Trouver des cours",
+      "course":"Cours",
+      "subject":"Matière",
+      "description":"La description",
+      "avail_from":" Disponible depuis",
+      "avail_to":"Disponible pour"
+    },
+    "Dashboard":{
+      "title":"Tableau de bord",
+      "enter_course_code":"Entrez le code du cours",
+      "enroll_course":"S'inscrire au cours",
+      "course_code":"Code de cours",
+      "course_name":"Nom du cours",
+      "valid_from":"Valide à partir de",
+      "valid_to":"Valable pour"
+    },
+    "Gen_dashboard":{
+      "student":"Étudiants",
+      "dashboard":"Tableau de bord",
+      "generate_code":"Générer du code",
+      "log_out":"Se déconnecter"
+    },
+    "Edit_school_modal":{
+      "title":"Mettre à jour l'école",
+      "success_text":"Mis à jour avec succés",
+      "school_name":"Nom de l'école",
+      "principle_first_name":"Prénom du directeur de l'école",
+      "principle_last_name":"Nom de famille du directeur de l'école",
+      "description":"Description",
+      "save":"sauvegarder",
+      "updating":"Mise à jour..."
+    },
+    "File_upload_modal":{
+      "title":"Téléchargement de fichiers",
+      "media_title":"Titre du média",
+      "add_media":"Ajouter des médias",
+      "choose_file":"Choisir le fichier",
+      "upload":"Télécharger",
+      "uploading":"Télécharger..."
+    },
+    "Generate_course_code":{
+      "title":"Générer le code du cours",
+      "curriculum":"Curriculum",
+      "course_code":"Code de cours",
+      "valid_from":"Valide à partir de",
+      "valid_to":"Valable pour"
+    },
+    "Edit_staff_modal":{
+      "title":"Mettre à jour le personnel",
+      "update_success":"Mis à jour avec succés ",
+      "first_name":"Prénom",
+      "last_name":"Nom de famille",
+      "email_id":"Identifiant de messagerie",
+      "phone_number":"Numéro de téléphone",
+      "save":"Enregistrer",
+      "updating":"Mise à jour..."
     }
+    ,
+    "Edit_teacher_modal":{
+      "title":"Mettre à jour le personnel",
+      "update_success":"Mis à jour avec succés ",
+      "first_name":"Prénom",
+      "last_name":"Nom de famille",
+      "email_id":"Identifiant de messagerie",
+      "phone_number":"Numéro de téléphone",
+      "save":"Sauvegarder",
+      "updating":"Mise à jour..."
+    }
+
 }

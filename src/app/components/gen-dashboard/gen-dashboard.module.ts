@@ -15,6 +15,6 @@ import { GenDashboardPage } from './gen-dashboard.page';
     IonicModule,
     GenDashboardPageRoutingModule
   ],
-  declarations: [GenDashboardPage]
+  declarations: []
 })
 export class GenDashboardPageModule {}

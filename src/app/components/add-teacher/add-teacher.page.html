@@ -1,12 +1,12 @@
 <ion-header>
   <div class="logo">
     <img src="assets/vcampus.png" alt="app logo">
-    <p>Add a teacher</p>
+    <p>{{'Add_teacher.title' | translate }}</p>
   </div>
 </ion-header>
 
 <ion-content padding>
-  
+
   <div [style.display]="error.length>0 ? 'block' : 'none'"  class="alert alert-info alert-dismissible fade show" role="alert">
     <strong>{{error}}</strong>
     <button type="button" class="close" (click)="error=''" data-dismiss="alert" aria-label="Close">
@@ -14,21 +14,21 @@
     </button>
   </div>
   <div class="row">
-    
+
     <div class="col-md-12">
       <div class="input-group mb-3">
         <input type="text"  [(ngModel)]="txtUserName" required class="form-control" placeholder="Enter teacher's username" aria-label="Recipient's username" aria-describedby="button-addon2">
         <div class="input-group-append">
-          <button class="btn btn-primary"  (click)="onClickSearch()" type="button" >Search</button>
-          <button class="btn btn-success" [style.display]="teacher_data.id.length>0 ? 'block' : 'none'" (click)="onClickAdd()" type="button">Add To School</button>
+          <button class="btn btn-primary"  (click)="onClickSearch()" type="button" >{{'Add_teacher.search_text' | translate }}</button>
+          <button class="btn btn-success" [style.display]="teacher_data.id.length>0 ? 'block' : 'none'" (click)="onClickAdd()" type="button">{{'Add_teacher.add_to_school' | translate }}</button>
         </div>
       </div>
     </div>
   </div>
     <div class="row">
-      <div class="col-md-12" style="text-align:center;">OR<br>
+      <div class="col-md-12" style="text-align:center;">{{'Add_teacher.or' | translate }}<br>
         <div *ngIf="showLoading" class="d-flex align-items-center">
-          <strong>Please wait...</strong>
+          <strong>{{'Add_teacher.wait' | translate }}</strong>
           <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
         </div>
       </div>
@@ -36,35 +36,35 @@
   <div >
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon3">Username</span>
+    <span class="input-group-text" id="basic-addon3">{{'Add_teacher.username' | translate }}</span>
   </div>
   <input type="text" class="form-control" [(ngModel)]="teacher_data.username" required aria-describedby="basic-addon3">
 </div>
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon3">First Name</span>
+    <span class="input-group-text" id="basic-addon3">{{'Add_teacher.first_name' | translate }}</span>
   </div>
   <input type="text" class="form-control" [(ngModel)]="teacher_data.first_name" required aria-describedby="basic-addon3">
 </div>
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon3">Last Name</span>
+    <span class="input-group-text" id="basic-addon3">{{'Add_teacher.lastname' | translate }}</span>
   </div>
   <input type="text" class="form-control" [(ngModel)]="teacher_data.last_name" required aria-describedby="basic-addon3">
 </div>
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon3">Password</span>
+    <span class="input-group-text" id="basic-addon3">{{'Add_teacher.password' | translate }}</span>
   </div>
   <input type="password" class="form-control" [(ngModel)]="teacher_data.password" required aria-describedby="basic-addon3">
 </div>
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon3">Confirm Password</span>
+    <span class="input-group-text" id="basic-addon3">{{'Add_teacher.password_confirm' | translate }}</span>
   </div>
   <input type="password" class="form-control" [(ngModel)]="re_password" required aria-describedby="basic-addon3">
 </div>
   </div>
-  <ion-button (click)="addTeacher()">ADD NEW TEACHER</ion-button>
-  <ion-button color="danger" (click)="dismiss()">Close</ion-button>
+  <ion-button (click)="addTeacher()">{{'Add_teacher.add_teacher' | translate }}</ion-button>
+  <ion-button color="danger" (click)="dismiss()">{{'Add_teacher.close' | translate }}</ion-button>
 </ion-content>

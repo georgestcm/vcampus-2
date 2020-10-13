@@ -5,8 +5,8 @@
   </div>
   <div class="home_nav" [hidden]="logged_in_or_not">
     <ul>
-      <li (click)="toAbout()"><span>About us</span></li>
-      <li (click)="toContact()"><span>Contact us</span></li>
+      <li (click)="toAbout()"><span>{{'login.aboutUs'|translate}}</span></li>
+      <li (click)="toContact()"><span>{{'login.contactUs'|translate}}</span></li>
       <li><img src={{flag}} (click)="presentPopover()"alt=""></li>
     </ul>
   </div>
@@ -19,22 +19,22 @@
 <div class="login_page" >
   <div class="intro">
     <img src="/assets/vcampus.png" alt="logo">
-    <p>Modernizing education for all</p>
+    <p>{{'login.modernizingText'|translate}}</p>
   </div>
    <div class="form_login">
      <ion-card>
   <ion-card-header>
-    <ion-card-title> <span>LOGIN</span>
+    <ion-card-title> <span>{{'login.login'|translate}}</span>
       <img src="assets/vhands.png" alt="">
     </ion-card-title>
-    <ion-card-subtitle [hidden]="logged_in_or_not">login as</ion-card-subtitle>
-    <ion-select [hidden]="logged_in_or_not" (ionChange)="getRoleRequest($event)" value="roleRequest" placeholder="click to select a role">
+    <ion-card-subtitle [hidden]="logged_in_or_not">{{'login.loginAs'|translate}}</ion-card-subtitle>
+    <ion-select [hidden]="logged_in_or_not" (ionChange)="getRoleRequest($event)" value="roleRequest" placeholder="{{'login.selectRole' | translate}}">
       <ion-select-option selected>Admin</ion-select-option>
       <ion-select-option selected>Editor</ion-select-option>
       <ion-select-option selected>School</ion-select-option>
       <ion-select-option selected>School staff</ion-select-option>
-      <ion-select-option selected>Teacher</ion-select-option>
-      <ion-select-option selected>Student</ion-select-option>
+      <ion-select-option selected [hidden]=true>Teacher</ion-select-option>
+      <!--<ion-select-option selected [hidden]=true>Student</ion-select-option> -->
     </ion-select>
     <div class="login_error" [hidden]="error_message.error_red_msg">
       <div class="error_icon">
@@ -48,9 +48,9 @@
 
   <ion-card-content >
     <div class="notloggedin" [hidden]="logged_in_or_not">
-    <ion-label>USERNAME</ion-label>
+    <ion-label>{{'login.username'| translate}}</ion-label>
     <ion-input type="username" [(ngModel)]="login_user_data.username" ><ion-icon name="person"></ion-icon></ion-input>
-    <ion-label>PASSWORD</ion-label>
+    <ion-label>{{'login.password'| translate}}</ion-label>
     <ion-input type="password" [(ngModel)]="login_user_data.password" ><ion-icon name="key"></ion-icon></ion-input>
     <ion-button (click)="login()" [disabled]="spinner==true">
       <div class="login_btn_spinner">
@@ -58,16 +58,16 @@
           <ion-spinner [hidden]="spinner==false" name="crescent"></ion-spinner>
         </div>
          <div  [hidden]="spinner==true" class="login_btn_spinner_text">
-           <p>LOGIN </p>
+           <p>{{'login.login'| translate}} </p>
          </div>
       </div>
      </ion-button>
     <h6>
-      New to Vcampus? <span id="sign_up" [routerLink]="['/register']">Sign up now.</span>
+    {{'login.new_to_campus'| translate}} <span id="sign_up" [routerLink]="['/register']">{{'login.signUp'| translate}}.</span>
     </h6>
     </div>
     <div class="loggedin" [hidden]="!logged_in_or_not">
-      <p>You are currently logged in as</p>
+      <p>{{'login.currentlyLogin'| translate}}</p>
       <div class="user_info">
         <div class="user_img">
           <img src="/assets/person.jpg" alt="user image">

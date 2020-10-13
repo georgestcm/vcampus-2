@@ -1,7 +1,7 @@
 <ion-header>
   <div class="logo">
     <img src="assets/vcampus.png" alt="app logo">
-    <p>Add code generator</p>
+    <p>{{'Code_generator.title' | translate}}</p>
   </div>
 </ion-header>
 <ion-content>
@@ -10,16 +10,16 @@
       {{error}}
     </p>
   </div>
-  <ion-label>USERNAME</ion-label>
+  <ion-label>{{'Code_generator.username' | translate}}</ion-label>
   <ion-input type="name" [(ngModel)]="username"  required></ion-input>
-  <ion-label>FIRST NAME</ion-label>
+  <ion-label>{{'Code_generator.first_name' | translate}}</ion-label>
   <ion-input type="name" [(ngModel)]="first_name" required></ion-input>
-  <ion-label>LAST NAME</ion-label>
+  <ion-label>{{'Code_generator.last_name' | translate}}</ion-label>
   <ion-input type="name" [(ngModel)]="last_name" required></ion-input>
   <ion-button (click)="loginfo()">
-    ADD CODE GENERATOR
+  {{'Code_generator.add_code_generator' | translate}}
   </ion-button>
   <ion-button color="danger" (click)="dismiss()">
-    CLOSE
+    {{'Code_generator.close' | translate}}
   </ion-button>
 </ion-content>

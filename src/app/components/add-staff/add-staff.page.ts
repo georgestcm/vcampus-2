@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/providers/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { AuthService } from 'src/app/providers/auth.service';
 })
 export class AddStaffPage implements OnInit {
 
-  constructor(public _auth: AuthService, private modalController: ModalController) { }
+  constructor(public translate: TranslateService,public _auth: AuthService, private modalController: ModalController) { }
 
   ngOnInit() {
   }

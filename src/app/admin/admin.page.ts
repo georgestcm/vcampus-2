@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.page.html',
@@ -8,7 +9,7 @@ import { Storage } from '@ionic/storage';
 })
 export class AdminPage implements OnInit {
 
-  constructor(private router: Router,private storage: Storage) { }
+  constructor(private router: Router,private storage: Storage,public translate: TranslateService) { }
      userName = {
        first_name:'',
        last_name:''

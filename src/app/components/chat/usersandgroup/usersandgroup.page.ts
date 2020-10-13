@@ -11,11 +11,12 @@ import { AuthService } from 'src/app/providers/auth.service';
 export class UsersAndgroupPage implements OnInit {
 
   selectedSegment :string ="";
-  userList: Array<any> = []; 
+  userList: Array<any> = [];
   groupList: Array<any> = [];
   role:number;
   showSearch : boolean = false;
   studentList : Array<any> =[];
+  user;
   constructor(private route: Router, private storage : Storage, private _auth : AuthService) { }
 
   ngOnInit() {

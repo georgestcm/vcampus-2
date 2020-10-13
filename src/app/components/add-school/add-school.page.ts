@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/providers/auth.service';
 import { environment } from 'src/environments/environment'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-school',
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment'
 })
 export class AddSchoolPage implements OnInit {
 
-  constructor(public _auth: AuthService,private modalController: ModalController) { }
+  constructor(public _auth: AuthService,public translate: TranslateService,private modalController: ModalController) { }
   error;
   username;
   school;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { TeacherService } from '../teacher-list/teacher.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-teacher-modal',
@@ -20,8 +21,8 @@ export class EditTeacherModalComponent implements OnInit {
   };
   showProgress : boolean =false;
 
-  constructor(private modalController: ModalController, 
-      private navParams: NavParams, private teacherService : TeacherService) { 
+  constructor(public translate: TranslateService,private modalController: ModalController, 
+      private navParams: NavParams, private teacherService : TeacherService) {
     this.teacherData = navParams.get('teacherData');
     console.log(this.teacherData);
     this.teacherModel ={

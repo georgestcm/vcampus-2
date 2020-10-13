@@ -15,7 +15,7 @@
    <div class="col-md-6">
     <div class="card">
       <div class="card-header">
-          Contact Us
+           {{'Contact.title' | translate}}
       </div>
       <form #f="ngForm" class="form"
       (ngSubmit)="onSubmit()" >
@@ -28,19 +28,19 @@
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text"  id="inputGroupFileAddon01">Name *</span>
+            <span class="input-group-text"  id="inputGroupFileAddon01">{{'Contact.name' | translate}} *</span>
           </div>
           <input type="text" name="courseName" required class="form-control" [(ngModel)]="mailModel.name" placeholder="Enter Your Name" >
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupFileAddon01">Email *</span>
+            <span class="input-group-text" id="inputGroupFileAddon01">{{'Contact.email' | translate}} *</span>
           </div>
           <input type="email" required name="subject"  class="form-control" [(ngModel)]="mailModel.email" placeholder="Enter Your Email Address" >
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupFileAddon01">Message *</span>
+            <span class="input-group-text" id="inputGroupFileAddon01"> {{'Contact.message' | translate}} *</span>
           </div>
           <textarea class="form-control" name="description" required rows="4" id="message" [(ngModel)]="mailModel.message" placeholder="Enter Your Message"></textarea>
         </div>

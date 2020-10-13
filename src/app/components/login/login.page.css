@@ -29,7 +29,7 @@ ion-header div.home_nav ul {
 ion-header div.home_nav ul li {
   display: inline-block;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 10px;
   color: white;
   font-weight: bold;
   letter-spacing: 2px;
@@ -210,7 +210,7 @@ ion-content .login_page .form_login ion-card ion-card-content div.notloggedin io
   margin-top: 10px;
   position: relative;
   left: 37%;
-  width: 80px;
+  width: auto;
 }
 
 ion-content .login_page .form_login ion-card ion-card-content div.notloggedin h6 {

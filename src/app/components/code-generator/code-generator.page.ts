@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/providers/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-code-generator',
@@ -16,11 +17,11 @@ export class CodeGeneratorPage implements OnInit {
   user_info;
   error;
 
-  constructor(public _auth: AuthService, private modalController: ModalController) { }
+  constructor(public translate: TranslateService,public _auth: AuthService, private modalController: ModalController) { }
 
   ngOnInit() {
   }
-  
+
   dismiss() {
     this.modalController.dismiss({
       'dismissed': true

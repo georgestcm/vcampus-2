@@ -1,7 +1,7 @@
 <ion-header>
   <ion-buttons slot="start">
   <ion-menu-button></ion-menu-button>
-  <ion-title>Dashboard</ion-title>
+  <ion-title>{{'Dashboard.title' | translate}}</ion-title>
   </ion-buttons>
 </ion-header>
 
@@ -19,12 +19,12 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
       <div class="form-group row">
-        <label for="courseCode" class="col-sm-3 col-form-label">Enter Course Code</label>
+        <label for="courseCode" class="col-sm-3 col-form-label">{{'Dashboard.enter_course_code' | translate}}</label>
         <div class="col-sm-5">
           <input type="text" [(ngModel)]="courseCode" class="form-control" id="courseCode" placeholder="Course Code">
         </div>
         <div class="col-sm-3">
-         <button class="btn btn-primary" (click)="onEnrollCourse()">Enroll Course</button>
+         <button class="btn btn-primary" (click)="onEnrollCourse()">{{'Dashboard.enroll_course' | translate}}</button>
         </div>
       </div>
     </div>
@@ -38,19 +38,19 @@
         #
       </th>
       <th style="width:20%">
-        Course Code
+         {{'Dashboard.course_code' | translate}}
       </th>
       <th style="width:20%">
-        Course Name
+        {{'Dashboard.course_name' | translate}}
       </th>
       <th style="width:20%">
-        Valid From
+         {{'Dashboard.valid_from' | translate}}
       </th>
       <th style="width:22%">
-        Valid To
+        {{'Dashboard.valid_to' | translate}}
       </th>
-      
-       
+
+
     </tr>
   </thead>
     <tr *ngFor="let code of courseList; let i=index">
@@ -60,7 +60,7 @@
       <td> {{code.courseCodeValidFrom | date :'dd-MM-yyyy'}}</td>
       <td>{{code.courseCodeValidTo |date :'dd-MM-yyyy'}}</td>
 
-     
+
     </tr>
     </table>
   </div>

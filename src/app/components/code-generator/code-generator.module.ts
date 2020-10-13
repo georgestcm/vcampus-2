@@ -15,6 +15,6 @@ import { CodeGeneratorPage } from './code-generator.page';
     IonicModule,
     CodeGeneratorPageRoutingModule
   ],
-  declarations: [CodeGeneratorPage]
+  declarations: []
 })
 export class CodeGeneratorPageModule {}

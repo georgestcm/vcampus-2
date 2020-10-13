@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { CourseService } from 'r-teacher/add-course/course/course.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-course-detail-modal',
@@ -12,9 +13,9 @@ export class CourseDetailModalComponent implements OnInit {
 
   courseData : any= {};
   fileURL : string ="";
-  
-  constructor(private modalController: ModalController, 
-    private navParams: NavParams, private courseService:CourseService) {
+
+  constructor(private modalController: ModalController,
+    private navParams: NavParams,public translate: TranslateService, private courseService:CourseService) {
     console.log(navParams.get('courseData'));
     this.courseData = navParams.get('courseData');
    }
