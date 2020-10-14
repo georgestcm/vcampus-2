@@ -98,4 +98,12 @@ export class CourseService {
   getAllEnrolledCourse(studentId) {
     return this._httpClient.authGet("api/get_all_enrolled_course/"+studentId);
   }
+
+  saveMultiChoiceQuestion(data) {
+    return this._httpClient.authPost("api/post_question", data);
+  }
+
+  getAllMultiChoiceQuestionBySchoolId(schoolId) {
+    return this._httpClient.authGet("api/get_questions_by_school/"+ schoolId);
+  }
 }

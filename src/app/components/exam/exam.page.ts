@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/providers/auth.service';
 import { Storage } from '@ionic/storage';
 import { CourseService } from 'src/app/providers/common-service/course.service';
+import { QuestionModalComponent } from '../question-modal/question-modal.component';
 
 @Component({
   selector: 'app-exam',
@@ -13,7 +14,7 @@ import { CourseService } from 'src/app/providers/common-service/course.service';
 export class ExamPage implements OnInit {
 
   addCourseOrnot;
-  examList : Array<any>=[];
+  questionList : Array<any>=[];
   showLoading : boolean = false;
   schoolList : any;
   role : number;
@@ -25,7 +26,7 @@ export class ExamPage implements OnInit {
 
   ngOnInit() {
     this.storage.get('role').then((val) => {
-      
+      this.role = val;
     if(val===5){
       this.addCourseOrnot = false;
     } else {
@@ -41,23 +42,38 @@ export class ExamPage implements OnInit {
     })
   }); 
 }
-// } else {
-//   this._auth.getAllSchools().subscribe(res => {
-//     console.log(res);
-//     this.schoolList = res;
-//   },err =>{
-//     console.log(err);
-//   })
-// }
+
 });
   
   }
 
-  onSchoolChange(schoolId){
+
+  async showAddQuestionModal() {
+    const modal = await this.modalController.create({
+      component: QuestionModalComponent
+    });
+    modal.onDidDismiss().then(data => {
+      //this.getAllCourseCode();
+    });
+    return await modal.present();
+
 
   }
 
+  onClickAddQuestion(){
+    this.showAddQuestionModal();
+  }
+
+  onSchoolChange(schoolId){
+    this.schoolId = schoolId;
+  }
+
   onClickFind(){
-    
+    this.courseService.getAllMultiChoiceQuestionBySchoolId(this.schoolId).subscribe( res =>{
+      console.log(res);
+      this.questionList = res;
+    },err =>{
+      console.log(err);
+    })
   }
 }

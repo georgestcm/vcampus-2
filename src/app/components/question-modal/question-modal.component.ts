@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from "@ionic/angular";
 import { AuthService } from "src/app/providers/auth.service";
 import { CourseService } from "src/app/providers/common-service/course.service";
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: 'app-question-modal',
@@ -11,85 +12,105 @@ import { CourseService } from "src/app/providers/common-service/course.service";
 export class QuestionModalComponent implements OnInit {
 
   questionModal = {
-    courseCode: "",
     school: "",
-    curriculum: "",
-    courseCodeValidFrom: "",
-    courseCodeValidTo: "",
+    exam: "",
+    course: "",
+    Question_title: "",
+    Question_for :"",
+    Question_options :[],
+    Correct_answer :"",
+    option :"",
   };
   schoolList: [];
-  curriculumList: [];
+  courseList: [];
   loadingSchool = "Loading School...";
-  loadingCourse = "--Select Curriculum---";
+  loadingCourse = "--Select Course---";
   courseCodeList: any;
+  userId = "";
 
   constructor(
     private modalController: ModalController,
     public _auth: AuthService,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private storage : Storage
   ) {}
 
   ngOnInit() {
-    this._auth.getAllSchools().subscribe(
-      (res) => {
-        console.log(res);
+  
+    this.storage.get('user').then((val) => {
+      this.userId = val._id;
+      this.loadingSchool="---Select School---";
+      this.courseService.getSchoolsByTeacherId(this.userId).subscribe(res =>{  
         this.schoolList = res;
-        this.loadingSchool = "---Select School---";
-      },
-      (err) => {
+        console.log(res);
+        this.loadingSchool="---Select School---";
+      }, err => {
         console.log(err);
-      }
-    );
+        this.loadingSchool="Error Getting Schol";
+      })
+    }); 
 
     //this.getAllCourseCode();
   }
 
-  dismiss() {
+  resetFormField(){
     this.questionModal = {
-      courseCode: "",
       school: "",
-      curriculum: "",
-      courseCodeValidFrom: "",
-      courseCodeValidTo: "",
+      exam: "",
+      course: "",
+      Question_title: "",
+      Question_for :"",
+      Question_options :[],
+      Correct_answer :"",
+      option :""
     };
+  }
+
+  dismiss() {
+    this.resetFormField();
     this.modalController.dismiss({
       dismissed: true,
     });
   }
 
+  onSchoolChange(schoolId) {
+    
+    this.questionModal.school = schoolId;
+    this.loadingCourse = "Loading Course...";
+    this.courseService.getCourseBySchoolId(schoolId).subscribe(
+      (res) => {
+        console.log(res);
+        this.courseList = res;
+        this.loadingCourse = "---Select Course---";
+      },
+      (err) => {
+        console.log(err);
+        this.loadingCourse = "Loading Course...";
+      }
+    );
+  }
+
+
+  onAddOption(option){
+    if(option.length>0){
+    this.questionModal.Question_options.push({optionid : this.questionModal.Question_options.length+1, option :option});
+    this.questionModal.option = "";
+    }
+
+  }
+
   onSubmit() {
-    this.courseService.saveCourseCode(this.questionModal).subscribe(
+    console.log(this.questionModal);
+    this.courseService.saveMultiChoiceQuestion(this.questionModal).subscribe(
       (data) => {
         console.log(data);
-        alert("New Course Code Added!");
+        alert("New Question Added!");
         this.dismiss();
       },
       (err) => {
         console.log(err);
       }
     );
-  }
-
- 
-
-  onSchoolChange(schoolId) {
-    console.log(schoolId);
-    this.loadingCourse = "Loading Curriculum...";
-    this.courseService.getCurriculumList(schoolId).subscribe(
-      (res) => {
-        console.log(res);
-        this.curriculumList = res;
-        this.loadingCourse = "---Select Curriculum---";
-      },
-      (err) => {
-        console.log(err);
-        this.loadingCourse = "Loading Curriculum...";
-      }
-    );
-  }
-
-  onCurriculumChange(id) {
-    
   }
 
 }

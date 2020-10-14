@@ -23,40 +23,76 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="inputGroupFileAddon01">Curriculum *</span>
+        <span class="input-group-text"  id="inputGroupFileAddon01">Course *</span>
       </div>
-       <select class="custom-select" required name="courseDropdown"  
-       [(ngModel)]="questionModal.curriculum" id="ddlCourse" 
-       (change)="onCurriculumChange($event.target.value)">
+       <select class="custom-select" required name="curriculumDropdown"  
+       [(ngModel)]="questionModal.course" id="ddlCurriculum" 
+       >
         <option value="">{{loadingCourse}}</option>
-        <option *ngFor="let curr of curriculumList" value={{curr._id}}>
-          {{curr.curriculum}}
+        <option *ngFor="let c of courseList" value={{c._id}}>
+          {{c.name}}
         </option>
       </select>
     </div>
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="inputGroupFileAddon01">Course Code *</span>
+        <span class="input-group-text"  id="inputGroupFileAddon01">Question For *</span>
       </div>
-      <input type="text" [(ngModel)]="questionModal.courseCode" name="courseCode"  readonly class="form-control">      
+      <select class="custom-select" required name="questionForDropdown"  
+       [(ngModel)]="questionModal.Question_for" id="ddlQuestionFor" 
+       >
+        <option value="">---Select---</option>
+        <option value="Exam">Exam</option>
+        <option value="Quiz">Quiz</option>
+        <option value="Practice">Practice</option>
+      </select>
     </div>
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="inputGroupFileAddon01">Valid From *</span>
+        <span class="input-group-text"  id="questionTitle">Question *</span>
       </div>
-      <input type="date" [(ngModel)]="questionModal.courseCodeValidFrom" name="validFrom"  class="form-control">      
+      <input type="text" [(ngModel)]="questionModal.Question_title" name="questionTitle"  class="form-control">      
     </div>
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="inputGroupFileAddon01">Valid To *</span>
+        <span class="input-group-text"  id="questionOption">Options *</span>
       </div>
-      <input type="date" name="validTo" [(ngModel)]="questionModal.courseCodeValidTo"  class="form-control">      
+      <input type="text" [(ngModel)]="questionModal.option" name="questionOption"  class="form-control">      
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button" (click)="onAddOption(questionModal.option)" >Add</button>
+      </div>
     </div>
 
-    <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="Save Course Code" />
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"  id="inputGroupFileAddon01">Correct Answer *</span>
+      </div>
+      <select class="custom-select" required name="CorrectAnswerDropdown"  
+       [(ngModel)]="questionModal.Correct_answer" id="ddlCorrectAnswer" 
+       >
+        <option value="">---Select---</option>
+        <option *ngFor="let o of questionModal.Question_options" value={{o.optionid}}>{{o.optionid}}</option>
+        
+      </select>
+    </div>
+
+    <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="Save Question" />
+
+    <div >
+      <table class="table table-sm ">
+        <tr *ngFor="let o of questionModal.Question_options">
+          <td>
+            {{o.optionid}}
+          </td>
+          <td>
+          {{o.option}}
+        </td></tr>
+      </table>
+    </div>
+
     </form>
 </div>
 </div>
