@@ -106,4 +106,16 @@ export class CourseService {
   getAllMultiChoiceQuestionBySchoolId(schoolId) {
     return this._httpClient.authGet("api/get_questions_by_school/"+ schoolId);
   }
+
+  getAllMultiChoiceQuestionByCourseAndType(courseId,type) {
+    return this._httpClient.authGet(`api/get_questions_by_course_and_type/${courseId}/${type}`);
+  }
+
+  saveExam(data) {
+    return this._httpClient.authPost("api/post_exam", data);
+  }
+
+  getAllExamBySchoolId(schoolId) {
+    return this._httpClient.authGet("api/get_exam_by_school/"+ schoolId);
+  }
 }

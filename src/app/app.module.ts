@@ -83,6 +83,8 @@ import { ChatService } from './providers/chat.service';
 import { GenerateCourseCodeModalComponent } from './components/generate-course-code-modal/generate-course-code-modal.component';
 import { ExamPage } from './components/exam/exam.page';
 import { QuestionModalComponent } from './components/question-modal/question-modal.component';
+import { CreateExamPage } from './components/create-exam/create-exam.page';
+import { CreateExamModalComponent } from './components/create-exam-modal/create-exam-modal.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
 
@@ -133,7 +135,9 @@ export function CreateTranslateLoader(http: HttpClient) {
     EditStaffModalComponent,
     GenerateCourseCodeModalComponent,
     ExamPage,
-    QuestionModalComponent
+    QuestionModalComponent,
+    CreateExamPage,
+    CreateExamModalComponent
   ],
   entryComponents: [
     LanguageSelectPage,
@@ -149,10 +153,11 @@ export function CreateTranslateLoader(http: HttpClient) {
     FileUploadModalComponent,
     EditTeacherModalComponent,
     EditSchoolModalComponent,
-    EditStaffModalComponent,
+    EditStaffModalComponent,  
     CodeGeneratorPage,
     GenerateCourseCodeModalComponent,
-    QuestionModalComponent
+    QuestionModalComponent,
+    CreateExamModalComponent
   ],
   imports: [
     BrowserModule,

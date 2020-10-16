@@ -1,27 +1,17 @@
 <ion-header>
   <ion-buttons slot="start">
   <ion-menu-button></ion-menu-button>
-  <ion-title>Exam</ion-title>
+  <ion-title>Create Exam</ion-title>
   </ion-buttons>
 </ion-header>
 
 <ion-content>
-<div class="add_role" [hidden]="addCourseOrnot" (click)="onClickAddQuestion()">
+<div class="add_role" [hidden]="addCourseOrnot" (click)="showCreateExamModal()">
   <div  class="add">
-    <p>Add new Question</p>
+    <p>Add new Exam</p>
     <ion-icon name="add"></ion-icon>
   </div>
 </div>
-  <div style="margin-top: 100px;" class="add_role">
-
-  <div class="add" [routerLink]="['create-exam']">
-    <p>Add New Exam</p>
-    <ion-icon name="add"></ion-icon>
-  </div>
-</div>
-
-
-
 <div class="courses" style="background-color: white;">
 
   <div *ngIf="showLoading" class="d-flex align-items-center">
@@ -45,7 +35,7 @@
     </select>
     
     <div class="input-group-postpend">
-      <button class="btn btn-primary" (click)="onClickFind()">Find Questions</button>
+      <button class="btn btn-primary" (click)="getAllExamBySchool()">Find Exams</button>
     </div>
   </div>
   <div class="table-responsive-sm">
@@ -55,30 +45,30 @@
         #
       </th>
       <th>
-        Question
+        Exam Name
       </th>
       <th>
-        Options
+        Description
       </th>
       <th>
-        Answer
+        Start Date
       </th>
-      <th>Question For</th>
+      <th>
+        End Date
+      </th>
+      <th>Exam For</th>
       <th></th>
     </tr>
-    <tr *ngFor="let q of questionList; let i =index">
+    <tr *ngFor="let q of examList; let i =index">
       <td>{{i+1}}</td>
-      <td>{{q.Question_title}}</td>
-      <td>
-        <ol>
-          <li *ngFor="let o of q.Question_options">{{o.option}}</li>
-        </ol>
-      </td>
-      <td>{{q.Correct_answer}}</td>
-      <td>{{q.Question_for}}</td>
+      <td>{{q.Exam_Name}}</td>
+      <td>{{q.Exam_Description}}</td>
+      <td>{{q.Exam_StartDateTime}}</td>
+      <td>{{q.Exam_EndDateTime}}</td>
+      <td>{{q.Exam_Type}}</td>
       <td>
         <ion-buttons>
-          <button (click)="showAddQuestionModal(q);" class="btn btn-sm btn-success">
+          <button (click)="showCreateExamModal(q);" class="btn btn-sm btn-success">
             <ion-icon name="md-create"></ion-icon>
           </button>
           <button *ngIf="role==5"  class="btn btn-sm btn-danger">
