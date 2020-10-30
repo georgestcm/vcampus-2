@@ -36,6 +36,7 @@ import { StaffListPage } from './components/staff-list/staff-list.page';
 import { GeneratorLoginPage } from './components/generator-login/generator-login.page';
 import { ExamPage } from './components/exam/exam.page';
 import { CreateExamPage } from './components/create-exam/create-exam.page';
+import { StudentExamPage } from './components/student-exam/student-exam.page';
 
 
 const routes: Routes = [
@@ -334,8 +335,12 @@ const routes: Routes = [
       },
       {
         path: "exam/create-exam",
-        component: CreateExamPage,
-        
+        component: CreateExamPage, 
+      },
+      {//needs to remove this
+        path: "student-exam",
+        component: StudentExamPage,
+        pathMatch: "full",
       },
     ],
   },
@@ -367,6 +372,11 @@ const routes: Routes = [
       {
         path: "student-course-view",
         component: StudentCourseViewPage,
+        pathMatch: "full",
+      },
+      {
+        path: "student-exam",
+        component: StudentExamPage,
         pathMatch: "full",
       },
     ],
@@ -485,6 +495,11 @@ const routes: Routes = [
     path: 'create-exam',
     loadChildren: () => import('./components/create-exam/create-exam.module').then( m => m.CreateExamPageModule)
   },
+  {
+    path: 'student-exam',
+    loadChildren: () => import('./components/student-exam/student-exam.module').then( m => m.StudentExamPageModule)
+  },
+
 
 
 

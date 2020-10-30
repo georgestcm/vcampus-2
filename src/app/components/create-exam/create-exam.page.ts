@@ -68,9 +68,6 @@ export class CreateExamPage implements OnInit {
 
   }
 
-  onClickAddQuestion(){
-    this.showAddQuestionModal();
-  }
 
   onSchoolChange(schoolId){
     this.schoolId = schoolId;

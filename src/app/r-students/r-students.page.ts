@@ -54,6 +54,10 @@ export class RStudentsPage implements OnInit {
     this.router.navigate(['rstudents/usersandgroup'])
   }
 
+  toStudentExam(){
+    this.router.navigate(['rstudents/student-exam'])
+  }
+
   logoutUser() {
     this.storage.remove('token')
     this.storage.remove('user')
