@@ -8,17 +8,17 @@
 <ion-content padding>
 
   <div class="row">
-    <div class="col-sm-6 alert-success" >
+    <div class="col-sm-6 alert-success" *ngFor="let exam of examList[0]" >
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">You have pending !!!</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Start</a>
+          <p class="card-text">{{exam.Exam_Name}}</p>
+          <a href="#" class="btn btn-success">Start</a>
         </div>
       </div>
     </div>
 
-    <div class="col-sm-6 alert-success" >
+    <!-- <div class="col-sm-6 alert-success" >
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">You have pending !!!</h5>
@@ -26,7 +26,7 @@
           <a href="#" class="btn btn-primary">Start</a>
         </div>
       </div>
-    </div>
+    </div> -->
     
   </div>
 

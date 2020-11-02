@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CourseService } from 'src/app/providers/common-service/course.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-student-exam',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentExamPage implements OnInit {
 
-  constructor() { }
+  studentId : string;
+  examList =[];
+  constructor(private courseService : CourseService, private storage: Storage) { }
 
   ngOnInit() {
+    this.storage.get("user").then(res => {
+      this.studentId = res._id;
+      this.getAllPendingExams();
+    });
   }
 
-}
+  getAllPendingExams(){
+    this.courseService.getAllEnrolledCourse(this.studentId).subscribe( res =>{
+      console.log(res);
+      for(let i=0; i< res[0].length; i++){
+        this.courseService.getAllExamByCourseId(res[0][i]._id).subscribe(exam =>{
+          this.examList.push(exam);
+          console.log(this.examList);
+        },error =>{
+          console.log(error);
+        })
+      }
+    },err =>{
+      console.log(err);
+    })
+  }
+  }
+

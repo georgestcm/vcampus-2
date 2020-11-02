@@ -84,10 +84,9 @@ export class StudentCoursePage implements OnInit {
    
     this.courseService.getAllEnrolledCourse(this.studentId).subscribe( res =>{
       console.log(res);
-      this.courseList = res;
+      this.courseList = res[0];
     },err =>{
       console.log(err);
-     // this.message = err.error.msg;
     })
   }
   
