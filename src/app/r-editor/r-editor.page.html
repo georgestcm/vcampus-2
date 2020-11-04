@@ -12,7 +12,7 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item lines="none"><div> <ion-icon name="chatboxes"></ion-icon>Messages </div></ion-item>
+      <ion-item lines="none" [hidden]=true><div> <ion-icon name="chatboxes"></ion-icon>Messages </div></ion-item>
       <ion-item lines="none" [routerLink]="['/editor/school-list']"><ion-icon name="home"></ion-icon>Schools</ion-item>
       <ion-item lines="none" [routerLink]="['/editor/student-list']"><ion-icon name="people" ></ion-icon>Students</ion-item>
       <ion-item lines="none" [routerLink]="['/editor/teacher-list']"><ion-icon name="person"></ion-icon>Teachers</ion-item>
