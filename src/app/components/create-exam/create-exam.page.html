@@ -63,8 +63,8 @@
       <td>{{i+1}}</td>
       <td>{{q.Exam_Name}}</td>
       <td>{{q.Exam_Description}}</td>
-      <td>{{q.Exam_StartDateTime}}</td>
-      <td>{{q.Exam_EndDateTime}}</td>
+      <td>{{q.Exam_StartDateTime | date: 'dd-MMM-yyyy'}}</td>
+      <td>{{q.Exam_EndDateTime | date: 'dd-MMM-yyyy'}}</td>
       <td>{{q.Exam_Type}}</td>
       <td>
         <ion-buttons>

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-buttons slot="start">
+  <ion-menu-button></ion-menu-button>
+  <ion-title>Pending Assignments</ion-title>
+  </ion-buttons>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="row">
+    <div class="col-sm-6 alert-success" *ngFor="let exam of examList[0]" >
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">You have pending !!!</h5>
+          <p class="card-text">{{exam.Exam_Name}}</p>
+          <a href="#" class="btn btn-success">Start</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="col-sm-6 alert-success" >
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">You have pending !!!</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Start</a>
+        </div>
+      </div>
+    </div> -->
+    
+  </div>
+
+  
+</ion-content>

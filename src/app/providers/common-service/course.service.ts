@@ -118,4 +118,8 @@ export class CourseService {
   getAllExamBySchoolId(schoolId) {
     return this._httpClient.authGet("api/get_exam_by_school/"+ schoolId);
   }
+
+  getAllExamByCourseId(courseId) {
+    return this._httpClient.authGet("api/get_exam_by_course/"+ courseId);
+  }
 }
