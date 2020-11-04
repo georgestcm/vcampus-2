@@ -15,6 +15,6 @@ import { ExamPage } from './exam.page';
     IonicModule,
     ExamPageRoutingModule
   ],
-  declarations: [ExamPage]
+  declarations: []
 })
 export class ExamPageModule {}

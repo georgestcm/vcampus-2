@@ -15,6 +15,6 @@ import { CreateExamPage } from './create-exam.page';
     IonicModule,
     CreateExamPageRoutingModule
   ],
-  declarations: [CreateExamPage]
+  declarations: []
 })
 export class CreateExamPageModule {}
