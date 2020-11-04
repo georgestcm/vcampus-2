@@ -23,7 +23,8 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      this.translate.use('en')
+    /*  this.splashScreen.hide();
       this.storage.get('language').then((val) => {
       if(val === 'fr'){
         this.translate.use('fr')
@@ -33,7 +34,7 @@ export class AppComponent {
         this.storage.set('language','en')
       }
       console.log(val)
-  });
+  }); */
     });
   }
 }
