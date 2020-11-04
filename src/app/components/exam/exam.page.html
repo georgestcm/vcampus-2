@@ -35,15 +35,15 @@
     <div class="input-group-prepend">
       <span class="input-group-text"  id="inputGroupFileAddon01">Choose School</span>
     </div>
-     <select class="custom-select" required name="schoolDropdown"  
-      id="ddlSchool" 
+     <select class="custom-select" required name="schoolDropdown"
+      id="ddlSchool"
      (change)="onSchoolChange($event.target.value)">
       <option value="">--Select--</option>
       <option *ngFor="let school of schoolList" value={{school._id}}>
         {{school.school.school_name}}
       </option>
     </select>
-    
+
     <div class="input-group-postpend">
       <button class="btn btn-primary" (click)="onClickFind()">Find Questions</button>
     </div>
@@ -78,7 +78,7 @@
       <td>{{q.Question_for}}</td>
       <td>
         <ion-buttons>
-          <button (click)="showAddQuestionModal(q);" class="btn btn-sm btn-success">
+          <button (click)="showAddQuestionModal();" class="btn btn-sm btn-success">
             <ion-icon name="md-create"></ion-icon>
           </button>
           <button *ngIf="role==5"  class="btn btn-sm btn-danger">
