@@ -21,9 +21,9 @@ export class CreateExamPage implements OnInit {
   role : number;
   schoolId : string;
 
-  constructor(private storage: Storage, 
+  constructor(private storage: Storage,
     private modalController: ModalController, private router: Router, private courseService : CourseService) { }
-  
+
 
   ngOnInit() {
     this.storage.get('role').then((val) => {
@@ -33,7 +33,7 @@ export class CreateExamPage implements OnInit {
     } else {
       this.addCourseOrnot = true;
     }
-  
+
  if(this.role == 5){
   this.storage.get('user').then((val) => {
     this.courseService.getSchoolsByTeacherId(val._id).subscribe(res =>{
@@ -41,11 +41,11 @@ export class CreateExamPage implements OnInit {
     }, err => {
       console.log(err);
     })
-  }); 
+  });
 }
 
 });
-  
+
   }
 
  getAllExamBySchool(){
@@ -68,9 +68,7 @@ export class CreateExamPage implements OnInit {
 
   }
 
-  onClickAddQuestion(){
-    this.showAddQuestionModal();
-  }
+
 
   onSchoolChange(schoolId){
     this.schoolId = schoolId;
