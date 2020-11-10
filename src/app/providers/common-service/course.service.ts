@@ -119,6 +119,10 @@ export class CourseService {
     return this._httpClient.authGet("api/get_exam_by_school/"+ schoolId);
   }
 
+  updateExam(data,id) {
+    return this._httpClient.authPut("api/update_exam/"+id, data);
+  }
+
   getAllExamByCourseId(courseId) {
     return this._httpClient.authGet("api/get_exam_by_course/"+ courseId);
   }

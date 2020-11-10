@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-header">
+      Start Exam
+      <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
+  </div>
+  <div class="card-body" style="height:400px;overflow: auto !important;">
+    <form #f="ngForm" class="form"
+    (ngSubmit)="onSubmit()" >
+    <div *ngFor="let ex of exam.questions; let i=index">
+    <h3>{{i+1}}. {{ex.Question_title}}</h3>
+    <div class="form-check" *ngFor="let o of ex.Question_options; let j=index">
+      <input class="form-check-input" type="radio"  name={{ex.Question_title}} [(ngModel)]="o.checked" 
+      value={{o.optionid}}>
+      <label class="form-check-label" for="defaultCheck1">
+         {{o.option}}
+      </label>
+    </div>
+  </div>
+  <br>
+    <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="Submit Exam" />    
+
+    </form>
+</div>
+</div>

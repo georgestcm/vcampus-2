@@ -87,6 +87,7 @@ import { CreateExamPage } from './components/create-exam/create-exam.page';
 import { CreateExamModalComponent } from './components/create-exam-modal/create-exam-modal.component';
 import { StudentExamPage } from './components/student-exam/student-exam.page';
 import { StudentExamModalComponent } from './components/student-exam-modal/student-exam-modal.component';
+import { StudentExamStartModalComponent } from './components/student-exam-start-modal/student-exam-start-modal.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
 
@@ -141,7 +142,8 @@ export function CreateTranslateLoader(http: HttpClient) {
     CreateExamPage,
     CreateExamModalComponent,
     StudentExamPage,
-    StudentExamModalComponent
+    StudentExamModalComponent,
+    StudentExamStartModalComponent
   ],
   entryComponents: [
     LanguageSelectPage,
@@ -162,7 +164,8 @@ export function CreateTranslateLoader(http: HttpClient) {
     GenerateCourseCodeModalComponent,
     QuestionModalComponent,
     CreateExamModalComponent,
-    StudentExamModalComponent
+    StudentExamModalComponent,
+    StudentExamStartModalComponent
   ],
   imports: [
     BrowserModule,
