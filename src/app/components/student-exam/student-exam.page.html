@@ -6,12 +6,17 @@
 </ion-header>
 
 <ion-content padding>
-
+<div *ngIf="showLoading" class="d-flex align-items-center">
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+      </div>
+      <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+    </div>
   <div class="row">
     <div class="col-sm-6 " [ngClass]="exam.Exam_Status=='Pending'?'alert-danger':'alert-success'" *ngFor="let exam of examList[0]" >
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title" *ngIf="exam.Exam_Status==='Pending'">You have pending !!!</h5>
+          <h5 class="card-title" *ngIf="exam.Exam_Status==='Pending'">You have pending <b>{{exam.Exam_Type}}</b></h5>
           <p class="card-text"><b>{{exam.Exam_Name}}</b></p>
           <p class="card-text" *ngIf="exam.Exam_Status==='Completed'"><b>Scored {{exam.CorrectAnswer}} out of {{exam.TotalQuestion}}</b></p>
           <p style="color: red;" *ngIf="exam.Exam_Status==='Pending'" >Complete before: {{exam.Exam_EndDateTime | date:'dd,MMM yyyy hh:mm'}}</p>

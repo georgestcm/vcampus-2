@@ -13,6 +13,7 @@ export class StudentExamPage implements OnInit {
 
   studentId : string;
   examList =[];
+  showLoading : boolean=false;
   constructor(private courseService : CourseService, private storage: Storage, private modalController: ModalController) { }
 
   ngOnInit() {
@@ -23,18 +24,22 @@ export class StudentExamPage implements OnInit {
   }
 
   getAllPendingExams(){
+    this.showLoading =true;
     this.courseService.getAllEnrolledCourse(this.studentId).subscribe( res =>{
      // console.log(res);
       for(let i=0; i< res[0].length; i++){
         this.courseService.getAllExamByCourseId(res[0][i]._id).subscribe(exam =>{
           this.examList.push(exam);
           console.log(this.examList);
+          this.showLoading=false;
         },error =>{
           console.log(error);
+          this.showLoading=false;
         })
       }
     },err =>{
       console.log(err);
+      this.showLoading=false;
     })
   }
 
@@ -44,7 +49,7 @@ export class StudentExamPage implements OnInit {
       componentProps : { exam : exam}
     });
     modal.onDidDismiss().then(data => {
-      //this.getAllCourseCode();
+      this.getAllPendingExams();
     });
     return await modal.present();
   }
