@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-      Add New Multi Choice Question
+      Add New True False Question
       <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
   </div>
   <div class="card-body" style="height:400px;overflow: auto !important;">
@@ -56,31 +56,6 @@
       <input type="text" [(ngModel)]="questionModal.Question_title" name="questionTitle"  class="form-control">      
     </div>
 
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text"  id="questionOption">Options *</span>
-      </div>
-      <input type="text" [(ngModel)]="questionModal.option" name="questionOption"  class="form-control">      
-      <div class="input-group-append">
-        <button class="btn btn-primary" type="button" (click)="onAddOption(questionModal.option)" >Add</button>
-      </div>
-    </div>
-
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text"  id="inputGroupFileAddon01">Correct Answer *</span>
-      </div>
-      <select class="custom-select" required name="CorrectAnswerDropdown"  
-       [(ngModel)]="questionModal.Correct_answer" id="ddlCorrectAnswer" 
-       >
-        <option value="">---Select---</option>
-        <option *ngFor="let o of questionModal.Question_options" value={{o.optionid}}>{{o.optionid}}</option>
-        
-      </select>
-    </div>
-
-    <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="Save Question" />
-
     <div >
       <table class="table table-sm ">
         <tr *ngFor="let o of questionModal.Question_options">
@@ -93,6 +68,23 @@
       </table>
     </div>
 
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"  id="inputGroupFileAddon01">Correct Answer *</span>
+      </div>
+      <select class="custom-select" required name="CorrectAnswerDropdown"  
+       [(ngModel)]="questionModal.Correct_answer" id="ddlCorrectAnswer" 
+       >
+        <option value="">---Select---</option>
+        <option *ngFor="let o of questionModal.Question_options" value={{o.optionid}}>{{o.option}}</option>
+        
+      </select>
+    </div>
+
+    <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="Save Question" />
+
+    
     </form>
 </div>
 </div>

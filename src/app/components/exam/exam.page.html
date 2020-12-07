@@ -5,24 +5,42 @@
   </ion-buttons>
 </ion-header>
 
-<ion-content>
-<div class="add_role" [hidden]="addCourseOrnot" (click)="onClickAddQuestion()">
-  <div  class="add">
-    <p>Add new Question</p>
+<ion-content padding>
+
+  <div class="row"> 
+    <div class="col-md-2">
+
+<div class="row" [hidden]="addCourseOrnot" (click)="onClickAddQuestion()">
+  <div  class="btn btn-outline-secondary  btn-block">
+    <p>Add Multi-Choice Question</p>
     <ion-icon name="add"></ion-icon>
   </div>
 </div>
-  <div style="margin-top: 100px;" class="add_role">
 
-  <div class="add" [routerLink]="['create-exam']">
-    <p>Add New Exam</p>
+<div class="row"  [hidden]="addCourseOrnot" (click)="showTrueFalseQuestionModal()">
+  <div  class="btn btn-outline-secondary btn-block">
+    <p>Add True-False Question</p>
     <ion-icon name="add"></ion-icon>
   </div>
 </div>
 
+<div class="row"  [hidden]="addCourseOrnot" (click)="showFillTheBlanksQuestionModal()">
+  <div  class="btn btn-outline-secondary btn-block">
+    <p>Add Fill The Blank Question</p>
+    <ion-icon name="add"></ion-icon>
+  </div>
+</div>
+  <div  class="row">
+  <div class="btn btn-outline-secondary btn-block" [routerLink]="['create-exam']">
+    <p>Generate New Exam</p>
+    <ion-icon name="add"></ion-icon>
+  </div>
+</div>
 
+</div>
+<div class="col-md-10">
 
-<div class="courses" style="background-color: white;">
+<div  style="background-color: white;">
 
   <div *ngIf="showLoading" class="d-flex align-items-center">
     <div class="progress">
@@ -88,6 +106,8 @@
       </td>
     </tr>
     </table>
+</div>
+</div>
 </div>
 </div>
 </ion-content>

@@ -5,6 +5,8 @@ import { AuthService } from 'src/app/providers/auth.service';
 import { Storage } from '@ionic/storage';
 import { CourseService } from 'src/app/providers/common-service/course.service';
 import { QuestionModalComponent } from '../question-modal/question-modal.component';
+import { TrueFalseQuestionModalComponent } from '../true-false-question-modal/true-false-question-modal.component';
+import { FillTheBlanksQuestionModalComponent } from '../fill-the-blanks-question-modal/fill-the-blanks-question-modal.component';
 
 @Component({
   selector: 'app-exam',
@@ -56,8 +58,26 @@ export class ExamPage implements OnInit {
       //this.getAllCourseCode();
     });
     return await modal.present();
+  }
 
+  async showTrueFalseQuestionModal() {
+    const modal = await this.modalController.create({
+      component: TrueFalseQuestionModalComponent
+    });
+    modal.onDidDismiss().then(data => {
+      //this.getAllCourseCode();
+    });
+    return await modal.present();
+  }
 
+  async showFillTheBlanksQuestionModal() {
+    const modal = await this.modalController.create({
+      component: FillTheBlanksQuestionModalComponent
+    });
+    modal.onDidDismiss().then(data => {
+      //this.getAllCourseCode();
+    });
+    return await modal.present();
   }
 
   onClickAddQuestion(){
