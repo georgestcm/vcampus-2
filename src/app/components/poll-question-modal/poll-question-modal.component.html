@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    Add Fill The Blank Questions
+    Add Poll Questions
       <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
   </div>
   <div class="card-body" style="height:400px;overflow: auto !important;">
@@ -51,17 +51,33 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="questionTitle">Question *</span>
+        <span class="input-group-text"  id="questionTitle">Poll Question *</span>
       </div>
-      <textarea rows="2" [(ngModel)]="questionModal.Question_title" name="questionTitle"  class="form-control">  </textarea>    
-    
+      <input type="text" [(ngModel)]="questionModal.Question_title" name="questionTitle"  class="form-control">      
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"  id="questionOption">Polls *</span>
+      </div>
+      <input type="text" [(ngModel)]="questionModal.option" name="questionOption"  class="form-control">      
       <div class="input-group-append">
-        <button class="btn btn-secondary" type="button" (click)="addDashToQuestion()" >Add ____</button>
+        <button class="btn btn-primary" type="button" (click)="onAddOption(questionModal.option)" >Add Poll</button>
       </div>
     </div>
 
-    <div class="input-group mb-3" *ngFor="let o of dashedList; let i= index">
-      <input type="text" placeholder="Expected answer for blank place {{o.id}}" [(ngModel)]="dashedList[i].answer" name="name{{o.id}}" #name="ngModel" class="form-control">    
+    <div >
+      <table class="table table-sm ">
+        <tr *ngFor="let o of questionModal.Question_options">
+          <td>
+            {{o.optionid}}
+          </td>
+          <td>
+          {{o.option}}
+        </td>
+        
+      </tr>
+      </table>
     </div>
     <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="Save Question" />    
     </form>

@@ -30,6 +30,21 @@
     <ion-icon name="add"></ion-icon>
   </div>
 </div>
+
+<div class="row"  [hidden]="addCourseOrnot" (click)="showAllTrueQuestionModal()">
+  <div  class="btn btn-outline-secondary btn-block">
+    <p>Add All True Question</p>
+    <ion-icon name="add"></ion-icon>
+  </div>
+</div>
+
+<div class="row"  [hidden]="addCourseOrnot" (click)="showPollQuestionModal()">
+  <div  class="btn btn-outline-secondary btn-block">
+    <p>Add Poll Question</p>
+    <ion-icon name="add"></ion-icon>
+  </div>
+</div>
+
   <div  class="row">
   <div class="btn btn-outline-secondary btn-block" [routerLink]="['create-exam']">
     <p>Generate New Exam</p>
@@ -92,7 +107,8 @@
           <li *ngFor="let o of q.Question_options">{{o.option}}</li>
         </ol>
       </td>
-      <td>{{q.Correct_answer}}</td>
+      <td *ngIf="q.Type !='Fill-The-Blanks'">{{q.Correct_answer}}</td>
+      <td *ngIf="q.Type=='Fill-The-Blanks'"><ol *ngFor="let f of q.Fill_The_Blanks"><li>{{f.answer}}</li></ol></td>
       <td>{{q.Question_for}}</td>
       <td>
         <ion-buttons>

@@ -5,11 +5,11 @@ import { CourseService } from "src/app/providers/common-service/course.service";
 import { Storage } from "@ionic/storage";
 
 @Component({
-  selector: 'app-fill-the-blanks-question-modal',
-  templateUrl: './fill-the-blanks-question-modal.component.html',
-  styleUrls: ['./fill-the-blanks-question-modal.component.scss'],
+  selector: 'app-all-true-question-modal',
+  templateUrl: './all-true-question-modal.component.html',
+  styleUrls: ['./all-true-question-modal.component.scss'],
 })
-export class FillTheBlanksQuestionModalComponent implements OnInit {
+export class AllTrueQuestionModalComponent implements OnInit {
 
   questionModal = {
     school: "",
@@ -20,8 +20,8 @@ export class FillTheBlanksQuestionModalComponent implements OnInit {
     Question_options :[],
     Correct_answer :"",
     option :"",
-    Fill_The_Blanks : [],
-    Type :"Fill-The-Blanks"
+    All_True : [],
+    Type :"All-True"
   };
   schoolList: [];
   courseList: [];
@@ -51,11 +51,9 @@ export class FillTheBlanksQuestionModalComponent implements OnInit {
         this.loadingSchool="---Select School---";
       }, err => {
         console.log(err);
-        this.loadingSchool="Error Getting Schol";
+        this.loadingSchool="Error Getting School";
       })
     }); 
-
-    //this.getAllCourseCode();
   }
 
   resetFormField(){
@@ -68,8 +66,8 @@ export class FillTheBlanksQuestionModalComponent implements OnInit {
       Question_options :[],
       Correct_answer :"",
       option :"",
-      Fill_The_Blanks : [],
-      Type :"Fill-The-Blanks"
+      All_True : [],
+      Type :"All-True"
     };
   }
 
@@ -97,14 +95,16 @@ export class FillTheBlanksQuestionModalComponent implements OnInit {
     );
   }
   
-  addDashToQuestion(){
-    this.dashedCounter+=1;
-    this.questionModal.Question_title +="____";
-    this.dashedList.push({id : this.dashedCounter, answer :""});
+  onAddOption(option){
+    if(option.length>0){
+    this.questionModal.Question_options.push({optionid : this.questionModal.Question_options.length+1, option :option});
+    this.questionModal.option = "";
+    }
+
   }
 
   onSubmit() {
-    this.questionModal.Fill_The_Blanks=this.dashedList;
+    //this.questionModal.Fill_The_Blanks=this.dashedList;
     console.log(this.questionModal);
     this.courseService.saveMultiChoiceQuestion(this.questionModal).subscribe(
       (data) => {
@@ -117,6 +117,5 @@ export class FillTheBlanksQuestionModalComponent implements OnInit {
       }
     );
   }
-
 
 }

@@ -7,6 +7,8 @@ import { CourseService } from 'src/app/providers/common-service/course.service';
 import { QuestionModalComponent } from '../question-modal/question-modal.component';
 import { TrueFalseQuestionModalComponent } from '../true-false-question-modal/true-false-question-modal.component';
 import { FillTheBlanksQuestionModalComponent } from '../fill-the-blanks-question-modal/fill-the-blanks-question-modal.component';
+import { AllTrueQuestionModalComponent } from '../all-true-question-modal/all-true-question-modal.component';
+import { PollQuestionModalComponent } from '../poll-question-modal/poll-question-modal.component';
 
 @Component({
   selector: 'app-exam',
@@ -75,7 +77,24 @@ export class ExamPage implements OnInit {
       component: FillTheBlanksQuestionModalComponent
     });
     modal.onDidDismiss().then(data => {
-      //this.getAllCourseCode();
+    });
+    return await modal.present();
+  }
+
+  async showAllTrueQuestionModal() {
+    const modal = await this.modalController.create({
+      component: AllTrueQuestionModalComponent
+    });
+    modal.onDidDismiss().then(data => {
+    });
+    return await modal.present();
+  }
+
+  async showPollQuestionModal() {
+    const modal = await this.modalController.create({
+      component: PollQuestionModalComponent
+    });
+    modal.onDidDismiss().then(data => {
     });
     return await modal.present();
   }

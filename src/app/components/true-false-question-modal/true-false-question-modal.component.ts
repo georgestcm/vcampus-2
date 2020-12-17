@@ -20,6 +20,7 @@ export class TrueFalseQuestionModalComponent implements OnInit {
       Question_options :[],
       Correct_answer :"",
       option :"",
+      Type :"True-False"
     };
     schoolList: [];
     courseList: [];
@@ -62,7 +63,8 @@ export class TrueFalseQuestionModalComponent implements OnInit {
         Question_for :"",
         Question_options :[],
         Correct_answer :"",
-        option :""
+        option :"",
+        Type :"True-False"
       };
     }
 
