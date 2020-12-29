@@ -115,4 +115,15 @@ export class ExamPage implements OnInit {
       console.log(err);
     })
   }
+
+  onDeleteQuestion(questionId){
+    this.courseService.deleteQuestion(questionId).subscribe( res =>{
+      console.log(res);
+      this.onClickFind();
+      alert("Question deleted");
+    },err =>{
+      console.log(err);
+    })
+  }
+
 }

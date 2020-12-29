@@ -68,12 +68,12 @@
 
     <div >
       <table class="table table-sm ">
-        <tr *ngFor="let o of questionModal.Question_options">
+        <tr *ngFor="let o of questionModal.Poll">
           <td>
-            {{o.optionid}}
+            {{o.id}}
           </td>
           <td>
-          {{o.option}}
+          {{o.poll_option}}
         </td>
         
       </tr>

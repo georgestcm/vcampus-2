@@ -126,4 +126,8 @@ export class CourseService {
   getAllExamByCourseId(courseId) {
     return this._httpClient.authGet("api/get_exam_by_course/"+ courseId);
   }
+
+  deleteQuestion(questionId) {
+    return this._httpClient.authDelete("api/delete_question/"+ questionId);
+  }
 }

@@ -106,16 +106,20 @@
         <ol>
           <li *ngFor="let o of q.Question_options">{{o.option}}</li>
         </ol>
+        <ol *ngIf="q.Type=='Poll'" >
+         <li *ngFor="let p of q.Poll;">{{p.poll_option}}</li>
+        </ol>
       </td>
       <td *ngIf="q.Type !='Fill-The-Blanks'">{{q.Correct_answer}}</td>
       <td *ngIf="q.Type=='Fill-The-Blanks'"><ol *ngFor="let f of q.Fill_The_Blanks"><li>{{f.answer}}</li></ol></td>
+      
       <td>{{q.Question_for}}</td>
       <td>
         <ion-buttons>
-          <button (click)="showAddQuestionModal();" class="btn btn-sm btn-success">
+          <!-- <button (click)="showAddQuestionModal();" class="btn btn-sm btn-success">
             <ion-icon name="md-create"></ion-icon>
-          </button>
-          <button *ngIf="role==5"  class="btn btn-sm btn-danger">
+          </button> -->
+          <button *ngIf="role==5" (click)="onDeleteQuestion(q._id)" class="btn btn-sm btn-danger">
             <ion-icon name="trash"></ion-icon>
           </button>
         </ion-buttons>

@@ -103,13 +103,19 @@ export class AllTrueQuestionModalComponent implements OnInit {
 
   }
 
+  get selectedAllTrue() {
+    return this.questionModal.Question_options
+              .filter(opt => opt.checked)
+              .map(opt => opt.optionid)
+  }
+
   onSubmit() {
-    //this.questionModal.Fill_The_Blanks=this.dashedList;
+    this.questionModal.All_True= this.selectedAllTrue;
     console.log(this.questionModal);
     this.courseService.saveMultiChoiceQuestion(this.questionModal).subscribe(
       (data) => {
         console.log(data);
-        alert("New fill the blank question added!");
+        alert("New All-Tre question added!");
         this.dismiss();
       },
       (err) => {

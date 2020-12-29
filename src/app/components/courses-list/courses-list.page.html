@@ -5,14 +5,30 @@
     </ion-buttons>
 </ion-header>
 
-<ion-content>
-  <div class="add_role" [hidden]="addCourseOrnot" [routerLink]="['add-course']">
+<ion-content padding>
+
+  <div class="row"> 
+    <div class="col-md-2">
+
+<div class="row" [hidden]="addCourseOrnot" [routerLink]="['add-course']">
+  <div  class="btn btn-outline-secondary  btn-block">
+    <p>{{'Courses_list.add_new_course' | translate}}</p>
+    <ion-icon name="add"></ion-icon>
+  </div>
+</div>
+    </div>
+
+
+  <!-- <div class="add_role" [hidden]="addCourseOrnot" [routerLink]="['add-course']">
     <div  class="add">
       <p>{{'Courses_list.add_new_course' | translate}}</p>
       <ion-icon name="add"></ion-icon>
     </div>
-  </div>
-  <div class="courses" style="background-color: white;">
+  </div> -->
+
+  <div class="col-md-10">
+
+  <div  style="background-color: white;">
 
     <div *ngIf="showLoading" class="d-flex align-items-center">
       <div class="progress">
@@ -101,4 +117,6 @@
     </table>
   </div>
   </div>
+</div>
+</div>
 </ion-content>

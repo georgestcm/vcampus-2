@@ -99,18 +99,17 @@ export class PollQuestionModalComponent implements OnInit {
   
   onAddOption(option){
     if(option.length>0){
-    this.questionModal.Question_options.push({optionid : this.questionModal.Question_options.length+1, option :option});
+    this.questionModal.Poll.push({id : this.questionModal.Poll.length+1, poll_option :option});
     this.questionModal.option = "";
     }  
   }
 
   onSubmit() {
-    //this.questionModal.Fill_The_Blanks=this.dashedList;
     console.log(this.questionModal);
     this.courseService.saveMultiChoiceQuestion(this.questionModal).subscribe(
       (data) => {
         console.log(data);
-        alert("New fill the blank question added!");
+        alert("New Poll question added!");
         this.dismiss();
       },
       (err) => {
