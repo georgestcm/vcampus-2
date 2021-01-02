@@ -37,6 +37,7 @@ import { GeneratorLoginPage } from './components/generator-login/generator-login
 import { ExamPage } from './components/exam/exam.page';
 import { CreateExamPage } from './components/create-exam/create-exam.page';
 import { StudentExamPage } from './components/student-exam/student-exam.page';
+import { GenerateCourseCodePage } from "./components/generate-course-code/generate-course-code.page";
 
 
 const routes: Routes = [
@@ -480,7 +481,12 @@ const routes: Routes = [
   {
     path: 'gen-dashboard',
     component: GenDashboardPage,
-    canActivate:[GeneratorGuard]
+    canActivate:[GeneratorGuard],
+    children :[{
+      path: "generate-course-code",
+        component: GenerateCourseCodePage,
+        pathMatch: "full",
+    }]
 
   },
   {

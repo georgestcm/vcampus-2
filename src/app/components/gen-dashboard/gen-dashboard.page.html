@@ -7,16 +7,16 @@
       <div class="account_info">
         <h6>{{currentGenerator?.first_name}} {{currentGenerator?.last_name}}</h6>
         <p>
-          <ion-icon name="person"></ion-icon>{{'Gen_dashboard.student' | translate}}
+          <ion-icon name="person"></ion-icon>{{'Gen_dashboard.role' | translate}}
         </p>
       </div>
     </div>
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item lines="none"  [routerLink]="['/gen-dashboard']">
+      <!-- <ion-item lines="none"  [routerLink]="['/gen-dashboard']">
         <ion-icon name="stats"></ion-icon>{{'Gen_dashboard.dashboard' | translate}}
-      </ion-item>
+      </ion-item> -->
 
       <ion-item lines="none"  [routerLink]="['/generate-course-code']">
         <ion-icon name="stats"></ion-icon>{{'Gen_dashboard.generate_code' | translate}}

@@ -111,6 +111,10 @@ export class LoginPage implements OnInit {
       this.login_user_data.role_request = 6
       this.routeDirect = "rstudents"
     }
+    else if (Object.is(e.detail.value, "Generator")) {
+      this.login_user_data.role_request = 7
+      this.routeDirect = "gen-dashboard"
+    }
   }
 
   login() {
@@ -179,8 +183,8 @@ export class LoginPage implements OnInit {
     }
     switch(this.userRole){
       case 7:
-      this.router.navigate(['/gen-dashboard']);
-      break;
+        this.router.navigate(['gen-dashboard/generate-course-code']);
+        break;
       case 6:
       this.router.navigate(['rstudents/student-course']);
       break;

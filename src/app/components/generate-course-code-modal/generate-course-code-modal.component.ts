@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { AuthService } from "src/app/providers/auth.service";
 import { CourseService } from "src/app/providers/common-service/course.service";
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: "app-generate-course-code-modal",
@@ -15,17 +16,20 @@ export class GenerateCourseCodeModalComponent implements OnInit {
     curriculum: "",
     courseCodeValidFrom: "",
     courseCodeValidTo: "",
+    createdBy :""
   };
   schoolList: [];
   curriculumList: [];
   loadingSchool = "Loading School...";
   loadingCourse = "--Select Curriculum---";
   courseCodeList: any;
+  loggedInUser : string;
 
   constructor(
     private modalController: ModalController,
     public _auth: AuthService,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private storage : Storage
   ) {}
 
   ngOnInit() {
@@ -40,7 +44,12 @@ export class GenerateCourseCodeModalComponent implements OnInit {
       }
     );
 
+
     //this.getAllCourseCode();
+
+    this.storage.get('user').then((val) => {
+      this.loggedInUser = val._id;
+    }); 
   }
 
   dismiss() {
@@ -50,6 +59,7 @@ export class GenerateCourseCodeModalComponent implements OnInit {
       curriculum: "",
       courseCodeValidFrom: "",
       courseCodeValidTo: "",
+      createdBy: ""
     };
     this.modalController.dismiss({
       dismissed: true,
@@ -57,6 +67,7 @@ export class GenerateCourseCodeModalComponent implements OnInit {
   }
 
   onSubmit() {
+    this.courseCodeModal.createdBy=this.loggedInUser;
     this.courseService.saveCourseCode(this.courseCodeModal).subscribe(
       (data) => {
         console.log(data);
