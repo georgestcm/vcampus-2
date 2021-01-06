@@ -48,7 +48,7 @@ export class GenerateCourseCodePage implements OnInit {
   download(){
     let jsonToExport =[];
     for(let i=0; i<this.courseCodeList.length; i++){
-      jsonToExport.push({Curriculum : this.courseCodeList[i].curriculum.curriculum, CourseCode : this.courseCodeList[i].courseCode, ValidFrom : this.courseCodeList[i].courseCodeValidFrom, ValidTo : this.courseCodeList[i].courseCodeValidTo, GeneratedBy : this.courseCodeList[i].createdBy.username})
+      jsonToExport.push({Curriculum : this.courseCodeList[i].curriculum.curriculum, CourseCode : this.courseCodeList[i].courseCode, ValidFrom : this.courseCodeList[i].courseCodeValidFrom, ValidTo : this.courseCodeList[i].courseCodeValidTo, GeneratedBy : this.courseCodeList[i].createdBy.username, GeneratedOn : this.courseCodeList[i].createdAt})
     }
     this.downloadService.downloadFile(jsonToExport, 'Course_Code');
   }

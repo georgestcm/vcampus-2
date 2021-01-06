@@ -5,7 +5,7 @@
   </div>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <div class="error">
     <p>{{error}}</p>
   </div>
@@ -16,7 +16,12 @@
     <h3>{{'Add_curriculum.curList' | translate }}</h3>
     <ion-item *ngFor="let curriculum of curList" lines="full"> {{curriculum.curriculum}} </ion-item>
   </ng-container>
-  <ion-input type="name" [(ngModel)]="curriculamModel.curriculum" required></ion-input>
-  <ion-button  (click)="saveCurriculam()">{{'Add_curriculum.addCur' | translate }}</ion-button>
-  <ion-button (click)="dismiss()" color="danger">{{'Add_curriculum.close' | translate }}</ion-button>
+  <input type="text" [(ngModel)]="curriculamModel.curriculum" class="form-control" required>
+
+  <div style="text-align: center; padding: 5px;">
+    <button class="btn btn-secondary" (click)="saveCurriculam()">{{'Add_curriculum.addCur' | translate }}</button>
+    <button class="btn btn-outline-secondary" style="margin-left: 5px;" (click)="dismiss()">{{'Add_curriculum.close' | translate }}</button>
+  </div>
+  <!-- <ion-button  (click)="saveCurriculam()">{{'Add_curriculum.addCur' | translate }}</ion-button>
+  <ion-button (click)="dismiss()" color="danger">{{'Add_curriculum.close' | translate }}</ion-button> -->
 </ion-content>

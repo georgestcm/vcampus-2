@@ -15,7 +15,7 @@ export class FileUploadModalComponent implements OnInit {
   courseData : any= {};
   topicList: Array<any> = [];
   paragraphList : Array<any> = [];
-  public uploader:FileUploader = new FileUploader({url: environment.apiUrl+'/course/uploadDocs', itemAlias: 'file'});
+  public uploader:FileUploader = new FileUploader({url: environment.apiUrl+'api/course/uploadDocs', itemAlias: 'file'});
   filesToUpload: Array<File> = [];
   topicId : string;
   paragraphId : string;

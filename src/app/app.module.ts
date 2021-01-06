@@ -93,6 +93,7 @@ import { FillTheBlanksQuestionModalComponent } from './components/fill-the-blank
 import { AllTrueQuestionModalComponent } from "./components/all-true-question-modal/all-true-question-modal.component";
 import { PollQuestionModalComponent } from "./components/poll-question-modal/poll-question-modal.component";
 import { GenerateCourseCodePage } from "./components/generate-course-code/generate-course-code.page";
+import { UpdateProfilePage } from "./components/update-profile/update-profile.page";
 
 const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
 
@@ -153,7 +154,8 @@ export function CreateTranslateLoader(http: HttpClient) {
     FillTheBlanksQuestionModalComponent,
     AllTrueQuestionModalComponent,
     PollQuestionModalComponent,
-    GenerateCourseCodePage
+    GenerateCourseCodePage,
+    UpdateProfilePage
   ],
   entryComponents: [
     LanguageSelectPage,

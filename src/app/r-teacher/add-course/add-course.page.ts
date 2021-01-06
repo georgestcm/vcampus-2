@@ -65,7 +65,7 @@ export class AddCoursePage implements OnInit {
       content_css: '//www.tiny.cloud/css/codepen.min.css'
       
     }
-    this.fileURL = environment.apiUrl+"/course/readFile";
+    this.fileURL = environment.apiUrl+"api/course/readFile";
     
     //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
     this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };

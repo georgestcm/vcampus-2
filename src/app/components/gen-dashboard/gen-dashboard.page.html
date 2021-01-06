@@ -18,11 +18,15 @@
         <ion-icon name="stats"></ion-icon>{{'Gen_dashboard.dashboard' | translate}}
       </ion-item> -->
 
-      <ion-item lines="none"  [routerLink]="['/generate-course-code']">
+      <ion-item lines="none" (click)="onGenerateCourseCode()"  >
         <ion-icon name="stats"></ion-icon>{{'Gen_dashboard.generate_code' | translate}}
       </ion-item>
 
-      <ion-item lines="none" (click)="logoutUser()">
+      <ion-item lines="none"  [routerLink]="['update-profile']">
+        <ion-icon name="stats"></ion-icon>{{'Gen_dashboard.update_profile' | translate}}
+      </ion-item>
+
+      <ion-item lines="none" style="cursor:pointer;" (click)="logoutUser()">
         <ion-icon name="log-out"></ion-icon>{{'Gen_dashboard.log_out' | translate}}
       </ion-item>
     </ion-list>

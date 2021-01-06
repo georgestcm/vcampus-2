@@ -21,10 +21,12 @@ export class GenDashboardPage implements OnInit {
     });
   }
 
-  toDashboard() {
-    this.router.navigate(['gen-dashboard'])
+  toUpdateProfile() {
+    this.router.navigate(['gen-dashboard/update-profile'])
   }
-
+  onGenerateCourseCode(){
+    this.router.navigate(['gen-dashboard/generate-course-code'])
+  }
   logoutUser() {
     this.storage.remove('token')
     this.storage.remove('user')

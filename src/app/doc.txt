@@ -1,4 +1,4 @@
 *********** Default Password ***************
 1. Code Generator - Last Name + generator
-2. Editor - Last Name + generator
-
+2. Editor - Last Name + 12345
+3. School Staff - Last Name + 12345

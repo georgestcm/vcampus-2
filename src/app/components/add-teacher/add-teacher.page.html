@@ -65,6 +65,8 @@
   <input type="password" class="form-control" [(ngModel)]="re_password" required aria-describedby="basic-addon3">
 </div>
   </div>
-  <ion-button (click)="addTeacher()">{{'Add_teacher.add_teacher' | translate }}</ion-button>
-  <ion-button color="danger" (click)="dismiss()">{{'Add_teacher.close' | translate }}</ion-button>
+  <div style="text-align: center; padding: 5px;">
+  <button class="btn btn-secondary" (click)="addTeacher()">{{'Add_teacher.add_teacher' | translate }}</button>
+  <button class="btn btn-outline-secondary" style="margin-left: 5px;" (click)="dismiss()">{{'Add_teacher.close' | translate }}</button>
+</div>
 </ion-content>

@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TranslateModule} from "@ngx-translate/core";
+
 import { IonicModule } from '@ionic/angular';
 
-import { GenerateCourseCodePageRoutingModule } from './generate-course-code-routing.module';
+import { UpdateProfilePageRoutingModule } from './update-profile-routing.module';
 
+import { UpdateProfilePage } from './update-profile.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GenerateCourseCodePageRoutingModule,
-    TranslateModule
+    UpdateProfilePageRoutingModule
   ],
   declarations: []
 })
-export class GenerateCourseCodePageModule {}
+export class UpdateProfilePageModule {}

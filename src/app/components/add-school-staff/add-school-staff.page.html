@@ -5,14 +5,32 @@
   </div>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <div class="error">
     <p>{{error}}</p>
   </div>
-  <ion-label>{{'Add_school_staff.username' | translate}}</ion-label>
-  <ion-input type="name" [(ngModel)]="username" required></ion-input>
+
+  <div [style.display]="showNotification ? 'block' : 'none'"  class="alert alert-secondary alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="close" (click)="showNotification=false" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
   <div>
-  <ion-button>{{'Add_school_staff.add_staff' | translate}}</ion-button><br>
-  <ion-button color="danger" (click)="dismiss()">{{'Add_school_staff.close' | translate}}</ion-button>
+  <label>{{'Add_school_staff.username' | translate}}</label>
+  <input type="text" class="form-control"  [(ngModel)]="schoolStaffModel.username" required>
+</div>
+<div>
+  <label>{{'Add_school_staff.first_name' | translate}}</label>
+  <input type="text" class="form-control" [(ngModel)]="schoolStaffModel.first_name" required>
+</div>
+<div>
+  <label>{{'Add_school_staff.last_name' | translate}}</label>
+  <input type="text" class="form-control" [(ngModel)]="schoolStaffModel.last_name" required>
+</div>
+  <div style="text-align: center;padding: 5px;">
+  <button class="btn btn-secondary" (click)="onSubmit()">{{'Add_school_staff.add_staff' | translate}}</button>
+  <button style="margin-left: 5px;" class="btn" class="btn btn-outline-secondary" (click)="dismiss()">{{'Add_school_staff.close' | translate}}</button>
 </div>
 </ion-content>

@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+    <ion-title>Update Profile</ion-title>
+    </ion-buttons>
+</ion-header>
+
+<ion-content padding>
+
+  <div [style.display]="showNotification ? 'block' : 'none'"  class="alert alert-secondary alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="close" (click)="showNotification=false" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+<div class="row">
+ 
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+          Update Profile
+      </div>
+      <div class="card-body" style="min-height:300px;overflow: auto !important;">
+        <form #f1="ngForm" class="form"
+        (ngSubmit)="onUpdateProfile()" >
+
+        <div class="mb-3 row">
+          <label for="staticEmail" class="col-sm-3 col-form-label">Username</label>
+          <div class="col-sm-9">
+            <input type="text" readonly class="form-control" name="username" [(ngModel)]="userDetail.username">
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="email" class="col-sm-3 col-form-label">Email</label>
+          <div class="col-sm-9">
+            <input type="text" readonly class="form-control" name="email" [(ngModel)]="userDetail.email">
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="first_name" class="col-sm-3 col-form-label">First Name</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" required [(ngModel)]="userDetail.first_name" id="first_name" name="first_name">
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="first_name" class="col-sm-3 col-form-label">Last Name</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" required [(ngModel)]="userDetail.last_name" id="last_name" name="last_name">
+          </div>
+        </div>
+
+        
+        <div class="mb-3 row">
+          <label for="" class="col-sm-3 col-form-label"></label>
+          <div class="col-sm-9">
+            <button [disabled]="!f1.valid" class="btn btn-secondary">Update Profile</button>
+          </div>
+        </div>
+        </form>
+
+      </div>
+      </div>
+
+  </div>
+
+  <div class="col-md-6">
+    <!-- Update password -->
+    <div class="card">
+      <div class="card-header">
+          Change Password
+      </div>
+      <div class="card-body" style="min-height:310px;overflow: auto !important;">
+        <form #f="ngForm" class="form"
+        (ngSubmit)="onChangePassword()" >
+  
+        <div class="mb-3 row">
+          <label for="current_password" class="col-sm-3 col-form-label">Current Password</label>
+          <div class="col-sm-9">
+            <input type="password" class="form-control" required [(ngModel)]="userDetail.password" id="current_password" name="current_password">
+          </div>
+        </div>
+  
+        <div class="mb-3 row">
+          <label for="new_password" class="col-sm-3 col-form-label">New Password</label>
+          <div class="col-sm-9">
+            <input type="password" class="form-control" required [(ngModel)]="userDetail.new_password" name="new_password" id="new_password">
+          </div>
+        </div>
+  
+        <div class="mb-3 row">
+          <label for="confirm_password" class="col-sm-3 col-form-label">Current Password</label>
+          <div class="col-sm-9">
+            <input type="password" class="form-control" required [(ngModel)]="userDetail.confirm_password" id="confirm_password" name="confirm_password">
+          </div>
+        </div>
+  
+        <div class="mb-3 row">
+          <label for="" class="col-sm-3 col-form-label"></label>
+          <div class="col-sm-9">
+            <button [disabled]="!f.valid"  class="btn btn-secondary">Change Password</button>
+          </div>
+        </div>
+  
+  
+        </form>
+  
+      </div>
+      </div>
+  
+    </div>
+
+</div>
+</ion-content>

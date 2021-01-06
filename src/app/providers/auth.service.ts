@@ -69,4 +69,8 @@ export class AuthService {
   updateSchoolData(schoolData) {
     return this._httpClient.authPut('api/updateSchoolDetail', schoolData);
   }
+
+  updateProfile(userProfile) {
+    return this._httpClient.authPost('api/update_profile', userProfile);
+  }
 }

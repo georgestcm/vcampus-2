@@ -4,44 +4,49 @@
     <ion-title>{{'Permissions.permission' | translate}}</ion-title>
     </ion-buttons>
 </ion-header>
-<ion-content>
-  <div class="add_role" [hidden]="adminOrNot">
-    <div class="add">
+<ion-content padding>
+  <div class="row">
+    <div class="col-md-2">
+  <div class="row" [hidden]="adminOrNot">
+    <div class="btn btn-outline-secondary  btn-block">
       <p>{{'Permissions.add_admin_staff' | translate}}</p>
       <ion-icon (click)="addStaffAdmin()" name="add"></ion-icon>
     </div>
   </div>
-  <div class="add_role" [hidden]="adminOrNot">
-    <div class="add">
+  <div class="row" [hidden]="adminOrNot">
+    <div class="btn btn-outline-secondary  btn-block">
       <p>{{'Permissions.add_a_school' | translate}}</p>
       <ion-icon (click)="addSchoolAdmin()" name="add"></ion-icon>
     </div>
   </div>
-  <div class="add_role" [hidden]="adminOrNot">
-    <div class="add">
+  <div class="row" [hidden]="adminOrNot">
+    <div class="btn btn-outline-secondary  btn-block">
       <p>{{'Permissions.code_generator' | translate}}
         </p>
       <ion-icon (click)="addCodeGenerator()" name="add"></ion-icon>
     </div>
   </div>
-  <div class="add_role" (click)="AddStaffSchool()" [hidden]="!adminOrNot">
-    <div class="add">
+  <div class="row" (click)="AddStaffSchool()" [hidden]="!adminOrNot">
+    <div class="btn btn-outline-secondary  btn-block">
       <p>{{'Permissions.add_a_staff' | translate}}</p>
       <ion-icon name="add"></ion-icon>
     </div>
   </div>
-  <div class="add_role" (click)="addTeacher()" [hidden]="!adminOrNot">
-    <div class="add">
+  <div class="row" (click)="addTeacher()" [hidden]="!adminOrNot">
+    <div class="btn btn-outline-secondary  btn-block">
       <p>{{'Permissions.add_a_teacher' | translate}}</p>
       <ion-icon name="add"></ion-icon>
     </div>
   </div>
-  <div class="add_role" (click)="addCurriculum()" [hidden]="!adminOrNot">
-    <div class="add">
+  <div class="row" (click)="addCurriculum()" [hidden]="!adminOrNot">
+    <div class="btn btn-outline-secondary  btn-block">
       <p>{{'Permissions.curriculum' | translate}}</p>
       <ion-icon name="add"></ion-icon>
     </div>
   </div>
+</div>
+<div class="col-md-10">&nbsp;</div>
+</div>
   <div class="placeholder">
     <p></p>
   </div>

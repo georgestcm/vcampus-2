@@ -8,7 +8,7 @@ export class DownloadService {
   constructor() { }
 
   downloadFile(data, filename='data') {
-    let csvData = this.ConvertToCSV(data, ['Curriculum','CourseCode', 'ValidFrom', 'ValidTo','GeneratedBy']);
+    let csvData = this.ConvertToCSV(data, ['Curriculum','CourseCode', 'ValidFrom', 'ValidTo','GeneratedBy','GeneratedOn']);
     console.log(csvData)
     let blob = new Blob(['\ufeff' + csvData], { type: 'text/csv;charset=utf-8;' });
     let dwldLink = document.createElement("a");
