@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-header">
+      {{'File_upload_modal.title' | translate}}
+      <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
+  </div>
+  <div class="card-body" style="height:450px;overflow: auto !important;">
+
+    <ion-card *ngFor="let m of mediaList; let i=index">
+      <video controls style="width: 100%; height: 150px;">
+        <source [src]="m.value" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <!-- <video width="200" height="200" controls="controls">\n' + '<source src="' + data.source + '"' + (data.sourcemime ? ' type="' + data.sourcemime + '"' : '') + ' />\n' + (data.altsource ? '<source src="' + data.altsource + '"' + (data.altsourcemime ? ' type="' + data.altsourcemime + '"' : '') + ' />\n' : '') + '</video> -->
+      <!-- <img src="./madison.jpg" /> -->
+      <ion-card-header>
+        <ion-card-title>{{m.title}}</ion-card-title>
+        <a [href]="m.value" target="_blank">{{m.value}} </a>
+        <input type="hidden" [value]="m.value" #userinput>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- <button (click)="copyInputMessage(userinput)" class="btn btn-block btn-primary">Copy URL</button> -->
+      </ion-card-content>
+    </ion-card>
+
+</div>
+</div>

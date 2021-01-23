@@ -10,6 +10,7 @@ import { ModalController } from '@ionic/angular';
 import { DatePipe } from '@angular/common'
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { environment } from 'src/environments/environment';
+import { MediaListModalComponent } from "src/app/components/media-list-modal/media-list-modal.component";
 
 @Component({
   selector: "app-add-course",
@@ -40,6 +41,7 @@ export class AddCoursePage implements OnInit {
   showSuccess = false;
   statusMessage = "";
   courserId : string;
+  imageList: Array<any> = [];
   mediaList: Array<any> = [];
   initMCE :any;
   public uploader:FileUploader = new FileUploader({url: environment.apiUrl+'/course/uploadDocs', itemAlias: 'file'});
@@ -54,15 +56,21 @@ export class AddCoursePage implements OnInit {
         height: 400,
         menubar: true,
         plugins: [
-          'advlist autolink lists link image charmap print preview anchor',
+          'advlist autolink lists link image media charmap print preview anchor',
           'searchreplace visualblocks code fullscreen',
           'insertdatetime media table paste code help wordcount'
         ],
-        image_list: this.mediaList,
-        media_list:this.mediaList,
+        image_list: this.imageList,
+        //media_list:this.mediaList,
       toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
       image_advtab: true,
-      content_css: '//www.tiny.cloud/css/codepen.min.css'
+      content_css: '//www.tiny.cloud/css/codepen.min.css',
+      media_live_embeds: true,
+      video_template_callback: function(data) {
+        // return '<iframe src="' + data.source +
+        // '" width="400" height="400" ></iframe>';
+        return '<video width="' + data.width + '" height="' + data.height + '"' + (data.poster ? ' poster="' + data.poster + '"' : '') + ' controls="controls">\n' + '<source src="' + data.source + '"' + (data.sourcemime ? ' type="' + data.sourcemime + '"' : '') + ' />\n' + (data.altsource ? '<source src="' + data.altsource + '"' + (data.altsourcemime ? ' type="' + data.altsourcemime + '"' : '') + ' />\n' : '') + '</video>';
+      }
       
     }
     this.fileURL = environment.apiUrl+"api/course/readFile";
@@ -86,17 +94,25 @@ export class AddCoursePage implements OnInit {
       });
     }
     
- 
     this.storage.get('user').then((val) => {
       this.userId = val._id;
       this.courseService.getSchoolsByTeacherId(this.userId).subscribe(res =>{  
         this.schoolList = res;
-        console.log(res);
+       // console.log(res);
         this.courseService.getMediaByUserId(this.userId).subscribe(res =>{
           res.forEach(element => {
+            if(element.fileName.split('.')[1]=="jpg" || element.fileName.split('.')[1]=="jpeg" || element.fileName.split('.')[1]=="png"){
+             // console.log(this.fileURL+"/"+ element.fileName);           
+            this.imageList.push({title :element.title, value : this.fileURL+"/"+ element.fileName});
+            this.initMCE.image_list = this.mediaList;
+          }else if(element.fileName.split('.')[1]=="mp4" || element.fileName.split('.')[1]=="webm"){
             this.mediaList.push({title :element.title, value : this.fileURL+"/"+ element.fileName});
+            //console.log(this.mediaList);
+          }
           });
-          this.initMCE.image_list = this.mediaList;
+          console.log(this.mediaList);
+         // this.initMCE.external_media_list_url = tinyMCEMediaList;
+          //this.initMCE.media_list = this.mediaList;
         });
       }, err => {
         console.log(err);
@@ -371,18 +387,48 @@ export class AddCoursePage implements OnInit {
       componentProps : {"courseData":null, "userId":this.userId}
     });
     modal.onDidDismiss().then(data => {
-      this.mediaList=[];
+      this.imageList=[];
       this.courseService.getMediaByUserId(this.userId).subscribe(res =>{
         console.log(res);
         res.forEach(element => {
-          console.log(element);
+
+          if(element.fileName.split('.')[1]=="jpg" || element.fileName.split('.')[1]=="jpeg" || element.fileName.split('.')[1]=="png"){
+            //console.log(this.fileURL+"/"+ element.fileName);           
+          this.imageList.push({title :element.title, value : this.fileURL+"/"+ element.fileName});
+          this.initMCE.image_list = this.mediaList;
+        }else if(element.fileName.split('.')[1]=="mp4" || element.fileName.split('.')[1]=="webm"){
           this.mediaList.push({title :element.title, value : this.fileURL+"/"+ element.fileName});
+          //console.log(this.mediaList);
+        }
+
+          //console.log(element);
+          //this.imageList.push({title :element.title, value : this.fileURL+"/"+ element.fileName});
         });
-        this.initMCE.image_list = this.mediaList;
+        this.initMCE.image_list = this.imageList;
       });
     });
     return await modal.present();
   }
+
+  async showMediaListModal() {
+    const modal = await this.modalController.create({
+      component: MediaListModalComponent,
+      componentProps : {"mediaList":this.mediaList}
+    });
+    modal.onDidDismiss().then(data => {
+      // this.mediaList=[];
+      // this.courseService.getMediaByUserId(this.userId).subscribe(res =>{
+      //   console.log(res);
+      //   res.forEach(element => {
+      //     console.log(element);
+      //     this.mediaList.push({title :element.title, value : this.fileURL+"/"+ element.fileName});
+      //   });
+      //   this.initMCE.image_list = this.mediaList;
+      // });
+    });
+    return await modal.present();
+  }
+
   getCourseById(id){
     this.courseService.getCourse(id).subscribe( res => {
       console.log(res);

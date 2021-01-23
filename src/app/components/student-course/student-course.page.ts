@@ -56,23 +56,24 @@ export class StudentCoursePage implements OnInit {
     //this.router.navigate(['rstudents/student-course-view',{'id': id}]);
   }
   loadAllCourse(){
-    this.showLoading =true;
-    this.courseService.getAll().subscribe( (data) => {
-      this.courseList = data;
-      this.showLoading =false;
-      //console.log(data);
-      //this.showLoading = false;
-     },
-     err => {
-       console.log(err);
-       this.showLoading =false;
-       //this.showLoading = false;
-    })
+    this.getAllEnrolledCourse();
+    // this.showLoading =true;
+    // this.courseService.getAll().subscribe( (data) => {
+    //   this.courseList = data;
+    //   this.showLoading =false;
+    //   //console.log(data);
+    //   //this.showLoading = false;
+    //  },
+    //  err => {
+    //    console.log(err);
+    //    this.showLoading =false;
+    //    //this.showLoading = false;
+    // })
   }
   onClickFind(){
     this.showLoading = true;
-    this.courseService.getCourseCourseName(this.searchText).subscribe((data) =>{
-      this.courseList = data;
+    this.courseService.getCourseByCourseName(this.searchText).subscribe((data) =>{
+      this.courseList = data[0];
       this.showLoading =false;
     },err =>{
       console.log(err);

@@ -22,7 +22,8 @@ export class UpdateProfilePage implements OnInit {
       password :"",
       new_password :"",
       confirm_password : "",
-      action: ""
+      action: "",
+      email:""
     };
    }
 

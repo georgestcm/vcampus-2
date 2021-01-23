@@ -62,7 +62,7 @@
     <table class="table" *ngIf="mediaList.length>0">
       <tr *ngFor="let m of mediaList; let i=index">
     <td>
-      <a href="m.fileName" target="blank">{{m.fileName}}</a>
+      <a [href]="m.fileName" target="blank">{{m.fileName}}</a>
     </td>
       </tr>
     </table>

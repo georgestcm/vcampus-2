@@ -67,8 +67,8 @@ export class CourseService {
     return this._httpClient.authGet(`api/course/readFile/${fileName}`, );
   }
 
-  getCourseCourseName(searchText) {
-    return this._httpClient.authGet(`api/course/findCoursesByCourseName/${searchText}`);
+  getCourseByCourseName(course) {
+    return this._httpClient.authGet(`api/get_all_enrolled_course_by_course/${course}`);
   }
 
   getAll() {

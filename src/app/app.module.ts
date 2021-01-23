@@ -94,6 +94,7 @@ import { AllTrueQuestionModalComponent } from "./components/all-true-question-mo
 import { PollQuestionModalComponent } from "./components/poll-question-modal/poll-question-modal.component";
 import { GenerateCourseCodePage } from "./components/generate-course-code/generate-course-code.page";
 import { UpdateProfilePage } from "./components/update-profile/update-profile.page";
+import { MediaListModalComponent } from "./components/media-list-modal/media-list-modal.component";
 
 const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
 
@@ -155,7 +156,8 @@ export function CreateTranslateLoader(http: HttpClient) {
     AllTrueQuestionModalComponent,
     PollQuestionModalComponent,
     GenerateCourseCodePage,
-    UpdateProfilePage
+    UpdateProfilePage,
+    MediaListModalComponent
   ],
   entryComponents: [
     LanguageSelectPage,
@@ -181,7 +183,8 @@ export function CreateTranslateLoader(http: HttpClient) {
     TrueFalseQuestionModalComponent,
     FillTheBlanksQuestionModalComponent,
     AllTrueQuestionModalComponent,
-    PollQuestionModalComponent
+    PollQuestionModalComponent,
+    MediaListModalComponent
   ],
   imports: [
     BrowserModule,

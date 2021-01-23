@@ -122,6 +122,7 @@
        "enroll_course":"Enroll Course",
        "course_code":"Course Code",
        "course_name":"Course Name",
+       "course_description":"Description",
        "valid_from":"Valid From",
        "valid_to":"Valid To"
      },

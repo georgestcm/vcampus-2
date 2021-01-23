@@ -121,6 +121,7 @@
       "enroll_course":"S'inscrire au cours",
       "course_code":"Code de cours",
       "course_name":"Nom du cours",
+      "course_description":"Description",
       "valid_from":"Valide à partir de",
       "valid_to":"Valable pour"
     },

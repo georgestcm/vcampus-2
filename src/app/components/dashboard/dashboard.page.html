@@ -24,24 +24,24 @@
           <input type="text" [(ngModel)]="courseCode" class="form-control" id="courseCode" placeholder="Course Code">
         </div>
         <div class="col-sm-3">
-         <button class="btn btn-primary" (click)="onEnrollCourse()">{{'Dashboard.enroll_course' | translate}}</button>
+         <button class="btn btn-outline-secondary" (click)="onEnrollCourse()">{{'Dashboard.enroll_course' | translate}}</button>
         </div>
       </div>
     </div>
   </div>
 
   <div class="table-responsive-sm" style="margin-top: 10px;">
-    <table class="table  table-bordered table-striped " >
+    <table class="table table-sm table-bordered table-striped " >
       <thead >
-      <tr class="table-primary">
-      <th>
+      <tr >
+      <th style="width:5%">
         #
       </th>
       <th style="width:20%">
-         {{'Dashboard.course_code' | translate}}
+         {{'Dashboard.course_name' | translate}}
       </th>
-      <th style="width:20%">
-        {{'Dashboard.course_name' | translate}}
+      <th style="width:30%">
+        {{'Dashboard.course_description' | translate}}
       </th>
       <th style="width:20%">
          {{'Dashboard.valid_from' | translate}}
@@ -55,11 +55,10 @@
   </thead>
     <tr *ngFor="let code of courseList; let i=index">
       <td>{{i+1}}</td>
-      <td>{{code.courseCode}}</td>
-      <td>{{code.course?.name}}</td>
-      <td> {{code.courseCodeValidFrom | date :'dd-MM-yyyy'}}</td>
-      <td>{{code.courseCodeValidTo |date :'dd-MM-yyyy'}}</td>
-
+      <td>{{code.name}}</td>
+      <td>{{code.description}}</td>
+      <td> {{code.availability_from | date :'dd-MM-yyyy'}}</td>
+      <td>{{code.availability_to |date :'dd-MM-yyyy'}}</td>
 
     </tr>
     </table>

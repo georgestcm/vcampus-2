@@ -167,7 +167,9 @@
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">Paragraph *</span>
-          <input type="button" value="Add Media" class="btn btn-sm btn-primary" (click)="onClickAddMedia()">
+          <input type="button" value="Add Media" class="btn btn-sm btn-primary"(click)="onClickAddMedia()">
+          <input type="button" value="Media List" class="btn btn-sm btn-secondary" 
+          (click)="showMediaListModal()">
         </div>
         <editor style="width: 100%;" name="paragraph" [init]="initMCE" 
         [(ngModel)]="courseModel.paragraph"></editor>

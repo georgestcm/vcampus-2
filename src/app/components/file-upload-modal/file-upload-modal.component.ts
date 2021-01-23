@@ -38,7 +38,7 @@ export class FileUploadModalComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.fileURL = environment.apiUrl+"/course/readFile";
+    this.fileURL = environment.apiUrl+"api/course/readFile";
     this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
       console.log("ImageUpload:uploaded:", item, status, response);
