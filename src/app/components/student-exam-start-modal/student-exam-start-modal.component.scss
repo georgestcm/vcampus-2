@@ -1,0 +1,16 @@
+.form-control-custom {
+    padding: 10px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid black;
+    width: 60%;
+}
+.form-control-custom:focus-visible{
+    padding: 10px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid black;
+    width: 60%;
+}

@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-      Start Exam
+     Submit Your {{exam.Exam_Type}} Exam 
       <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
   </div>
   <div class="card-body" style="height:400px;overflow: auto !important;">
@@ -8,17 +8,30 @@
     (ngSubmit)="onSubmit()" >
     <div *ngFor="let ex of exam.questions; let i=index">
     <h3>{{i+1}}. {{ex.Question_title}}</h3>
+    
+    <input *ngIf="ex.Type=='Fill-The-Blanks'" name="{{ex.Fill_The_Blanks[0]._id}}" [(ngModel)]="ex.userAnswer"  type="text" class="form-control-custom" placeholder="Your answer">
+     <!-- Multi-Choice / True-False -->
     <div class="form-check" *ngFor="let o of ex.Question_options; let j=index">
-      <input class="form-check-input" type="radio"  name={{ex.Question_title}} [(ngModel)]="o.checked" 
+      <div id="multi-choice" *ngIf="ex.Type =='Multi-Choice' || ex.Type=='True-False'" >
+      <input  class="form-check-input" type="radio"  name={{ex.Question_title}} [(ngModel)]="o.checked" 
       value={{o.optionid}}>
       <label class="form-check-label" for="defaultCheck1">
          {{o.option}}
       </label>
     </div>
+    <!-- All-True -->
+    <div id="multi-choice" *ngIf="ex.Type =='All-True'" >
+      <input  class="form-check-input" type="checkbox"  name={{ex.Question_title}} [(ngModel)]="o.checked" 
+      value={{o.optionid}}>
+      <label class="form-check-label" for="defaultCheck1">
+         {{o.option}}
+      </label>
+    </div>
+
+    </div>
   </div>
   <br>
-    <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="Submit Exam" />    
-
+    <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="Submit Exam" /> 
     </form>
 </div>
 </div>

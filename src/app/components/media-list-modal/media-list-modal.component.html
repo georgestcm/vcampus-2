@@ -21,6 +21,13 @@
         <!-- <button (click)="copyInputMessage(userinput)" class="btn btn-block btn-primary">Copy URL</button> -->
       </ion-card-content>
     </ion-card>
+    <h3 *ngIf="documentList.length>0">Documents</h3>
+    <ion-card *ngFor="let m of documentList; let i=index">
+      <ion-card-header>
+        <ion-card-title>{{m.title}}</ion-card-title>
+        <a [href]="m.value" target="_blank">{{m.value}} </a>
+      </ion-card-header>
+    </ion-card>
 
 </div>
 </div>

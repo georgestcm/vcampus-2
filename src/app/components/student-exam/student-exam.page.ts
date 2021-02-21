@@ -29,8 +29,13 @@ export class StudentExamPage implements OnInit {
      // console.log(res);
       for(let i=0; i< res[0].length; i++){
         this.courseService.getAllExamByCourseId(res[0][i]._id).subscribe(exam =>{
-          this.examList.push(exam);
+         const exams = exam;
+         if(exams.length>0){
+          this.examList.push(exams);
           console.log(this.examList);
+         }
+         
+          
           this.showLoading=false;
         },error =>{
           console.log(error);

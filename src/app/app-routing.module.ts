@@ -367,7 +367,17 @@ const routes: Routes = [
         path: "update-profile",
           component: UpdateProfilePage,
           pathMatch: "full",
-      }
+      },
+      {
+        path: "student-list",
+        component: StudentListPage,
+        pathMatch: "full",
+      },
+      {
+        path: "school-list",
+        component: SchoolListPage,
+        pathMatch: "full",
+      },
     ],
   },
   {

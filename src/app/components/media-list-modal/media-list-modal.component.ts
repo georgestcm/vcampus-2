@@ -9,9 +9,12 @@ import { ModalController, NavParams } from '@ionic/angular';
 export class MediaListModalComponent implements OnInit {
 
   mediaList: Array<any> = [];
+  documentList: Array<any> = [];
   constructor(private modalController : ModalController, private navParams: NavParams) { 
     console.log(navParams.get('mediaList'));
+    console.log(navParams.get('documentList'));
     this.mediaList = navParams.get('mediaList');
+    this.documentList = navParams.get('documentList');
   }
 
   ngOnInit() {}

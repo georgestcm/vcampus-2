@@ -27,8 +27,17 @@ export class StudentExamStartModalComponent implements OnInit {
      let arr =[];
       for(let i=0; i<this.exam.questions.length; i++){
          for(let j=0; j<this.exam.questions[i].Question_options.length; j++){
-          if(this.exam.questions[i].Correct_answer == this.exam.questions[i].Question_options[j].checked)
-          arr.push(this.exam.questions[i]);
+          
+          if(this.exam.questions[i].Type='All-True'){
+            //  for(let k=0; k< this.exam.questions[i].All_True.length; k++){
+            //   if(this.exam.questions[i].All_True[k] ==)
+            // }
+            // if(this.exam.questions[i].Correct_answer == this.exam.questions[i].Question_options[j].checked)
+            // arr.push(this.exam.questions[i]);
+          }else{
+            if(this.exam.questions[i].Correct_answer == this.exam.questions[i].Question_options[j].checked)
+            arr.push(this.exam.questions[i]);
+          }
          }        
       }
       return arr;
@@ -43,13 +52,27 @@ export class StudentExamStartModalComponent implements OnInit {
     });
   }
   onSubmit() {
-    console.log(this.selectedOptions);
- const req =   {
+    //console.log(this.selectedOptions);
+    let correctAnswer =0;
+    for(let i=0;i<this.exam.questions.length; i++){
+
+      if(this.exam.questions[i].Type == 'Fill-The-Blanks' && this.exam.questions[i].Fill_The_Blanks[0].answer == this.exam.questions[i].userAnswer){
+        correctAnswer+=1;
+      }
+      if(this.exam.questions[i].Type == 'All-True' && this.exam.questions[i].All_True[0].answer == this.exam.questions[i].userAnswer){
+        correctAnswer+=1;
+      }
+    }
+
+    //console.log(this.exam);
+      const req =   {
       Exam_Status : "Completed",
       TotalQuestion : this.exam.questions.length,
-      CorrectAnswer : this.selectedOptions.length,
+      CorrectAnswer : this.selectedOptions.length + correctAnswer,
       Exam_StartDateTime : this.startDateTime
     }
+
+    console.log(req);
     
     this.courseService.updateExam(req,this.exam._id).subscribe(
       (data) => {
