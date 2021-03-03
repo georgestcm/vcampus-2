@@ -38,14 +38,24 @@
             <div class="input-group-prepend">
               <span class="input-group-text"  id="inputGroupFileAddon01">Curriculum *</span>
             </div>
-             <select class="custom-select" required name="curriculumDropdown"  
+            <div style="height: 100px;width:100%; border: solid 1px #ced4da; overflow: auto;">
+            <div class="form-check" *ngFor="let curr of curriculumList">
+              <input  class="form-check-input" type="checkbox"  name={{curr._id}} 
+              [(ngModel)]="curr.checked" 
+              value={{curr._id}}>
+              <label class="form-check-label" for="{{curr._id}}">
+                 {{curr.curriculum}}
+              </label>
+            </div>
+          </div>
+             <!-- <select multiple class="custom-select selectpicker" required name="curriculumDropdown"  
              [(ngModel)]="courseModel.curriculum" id="ddlCurriculum" 
              (change)="onCurriculumChange($event.target.value)">
               <option value="">--Choose curriculum--</option>
               <option *ngFor="let curr of curriculumList" value={{curr._id}}>
                 {{curr.curriculum}}
               </option>
-            </select>
+            </select> -->
           </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">

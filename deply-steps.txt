@@ -1,0 +1,13 @@
+1. Login to firebase
+2. Select the project
+3. Ionic build --prod
+4. Firebase deploy
+
+******************************* UI *************************************
+1. ionic build --prod
+2. firebase deploy
+
+****************************** API ************************************
+1. git add .
+2. git commit 
+3. git push heroku feature/backend-structure-change:master

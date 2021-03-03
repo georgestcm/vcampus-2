@@ -1,11 +1,13 @@
 <div class="card">
     <div class="card-header">
-        Course Detail {{'Course_detail_modal.title' | translate}}
+         {{'Course_detail_modal.title' | translate}}
         <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
     </div>
     <div class="card-body" style="height:400px;overflow: auto !important;">
         <div >
-            <div><b>{{'Course_detail_modal.curriculum' | translate}}: </b>{{courseData.curriculum}}</div>
+            <div><b>{{'Course_detail_modal.curriculum' | translate}}: </b></div>
+               <div> <ul *ngFor="let curr of courseData.curriculum"><li>{{curr.curriculum}}</li></ul>
+            </div>
         <div *ngFor="let section of courseData.sections">
             <div><b>{{'Course_detail_modal.section' | translate}}: </b>{{section.section_name}}</div>
             <div *ngFor="let chapter of section.chapters">

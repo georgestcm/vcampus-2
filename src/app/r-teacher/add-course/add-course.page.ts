@@ -331,6 +331,7 @@ export class AddCoursePage implements OnInit {
   onSubmit(){
     this.courseModel.sections = this.sectionJSON;
     this.courseModel.userId = this.userId;
+    this.courseModel.curriculum = this.curriculumList.filter(a=>a.checked).map(a=>a._id);
     console.log(this.courseModel);
     this.showLoading = true;
     if(this.courserId == null){
