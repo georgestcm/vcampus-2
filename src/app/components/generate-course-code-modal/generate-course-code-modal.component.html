@@ -37,23 +37,37 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
+        <span class="input-group-text"  id="prefix">Code Prefix*</span>
+      </div>
+      <input type="text" required [(ngModel)]="courseCodeModal.prefix" maxlength="5"
+      name="prefix" placeholder="Prefix for course code"  class="form-control">  
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"  id="number">Enter Numbers *</span>
+      </div>
+      <input type="number" required [(ngModel)]="courseCodeModal.number" maxlength="3"
+      name="number" placeholder="how many wants to generate" class="form-control"> 
+    </div>
+
+    <!-- <div class="input-group mb-3">
+      <div class="input-group-prepend">
         <span class="input-group-text"  id="inputGroupFileAddon01">Course Code *</span>
       </div>
       <input type="text" [(ngModel)]="courseCodeModal.courseCode" name="courseCode"  readonly class="form-control">      
-    </div>
+    </div> -->
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text"  id="inputGroupFileAddon01">Valid From *</span>
       </div>
-      <input type="date" [(ngModel)]="courseCodeModal.courseCodeValidFrom" name="validFrom"  class="form-control">      
-    </div>
-
-    <div class="input-group mb-3">
+      <input type="date" required [(ngModel)]="courseCodeModal.courseCodeValidFrom" name="validFrom"  class="form-control">      
+      
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="inputGroupFileAddon01">Valid To *</span>
+        <span class="input-group-text"  id="inputGroupFileAddon01">To *</span>
       </div>
-      <input type="date" name="validTo" [(ngModel)]="courseCodeModal.courseCodeValidTo"  class="form-control">      
+      <input type="date" required name="validTo" [(ngModel)]="courseCodeModal.courseCodeValidTo"  class="form-control"> 
     </div>
 
     <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="Save Course Code" />

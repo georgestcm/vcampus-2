@@ -16,8 +16,11 @@ export class GenerateCourseCodeModalComponent implements OnInit {
     curriculum: "",
     courseCodeValidFrom: "",
     courseCodeValidTo: "",
-    createdBy :""
+    createdBy :"",
+    prefix :"",
+    number : 1
   };
+  bulkInsertModal= [];
   schoolList: [];
   curriculumList: [];
   loadingSchool = "Loading School...";
@@ -59,7 +62,9 @@ export class GenerateCourseCodeModalComponent implements OnInit {
       curriculum: "",
       courseCodeValidFrom: "",
       courseCodeValidTo: "",
-      createdBy: ""
+      createdBy: "",
+      prefix :"",
+      number :1
     };
     this.modalController.dismiss({
       dismissed: true,
@@ -67,8 +72,14 @@ export class GenerateCourseCodeModalComponent implements OnInit {
   }
 
   onSubmit() {
-    this.courseCodeModal.createdBy=this.loggedInUser;
-    this.courseService.saveCourseCode(this.courseCodeModal).subscribe(
+ this.bulkInsertModal =[];
+  for(var i=0;i<this.courseCodeModal.number; i++){
+    let random = this.randomStr(7,'1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz');
+    this.bulkInsertModal.push({courseCode:this.courseCodeModal.prefix+random,courseCodeValidFrom : this.courseCodeModal.courseCodeValidFrom,courseCodeValidTo : this.courseCodeModal.courseCodeValidTo,createdBy:this.loggedInUser,curriculum:this.courseCodeModal.curriculum,school:this.courseCodeModal.school});
+    
+  }
+    console.log(this.bulkInsertModal);
+    this.courseService.saveCourseCode(this.bulkInsertModal).subscribe(
       (data) => {
         console.log(data);
         alert("New Course Code Added!");
@@ -90,6 +101,15 @@ export class GenerateCourseCodeModalComponent implements OnInit {
   //     (err) => {}
   //   );
   // }
+
+   randomStr(len, arr) { 
+    var ans = ''; 
+    for (var i = len; i > 0; i--) { 
+        ans +=  
+          arr[Math.floor(Math.random() * arr.length)]; 
+    } 
+    return ans; 
+} 
 
   onSchoolChange(schoolId) {
     console.log(schoolId);
