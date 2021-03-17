@@ -39,6 +39,7 @@ import { CreateExamPage } from './components/create-exam/create-exam.page';
 import { StudentExamPage } from './components/student-exam/student-exam.page';
 import { GenerateCourseCodePage } from "./components/generate-course-code/generate-course-code.page";
 import { UpdateProfilePage } from "./components/update-profile/update-profile.page";
+import { CourseListPage } from "./components/course-list/course-list.page";
 
 
 const routes: Routes = [
@@ -104,7 +105,7 @@ const routes: Routes = [
       {
         path: "courses-list",
         //component: CoursesListPage,
-        component: StudentCoursePage,
+        component: CourseListPage,
         pathMatch: "full",
       },
       {
@@ -172,7 +173,7 @@ const routes: Routes = [
       },
       {
         path: "courses-list",
-        component: StudentCoursePage,
+        component: CourseListPage,
         //component: CoursesListPage,
         pathMatch: "full",
       },
@@ -554,6 +555,15 @@ const routes: Routes = [
     path: 'update-profile',
     loadChildren: () => import('./components/update-profile/update-profile.module').then( m => m.UpdateProfilePageModule)
   },
+  {
+    path: 'course-list',
+    loadChildren: () => import('./components/course-list/course-list.module').then( m => m.CourseListPageModule)
+  },  {
+    path: 'course-view',
+    loadChildren: () => import('./components/course-view/course-view.module').then( m => m.CourseViewPageModule)
+  },
+
+
 
 
 

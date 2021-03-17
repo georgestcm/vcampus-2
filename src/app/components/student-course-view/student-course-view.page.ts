@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from 'src/app/providers/common-service/course.service';
 import { ActivatedRoute } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { StudentExamStartModalComponent } from '../student-exam-start-modal/student-exam-start-modal.component';
 
 @Component({
   selector: 'app-student-course-view',
@@ -13,8 +15,10 @@ export class StudentCourseViewPage implements OnInit {
   paragraphList : Array<any> =[];
   content : any;
   counter =0;
+  examList :any;
   constructor(private courseService: CourseService, 
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private modalController: ModalController) { }
 
 
   ngOnInit() {
@@ -23,6 +27,10 @@ export class StudentCourseViewPage implements OnInit {
       this.courseService.getCourse(this.courseId).subscribe( res => {
         console.log(res);
         this.prepareParagraph(res);
+        this.courseService.getAllExamByCourseId(this.courseId).subscribe(exams =>{
+          console.log(exams);
+          this.examList =exams;
+        });
       },err => {
         console.log(err);
       });
@@ -46,6 +54,19 @@ export class StudentCourseViewPage implements OnInit {
 
   onItemClick(paragraph){
     this.content = paragraph.paragraphName;
+  }
+
+  async showStartExamModal(exam) {
+    const modal = await this.modalController.create({
+      component: StudentExamStartModalComponent,
+      componentProps : { exam : exam}
+    });
+    modal.onDidDismiss().then(data => {
+      this.courseService.getAllExamByCourseId(this.courseId).subscribe(exams =>{
+        this.examList =exams;
+      });
+    });
+    return await modal.present();
   }
 
 }

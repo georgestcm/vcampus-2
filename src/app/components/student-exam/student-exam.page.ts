@@ -14,7 +14,8 @@ export class StudentExamPage implements OnInit {
   studentId : string;
   examList =[];
   showLoading : boolean=false;
-  constructor(private courseService : CourseService, private storage: Storage, private modalController: ModalController) { }
+  constructor(private courseService : CourseService, private storage: Storage, 
+    private modalController: ModalController) { }
 
   ngOnInit() {
     this.storage.get("user").then(res => {

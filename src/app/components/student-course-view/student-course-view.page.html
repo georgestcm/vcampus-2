@@ -9,14 +9,32 @@
 <ion-content padding>
   
 <div class="row">
-  <div class="col-md-8" >
+  <div class="col-md-3">
+    <div class="alert" style="border: solid 1px orange">
+      <p><b>Assignment</b></p>
+    </div>
+    <div  style="min-height: 475px; border: solid 1px orange;">
+    <ion-list>
+      <ion-item *ngFor="let exam of examList" (click)="onItemClick(exam)" >
+        <ion-label>
+          <h2>{{exam.Exam_Name}}</h2>
+          <h4>{{exam.Exam_Type}}</h4>
+          <h4 style="color: red;" *ngIf="exam.Exam_Status !='Completed'">{{exam.Exam_Status | uppercase}}</h4>
+          <h4 style="color: rgba(27, 214, 27, 0.815);" *ngIf="exam.Exam_Status =='Completed'"><b>{{exam.Exam_Status | uppercase}}</b></h4>
+          <p>Complete before : {{exam.Exam_EndDateTime | date:'dd-MMM-yy hh:mm'}}</p>
+          <button (click)="showStartExamModal(exam)" *ngIf="exam.Exam_Status !='Completed'" class="btn btn-sm btn-outline btn-danger">Start</button>
+        </ion-label>
+        
+      </ion-item>
+    </ion-list>
+  </div>
+  </div>
+
+  <div class="col-md-6" >
  <div style="min-height: 550px;">
-  <div *ngIf="content !=null" style="border:solid 2px #d1ecf1; height: 555px; padding:5px">
+  <div *ngIf="content !=null" style="border:solid 1px #08e46b; height: 555px; padding:5px">
   <div [innerHTML]="content"></div>
 </div>
-  <!-- <iframe width="100%" style="height: 555px;"
-src="http://www.youtube.com/embed/XGSy3_Czz8k">
-</iframe> -->
   <video *ngIf="content ==null" width="100%" style="height: 555px;" controls>
     <source src="movie.mp4" type="video/mp4">
   Your browser does not support the video tag.
@@ -24,31 +42,18 @@ src="http://www.youtube.com/embed/XGSy3_Czz8k">
 
  </div>
   </div>
-  <div class="col-md-4">
-    <div class="alert alert-info">
+  <div class="col-md-3">
+    <div class="alert" style="border:solid 1px rgb(82, 179, 243);" >
       <p><b>Course Content</b></p>
     </div>
-    <div class="alert alert-info" style="min-height: 475px;">
+    <div  style="min-height: 475px;border: solid 1px rgb(82, 179, 243);">
     <ion-list>
       <ion-item *ngFor="let p of paragraphList" (click)="onItemClick(p)" >
         <ion-checkbox slot="start"></ion-checkbox>
         <ion-label>
           <h2>{{p.title}} </h2>
-          <!-- <p>Listen, I've had a pretty messed up day...</p> -->
         </ion-label>
       </ion-item>
-      <!-- <ion-item>
-        <ion-checkbox slot="start"></ion-checkbox>
-        <ion-label>
-          <h2>2. Learn OOPS</h2>
-        </ion-label>
-      </ion-item> -->
-      <!-- <ion-item>
-        <ion-checkbox slot="start"></ion-checkbox>
-        <ion-label>
-          <h2>3. Data Structure & Algorithm</h2>
-        </ion-label>
-      </ion-item> -->
     </ion-list>
   </div>
   </div>

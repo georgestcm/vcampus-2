@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-buttons slot="start">
+  <ion-menu-button></ion-menu-button>
+  <ion-title>{{'Courses_list.title' | translate}}</ion-title>
+  </ion-buttons>
+</ion-header>
+
+<ion-content padding>
+
+<div class="row"> 
+
+<div class="col-md-12">
+
+<div  style="background-color: white;">
+
+  <div *ngIf="showLoading" class="d-flex align-items-center">
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+    </div>
+    <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+  </div>
+
+  <div class="input-group mb-3" >
+    <div class="input-group-prepend">
+      <span class="input-group-text"  id="inputGroupFileAddon01">{{'Courses_list.choose_school' | translate}}</span>
+    </div>
+     <select class="custom-select" required name="schoolDropdown"
+      id="ddlSchool"
+     (change)="onSchoolChange($event.target.value)">  
+      <option value="">--{{'Courses_list.select' | translate}}--</option>
+      <option *ngFor="let school of schoolList" value={{school._id}}>
+        {{school.school.school_name}}
+      </option>
+    </select>
+    <div class="input-group-postpend">
+      <button class="btn btn-outline-primary" (click)="onClickFind()">{{'Courses_list.find_courses' | translate}}</button>
+    </div>
+  </div>
+  <div class="table-responsive-sm">
+  <table class="table  table-bordered table-sm " >
+    <thead >
+    <tr >
+    <th>
+      #
+    </th>
+    <th style="width:20%">
+      {{'Courses_list.course' | translate}}
+    </th>
+    <th style="width:20%">
+      {{'Courses_list.subject' | translate}}
+    </th>
+    <th style="width:22%">
+      {{'Courses_list.description' | translate}}
+    </th>
+    <th>
+      {{'Courses_list.avail_from' | translate}}
+    </th>
+    <th>
+      {{'Courses_list.avail_to' | translate}}
+    </th>
+    <!-- <th>
+      Repeat Yearly ?
+    </th> -->
+    <th>
+    </th>
+  </tr>
+</thead>
+  <tr *ngFor="let course of courseList; let i=index">
+    <td>{{i+1}}</td>
+    <td>{{ course.name}}</td>
+    <td> {{course.subject}}</td>
+    <td>{{course.description}}</td>
+    <td>{{course.availability_from | date:"MMM, dd yyyy"}}</td>
+    <td>{{course.availability_to | date:"MMM, dd yyyy"}}</td>
+    <!-- <td>
+      <input type="checkbox" checked="course.is_repeat_yearly" disabled>
+    </td> -->
+    <td>
+      <ion-buttons>
+      <button (click)="showModal(course);" class="btn btn-sm btn-success">
+        <ion-icon name="information-circle"></ion-icon>
+      </button>
+      
+    </ion-buttons>
+    </td>
+  </tr>
+  </table>
+</div>
+</div>
+</div>
+</div>
+</ion-content>
