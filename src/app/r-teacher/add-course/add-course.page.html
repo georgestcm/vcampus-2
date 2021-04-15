@@ -40,7 +40,7 @@
             </div>
             <div style="height: 100px;width:100%; border: solid 1px #ced4da; overflow: auto;">
             <div class="form-check" *ngFor="let curr of curriculumList">
-              <input  class="form-check-input" type="checkbox"  name={{curr._id}} 
+              <input  class="form-check-input"  type="checkbox"  name={{curr._id}} 
               [(ngModel)]="curr.checked" 
               value={{curr._id}}>
               <label class="form-check-label" for="{{curr._id}}">
@@ -79,13 +79,15 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupFileAddon01">Available From *</span>
           </div>
-          <input type="date" name="availableFrom" required class="form-control" [(ngModel)]="courseModel.availableFrom"  aria-label="Available From" aria-describedby="button-addon2">
+          <ion-datetime displayFormat="MM/DD/YYYY" name="availableFrom" required class="form-control" [(ngModel)]="courseModel.availableFrom" placeholder="mm/dd/yyyy"></ion-datetime>
+          <!-- <input type="date" name="availableFrom" required class="form-control" [(ngModel)]="courseModel.availableFrom"  aria-label="Available From" aria-describedby="button-addon2"> -->
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupFileAddon01">Available To *</span>
           </div>
-          <input type="date" name="availaleTo" required class="form-control" [(ngModel)]="courseModel.availableTo" aria-label="Available To" aria-describedby="button-addon2">
+          <ion-datetime displayFormat="MM/DD/YYYY" name="availaleTo" required class="form-control" [(ngModel)]="courseModel.availableTo" placeholder="mm/dd/yyyy"></ion-datetime>
+          <!-- <input type="date" name="availaleTo" required class="form-control" [(ngModel)]="courseModel.availableTo" aria-label="Available To" aria-describedby="button-addon2"> -->
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
