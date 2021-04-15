@@ -296,6 +296,7 @@ export class AddCoursePage implements OnInit {
   
   onCurriculumChange(value){
     this.courseModel.curriculum = value;
+    //console.log(this.curriculumList);
   }
   prepareModel(model){
     this.courseModel.courseName = model.name;
@@ -305,10 +306,27 @@ export class AddCoursePage implements OnInit {
     this.courseModel.description = model.description;
     this.courseModel.repeatYearly = model.is_repeat_yearly;
     this.courseModel.school = model.school;
-
-    const list = this.schoolList.find(a => a.school._schoolId==model.school).school;
-    this.curriculumList = list.curriculums;
     this.courseModel.curriculum = model.curriculum;
+    this.courseService.getCurriculumList(model.school).subscribe( res =>{
+      this.curriculumList = res;
+      for(let i=0; i< this.curriculumList.length; i++){
+        console.log(model.curriculum.length);
+        
+        for(let j =0; j< model.curriculum.length; j++){
+          console.log('model.curriculum');
+          console.log(model.curriculum[j]);
+          if(this.curriculumList[i]._id == model.curriculum[j]){
+            console.log('matched');
+            this.curriculumList[i].checked=true;
+          }
+        }
+      }
+    },err =>{
+      console.log('Error while getting curriculam');
+    })
+    
+
+    
     console.log(this.courseModel.school);
     for( let i=0; i<model.sections.length; i++){
        this.sectionList.push({id : i+1, sectionName :model.sections[i].section_name});
