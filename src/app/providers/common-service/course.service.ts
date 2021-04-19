@@ -130,4 +130,8 @@ export class CourseService {
   deleteQuestion(questionId) {
     return this._httpClient.authDelete("api/delete_question/"+ questionId);
   }
+
+  getCourseByCurriculumId(curriculumId) {
+    return this._httpClient.authGet(`api/course/getCoursesByCurriculum/${curriculumId}`);
+  }
 }

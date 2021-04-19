@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-buttons slot="start">
+  <ion-menu-button></ion-menu-button>
+  <ion-title>{{'Permissions.curriculum' | translate}}</ion-title>
+  </ion-buttons>
+</ion-header>
+<ion-content padding>
+  <!-- <div [style.display]="showNotification ? 'block' : 'none'"  class="alert alert-secondary alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="close" (click)="showNotification=false" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div> -->
+  
+  <table class="table  table-bordered table-sm " *ngIf="courseList" >
+    <thead >
+    <tr >
+    <th>
+      #
+    </th>
+    <th style="width:20%">
+      {{'Courses_list.course' | translate}}
+    </th>
+    <th style="width:20%">
+      {{'Courses_list.subject' | translate}}
+    </th>
+    <th style="width:22%">
+      {{'Courses_list.description' | translate}}
+    </th>
+    <th>
+      {{'Courses_list.avail_from' | translate}}
+    </th>
+    <th>
+      {{'Courses_list.avail_to' | translate}}
+    </th>
+  </tr>
+</thead>
+  <tr *ngFor="let course of courseList; let i=index">
+    <td>{{i+1}}</td>
+    <td>{{ course.name}}</td>
+    <td> {{course.subject}}</td>
+    <td>{{course.description}}</td>
+    <td>{{course.availability_from | date:"MMM, dd yyyy"}}</td>
+    <td>{{course.availability_to | date:"MMM, dd yyyy"}}</td>
+    
+  </tr>
+  </table>
+
+  <div class="error">
+    <p>{{error}}</p>
+  </div>
+  <ng-template #elseTemplate>
+    <p>This school has no curriculum{{'Add_curriculum.noCur' | translate }}</p>
+ </ng-template>
+  <div class="row">
+ 
+    <div class="col-md-7">
+      <div class="card">
+        <div class="card-header">
+            Curriculum List
+        </div>
+        <div class="card-body" style="min-height:300px;overflow: auto !important;">
+          <table class="table table-boarded table-sm">
+            <tr>
+              <th>#</th>
+              <th>Curriculum</th>
+              <th>Created On</th>
+              <th></th>         
+            </tr>
+            <tr *ngFor="let curriculum of curList; let i=index">
+              <td>{{i+1}}</td>
+              <td>{{curriculum.curriculum}}</td>
+              <td>{{curriculum.createdAt | date :'dd-MMM-yy hh:mm:ss'}}</td>
+              <td>
+                <button class="btn btn-sm btn-success" (click)="getCoursesByCurriculumId(curriculum._id)">Courses</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-header">
+            Add new curriculum
+        </div>
+        <div class="card-body" style="min-height:300px;overflow: auto !important;">
+          <div class="form-group">
+          <input type="text" [(ngModel)]="curriculamModel.curriculum" class="form-control" required>
+        </div>
+          <button class="btn btn-secondary" (click)="saveCurriculam()">{{'Add_curriculum.addCur' | translate }}</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  
+  
+  <!-- <ng-container class="curriculum_list" *ngIf="curList !==null; else elseTemplate">
+    <h3>{{'Add_curriculum.curList' | translate }}</h3>
+    <ion-item *ngFor="let curriculum of curList" lines="full"> {{curriculum.curriculum}} </ion-item>
+  </ng-container>
+  <input type="text" [(ngModel)]="curriculamModel.curriculum" class="form-control" required>
+
+  <div style="text-align: center; padding: 5px;">
+    <button class="btn btn-secondary" (click)="saveCurriculam()">{{'Add_curriculum.addCur' | translate }}</button>
+    <button class="btn btn-outline-secondary" style="margin-left: 5px;" (click)="dismiss()">{{'Add_curriculum.close' | translate }}</button>
+  </div> -->
+</ion-content> 

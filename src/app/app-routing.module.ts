@@ -40,6 +40,7 @@ import { StudentExamPage } from './components/student-exam/student-exam.page';
 import { GenerateCourseCodePage } from "./components/generate-course-code/generate-course-code.page";
 import { UpdateProfilePage } from "./components/update-profile/update-profile.page";
 import { CourseListPage } from "./components/course-list/course-list.page";
+import { CurriculumPage } from "./components/curriculum/curriculum.page";
 
 
 const routes: Routes = [
@@ -259,6 +260,11 @@ const routes: Routes = [
       {
         path: "update-profile",
           component: UpdateProfilePage,
+          pathMatch: "full",
+      },
+      {
+        path: "curriculum",
+          component: CurriculumPage,
           pathMatch: "full",
       }
     ],
@@ -558,9 +564,14 @@ const routes: Routes = [
   {
     path: 'course-list',
     loadChildren: () => import('./components/course-list/course-list.module').then( m => m.CourseListPageModule)
-  },  {
+  },
+  {
     path: 'course-view',
     loadChildren: () => import('./components/course-view/course-view.module').then( m => m.CourseViewPageModule)
+  },
+  {
+    path: 'curriculum',
+    loadChildren: () => import('./components/curriculum/curriculum.module').then( m => m.CurriculumPageModule)
   },
 
 

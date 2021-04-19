@@ -96,6 +96,7 @@ import { GenerateCourseCodePage } from "./components/generate-course-code/genera
 import { UpdateProfilePage } from "./components/update-profile/update-profile.page";
 import { MediaListModalComponent } from "./components/media-list-modal/media-list-modal.component";
 import { CourseListPage } from "./components/course-list/course-list.page";
+import { CurriculumPage } from "./components/curriculum/curriculum.page";
 
 const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
 
@@ -159,7 +160,8 @@ export function CreateTranslateLoader(http: HttpClient) {
     GenerateCourseCodePage,
     UpdateProfilePage,
     MediaListModalComponent,
-    CourseListPage
+    CourseListPage,
+    CurriculumPage
   ],
   entryComponents: [
     LanguageSelectPage,
