@@ -25,35 +25,7 @@
 
   <ion-list *ngIf="selectedSegment==='users' && role>2">
 
-    <!-- <ion-item (click)="navigateToChat()" >
-      <ion-avatar slot="start">
-        <img src="https://www.biography.com/.image/t_share/MTE1ODA0OTcxOTg4MDU5NjYx/raavan---uk-film-premiere-red-carpet-arrivals.jpg">
-      </ion-avatar>
-      <ion-label>
-        <h2>Amitabh Bachchan</h2>
-        <p>User info or user position</p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item (click)="navigateToChat()">
-      <ion-avatar slot="start">
-        <img src="https://pyxis.nymag.com/v1/imgs/4e5/1f7/a917c50e70a4c16bc35b9f0d8ce0352635-14-tom-cruise.rsquare.w700.jpg">
-      </ion-avatar>
-      <ion-label>
-        <h2>Tom Cruse</h2>
-        <p>User info or user position</p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item (click)="navigateToChat()">
-      <ion-avatar slot="start">
-        <img src="https://www.biography.com/.image/t_share/MTE1ODA0OTcxNjUxNTk3ODM3/tom-hanks-9327661-1-402.jpg">
-      </ion-avatar>
-      <ion-label>
-        <h2>Tom Honks</h2>
-        <p>User info or user position</p>
-      </ion-label>
-    </ion-item> -->
+    
 
     <ion-item *ngFor="let user of studentList" (click)="navigateToChat(user)">
       <ion-avatar slot="start">
@@ -88,17 +60,17 @@
 
 
   <ion-list *ngIf="selectedSegment==='group'">
-  <ion-item (click)="navigateToChat(user)">
+  <ion-item *ngFor="let group of groupList" (click)="navigateToGroupChat(group)" >
     <ion-avatar slot="start">
       <img src="assets/icon/group.png">
     </ion-avatar>
     <ion-label>
-      <h2>New Joinee Group</h2>
-      <p>We can put group info here</p>
+      <h2>{{group.Name}}</h2>
+      <p>{{group.Description}}</p>
     </ion-label>
   </ion-item>
 
-  <ion-item (click)="navigateToChat(user)">
+  <!-- <ion-item (click)="navigateToChat(user)">
     <ion-avatar slot="start">
       <img src="assets/icon/group.png">
     </ion-avatar>
@@ -116,7 +88,7 @@
       <h2>Students Parents Group</h2>
       <p>We can put group info here</p>
     </ion-label>
-  </ion-item>
+  </ion-item> -->
 
 </ion-list>
 

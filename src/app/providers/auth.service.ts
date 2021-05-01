@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   getListOfStudents(){
-    return this._httpClient.get('/student_list');
+    return this._httpClient.get('api/student_list');
   }
 
   loggedIn() {
@@ -72,5 +72,13 @@ export class AuthService {
 
   updateProfile(userProfile) {
     return this._httpClient.authPost('api/update_profile', userProfile);
+  }
+
+  getAllGroupsBySchoolId(schoolId){
+    return this._httpClient.get('api/get_all_group_school/'+schoolId);
+  }
+
+  joinStudentToGroup(data) {
+    return this._httpClient.post('api/join_student_group', data);
   }
 }

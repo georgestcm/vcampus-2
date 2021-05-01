@@ -101,7 +101,7 @@
             <ion-icon name="school"></ion-icon>
           </div>
         </div>
-        <select [(ngModel)]="studentRegistration.school_id" class="form-control" name="ddlSchool">
+        <select [(ngModel)]="studentRegistration.school_id" (change)="onSchoolChange($event)" class="form-control" name="ddlSchool">
           <option value="">---Select---</option>
           <option *ngFor="let school of schoolList" value={{school._id}}>
             {{school.school.school_name}}

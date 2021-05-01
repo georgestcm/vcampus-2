@@ -28,20 +28,37 @@ export class UsersAndgroupPage implements OnInit {
         this.selectedSegment ="users";
       }
 
-      this._auth.getListOfStudents().subscribe(res => {
+    });
+
+    this.storage.get('user').then((user) =>{
+      const schoolId = user.school_id;
+      this._auth.getAllStudents(schoolId).subscribe(res => {
         console.log(res);
         this.studentList = res;
       },err =>{
         console.log(err);
       });
+//Group Call
+
+this._auth.getAllGroupsBySchoolId(schoolId).subscribe(res => {
+  console.log(res);
+  this.groupList = res;
+},err =>{
+  console.log(err);
+});
 
     });
+    
   }
   segmentChanged(ev: any) {
     this.selectedSegment = ev.detail.value;
   }
   navigateToChat(user){
-    //this.route.navigate(['admin/chat']);
     this.route.navigate(['rstudents/chat',{username : user.username, name :user.first_name +" "+user.last_name, _id : user._id}]);
   }
+
+  navigateToGroupChat(group){
+    this.route.navigate(['rstudents/chat',{username : group.Name, name :group.Name, _id : group._id}]);
+  }
+
 }

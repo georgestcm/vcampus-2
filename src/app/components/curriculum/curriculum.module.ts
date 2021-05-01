@@ -15,6 +15,6 @@ import { CurriculumPage } from './curriculum.page';
     IonicModule,
     CurriculumPageRoutingModule
   ],
-  declarations: [CurriculumPage]
+  declarations: []
 })
 export class CurriculumPageModule {}

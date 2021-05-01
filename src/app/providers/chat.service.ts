@@ -21,8 +21,19 @@ export class ChatService implements OnInit {
     // });
 }
 
+sendGroupMessage(msg: any){
+  this.socket.emit("send-group-message", msg);
+}
+
 setUserName(userName: string){
   this.socket.emit("set-name", userName);
+  this.socket.fromEvent('user-changed').subscribe( (data : any) =>{
+    console.log(data);
+  });
+}
+
+setGroupUser(groupName: string){
+  this.socket.emit("group-join", groupName);
   this.socket.fromEvent('user-changed').subscribe( (data : any) =>{
     console.log(data);
   });

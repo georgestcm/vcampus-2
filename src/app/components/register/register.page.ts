@@ -41,6 +41,7 @@ export class RegisterPage implements OnInit {
   viewCoursesOrNot = true;
   selectedSchool = '';
   loading;
+  selectedSchoolName ='';
   ngOnInit() {
     this._auth.getAllSchools().subscribe(res => {
       console.log(res);
@@ -52,6 +53,10 @@ export class RegisterPage implements OnInit {
 
   logData() {
     console.log(this.studentRegistration)
+  }
+
+  onSchoolChange(event:any){
+    this.selectedSchoolName = event.target.options[event.target.options.selectedIndex].text;
   }
 
   async presentModal() {
@@ -131,7 +136,6 @@ export class RegisterPage implements OnInit {
     const loading = await this.loadingController.create({
       message: 'loging in',
     }).then((res) => {
-      res.present()
       if (this.studentRegistration.first_name.length === 0) {
         this.loadingController.dismiss();
         this.presentAlert("Enter your first name to continue")
@@ -141,7 +145,7 @@ export class RegisterPage implements OnInit {
       } else if (this.studentRegistration.username.length === 0) {
         this.loadingController.dismiss();
         this.presentAlert("Enter a username to continue")
-      } else if (this.studentRegistration.email.length === 0) {
+      //} else if (this.studentRegistration.email.length === 0) {
         //this.loadingController.dismiss();
         //this.presentAlert("Enter a email to continue")
       } else if (!this.studentRegistration.email.includes("@")) {
@@ -154,6 +158,7 @@ export class RegisterPage implements OnInit {
         this.loadingController.dismiss();
         this.presentAlert("Confirm your password.They do not match")
       } else if (Object.is(this.password.reEnter, this.studentRegistration.password)) {
+        res.present();
         this._auth.registerStudent(this.studentRegistration)
           .subscribe(
             res => {
@@ -161,15 +166,13 @@ export class RegisterPage implements OnInit {
               //this.user = res.user,
               //console.log(JSON.stringify(sres.user)),
               this.storage.set('user', res.registerUser)
-              this.storage.set('token', res.token)
+              this.storage.set('token', res.token)  
               this.storage.set('role', res.registerUser.roles[0])
-              this.loadingController.dismiss()
+              this.loadingController.dismiss();
+              this.joinStudentToSchool(res.registerUser._id);
+              
               this.router.navigate(['rstudents/dashboard'])
-              // this.studentRegistration.first_name = '',
-              // this.studentRegistration.last_name = '',
-              // this.studentRegistration.username = '',
-              // this.studentRegistration.email = '',
-              // this.studentRegistration.password = ''
+              
             },
             err => (
               this.presentAlert(err.error),
@@ -183,6 +186,21 @@ export class RegisterPage implements OnInit {
       }
     })
 
+  }
+  
+  joinStudentToSchool(studentId){
+    const requestBody ={
+      GroupName : this.selectedSchoolName+"_Group",
+      Description :'',
+      SchoolId : this.studentRegistration.school_id,
+      StudentId : studentId
+      };
+
+      this._auth.joinStudentToGroup(requestBody)
+          .subscribe(
+            res => {
+              console.log(res);
+            });
   }
 
 }

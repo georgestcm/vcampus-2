@@ -23,9 +23,10 @@
                   src="assets/icon/user.png" alt="...">
                 <div class="media-body">
                   <p>{{m.msg}}</p>
+                  <p class="meta" style="color: cadetblue; font-size: 14px;"> {{m.sentBy}}</p>
                   <!-- <p>How are you ...???</p>
                   <p>What are you doing tomorrow?<br> Can we come up a bar?</p> -->
-                  <p class="meta"><time datetime="2018">{{m.createdOn | date:'dd-MMM-yyyy hh:mm:ss'}}</time></p>
+                  <p class="meta" style=" font-size: 10px;"><time datetime="2018">{{m.createdOn | date:'dd-MMM-yyyy hh:mm:ss'}}</time></p>
                 </div>
               </div>
               <!-- <div class="media media-meta-day">Today</div>

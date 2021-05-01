@@ -18,6 +18,7 @@ export class ChatPage implements OnInit {
   fullName : string='Send Message';
   txtMessage : string='';
   messages  : Array<any> =[];
+  loggedInUser : string='';
 
   constructor(public actionSheetController: ActionSheetController, private storage : Storage, 
     private chatService : ChatService, private route : ActivatedRoute, 
@@ -27,7 +28,8 @@ export class ChatPage implements OnInit {
         this.username = this.route.snapshot.paramMap.get('username');
         this.fullName = this.route.snapshot.paramMap.get('name');
         
-        this.chatService.setUserName(this.username);
+        //this.chatService.setUserName(this.username);
+        this.chatService.setGroupUser(this.username);
       }
 
      }
@@ -36,19 +38,22 @@ export class ChatPage implements OnInit {
     this.storage.get('role').then((val) => {
       this.role = val;
     });
+    this.storage.get('user').then((val) => {
+      this.loggedInUser = val.first_name+" "+val.last_name;
+    });
     this.socket.connect();
 
-    this.socket.fromEvent('user-changed').subscribe( data  =>{
+    this.socket.fromEvent('group-join').subscribe( data  =>{
       console.log(data);
       const user = data['user'];
        if(data['event']=='left'){
-        this.presentToast(`User Left: ${user}`)
+        //this.presentToast(`User Left: ${user}`)
        }else{
-        this.presentToast(`User Joined: ${user}`)
+        //this.presentToast(`User Joined: ${user}`)
        }
     });
-
-     this.socket.fromEvent('message').subscribe((data : any) => {
+    this.socket.fromEvent('group-message').subscribe((data : any) => {
+     //this.socket.fromEvent('message').subscribe((data : any) => {
       console.log(data);
       this.messages.push(data);
       console.log(this.messages);
@@ -118,8 +123,11 @@ export class ChatPage implements OnInit {
     this.showActionItem();
   }
   onClickSend(){
-   
-    this.chatService.sendMessage({text : this.txtMessage, sendTo : this.username});
+   //this.chatService.sendMessage({text : this.txtMessage, sendTo : this.username});//onetoone
+   console.log(this.loggedInUser);
+    //this.chatService.sendMessage({text : this.txtMessage, sendTo : this.username, sentBy :this.loggedInUser});
+    
+    this.chatService.sendGroupMessage({text : this.txtMessage, sendTo : this.username, sentBy :this.loggedInUser});
     this.txtMessage='';
    
     if(this.role<=2){

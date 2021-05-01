@@ -97,8 +97,9 @@ import { UpdateProfilePage } from "./components/update-profile/update-profile.pa
 import { MediaListModalComponent } from "./components/media-list-modal/media-list-modal.component";
 import { CourseListPage } from "./components/course-list/course-list.page";
 import { CurriculumPage } from "./components/curriculum/curriculum.page";
+import { environment} from "../environments/environment"
 
-const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
+const config: SocketIoConfig = { url: environment.socketURL, options: {} };
 
 export function CreateTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
