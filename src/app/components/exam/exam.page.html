@@ -1,7 +1,7 @@
 <ion-header>
   <ion-buttons slot="start">
   <ion-menu-button></ion-menu-button>
-  <ion-title>Exam</ion-title>
+  <ion-title><ion-title>{{'exam.page_title' | translate}}</ion-title></ion-title>
   </ion-buttons>
 </ion-header>
 
@@ -12,42 +12,42 @@
 
 <div class="row" [hidden]="addCourseOrnot" (click)="onClickAddQuestion()">
   <div  class="btn btn-outline-secondary  btn-block">
-    <p>Add Multi-Choice Question</p>
+    <p>{{'exam.add_multi_choice' | translate}}</p>
     <ion-icon name="add"></ion-icon>
   </div>
 </div>
 
 <div class="row"  [hidden]="addCourseOrnot" (click)="showTrueFalseQuestionModal()">
   <div  class="btn btn-outline-secondary btn-block">
-    <p>Add True-False Question</p>
+    <p>{{'exam.add_true_false' | translate}}</p>
     <ion-icon name="add"></ion-icon>
   </div>
 </div>
 
 <div class="row"  [hidden]="addCourseOrnot" (click)="showFillTheBlanksQuestionModal()">
   <div  class="btn btn-outline-secondary btn-block">
-    <p>Add Fill The Blank Question</p>
+    <p>{{'exam.add_fill_the_blank' | translate}}</p>
     <ion-icon name="add"></ion-icon>
   </div>
 </div>
 
 <div class="row"  [hidden]="addCourseOrnot" (click)="showAllTrueQuestionModal()">
   <div  class="btn btn-outline-secondary btn-block">
-    <p>Add All True Question</p>
+    <p>{{'exam.add_all_true' | translate}}</p>
     <ion-icon name="add"></ion-icon>
   </div>
 </div>
 
 <div class="row"  [hidden]="addCourseOrnot" (click)="showPollQuestionModal()">
   <div  class="btn btn-outline-secondary btn-block">
-    <p>Add Poll Question</p>
+    <p>{{'exam.add_poll' | translate}}</p>
     <ion-icon name="add"></ion-icon>
   </div>
 </div>
 
   <div  class="row">
   <div class="btn btn-outline-secondary btn-block" [routerLink]="['create-exam']">
-    <p>Generate New Exam</p>
+    <p>{{'exam.generate_new_exam' | translate}}</p>
     <ion-icon name="add"></ion-icon>
   </div>
 </div>
@@ -66,19 +66,19 @@
 
   <div class="input-group mb-3"  *ngIf="role==5">
     <div class="input-group-prepend">
-      <span class="input-group-text"  id="inputGroupFileAddon01">Choose School</span>
+      <span class="input-group-text"  id="inputGroupFileAddon01">{{'exam.choose_school' | translate}}</span>
     </div>
      <select class="custom-select" required name="schoolDropdown"
       id="ddlSchool"
      (change)="onSchoolChange($event.target.value)">
-      <option value="">--Select--</option>
+      <option value="">--{{'exam.select' | translate}}--</option>
       <option *ngFor="let school of schoolList" value={{school._id}}>
         {{school.school.school_name}}
       </option>
     </select>
 
     <div class="input-group-postpend">
-      <button class="btn btn-primary" (click)="onClickFind()">Find Questions</button>
+      <button class="btn btn-primary" (click)="onClickFind()">{{'exam.find_questions' | translate}}</button>
     </div>
   </div>
   <div class="table-responsive-sm">
@@ -88,15 +88,15 @@
         #
       </th>
       <th>
-        Question
+        {{'exam.question' | translate}}
       </th>
       <th>
-        Options
+        {{'exam.options' | translate}}
       </th>
       <th>
-        Answer
+        {{'exam.answer' | translate}}
       </th>
-      <th>Question For</th>
+      <th>{{'exam.question_for' | translate}}</th>
       <th></th>
     </tr>
     <tr *ngFor="let q of questionList; let i =index">

@@ -41,6 +41,9 @@ export class RTeacherPage implements OnInit {
     toExamList(){
       this.router.navigate(['rteacher/exam'])
     }
+    toCollaboration(){
+      this.router.navigate(['rteacher/collaboration'])
+    }
 
     toGroupChat(){
       this.router.navigate(['rteacher/usersandgroup'])

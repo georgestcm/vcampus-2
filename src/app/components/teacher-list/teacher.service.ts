@@ -12,15 +12,15 @@ export class TeacherService {
     private _httpClient: HttpClientService) { }
 
     getAllTeacherForAdmin(){
-      return this._httpClient.authGet("/getAllTeacherForAdmin");
+      return this._httpClient.authGet("api/getAllTeacherForAdmin");
     }
     
     updateTeacher(request){
-      return this._httpClient.authPut("/updateTeacher",request);
+      return this._httpClient.authPut("api/updateTeacher",request);
     }
 
     getAllAdminStaff(){
-      return this._httpClient.authGet("/getAllAdminStaff");
+      return this._httpClient.authGet("api/getAllAdminStaff");
     }
 
     updateStaff(request){

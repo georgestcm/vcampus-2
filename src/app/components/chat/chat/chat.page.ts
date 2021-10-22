@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef, ChangeDetectionStrategy, ViewEncapsulation, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ActionSheetController, ToastController } from '@ionic/angular';
+import { ActionSheetController, IonContent, ToastController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 import { Socket } from 'ngx-socket-io';
 import { ChatService } from 'src/app/providers/chat.service';
+import { AuthService } from 'src/app/providers/auth.service';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
-  styleUrls: ['./chat.page.scss'],
+  styleUrls: ['./chat.page.scss']
 })
 export class ChatPage implements OnInit {
 
@@ -19,20 +20,29 @@ export class ChatPage implements OnInit {
   txtMessage : string='';
   messages  : Array<any> =[];
   loggedInUser : string='';
+  loggedInUserId : string='';
+  groupId : string='';
+  
+  @ViewChild('content',{static :true}) private content: any;
 
   constructor(public actionSheetController: ActionSheetController, private storage : Storage, 
     private chatService : ChatService, private route : ActivatedRoute, 
-    private toastCtrl: ToastController, private socket: Socket) {
+    private toastCtrl: ToastController, private socket: Socket,private _auth : AuthService) {
 
       if (this.route.snapshot.paramMap.get('username')) {
         this.username = this.route.snapshot.paramMap.get('username');
         this.fullName = this.route.snapshot.paramMap.get('name');
-        
+        this.groupId = this.route.snapshot.paramMap.get('groupId');
         //this.chatService.setUserName(this.username);
         this.chatService.setGroupUser(this.username);
       }
 
      }
+@HostListener("window:scroll",[])
+     
+scrollToBottomOnInit() {
+  this.content.scrollToBottom(300);
+}
   
   ngOnInit() {
     this.storage.get('role').then((val) => {
@@ -40,6 +50,7 @@ export class ChatPage implements OnInit {
     });
     this.storage.get('user').then((val) => {
       this.loggedInUser = val.first_name+" "+val.last_name;
+      this.loggedInUserId =val._id;
     });
     this.socket.connect();
 
@@ -53,11 +64,24 @@ export class ChatPage implements OnInit {
        }
     });
     this.socket.fromEvent('group-message').subscribe((data : any) => {
-     //this.socket.fromEvent('message').subscribe((data : any) => {
-      console.log(data);
+      //console.log(data);
       this.messages.push(data);
-      console.log(this.messages);
+      this.scrollToBottomOnInit();
     });
+    //Pull Group Messages
+    this._auth.getGroupMessagesByGroup(this.groupId).subscribe(res => {
+      const chats = res[0].Chats;
+      for(let i=0; i<chats.length; i++){
+        const msg ={ msg : chats[i].Message, user : '', sentBy : chats[i].SentBy.first_name+ " "+ chats[i].SentBy.last_name, createdOn : chats[i].SentOn};
+        this.messages.push(msg);
+        
+      }
+      this.scrollToBottomOnInit();
+    },err =>{
+      console.log(err);
+    });
+
+    
   }
 
   ionViewWillLeave(){
@@ -127,7 +151,7 @@ export class ChatPage implements OnInit {
    console.log(this.loggedInUser);
     //this.chatService.sendMessage({text : this.txtMessage, sendTo : this.username, sentBy :this.loggedInUser});
     
-    this.chatService.sendGroupMessage({text : this.txtMessage, sendTo : this.username, sentBy :this.loggedInUser});
+    this.chatService.sendGroupMessage({text : this.txtMessage, sendTo : this.username, sentBy :this.loggedInUser, groupId: this.groupId, loggedInUserId : this.loggedInUserId});
     this.txtMessage='';
    
     if(this.role<=2){

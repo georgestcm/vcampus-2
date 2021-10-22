@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header">
+       Teacher List
+      <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
+  </div>
+  <div class="card-body" style="height:400px;overflow: auto !important;">
+      <div>
+        <h3>You are sharing : {{courseData.name}}</h3>
+        <div class="table-responsive-sm">
+          <table class="table  table-bordered table-sm " >
+            <tr >
+            <th>
+              #
+            </th>
+            <th>
+              User Name
+            </th>
+            <th>
+              Teacher Name
+            </th>
+            <th>
+            </th>
+            </tr>
+             <tr *ngFor="let teacher of teacherList; let i= index">
+               <td>{{i+1}}</td>
+               <td>{{teacher._id.username}}</td>
+               <td>{{teacher._id.first_name}} {{teacher._id.last_name}}</td>
+               <td>
+                <button (click)="sendInvite(teacher._id._id);" class="btn btn-sm btn-success">Send Invite</button>
+               </td>
+             </tr>
+          </table>
+  </div>
+</div>
+</div>

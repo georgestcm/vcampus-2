@@ -98,6 +98,9 @@ import { MediaListModalComponent } from "./components/media-list-modal/media-lis
 import { CourseListPage } from "./components/course-list/course-list.page";
 import { CurriculumPage } from "./components/curriculum/curriculum.page";
 import { environment} from "../environments/environment"
+import { CourseShareTeacherModelComponent } from "./components/course-share-teacher-model/course-share-teacher-model.component";
+import { CourseSharePage } from "./components/course-share/course-share.page";
+import { CollaborationPage } from "./components/collaboration/collaboration.page";
 
 const config: SocketIoConfig = { url: environment.socketURL, options: {} };
 
@@ -162,7 +165,10 @@ export function CreateTranslateLoader(http: HttpClient) {
     UpdateProfilePage,
     MediaListModalComponent,
     CourseListPage,
-    CurriculumPage
+    CurriculumPage,
+    CourseShareTeacherModelComponent,
+    CourseSharePage,
+    CollaborationPage
   ],
   entryComponents: [
     LanguageSelectPage,
@@ -189,7 +195,8 @@ export function CreateTranslateLoader(http: HttpClient) {
     FillTheBlanksQuestionModalComponent,
     AllTrueQuestionModalComponent,
     PollQuestionModalComponent,
-    MediaListModalComponent
+    MediaListModalComponent,
+    CourseShareTeacherModelComponent
   ],
   imports: [
     BrowserModule,

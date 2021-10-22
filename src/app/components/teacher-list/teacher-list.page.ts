@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeacherService } from './teacher.service';
 import { ModalController } from '@ionic/angular';
 import { EditTeacherModalComponent } from '../edit-teacher-modal/edit-teacher-modal.component';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-teacher-list',
@@ -11,10 +12,17 @@ import { EditTeacherModalComponent } from '../edit-teacher-modal/edit-teacher-mo
 export class TeacherListPage implements OnInit {
   teacherList : any;
   showLoading : boolean = false;
-  constructor(private teacherService : TeacherService, private modalController: ModalController) { }
+  schoolId : string;
+  constructor(private teacherService : TeacherService, 
+    private modalController: ModalController,
+    private storage: Storage) { }
 
   ngOnInit() {
-    this.getAllTeachers();
+    this.storage.get('user').then((val) => {
+      this.schoolId = val._id;
+      this.getAllTeachers();
+    });
+    
   }
   getAllTeachers(){
     this.showLoading =true;

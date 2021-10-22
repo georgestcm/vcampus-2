@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Online Class</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-card >
+    <ion-item>
+      <ion-grid fixed="true" style="width: 100%;">
+        <ion-row>
+          <ion-col size="9" >
+            
+            <video #local_video [autoplay]="true" [muted]="true"></video>
+          </ion-col>
+          <ion-col size="3" style="overflow: auto; height: 500;" >
+            <p>Students</p>
+            <video #remote_video [autoplay]="true" ></video>
+            <video #remote_video [autoplay]="true" ></video>
+            <video #remote_video [autoplay]="true" ></video>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <div style="text-align: center;">
+    <div  class="btn-group mr-2" role="group" aria-label="First group">
+      <button type="button" class="btn btn-success" (click)="startLocalVideo()">Call</button>
+      <button type="button" class="btn btn-danger">Hangup</button>
+      <button type="button" class="btn btn-warning">Mute Audio</button>
+      <button type="button" class="btn btn-secondary" (click)="muteLocalVideo()" >Mute Video</button>
+    </div>
+  </div>
+  </ion-card>
+</ion-content>

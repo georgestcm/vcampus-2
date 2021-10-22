@@ -76,9 +76,13 @@ export class AuthService {
 
   getAllGroupsBySchoolId(schoolId){
     return this._httpClient.get('api/get_all_group_school/'+schoolId);
-  }
+  } 
 
   joinStudentToGroup(data) {
     return this._httpClient.post('api/join_student_group', data);
+  }
+
+  getGroupMessagesByGroup(groupId){
+    return this._httpClient.get('api/get_group_chat/'+groupId);
   }
 }

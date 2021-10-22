@@ -104,13 +104,17 @@
         <ion-buttons>
         <button *ngIf="role==5" class="btn btn-sm btn-warning" [routerLink]="['add-course', {'id': course._id}]">
           <ion-icon name="md-create"></ion-icon>
-        </button>
+        </button>&nbsp;
         <button (click)="showModal(course);" class="btn btn-sm btn-success">
           <ion-icon name="information-circle"></ion-icon>
-        </button>
+        </button>&nbsp;
+        <button *ngIf="role==5" (click)="showCourseShareTeacherModal(course);"  class="btn btn-sm btn-info">
+          <ion-icon name="git-network"></ion-icon>
+        </button>&nbsp;
         <button *ngIf="role==5" (click)="deleteCourse(course._id);" class="btn btn-sm btn-danger">
           <ion-icon name="trash"></ion-icon>
         </button>
+        
       </ion-buttons>
       </td>
     </tr>

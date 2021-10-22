@@ -11,7 +11,16 @@
         "modernizingText":"Moderniser l'éducation pour tous",
         "aboutUs":"À PROPOS DE NOUS",
         "contactUs":"NOUS CONTACTER",
-        "currentlyLogin":"Vous êtes actuellement connecté en tant que"
+        "currentlyLogin":"Vous êtes actuellement connecté en tant que",
+        "role":{
+          "admin" :"administratrice",
+          "editor" : "Éditeur",
+          "school" : "L'école",
+          "school_staff" : "Personnel de l'école",
+          "teacher" : "Professeur",
+          "student" : "Étudiant",
+          "generator" : "Générateur"
+        }
     },
     "aboutUs": {
       "title":"À propos de nous",
@@ -180,6 +189,64 @@
       "phone_number":"Numéro de téléphone",
       "save":"Sauvegarder",
       "updating":"Mise à jour..."
+    },
+    "common_menu" :{
+      "logout" :"Se déconnecter",
+      "update_profile" : "Mettre à jour le profil"
+     },
+     "r_teacher_menus" :{
+       "messages" :"messages",
+       "group_chat" : "Discussion de groupe",
+       "students" : "Étudiants",
+       "courses" : "Cours",
+       "exams" : "Examens",
+       "collaboration" : "Collaboration"
+     },
+     "student_list":{
+      "page_title" :"Liste des étudiants",
+      "user_name":"User Name",
+      "first_name":"Prénom",
+      "last_name":"Nom de famille",
+      "email":"Identifiant de messagerie",
+      "phone":"Numéro de téléphone"
+    },
+    "exam":{
+      "page_title":"Examen",
+      "question" :"Question",
+      "options" :"Options",
+      "answer" : "Réponse",
+      "question_for" : "Question pour",
+      "choose_school" :"Choisissez l'école",
+      "select":"Sélectionner",
+      "find_questions" : "Trouver des questions",
+      "add_multi_choice" : "Ajouter une question à choix multiples",
+      "add_true_false" : "Ajouter une question vrai faux",
+      "add_fill_the_blank" : "Ajouter Remplir les blancs",
+      "add_all_true" : "Ajouter toutes les vraies questions",
+      "add_poll" : "Ajouter une question de sondage",
+      "generate_new_exam" : "Générer un nouvel examen"
+    },
+    "exam_popup":{
+      "multi_choice_title":"Ajouter une nouvelle question à choix multiples",
+      "true_false_title" :"Ajouter une nouvelle question vrai faux",
+      "fill_the_blanks_titel": "Ajouter une question à remplir",
+      "all_true_title" : "Ajouter toutes les vraies questions",
+       "poll_title" : "Ajouter des questions de sondage",
+       "school": "L'école",
+       "course" : "Cours",
+       "question_for" :"Question pour",
+       "question" : "Question",
+       "options" : "Options",
+       "correct_answer" : "Bonne réponse",
+       "save_question" : "Enregistrer la question",
+       "poll_question": "Question de sondage",
+       "polls" : "Les sondages",
+       "add_polls" : "Ajouter des sondages",
+       "exam": "Examen",
+       "quiz" : "Quiz",
+       "practice" : "S'entraîner",
+       "select" : "Sélectionner",
+       "select_course" : "Sélectionnez le cours",
+       "select_school" :"Sélectionnez l'école"
     }
-
 }

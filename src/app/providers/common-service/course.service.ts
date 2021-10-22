@@ -134,4 +134,32 @@ export class CourseService {
   getCourseByCurriculumId(curriculumId) {
     return this._httpClient.authGet(`api/course/getCoursesByCurriculum/${curriculumId}`);
   }
+
+  getTeachersBySchoolId(schoolId) {
+    return this._httpClient.authGet(`api/getAllTeachersBySchool/${schoolId}`);
+  }
+
+  postShareCourse(data) {
+    return this._httpClient.authPost("api/course/shareCourseWithTeacher", data);
+  }
+
+  getCoursesV2(schoolId,userId) {
+    return this._httpClient.authGet(`api/course/getCoursesV2/${schoolId}/${userId}`);
+  }
+
+  getInvites(teacherId) {
+    return this._httpClient.authGet(`api/course/getInvite/${teacherId}`);
+  }
+
+  saveInvite(request) {
+    return this._httpClient.authPost(`api/course/saveInvite`,request);
+  }
+
+  editInviteStatus(request) {
+    return this._httpClient.authPost(`api/course/editInviteStatus`,request);
+  }
+
+  deleteInvite(inviteId) {
+    return this._httpClient.authDelete(`api/course/deleteInvite/${inviteId}`);
+  }
 }

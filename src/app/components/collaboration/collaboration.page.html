@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-buttons slot="start">
+  <ion-menu-button></ion-menu-button>
+  <ion-title>Collaboration</ion-title>
+  </ion-buttons>
+</ion-header>
+
+<ion-content padding>
+
+<div class="row"> 
+
+<div class="col-md-12">
+
+<div  style="background-color: white;">
+
+  <div class="table-responsive-sm">
+  <table class="table  table-bordered table-sm " >
+    <thead >
+    <tr >
+    <th style="width:3%">
+      #
+    </th>
+    <th style="width:15%">
+      Teacher Name
+    </th>
+    <th style="width:10%">
+      Teacher Username
+    </th>
+    <th style="width:15%">
+      Course
+    </th>
+    <th style="width:15%">
+      Subject
+    </th>
+    <th style="width:10%">
+      Received On
+    </th>
+    <th style="width:5%">
+      Status
+    </th>
+    <th style="width:7%">
+      Action
+    </th>
+  </tr>
+</thead>
+  <tr *ngFor="let invite of invitesList; let i=index">
+    <td>{{i+1}}</td>
+    <td>{{ invite.sender.first_name +'  '+ invite.sender.last_name}}</td>
+    <td>{{ invite.sender.username}}</td>
+    <td> {{invite.course.name}}</td>
+    <td>{{invite.course.subject}}</td>
+    <td>{{invite.sentOn | date :'dd-MMM-yy hh:mm'}}</td>
+    <td>{{invite.status}}</td>
+    <td>
+      <ion-buttons>
+      <button *ngIf="invite.status =='Pending'" (click)="acceptInvite(invite);"  class="btn btn-sm btn-success">
+        <ion-icon name="checkmark"></ion-icon>
+      </button> &nbsp;
+      <button *ngIf="invite.status =='Pending'" (click)="rejectInvite(invite);"  class="btn btn-sm btn-warning">
+        <ion-icon name="close"></ion-icon>
+      </button>&nbsp;
+      <button (click)="deleteInvite(invite);"  class="btn btn-sm btn-danger">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+    </td>
+  </tr>
+  </table>
+</div>
+</div>
+</div>
+</div>
+</ion-content>

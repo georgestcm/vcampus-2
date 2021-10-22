@@ -41,6 +41,8 @@ import { GenerateCourseCodePage } from "./components/generate-course-code/genera
 import { UpdateProfilePage } from "./components/update-profile/update-profile.page";
 import { CourseListPage } from "./components/course-list/course-list.page";
 import { CurriculumPage } from "./components/curriculum/curriculum.page";
+import { CourseSharePage } from "./components/course-share/course-share.page";
+import { CollaborationPage } from "./components/collaboration/collaboration.page";
 
 
 const routes: Routes = [
@@ -264,8 +266,13 @@ const routes: Routes = [
       },
       {
         path: "curriculum",
-          component: CurriculumPage,
-          pathMatch: "full",
+        component: CurriculumPage,
+        pathMatch: "full",
+      },
+      {
+        path: "course-share",
+        component: CourseSharePage,
+        pathMatch: "full",
       }
     ],
   },
@@ -385,6 +392,11 @@ const routes: Routes = [
         component: SchoolListPage,
         pathMatch: "full",
       },
+      {
+        path: "collaboration",
+        component: CollaborationPage,
+        pathMatch: "full",
+      }
     ],
   },
   {
@@ -573,6 +585,20 @@ const routes: Routes = [
     path: 'curriculum',
     loadChildren: () => import('./components/curriculum/curriculum.module').then( m => m.CurriculumPageModule)
   },
+  {
+    path: 'online-class',
+    loadChildren: () => import('./components/online-class/online-class.module').then( m => m.OnlineClassPageModule)
+  },
+  {
+    path: 'course-share',
+    loadChildren: () => import('./components/course-share/course-share.module').then( m => m.CourseSharePageModule)
+  },
+  {
+    path: 'collaboration',
+    loadChildren: () => import('./components/collaboration/collaboration.module').then( m => m.CollaborationPageModule)
+  },
+
+
 
 
 

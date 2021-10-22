@@ -29,13 +29,13 @@
     </ion-card-title>
     <ion-card-subtitle [hidden]="logged_in_or_not">{{'login.loginAs'|translate}}</ion-card-subtitle>
     <ion-select [hidden]="logged_in_or_not" (ionChange)="getRoleRequest($event)" value="roleRequest" placeholder="{{'login.selectRole' | translate}}">
-      <ion-select-option selected>Admin</ion-select-option>
-      <ion-select-option selected>Editor</ion-select-option>
-      <ion-select-option selected>School</ion-select-option>
-      <ion-select-option selected>School staff</ion-select-option>
-      <ion-select-option selected [hidden]=true>Teacher</ion-select-option>
-      <ion-select-option selected [hidden]=true>Student</ion-select-option>
-      <ion-select-option selected [hidden]=true>Generator</ion-select-option>
+      <ion-select-option value="Admin" selected>{{'login.role.admin' |translate}}</ion-select-option>
+      <ion-select-option value="Editor" selected>{{'login.role.editor' |translate}}</ion-select-option>
+      <ion-select-option value="School" selected>{{'login.role.school' |translate}}</ion-select-option>
+      <ion-select-option value="School Staff" selected>{{'login.role.school_staff' |translate}}</ion-select-option>
+      <ion-select-option value="Teacher" selected [hidden]=true>{{'login.role.teacher' |translate}}</ion-select-option>
+      <ion-select-option value="Student" selected [hidden]=true>{{'login.role.student' |translate}}</ion-select-option>
+      <ion-select-option value="Generator" selected [hidden]=true>{{'login.role.generator' |translate}}</ion-select-option>
     </ion-select>
     <div class="login_error" [hidden]="error_message.error_red_msg">
       <div class="error_icon">

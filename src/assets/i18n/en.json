@@ -11,8 +11,16 @@
         "modernizingText":"Modernizing education for all",
         "aboutUs":"ABOUT US",
         "contactUs":"CONTACT US",
-        "currentlyLogin":"You are currently logged in as"
-
+        "currentlyLogin":"You are currently logged in as",
+        "role":{
+          "admin" :"Admin",
+          "editor" : "Editor",
+          "school" : "School",
+          "school_staff" : "School Staff",
+          "teacher" : "Teacher",
+          "student" : "Student",
+          "generator" : "Generator"
+        }
     },
     "aboutUs": {
       "title":"About us",
@@ -180,6 +188,63 @@
        "phone_number":"Phone number",
        "save":"Save",
        "updating":"Updating..."
+     },
+     "common_menu" :{
+      "logout" :"Logout",
+      "update_profile" : "Update Profile"
+     },
+     "r_teacher_menus" :{
+       "messages" :"Messages",
+       "group_chat" : "Group Chat",
+       "students" : "Students",
+       "courses" : "Courses",
+       "exams" : "Exams",
+       "collaboration" : "Collaboration"
+     },
+     "student_list":{
+       "page_title" :"Student List",
+       "user_name":"User Name",
+      "first_name":"First name",
+      "last_name":"Last name",
+      "email":"Email",
+      "phone":"Phone"
+     },
+     "exam":{
+       "page_title":"Exam",
+       "question" :"Question",
+       "options" :"Options",
+       "answer" : "Answer",
+       "question_for" : "Question for",
+       "choose_school" :"Choose School",
+       "select":"Select",
+       "find_questions" : "Find Questions",
+       "add_multi_choice" : "Add Multi-Choice Question",
+       "add_true_false" : "Add True False Question",
+       "add_fill_the_blank" : "Add Fill the Blanks",
+       "add_all_true" : "Add All True Questions",
+       "add_poll" : "Add Poll Question",
+       "generate_new_exam" : "Generate New Exam"
+     },
+     "exam_popup":{
+       "multi_choice_title":"Add New Multi Choice Question",
+       "true_false_title" :"Add New True False Question",
+       "fill_the_blanks_titel": "Add Fill the Blanks Question",
+       "all_true_title" : "Add All True Questions",
+        "poll_title" : "Add Poll Quesitons",
+        "school": "School",
+        "course" : "Course",
+        "question_for" :"Question for",
+        "question" : "Question",
+        "options" : "Options",
+        "correct_answer" : "Correct Answer",
+        "save_question" : "Save Question",
+        "poll_question": "Poll Question",
+        "polls" : "Polls",
+        "add_polls" : "Add Polls",
+        "exam": "Exam",
+        "quiz" : "Quiz",
+        "practice" : "Practice",
+        "select" : "Select"
      }
 
 }

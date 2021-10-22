@@ -6,6 +6,7 @@ import { CourseDetailModalComponent } from '../course-detail-modal/course-detail
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/providers/auth.service';
 import { TranslateService } from '@ngx-translate/core';
+import { CourseShareTeacherModelComponent } from '../course-share-teacher-model/course-share-teacher-model.component';
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.page.html',
@@ -21,6 +22,7 @@ export class CoursesListPage implements OnInit {
   schoolList : any;
   role : number;
   schoolId : string;
+  userId : string;
 
   ngOnInit() {
     this.storage.get('role').then((val) => {
@@ -33,6 +35,7 @@ export class CoursesListPage implements OnInit {
 
  if(this.role == 5){
   this.storage.get('user').then((val) => {
+    this.userId = val._id;
     this.courseService.getSchoolsByTeacherId(val._id).subscribe(res =>{
       this.schoolList = res;
     }, err => {
@@ -76,7 +79,8 @@ export class CoursesListPage implements OnInit {
     }
     this.showLoading = true;
     if(this.role == 5){
-    this.courseService.getCourseBySchoolId(this.schoolId).subscribe( (data) => {
+      this.courseService.getCoursesV2(this.schoolId,this.userId).subscribe( (data) => {
+    //this.courseService.getCourseBySchoolId(this.schoolId).subscribe( (data) => {
      this.courseList = data;
      this.showLoading = false;
     },
@@ -120,6 +124,14 @@ export class CoursesListPage implements OnInit {
         );
     }
 
+  }
+
+  async showCourseShareTeacherModal(data){
+    const modal = await this.modalController.create({
+      component: CourseShareTeacherModelComponent,
+      componentProps : {"courseData":data}
+    });
+    return await modal.present();
   }
 
 }

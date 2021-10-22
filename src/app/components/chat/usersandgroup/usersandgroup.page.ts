@@ -58,7 +58,7 @@ this._auth.getAllGroupsBySchoolId(schoolId).subscribe(res => {
   }
 
   navigateToGroupChat(group){
-    this.route.navigate(['rstudents/chat',{username : group.Name, name :group.Name, _id : group._id}]);
+    this.route.navigate(['rstudents/chat',{username : group.Name, name :group.Name, groupId : group._id}]);
   }
 
 }
