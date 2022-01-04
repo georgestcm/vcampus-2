@@ -1,34 +1,37 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
     <ion-title>Online Class</ion-title>
-  </ion-toolbar>
+    </ion-buttons>
 </ion-header>
 
-<ion-content >
+<ion-content padding>
   <ion-card >
     <ion-item>
       <ion-grid fixed="true" style="width: 100%;">
         <ion-row>
           <ion-col size="9" >
             
-            <video #local_video [autoplay]="true" [muted]="true"></video>
+            <video class="local_video" #local_video [autoplay]="true" poster="assets/icon/user.png" [muted]="true"></video>
+            <div style="text-align: center;">
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-success" (click)="startLocalVideo()">Call</button>&nbsp;
+                <button type="button" class="btn btn-danger">Hangup</button>&nbsp;
+                <button type="button" class="btn btn-warning">Mute Audio</button>&nbsp;
+                <button type="button" class="btn btn-secondary" (click)="muteLocalVideo()" >Mute Video</button>&nbsp;
+              </div>
+            </div>  
           </ion-col>
-          <ion-col size="3" style="overflow: auto; height: 500;" >
-            <p>Students</p>
-            <video #remote_video [autoplay]="true" ></video>
-            <video #remote_video [autoplay]="true" ></video>
-            <video #remote_video [autoplay]="true" ></video>
+          <ion-col size="3" style="overflow: auto; " >
+            <!-- <p>Students</p> -->
+            <video class="remote_video" #remote_video [autoplay]="true" poster="assets/icon/user.png" ></video>
+            <video class="remote_video" #remote_video [autoplay]="true" poster="assets/icon/user.png"></video>
+            <video class="remote_video" #remote_video [autoplay]="true" poster="assets/icon/user.png"></video>
+            
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>
-    <div style="text-align: center;">
-    <div  class="btn-group mr-2" role="group" aria-label="First group">
-      <button type="button" class="btn btn-success" (click)="startLocalVideo()">Call</button>
-      <button type="button" class="btn btn-danger">Hangup</button>
-      <button type="button" class="btn btn-warning">Mute Audio</button>
-      <button type="button" class="btn btn-secondary" (click)="muteLocalVideo()" >Mute Video</button>
-    </div>
-  </div>
+    
   </ion-card>
 </ion-content>

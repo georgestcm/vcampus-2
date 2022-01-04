@@ -23,7 +23,8 @@ export class OnlineClassPage implements AfterViewInit {
  private async requestMediaDevice(): Promise<void>{
     this.localStream = await navigator.mediaDevices.getUserMedia(mediaConstraints);
     //this.localVideo.nativeElement.srcObject = this.localStream;
-    this.muteLocalVideo();
+   // this.muteLocalVideo();
+   this.pauseLocalVideo();
   }
 
   muteLocalVideo():void{
@@ -31,6 +32,13 @@ export class OnlineClassPage implements AfterViewInit {
       track.enabled =false;
     });
     this.localVideo.nativeElement.srcObject = undefined;
+  }
+
+  pauseLocalVideo():void{
+    this.localStream.getTracks().forEach(track =>{
+      track.enabled =false;
+    })
+    this.localVideo.nativeElement.srcObject =undefined;
   }
 
   startLocalVideo():void{

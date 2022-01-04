@@ -229,7 +229,7 @@
     "exam_popup":{
       "multi_choice_title":"Ajouter une nouvelle question à choix multiples",
       "true_false_title" :"Ajouter une nouvelle question vrai faux",
-      "fill_the_blanks_titel": "Ajouter une question à remplir",
+      "fill_the_blanks_title": "Ajouter une question à remplir",
       "all_true_title" : "Ajouter toutes les vraies questions",
        "poll_title" : "Ajouter des questions de sondage",
        "school": "L'école",
@@ -247,6 +247,49 @@
        "practice" : "S'entraîner",
        "select" : "Sélectionner",
        "select_course" : "Sélectionnez le cours",
-       "select_school" :"Sélectionnez l'école"
-    }
+       "select_school" :"Sélectionnez l'école",
+       "add" : "Ajouter"
+    },
+    "create_exam":{
+      "title":"Créer un examen",
+      "add_new_exam" : "Ajouter un nouvel examen",
+       "choose_school" : "Choisissez l'école",
+       "select" :"Sélectionner",
+       "find_exams" : "Trouver des examens",
+       "exam_name": "Nom de l'examen",
+       "description" : "Description",
+       "start_date" : "Date de début",
+       "end_date" : "Date de fin",
+       "exam_for" : "Examen pour",
+       "school": "L'école",
+       "course" : "Cours",
+       "type" : "Taper",
+       "choose_question_for_exam" : "Choisissez la question pour l'examen",
+       "create_exam" : "Créer un examen",
+       "exam": "Examen",
+       "quiz" : "Quiz",
+       "practice" : "S'entraîner"
+    },
+    "update_profile" :{
+      "title" : "Mettre à jour le profil",
+      "change_password" : "Mettre à jour le profil",
+      "username" : "NOM D'UTILISATEUR",
+      "email" : "Identifiant de messagerie",
+      "first_name":"Prénom",
+      "last_name":"Nom de famille",
+      "current_password" : "Mot de passe actuel",
+      "new_password" : "nouveau mot de passe",
+      "confirm_password" : "nouveau mot de passe"
+    },
+    "student_registration" :{
+     "title" : "S'INSCRIRE",
+     "username" : "NOM D'UTILISATEUR",
+      "email" : "Identifiant de messagerie",
+      "first_name":"Prénom",
+      "last_name":"Nom de famille",
+      "password" : "Mot de passe",
+      "confirm_password" : "nouveau mot de passe",
+     "choose_school" : "Choisissez l'école",
+     "select" : "---Sélectionner---"
+   }
 }

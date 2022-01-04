@@ -1,7 +1,7 @@
 <ion-header>
   <ion-buttons slot="start">
     <ion-menu-button></ion-menu-button>
-    <ion-title>Update Profile</ion-title>
+    <ion-title>{{'update_profile.title' | translate}}</ion-title>
     </ion-buttons>
 </ion-header>
 
@@ -19,35 +19,35 @@
   <div class="col-md-6">
     <div class="card">
       <div class="card-header">
-          Update Profile
+        {{'update_profile.title' | translate}}
       </div>
       <div class="card-body" style="min-height:300px;overflow: auto !important;">
         <form #f1="ngForm" class="form"
         (ngSubmit)="onUpdateProfile()" >
 
         <div class="mb-3 row">
-          <label for="staticEmail" class="col-sm-3 col-form-label">Username</label>
+          <label for="staticEmail" class="col-sm-3 col-form-label">{{'update_profile.username' | translate}}</label>
           <div class="col-sm-9">
             <input type="text" readonly class="form-control" name="username" [(ngModel)]="userDetail.username">
           </div>
         </div>
 
         <div class="mb-3 row">
-          <label for="email" class="col-sm-3 col-form-label">Email</label>
+          <label for="email" class="col-sm-3 col-form-label">{{'update_profile.email' | translate}}</label>
           <div class="col-sm-9">
             <input type="email" required class="form-control" name="email" [(ngModel)]="userDetail.email">
           </div>
         </div>
 
         <div class="mb-3 row">
-          <label for="first_name" class="col-sm-3 col-form-label">First Name</label>
+          <label for="first_name" class="col-sm-3 col-form-label">{{'update_profile.first_name' | translate}}</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" required [(ngModel)]="userDetail.first_name" id="first_name" name="first_name">
           </div>
         </div>
 
         <div class="mb-3 row">
-          <label for="first_name" class="col-sm-3 col-form-label">Last Name</label>
+          <label for="first_name" class="col-sm-3 col-form-label">{{'update_profile.last_name' | translate}}</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" required [(ngModel)]="userDetail.last_name" id="last_name" name="last_name">
           </div>
@@ -57,7 +57,7 @@
         <div class="mb-3 row">
           <label for="" class="col-sm-3 col-form-label"></label>
           <div class="col-sm-9">
-            <button [disabled]="!f1.valid" class="btn btn-secondary">Update Profile</button>
+            <button [disabled]="!f1.valid" class="btn btn-secondary">{{'update_profile.title' | translate}}</button>
           </div>
         </div>
         </form>
@@ -71,28 +71,28 @@
     <!-- Update password -->
     <div class="card">
       <div class="card-header">
-          Change Password
+        {{'update_profile.change_password' | translate}}
       </div>
       <div class="card-body" style="min-height:310px;overflow: auto !important;">
         <form #f="ngForm" class="form"
         (ngSubmit)="onChangePassword()" >
   
         <div class="mb-3 row">
-          <label for="current_password" class="col-sm-3 col-form-label">Current Password</label>
+          <label for="current_password" class="col-sm-3 col-form-label">{{'update_profile.current_password' | translate}}</label>
           <div class="col-sm-9">
             <input type="password" class="form-control" required [(ngModel)]="userDetail.password" id="current_password" name="current_password">
           </div>
         </div>
   
         <div class="mb-3 row">
-          <label for="new_password" class="col-sm-3 col-form-label">New Password</label>
+          <label for="new_password" class="col-sm-3 col-form-label">{{'update_profile.new_password' | translate}}</label>
           <div class="col-sm-9">
             <input type="password" class="form-control" required [(ngModel)]="userDetail.new_password" name="new_password" id="new_password">
           </div>
         </div>
   
         <div class="mb-3 row">
-          <label for="confirm_password" class="col-sm-3 col-form-label">Current Password</label>
+          <label for="confirm_password" class="col-sm-3 col-form-label">{{'update_profile.confirm_password' | translate}}</label>
           <div class="col-sm-9">
             <input type="password" class="form-control" required [(ngModel)]="userDetail.confirm_password" id="confirm_password" name="confirm_password">
           </div>
@@ -101,7 +101,7 @@
         <div class="mb-3 row">
           <label for="" class="col-sm-3 col-form-label"></label>
           <div class="col-sm-9">
-            <button [disabled]="!f.valid"  class="btn btn-secondary">Change Password</button>
+            <button [disabled]="!f.valid"  class="btn btn-secondary">{{'update_profile.change_password' | translate}}</button>
           </div>
         </div>
   

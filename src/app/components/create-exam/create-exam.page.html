@@ -1,14 +1,14 @@
 <ion-header>
   <ion-buttons slot="start">
   <ion-menu-button></ion-menu-button>
-  <ion-title>Create Exam</ion-title>
+  <ion-title>{{'create_exam.title' | translate}}</ion-title>
   </ion-buttons>
 </ion-header>
 
 <ion-content>
 <div class="add_role" [hidden]="addCourseOrnot" (click)="showCreateExamModal()">
   <div  class="add">
-    <p>Add new Exam</p>
+    <p>{{'create_exam.add_new_exam' | translate}}</p>
     <ion-icon name="add"></ion-icon>
   </div>
 </div>
@@ -23,19 +23,19 @@
 
   <div class="input-group mb-3"  *ngIf="role==5">
     <div class="input-group-prepend">
-      <span class="input-group-text"  id="inputGroupFileAddon01">Choose School</span>
+      <span class="input-group-text"  id="inputGroupFileAddon01">{{'create_exam.choose_school' | translate}}</span>
     </div>
      <select class="custom-select" required name="schoolDropdown"
       id="ddlSchool"
      (change)="onSchoolChange($event.target.value)">
-      <option value="">--Select--</option>
+      <option value="">--{{'create_exam.select' | translate}}--</option>
       <option *ngFor="let school of schoolList" value={{school._id}}>
         {{school.school.school_name}}
       </option>
     </select>
 
     <div class="input-group-postpend">
-      <button class="btn btn-primary" (click)="getAllExamBySchool()">Find Exams</button>
+      <button class="btn btn-primary" (click)="getAllExamBySchool()">{{'create_exam.find_exams' | translate}}</button>
     </div>
   </div>
   <div class="table-responsive-sm">
@@ -45,18 +45,20 @@
         #
       </th>
       <th>
-        Exam Name
+        {{'create_exam.exam_name' | translate}}
       </th>
       <th>
-        Description
+        {{'create_exam.description' | translate}}
       </th>
       <th>
-        Start Date
+        {{'create_exam.start_date' | translate}}
       </th>
       <th>
-        End Date
+        {{'create_exam.end_date' | translate}}
       </th>
-      <th>Exam For</th>
+      <th>
+        {{'create_exam.exam_for' | translate}}
+      </th>
       <th></th>
     </tr>
     <tr *ngFor="let q of examList; let i =index">

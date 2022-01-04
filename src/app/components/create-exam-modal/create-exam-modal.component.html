@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-      Create New Exam
+    {{'create_exam.create_exam' | translate}}
       <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
   </div>
   <div class="card-body" style="height:400px;overflow: auto !important;">
@@ -9,12 +9,12 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="inputGroupFileAddon01">School *</span>
+        <span class="input-group-text"  id="inputGroupFileAddon01">{{'create_exam.school' | translate}} *</span>
       </div>
        <select class="custom-select" required name="schoolDropdown"  
        [(ngModel)]="examModal.school" id="ddlSchool" 
        (change)="onSchoolChange($event.target.value)">
-        <option value="">{{loadingSchool}}</option>
+        <option value="">{{'create_exam.select' | translate}}</option>
         <option *ngFor="let school of schoolList" value={{school._id}}>
           {{school.school.school_name}}
         </option>
@@ -23,12 +23,12 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="inputGroupFileAddon01">Course *</span>
+        <span class="input-group-text"  id="inputGroupFileAddon01">{{'create_exam.course' | translate}} *</span>
       </div>
        <select class="custom-select" required name="curriculumDropdown"  
        [(ngModel)]="examModal.course" id="ddlCurriculum" 
        >
-        <option value="">{{loadingCourse}}</option>
+        <option value="">{{'create_exam.select' | translate}}</option>
         <option *ngFor="let c of courseList" value={{c._id}}>
           {{c.name}}
         </option>
@@ -37,15 +37,15 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="Exam_Type">Type *</span>
+        <span class="input-group-text"  id="Exam_Type">{{'create_exam.type' | translate}} *</span>
       </div>
       <select class="custom-select"  required name="examType"  
        [(ngModel)]="examModal.Exam_Type" id="examType"  (change)="onExamTypeChange($event.target.value)"
        >
-        <option value="">---Select---</option>
-        <option value="Exam">Exam</option>
-        <option value="Quiz">Quiz</option>
-        <option value="Practice">Practice</option>
+        <option value="">---{{'create_exam.select' | translate}}---</option>
+        <option value="Exam">{{'create_exam.exam' | translate}}</option>
+        <option value="Quiz">{{'create_exam.quiz' | translate}}</option>
+        <option value="Practice">{{'create_exam.practice' | translate}}</option>
       </select>
     </div>
     <div >
@@ -54,7 +54,7 @@
         <th>
           <input type="checkbox"  name="checkAll"  value="CheckAll">
         </th>
-        <th>Choose Questions for Exam</th>
+        <th>{{'create_exam.choose_question_for_exam' | translate}}</th>
       </tr>
       <tr *ngFor="let q of questionList">
         <td>
@@ -69,34 +69,34 @@
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="examName">Exam Name *</span>
+        <span class="input-group-text"  id="examName">{{'create_exam.exam_name' | translate}} *</span>
       </div>
       <input type="text" [(ngModel)]="examModal.Exam_Name" name="examName" required  class="form-control">      
     </div>
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="examDescription">Description </span>
+        <span class="input-group-text"  id="examDescription">{{'create_exam.description' | translate}} </span>
       </div>
       <input type="text" [(ngModel)]="examModal.Exam_Description" name="examDescription"  class="form-control">      
     </div>
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="Exam_StartDateTime">Start Date </span>
+        <span class="input-group-text"  id="Exam_StartDateTime">{{'create_exam.start_date' | translate}} </span>
       </div>
       <input type="date" [(ngModel)]="examModal.Exam_StartDateTime" name="Exam_StartDateTime"  class="form-control">      
     </div>
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="Exam_EndDateTime">End Date </span>
+        <span class="input-group-text"  id="Exam_EndDateTime">{{'create_exam.end_date' | translate}} </span>
       </div>
       <input type="date" [(ngModel)]="examModal.Exam_EndDateTime" name="Exam_EndDateTime"  class="form-control">      
     </div>
     
 
-    <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="Create Exam" />
+    <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="{{'create_exam.create_exam' | translate}}" />
 
     
 

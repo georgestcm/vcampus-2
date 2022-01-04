@@ -25,76 +25,76 @@
 
   <!-- <ion-card-content style="min-height: 300px;overflow: auto;"> -->
     <div class="form-group">
-      <label  for="firstName">First Name *</label>
+      <label  for="firstName">{{'student_registration.first_name' | translate}} *</label>
       <div class="input-group">
         <div class="input-group-prepend">
           <div class="input-group-text">
             <ion-icon name="person"></ion-icon>
           </div>
         </div>
-        <input type="text" class="form-control" [(ngModel)]="studentRegistration.first_name" id="firstName" name="firstName" placeholder="First Name">
+        <input type="text" class="form-control" [(ngModel)]="studentRegistration.first_name" id="firstName" name="firstName" placeholder="{{'student_registration.first_name' | translate}}">
       </div>
     </div>
     <div class="form-group">
-      <label  for="lastName">Last Name *</label>
+      <label  for="lastName">{{'student_registration.last_name' | translate}} *</label>
       <div class="input-group">
         <div class="input-group-prepend">
           <div class="input-group-text">
             <ion-icon name="person"></ion-icon>
           </div>
         </div>
-        <input type="text" class="form-control" [(ngModel)]="studentRegistration.last_name" id="lastName" name="lastName" placeholder="Last Name">
+        <input type="text" class="form-control" [(ngModel)]="studentRegistration.last_name" id="lastName" name="lastName" placeholder="{{'student_registration.last_name' | translate}}">
       </div>
     </div>
 
     <div class="form-group">
-      <label  for="userName">User Name *</label>
+      <label  for="userName">{{'student_registration.username' | translate}} *</label>
       <div class="input-group">
         <div class="input-group-prepend">
           <div class="input-group-text">
             <ion-icon name="contact"></ion-icon>
           </div>
         </div>
-        <input type="text" [(ngModel)]="studentRegistration.username" class="form-control" id="userName" name="userName" placeholder="Username">
+        <input type="text" [(ngModel)]="studentRegistration.username" class="form-control" id="userName" name="userName" placeholder="{{'student_registration.username' | translate}}">
       </div>
     </div>
 
     <div class="form-group">
-      <label  for="email">Email </label>
+      <label  for="email">{{'student_registration.email' | translate}} </label>
       <div class="input-group">
         <div class="input-group-prepend">
           <div class="input-group-text">
             <ion-icon name="mail"></ion-icon>
           </div>
         </div>
-        <input type="email" class="form-control" [(ngModel)]="studentRegistration.email" id="email" name="email" placeholder="Email">
+        <input type="email" class="form-control" [(ngModel)]="studentRegistration.email" id="email" name="email" placeholder="{{'student_registration.email' | translate}}">
       </div>
     </div>
     <div class="form-group">
-      <label  for="password">Password *</label>
+      <label  for="password">{{'student_registration.password' | translate}} *</label>
       <div class="input-group">
         <div class="input-group-prepend">
           <div class="input-group-text">
             <ion-icon name="key"></ion-icon>
           </div>
         </div>
-        <input type="password" class="form-control" [(ngModel)]="studentRegistration.password" id="password" name="password" placeholder="Password">
+        <input type="password" class="form-control" [(ngModel)]="studentRegistration.password" id="password" name="password" placeholder="{{'student_registration.password' | translate}}">
       </div>
     </div>
     <div class="form-group">
-      <label  for="confirmPassword">Confirm Password *</label>
+      <label  for="confirmPassword">{{'student_registration.confirm_password' | translate}} *</label>
       <div class="input-group">
         <div class="input-group-prepend">
           <div class="input-group-text">
             <ion-icon name="key"></ion-icon>
           </div>
         </div>
-        <input type="password" class="form-control" [(ngModel)]="this.password.reEnter" id="confirmPassword" name="confirmPassword" placeholder="Password">     
+        <input type="password" class="form-control" [(ngModel)]="this.password.reEnter" id="confirmPassword" name="confirmPassword" placeholder="{{'student_registration.confirm_password' | translate}}">     
       </div>
       <!-- <small style="color: red;" *ngIf="studentRegistration.password.length>0 && studentRegistration.new_password != studentRegistration.password">Password and confirm password doesn't match!</small> -->
     </div>
     <div class="form-group">
-      <label  for="confirmPassword">Choose School *</label>
+      <label  for="confirmPassword">{{'student_registration.choose_school' | translate}} *</label>
       <div class="input-group">
         <div class="input-group-prepend">
           <div class="input-group-text">
@@ -102,14 +102,14 @@
           </div>
         </div>
         <select [(ngModel)]="studentRegistration.school_id" (change)="onSchoolChange($event)" class="form-control" name="ddlSchool">
-          <option value="">---Select---</option>
+          <option value="">{{'student_registration.select' | translate}}</option>
           <option *ngFor="let school of schoolList" value={{school._id}}>
             {{school.school.school_name}}
           </option>
         </select>
       </div>
     </div>
-    <ion-button (click)="presentLoading()" >REGISTER</ion-button>
+    <ion-button (click)="presentLoading()" >{{'student_registration.title' | translate}}</ion-button>
   </div>
 </div>
 

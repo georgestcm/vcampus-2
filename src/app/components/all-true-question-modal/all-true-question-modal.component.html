@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    Add All True Questions
+    {{'exam_popup.all_true_title' | translate}}
       <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
   </div>
   <div class="card-body" style="height:400px;overflow: auto !important;">
@@ -9,12 +9,12 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="inputGroupFileAddon01">School *</span>
+        <span class="input-group-text"  id="inputGroupFileAddon01">{{'exam_popup.school' | translate}} *</span>
       </div>
        <select class="custom-select" required name="schoolDropdown"  
        [(ngModel)]="questionModal.school" id="ddlSchool" 
        (change)="onSchoolChange($event.target.value)">
-        <option value="">{{loadingSchool}}</option>
+        <option value="">{{'exam_popup.select' | translate}}</option>
         <option *ngFor="let school of schoolList" value={{school._id}}>
           {{school.school.school_name}}
         </option>
@@ -23,12 +23,12 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="inputGroupFileAddon01">Course *</span>
+        <span class="input-group-text"  id="inputGroupFileAddon01">{{'exam_popup.course' | translate}} *</span>
       </div>
        <select class="custom-select" required name="curriculumDropdown"  
        [(ngModel)]="questionModal.course" id="ddlCurriculum" 
        >
-        <option value="">{{loadingCourse}}</option>
+        <option value="">{{'exam_popup.select' | translate}}</option>
         <option *ngFor="let c of courseList" value={{c._id}}>
           {{c.name}}
         </option>
@@ -37,32 +37,32 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="inputGroupFileAddon01">Question For *</span>
+        <span class="input-group-text"  id="inputGroupFileAddon01">{{'exam_popup.quesiton_for' | translate}} *</span>
       </div>
       <select class="custom-select" required name="questionForDropdown"  
        [(ngModel)]="questionModal.Question_for" id="ddlQuestionFor" 
        >
-        <option value="">---Select---</option>
-        <option value="Exam">Exam</option>
-        <option value="Quiz">Quiz</option>
-        <option value="Practice">Practice</option>
+        <option value="">---{{'exam_popup.select' | translate}}---</option>
+        <option value="Exam">{{'exam_popup.exam' | translate}}</option>
+        <option value="Quiz">{{'exam_popup.quiz' | translate}}</option>
+        <option value="Practice">{{'exam_popup.practice' | translate}}</option>
       </select>
     </div>
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="questionTitle">Question *</span>
+        <span class="input-group-text"  id="questionTitle">{{'exam_popup.question' | translate}} *</span>
       </div>
       <input type="text" [(ngModel)]="questionModal.Question_title" name="questionTitle"  class="form-control">      
     </div>
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"  id="questionOption">Options *</span>
+        <span class="input-group-text"  id="questionOption">{{'exam_popup.options' | translate}} *</span>
       </div>
       <input type="text" [(ngModel)]="questionModal.option" name="questionOption"  class="form-control">      
       <div class="input-group-append">
-        <button class="btn btn-primary" type="button" (click)="onAddOption(questionModal.option)" >Add</button>
+        <button class="btn btn-primary" type="button" (click)="onAddOption(questionModal.option)" >{{'exam_popup.add' | translate}}</button>
       </div>
     </div>
 
@@ -82,7 +82,7 @@
       </table>
     </div>
 
-    <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="Save Question" />    
+    <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="{{'exam_popup.save_question' | translate}}" />    
     </form>
 </div>
 </div>

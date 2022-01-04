@@ -228,7 +228,7 @@
      "exam_popup":{
        "multi_choice_title":"Add New Multi Choice Question",
        "true_false_title" :"Add New True False Question",
-       "fill_the_blanks_titel": "Add Fill the Blanks Question",
+       "fill_the_blanks_title": "Add Fill the Blanks Question",
        "all_true_title" : "Add All True Questions",
         "poll_title" : "Add Poll Quesitons",
         "school": "School",
@@ -244,7 +244,49 @@
         "exam": "Exam",
         "quiz" : "Quiz",
         "practice" : "Practice",
-        "select" : "Select"
-     }
-
+        "select" : "Select",
+        "add" : "Add"
+     },
+     "create_exam":{
+       "title":"Create Exam",
+       "add_new_exam" : "Add New Exam",
+        "choose_school" : "Choose School",
+        "select" :"Select",
+        "find_exams" : "Find Exams",
+        "exam_name": "Exam Name",
+        "description" : "Description",
+        "start_date" : "Start Date",
+        "end_date" : "End Date",
+        "exam_for" : "Exam For",
+        "school" : "School",
+        "course" : "Course",
+        "type" : "Type",
+        "choose_question_for_exam" : "Choose Question for Exam",
+        "create_exam" : "Create Exam",
+        "exam": "Exam",
+        "quiz" : "Quiz",
+        "practice" : "Practice"
+     },
+     "update_profile" :{
+       "title" : "Update Profile",
+       "change_password" : "Change Password",
+       "username" : "Username",
+       "email" : "Email",
+       "first_name" :"First name",
+       "last_name" :"Last name",
+       "current_password" : "Current Password",
+       "new_password" : "New Password",
+       "confirm_password" : "Confirm Password"
+     },
+     "student_registration" :{
+      "title" : "REGISTER",
+      "username" : "Username",
+      "email" : "Email",
+      "first_name" :"First name",
+      "last_name" :"Last name",
+      "password" : "Password",
+      "confirm_password" : "Confirm Password",
+      "choose_school" : "Choose School",
+      "select" : "---Select---"
+    }
 }
