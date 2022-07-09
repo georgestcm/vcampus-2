@@ -13,6 +13,8 @@ export class TeacherListPage implements OnInit {
   teacherList : any;
   showLoading : boolean = false;
   schoolId : string;
+  role : any;
+  schoolName : string='Teacher List';
   constructor(private teacherService : TeacherService, 
     private modalController: ModalController,
     private storage: Storage) { }
@@ -20,8 +22,17 @@ export class TeacherListPage implements OnInit {
   ngOnInit() {
     this.storage.get('user').then((val) => {
       this.schoolId = val._id;
+      this.storage.get("role").then((data) => {
+        this.role = data;
+        if(this.role == 3){
+          this.schoolName = val.school.school_name + " - Teacher List";
+        }
+      });
+      
       this.getAllTeachers();
     });
+    
+     
     
   }
   getAllTeachers(){
@@ -51,7 +62,7 @@ export class TeacherListPage implements OnInit {
     if(confirm(`Are you sure want to delete ${teacher.first_name} ${teacher.last_name} ?`)){
       this.showLoading =true;
     this.teacherService.deleteUserPermanent(teacher._id).subscribe((data) =>{
-      alert("Staff deleted successfully.")
+      alert("Deleted successfully.")
       this.getAllTeachers();
       this.showLoading =false;
     },err =>{

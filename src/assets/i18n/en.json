@@ -132,7 +132,9 @@
        "course_name":"Course Name",
        "course_description":"Description",
        "valid_from":"Valid From",
-       "valid_to":"Valid To"
+       "valid_to":"Valid To",
+       "online_class_link":"Enter Online Class URL",
+       "join_online_class" : "Join Online Class"
      },
      "Gen_dashboard":{
        "role":"Generator",
@@ -199,7 +201,8 @@
        "students" : "Students",
        "courses" : "Courses",
        "exams" : "Exams",
-       "collaboration" : "Collaboration"
+       "collaboration" : "Collaboration",
+       "online_class" : "Online Class"
      },
      "student_list":{
        "page_title" :"Student List",
@@ -276,7 +279,9 @@
        "last_name" :"Last name",
        "current_password" : "Current Password",
        "new_password" : "New Password",
-       "confirm_password" : "Confirm Password"
+       "confirm_password" : "Confirm Password",
+       "principle_first_name" :"Principle First Name",
+       "principle_last_name" :"Principle Last Name"
      },
      "student_registration" :{
       "title" : "REGISTER",
@@ -288,5 +293,13 @@
       "confirm_password" : "Confirm Password",
       "choose_school" : "Choose School",
       "select" : "---Select---"
+    },
+      "meeting" :{
+        "title" : "Manage Meeting",
+        "save" : "Save Meeting",
+        "meeting_description" :"Meeting Description",
+        "meeting_name" :"Meeting Name",
+        "meeting_link" : "Meeting",
+        "meeting_share" : "Share"
     }
 }

@@ -49,6 +49,10 @@ export class RTeacherPage implements OnInit {
       this.router.navigate(['rteacher/usersandgroup'])
     }
 
+    toOnlineClass(){
+      this.router.navigate(['rteacher/online-class'])
+    }
+
     logoutUser(){
       this.storage.remove('token')
       this.storage.remove('user')

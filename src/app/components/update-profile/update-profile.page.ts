@@ -12,7 +12,9 @@ export class UpdateProfilePage implements OnInit {
   userDetail : any = {};
   showNotification : boolean =false;
   message : string='';
+  role :any;
   constructor(private storage : Storage, public _auth: AuthService) {
+    
     this.userDetail ={
       _id :"",
       username : "",
@@ -25,6 +27,8 @@ export class UpdateProfilePage implements OnInit {
       action: "",
       email:""
     };
+
+
    }
 
   ngOnInit() {
@@ -34,6 +38,14 @@ export class UpdateProfilePage implements OnInit {
       this.userDetail.email = profile.email;
       this.userDetail.first_name = profile.first_name;
       this.userDetail.last_name = profile.last_name;
+
+      this.storage.get("role").then((data) => {
+        this.role = data;
+        if(this.role == 3){
+          this.userDetail.first_name = profile.school.principal_first_name;
+          this.userDetail.last_name = profile.school.principal_last_name;
+        }
+      });
     });
   } 
 
@@ -43,7 +55,7 @@ export class UpdateProfilePage implements OnInit {
         res=> {
           console.log(res),
           this.showNotification = true;
-          this.message = res.msg;
+          this.message = res.msg + ". You need to re-login to see the changes!";
 
         },
         err=> {
@@ -57,7 +69,12 @@ export class UpdateProfilePage implements OnInit {
 
   onUpdateProfile(){
    
-    this.userDetail.action='Update Profile';
+    if(this.role == 3){
+      this.userDetail.action='Update School Profile';
+    }else{
+      this.userDetail.action='Update Profile';
+    }
+   
     this.saveUserDataAndPassword();
   }
 

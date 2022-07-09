@@ -15,6 +15,7 @@ export class StudentCoursePage implements OnInit {
   userRole : number;
   searchText : string ="";
   studentId : string;
+  curriculumList : any;
   constructor(private router : Router, private courseService : CourseService, private storage: Storage,) { }
 
   ngOnInit() {
@@ -25,6 +26,7 @@ export class StudentCoursePage implements OnInit {
     this.storage.get("user").then(res => {
       this.studentId = res._id;
       this.getAllEnrolledCourse();
+      this.getAllEnrolledCurriculum();
     });
 
     //this.loadAllCourse();
@@ -74,7 +76,9 @@ export class StudentCoursePage implements OnInit {
     this.showLoading = true;
     this.courseService.getCourseByCourseName(this.searchText).subscribe((data) =>{
       this.courseList = data[0];
+      
       this.showLoading =false;
+      
     },err =>{
       console.log(err);
        this.showLoading =false;
@@ -86,6 +90,18 @@ export class StudentCoursePage implements OnInit {
     this.courseService.getAllEnrolledCourse(this.studentId).subscribe( res =>{
       console.log(res);
       this.courseList = res[0];
+      this.showLoading =false;
+    },err =>{
+      console.log(err);
+    })
+  }
+
+  getAllEnrolledCurriculum(){
+   
+    this.courseService.getAllEnrolledCurriculum(this.studentId).subscribe( res =>{
+      this.curriculumList =res.result;
+      this.showLoading =false;
+      console.log(this.curriculumList);
     },err =>{
       console.log(err);
     })

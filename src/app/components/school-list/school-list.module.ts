@@ -6,7 +6,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { SchoolListPageRoutingModule } from './school-list-routing.module';
 
-import { SchoolListPage } from './school-list.page';
 
 @NgModule({
   imports: [

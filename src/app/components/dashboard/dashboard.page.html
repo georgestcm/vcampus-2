@@ -19,9 +19,20 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
       <div class="form-group row">
+
+        <label for="courseCode" class="col-sm-3 col-form-label">{{'Dashboard.online_class_link' | translate}}</label>
+        <div class="col-sm-5">
+          <input type="text" [(ngModel)]="onlineClassLink" class="form-control" id="courseCode" placeholder="">
+        </div>
+        <div class="col-sm-3">
+         <button class="btn btn-success" (click)="onJoinOnlineClass()">{{'Dashboard.join_online_class' | translate}}</button>
+        </div>
+      </div>
+
+      <div class="form-group row">
         <label for="courseCode" class="col-sm-3 col-form-label">{{'Dashboard.enter_course_code' | translate}}</label>
         <div class="col-sm-5">
-          <input type="text" [(ngModel)]="courseCode" class="form-control" id="courseCode" placeholder="Course Code">
+          <input type="text" [(ngModel)]="courseCode" class="form-control" id="courseCode" placeholder="">
         </div>
         <div class="col-sm-3">
          <button class="btn btn-outline-secondary" (click)="onEnrollCourse()">{{'Dashboard.enroll_course' | translate}}</button>

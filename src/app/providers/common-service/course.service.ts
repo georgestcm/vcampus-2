@@ -162,4 +162,15 @@ export class CourseService {
   deleteInvite(inviteId) {
     return this._httpClient.authDelete(`api/course/deleteInvite/${inviteId}`);
   }
+
+  saveMeeting(data) {
+    return this._httpClient.authPost("api/createMeeting", data);
+  }
+  getMeetingByCourse(courseId) {
+    return this._httpClient.authGet(`api/getMeetingsByCourse/${courseId}`);
+  }
+
+  getAllEnrolledCurriculum(studentId) {
+    return this._httpClient.authGet("api/get_all_enrolled_curriculum/"+studentId);
+  }
 }

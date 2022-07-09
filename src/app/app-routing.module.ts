@@ -43,6 +43,8 @@ import { CourseListPage } from "./components/course-list/course-list.page";
 import { CurriculumPage } from "./components/curriculum/curriculum.page";
 import { CourseSharePage } from "./components/course-share/course-share.page";
 import { CollaborationPage } from "./components/collaboration/collaboration.page";
+import { OnlineClassPage } from "./components/online-class/online-class.page";
+import { MultiChoiceQuestionPage } from "./components/multi-choice-question/multi-choice-question.page";
 
 
 const routes: Routes = [
@@ -396,6 +398,16 @@ const routes: Routes = [
         path: "collaboration",
         component: CollaborationPage,
         pathMatch: "full",
+      },
+      {
+        path: "online-class",
+        component: OnlineClassPage,
+        pathMatch: "full",
+      },
+      {
+        path: "multi-choice-question",
+        component: MultiChoiceQuestionPage,
+        pathMatch: "full",
       }
     ],
   },
@@ -597,6 +609,11 @@ const routes: Routes = [
     path: 'collaboration',
     loadChildren: () => import('./components/collaboration/collaboration.module').then( m => m.CollaborationPageModule)
   },
+  {
+    path: 'multi-choice-question',
+    loadChildren: () => import('./components/multi-choice-question/multi-choice-question.module').then( m => m.MultiChoiceQuestionPageModule)
+  },
+
 
 
 

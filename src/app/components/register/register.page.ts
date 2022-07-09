@@ -148,7 +148,7 @@ export class RegisterPage implements OnInit {
       //} else if (this.studentRegistration.email.length === 0) {
         //this.loadingController.dismiss();
         //this.presentAlert("Enter a email to continue")
-      } else if (!this.studentRegistration.email.includes("@")) {
+      } else if (this.studentRegistration.email.length >0 && !this.studentRegistration.email.includes("@")) {
         this.loadingController.dismiss();
         this.presentAlert("Enter a valid email to continue")
       } else if (this.studentRegistration.password.length < 5) {

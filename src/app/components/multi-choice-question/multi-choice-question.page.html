@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-buttons slot="start">
+  <ion-menu-button></ion-menu-button>
+  <ion-title><ion-title>{{'exam_popup.multi_choice_title' | translate}}</ion-title></ion-title>
+  </ion-buttons>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="row"> 
+    <div class="card-body" >
+      <form #f="ngForm" class="form"
+      (ngSubmit)="onSubmit()" >
+  
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"  id="inputGroupFileAddon01">{{'exam_popup.school' | translate}} *</span>
+        </div>
+         <select class="custom-select" required name="schoolDropdown"  
+         [(ngModel)]="questionModal.school" id="ddlSchool" 
+         (change)="onSchoolChange($event.target.value)">
+          <option value="">{{'exam_popup.school' | translate}}</option>
+          <option *ngFor="let school of schoolList" value={{school._id}}>
+            {{school.school.school_name}}
+          </option>
+        </select>
+      </div>
+  
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"  id="inputGroupFileAddon01">Course *</span>
+        </div>
+         <select class="custom-select" required name="curriculumDropdown"  
+         [(ngModel)]="questionModal.course" id="ddlCurriculum" 
+         >
+          <option value="">{{'exam_popup.course' | translate}}</option>
+          <option *ngFor="let c of courseList" value={{c._id}}>
+            {{c.name}}
+          </option>
+        </select>
+      </div>
+  
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"  id="inputGroupFileAddon01">{{'exam_popup.question_for' | translate}} *</span>
+        </div>
+        <select class="custom-select" required name="questionForDropdown"  
+         [(ngModel)]="questionModal.Question_for" id="ddlQuestionFor" 
+         >
+          <option value="">---{{'exam_popup.select' | translate}}---</option>
+          <option value="Exam">{{'exam_popup.exam' | translate}}</option>
+          <option value="Quiz">{{'exam_popup.quiz' | translate}}</option>
+          <option value="Practice">{{'exam_popup.practice' | translate}}</option>
+        </select>
+      </div>
+  
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"  id="questionTitle">{{'exam_popup.question' | translate}} *</span>
+          <input type="button" value="Add Media" (click)="showAddMediaModal()" class="btn btn-sm btn-primary">
+          <input type="button" value="Media List" (click)="showMediaListModal()" class="btn btn-sm btn-secondary" 
+         >
+        </div>
+        <!-- <input type="text" [(ngModel)]="questionModal.Question_title" name="questionTitle"  class="form-control">       -->
+
+        <editor style="width: 100%;"  name="questionTitle" [init]="initMCE" 
+        [(ngModel)]="questionModal.Question_title"></editor>
+      </div>
+  
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"  id="questionOption">{{'exam_popup.options' | translate}} *</span>
+          <input type="button" value="Add Media" (click)="showAddMediaModal()" class="btn btn-sm btn-primary">
+          <input type="button" value="Media List" (click)="showMediaListModal()" class="btn btn-sm btn-secondary" >
+        </div>
+        <editor style="width: 100%;" name="questionOption" [init]="initMCE2" 
+        [(ngModel)]="questionModal.option"></editor>
+        <!-- <input type="text" [(ngModel)]="questionModal.option" name="questionOption"  class="form-control">       -->
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" (click)="onAddOption(questionModal.option)" >{{'exam_popup.add' | translate}}</button>
+        </div>
+      </div>
+  
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"  id="inputGroupFileAddon01">{{'exam_popup.correct_answer' | translate}} *</span>
+        </div>
+        <select class="custom-select" required name="CorrectAnswerDropdown"  
+         [(ngModel)]="questionModal.Correct_answer" id="ddlCorrectAnswer" 
+         >
+          <option value="">---{{'exam_popup.select' | translate}}---</option>
+          <option *ngFor="let o of questionModal.Question_options" value={{o.optionid}}>{{o.optionid}}</option>
+          
+        </select>
+      </div>
+      
+      <div  >
+        <table class="table table-sm ">
+          <tr *ngFor="let o of questionModal.Question_options">
+            <td>
+              {{o.optionid}}
+            </td>
+            <td>
+              <div [innerHtml]="o.option"></div>
+          </td>
+        </tr>
+        </table>
+      </div>
+      <input type="submit" class="btn btn-success btn-fill" [disabled]="!f.valid"  value="{{'exam_popup.save_question' | translate}}" />
+      </form>
+  </div>
+    </div>
+
+</ion-content>

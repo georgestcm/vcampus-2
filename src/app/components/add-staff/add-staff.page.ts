@@ -30,7 +30,7 @@ export class AddStaffPage implements OnInit {
 
   loginfo() {
 
-    this.password = this.last_name + "admin";
+    this.password = this.last_name + "12345";
     this.user_staff_info = {
       username: this.username,
       first_name: this.first_name,

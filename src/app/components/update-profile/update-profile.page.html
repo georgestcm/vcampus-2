@@ -40,14 +40,16 @@
         </div>
 
         <div class="mb-3 row">
-          <label for="first_name" class="col-sm-3 col-form-label">{{'update_profile.first_name' | translate}}</label>
+          <label for="first_name" *ngIf="role==3" class="col-sm-3 col-form-label">{{'update_profile.principle_first_name' | translate}}</label>
+          <label for="first_name" *ngIf="role!=3" class="col-sm-3 col-form-label">{{'update_profile.first_name' | translate}}</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" required [(ngModel)]="userDetail.first_name" id="first_name" name="first_name">
           </div>
         </div>
 
-        <div class="mb-3 row">
-          <label for="first_name" class="col-sm-3 col-form-label">{{'update_profile.last_name' | translate}}</label>
+        <div class="mb-3 row" >
+          <label for="first_name" *ngIf="role==3" class="col-sm-3 col-form-label">{{'update_profile.principle_last_name' | translate}}</label>
+          <label for="first_name" *ngIf="role!=3" class="col-sm-3 col-form-label">{{'update_profile.last_name' | translate}}</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" required [(ngModel)]="userDetail.last_name" id="last_name" name="last_name">
           </div>

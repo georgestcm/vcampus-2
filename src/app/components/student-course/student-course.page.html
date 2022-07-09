@@ -24,19 +24,33 @@
   </div>
   
   <div class="row">
-    <div class="col-sm-3"  *ngFor="let course of courseList">
+    <div class="col-sm-6"  *ngFor="let curriculum of curriculumList">
       <div class="card" style="width: 100%; margin-top:10px;">
-        <img src="https://leverageedu.com/blog/wp-content/uploads/2019/10/BBA-MBA-Integrated-Course.png" class="card-img-top" alt="...">
+        <img src="https://www.alpineconventschool.com/wp-content/uploads/2021/03/curriculum_image_640.jpg" class="card-img-top" alt="...">
         <div class="card-body" style="height: 100px;">
-          <h5 class="card-title">{{course.name}}</h5>
-          <p class="card-text">{{(course.description.length>55)? (course.description | slice:0:55)+'...':(course.description)}}</p>
+          <h5 class="card-title">{{curriculum.curriculum.curriculum}}</h5>
         </div>
       <div class="card-body">
-          <button (click)="onClickStartLearning(course._id)" class="btn btn-sm btn-success">Start Learning</button>        
+        <div class="row  alert-info" >
+          <div class="col-sm-12"  *ngFor="let course of courseList">
+            <div class="card" style="width: 100%;">
+             
+              <div class="card-body" style="height: 100px;">
+                <h5 class="card-title">{{course.name}}</h5>
+                <p class="card-text">{{(course.description.length>55)? (course.description | slice:0:55)+'...':(course.description)}}</p>
+              </div>
+            <div class="card-body">
+                <button (click)="onClickStartLearning(course._id)" class="btn btn-sm btn-success">Start Learning</button>        
+              </div>
+            </div>
+          </div>
+            </div>
         </div>
       </div>
     </div>
       </div>
+
+  
 
   
 </ion-content>

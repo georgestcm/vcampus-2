@@ -1,0 +1,95 @@
+<div class="card">
+  <div class="card-header">
+    {{'meeting.title' | translate}}
+      <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
+  </div>
+  <div class="card-body" style="height:400px;overflow: auto !important;">
+    <form #f="ngForm" class="form"
+    (ngSubmit)="onSubmit()" >
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"  id="inputGroupFileAddon01">{{'create_exam.school' | translate}} *</span>
+      </div>
+       <select class="custom-select" required name="schoolDropdown"  
+       [(ngModel)]="meetingModel.school" id="ddlSchool" 
+       (change)="onSchoolChange($event.target.value)">
+        <option value="">{{'create_exam.select' | translate}}</option>
+        <option *ngFor="let school of schoolList" value={{school._id}}>
+          {{school.school.school_name}}
+        </option>
+      </select>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"  id="inputGroupFileAddon01">{{'create_exam.course' | translate}} *</span>
+      </div>
+       <select class="custom-select" required name="curriculumDropdown"  
+       [(ngModel)]="meetingModel.course" id="ddlCurriculum" 
+       (change)="onCourseChange($event.target.value)">
+       >
+        <option value="">{{'create_exam.select' | translate}}</option>
+        <option *ngFor="let c of courseList" value={{c._id}}>
+          {{c.name}}
+        </option>
+      </select>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"  id="examName">{{'meeting.meeting_name' | translate}} *</span>
+      </div>
+      <input type="text" [(ngModel)]="meetingModel.meetingName" name="examName" required  class="form-control">      
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"  id="examDescription">{{'meeting.meeting_description' | translate}} </span>
+      </div>
+      <input type="text" [(ngModel)]="meetingModel.meetingDescription" name="examDescription"  class="form-control">      
+    </div>
+
+    <input type="submit" class="btn btn-success" [disabled]="!f.valid"  value="{{'meeting.save' | translate}}" />
+
+    </form>
+
+    <div class="table-responsive-sm">
+      <table class="table table-sm table-bordered">
+        <tr>
+        <th>
+          #
+        </th>
+        <th>
+          {{'meeting.meeting_name' | translate}}
+        </th>
+        <th>
+          {{'meeting.meeting_description' | translate}}
+        </th>
+         
+        <th>{{'meeting.meeting_link' | translate}}</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let q of meetingList; let i =index">
+        <td>{{i+1}}</td>
+        <td>{{q.meetingName}}</td>
+        <td >{{q.meetingDescription}}</td>
+        <td>
+          <!-- <button (click)="onStartMeeting(q._id)" class="btn btn-sm btn-info" >Start meeting</button><br> -->
+          <a href="https://desolate-dawn-06624.herokuapp.com/?room={{q._id}}" target="_blank">Start Meeting</a><br>
+          <a href="">Share Link</a>
+        </td>
+        <td>
+          <ion-buttons>
+            <button  class="btn btn-sm btn-danger">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-buttons>
+        </td>
+      </tr>
+      </table>
+    </div>
+
+</div>
+
+
+</div>

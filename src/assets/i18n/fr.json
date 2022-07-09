@@ -132,7 +132,9 @@
       "course_name":"Nom du cours",
       "course_description":"Description",
       "valid_from":"Valide à partir de",
-      "valid_to":"Valable pour"
+      "valid_to":"Valable pour",
+      "online_class_link":"Saisissez l'URL du cours en ligne",
+       "join_online_class" : "Rejoindre la classe en ligne"
     },
     "Gen_dashboard":{
       "role":"Generator",
@@ -200,7 +202,8 @@
        "students" : "Étudiants",
        "courses" : "Cours",
        "exams" : "Examens",
-       "collaboration" : "Collaboration"
+       "collaboration" : "Collaboration",
+       "online_class" : "Cours en ligne"
      },
      "student_list":{
       "page_title" :"Liste des étudiants",
@@ -279,7 +282,9 @@
       "last_name":"Nom de famille",
       "current_password" : "Mot de passe actuel",
       "new_password" : "nouveau mot de passe",
-      "confirm_password" : "nouveau mot de passe"
+      "confirm_password" : "nouveau mot de passe",
+      "principle_first_name" :"Principe Prénom",
+      "principle_last_name" :"Nom de famille principal"
     },
     "student_registration" :{
      "title" : "S'INSCRIRE",
@@ -291,5 +296,13 @@
       "confirm_password" : "nouveau mot de passe",
      "choose_school" : "Choisissez l'école",
      "select" : "---Sélectionner---"
-   }
+   },
+   "meeting" :{
+    "title" : "Gérer la réunion",
+    "save" : "Enregistrer la réunion",
+    "meeting_description" :"Description de la réunion",
+    "meeting_name" :"Nom de la réunion",
+    "meeting_link" : "Réunion",
+    "meeting_share" : "Partager"
+}
 }

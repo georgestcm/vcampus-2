@@ -53,13 +53,14 @@ export class ExamPage implements OnInit {
 
 
   async showAddQuestionModal() {
-    const modal = await this.modalController.create({
-      component: QuestionModalComponent
-    });
-    modal.onDidDismiss().then(data => {
-      //this.getAllCourseCode();
-    });
-    return await modal.present();
+    // const modal = await this.modalController.create({
+    //   component: QuestionModalComponent
+    // });
+    // modal.onDidDismiss().then(data => {
+    //   //this.getAllCourseCode();
+    // });
+    // return await modal.present();
+    this.router.navigate(['rteacher/multi-choice-question'])
   }
 
   async showTrueFalseQuestionModal() {

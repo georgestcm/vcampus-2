@@ -101,6 +101,10 @@ import { environment} from "../environments/environment"
 import { CourseShareTeacherModelComponent } from "./components/course-share-teacher-model/course-share-teacher-model.component";
 import { CourseSharePage } from "./components/course-share/course-share.page";
 import { CollaborationPage } from "./components/collaboration/collaboration.page";
+import { OnlineClassPage } from "./components/online-class/online-class.page";
+import { MeetingModelComponent } from "./components/meeting-model/meeting-model.component";
+import { MultiChoiceQuestionPage } from "./components/multi-choice-question/multi-choice-question.page";
+
 
 const config: SocketIoConfig = { url: environment.socketURL, options: {} };
 
@@ -168,7 +172,10 @@ export function CreateTranslateLoader(http: HttpClient) {
     CurriculumPage,
     CourseShareTeacherModelComponent,
     CourseSharePage,
-    CollaborationPage
+    CollaborationPage,
+    OnlineClassPage,
+    MeetingModelComponent,
+    MultiChoiceQuestionPage
   ],
   entryComponents: [
     LanguageSelectPage,
@@ -196,7 +203,10 @@ export function CreateTranslateLoader(http: HttpClient) {
     AllTrueQuestionModalComponent,
     PollQuestionModalComponent,
     MediaListModalComponent,
-    CourseShareTeacherModelComponent
+    CourseShareTeacherModelComponent,
+    OnlineClassPage,
+    MeetingModelComponent,
+    MultiChoiceQuestionPage
   ],
   imports: [
     BrowserModule,

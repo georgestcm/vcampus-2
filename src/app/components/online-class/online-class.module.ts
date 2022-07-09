@@ -15,6 +15,6 @@ import { OnlineClassPage } from './online-class.page';
     IonicModule,
     OnlineClassPageRoutingModule
   ],
-  declarations: [OnlineClassPage]
+  declarations: []
 })
 export class OnlineClassPageModule {}

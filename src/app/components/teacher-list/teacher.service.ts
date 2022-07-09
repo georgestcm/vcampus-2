@@ -28,6 +28,6 @@ export class TeacherService {
     }
 
     deleteUserPermanent(id){
-      return this._httpClient.authDelete("/deleteUserPermanent/"+id);
+      return this._httpClient.authDelete("api/deleteUserPermanent/"+id);
     }
 }

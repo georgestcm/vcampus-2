@@ -17,6 +17,7 @@ export class DashboardPage implements OnInit {
   message:string ='';
   courseCodeResponse : any;
   courseList : any;
+  onlineClassLink : string;
 
   constructor(public translate: TranslateService,private storage: Storage, private courseService : CourseService, private datepipe: DatePipe) { }
 
@@ -57,6 +58,15 @@ export class DashboardPage implements OnInit {
       console.log(err);
       this.message = err.error.msg;
     })
+  }
+  onJoinOnlineClass(){
+    if(this.onlineClassLink !=""){
+      const theTop=((screen.height/2)-(100/2))/2;
+      const theLeft=(screen.width/2)-(500/2);
+      const features = 'height=600,width=1000,top='+theTop+',left=200,titlebar=no,toolbar=0,Location=no,Directories=0,Status=0,menubar=0,Scrollbars=1,Resizable=1';
+      window.open(this.onlineClassLink,'_blank', features);
+    }
+    
   }
 
 }

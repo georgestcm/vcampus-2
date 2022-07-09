@@ -4,10 +4,19 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/',
+  // apiUrl: 'http://localhost:3000/',
+  apiUrl: 'https://vcampus-api.herokuapp.com/',
   imageUrl: 'http://localhost:3000/uploads',
   presetPassword :"12345",
-  socketURL : 'http://localhost:3000'
+  socketURL : 'http://localhost:3000',
+  wsEndpoint: 'ws://localhost:8081/',
+  RTCPeerConfiguration: {
+    iceServers: [
+      {
+        urls: 'stun:stun1.l.google.com:19302'
+      }
+    ]
+  }
 };
 
 /*
