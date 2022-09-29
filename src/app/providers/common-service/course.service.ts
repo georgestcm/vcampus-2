@@ -6,9 +6,7 @@ import { environment} from "../../../environments/environment"
   providedIn: "root",
 })
 export class CourseService {
-  private getCurList = "https://vcampus.herokuapp.com/api/get_curriculum_list";
-  private postCurList =
-    "https://vcampus.herokuapp.com/api/post_curriculum_list";
+  
   private postNewTeacher =
     environment.apiUrl+"api/create_new_teacher";
 

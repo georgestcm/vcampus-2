@@ -32,16 +32,27 @@
       "Messages":"Messages",
       "Group_Chat":"Group Chat",
       "Schools":"Schools",
-      "School_Staff":"School Staff",
+      "School_Staff":"Editor",
       "Students":"Students",
       "Teachers":"Teachers",
-      "courses":"courses",
+      "courses":"Courses",
       "Permissions":"Permissions",
-      "Log_out":"Log out"
+      "Log_out":"Log out",
+      "Code_Generator" : "Code Generator"
+    },
+    "Editor" :{
+      "title" :"Editor List",
+      "user_name" : "User Name",
+      "first_name" :"First Name",
+      "last_name" :"Last Name",
+      "email" : "Email",
+      "phone" : "Phone",
+      "update_editor" : "Update Editor",
+      "save" : "Save"
     },
     "Permissions":{
       "permission":"Permissions",
-      "add_admin_staff":"Add admin staff",
+      "add_admin_staff":"Add Editor",
       "add_a_school":"Add a school",
       "code_generator":"Code generator",
       "add_a_staff":"Add a staff",
@@ -73,7 +84,7 @@
       "username":"USERNAME",
       "first_name":"FIRST NAME",
       "last_name":"LAST NAME",
-      "add_staff_btn":"ADD STAFF",
+      "add_staff_btn":"ADD Editor",
       "close":"CLOSE"
     },
     "Add_teacher": {
@@ -172,7 +183,7 @@
        "generated_on" :"Generated On"
      },
      "Edit_staff_modal":{
-       "title":"Update Staff",
+       "title":"Update",
        "update_success":"Updated Successfully ",
        "first_name":"First name",
        "last_name":"Last name",

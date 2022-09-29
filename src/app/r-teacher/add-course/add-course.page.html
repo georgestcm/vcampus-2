@@ -79,14 +79,16 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupFileAddon01">Available From *</span>
           </div>
-          <ion-datetime displayFormat="MM/DD/YYYY" name="availableFrom" required class="form-control" [(ngModel)]="courseModel.availableFrom" placeholder="mm/dd/yyyy"></ion-datetime>
+          <ion-datetime displayFormat="MM/DD/YYYY" name="availableFrom" required class="form-control"
+           [(ngModel)]="courseModel.availableFrom" min="2018" max="2030-10-31" placeholder="mm/dd/yyyy"></ion-datetime>
           <!-- <input type="date" name="availableFrom" required class="form-control" [(ngModel)]="courseModel.availableFrom"  aria-label="Available From" aria-describedby="button-addon2"> -->
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupFileAddon01">Available To *</span>
           </div>
-          <ion-datetime displayFormat="MM/DD/YYYY" name="availaleTo" required class="form-control" [(ngModel)]="courseModel.availableTo" placeholder="mm/dd/yyyy"></ion-datetime>
+          <ion-datetime displayFormat="MM/DD/YYYY" name="availaleTo" min="2018" max="2030-10-31"
+          required class="form-control" [(ngModel)]="courseModel.availableTo" placeholder="mm/dd/yyyy"></ion-datetime>
           <!-- <input type="date" name="availaleTo" required class="form-control" [(ngModel)]="courseModel.availableTo" aria-label="Available To" aria-describedby="button-addon2"> -->
         </div>
         <div class="input-group mb-3">

@@ -27,7 +27,10 @@ export class StudentExamPage implements OnInit {
   getAllPendingExams(){
     this.showLoading =true;
     this.courseService.getAllEnrolledCourse(this.studentId).subscribe( res =>{
-     // console.log(res);
+      this.showLoading=false;
+     if(res.length >0){
+
+     
       for(let i=0; i< res[0].length; i++){
         this.courseService.getAllExamByCourseId(res[0][i]._id).subscribe(exam =>{
          const exams = exam;
@@ -43,6 +46,7 @@ export class StudentExamPage implements OnInit {
           this.showLoading=false;
         })
       }
+    }
     },err =>{
       console.log(err);
       this.showLoading=false;

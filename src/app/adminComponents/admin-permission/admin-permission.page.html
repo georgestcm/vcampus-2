@@ -11,22 +11,22 @@
     </div>
     <div class="col-md-2">
   <div class="row" [hidden]="adminOrNot">
-    <div class="btn btn-outline-secondary  btn-block">
+    <div class="btn btn-outline-secondary  btn-block" (click)="addStaffAdmin()">
       <p>{{'Permissions.add_admin_staff' | translate}}</p>
-      <ion-icon (click)="addStaffAdmin()" name="add"></ion-icon>
+      <ion-icon  name="add"></ion-icon>
     </div>
   </div>
   <div class="row" [hidden]="adminOrNot">
-    <div class="btn btn-outline-secondary  btn-block">
+    <div class="btn btn-outline-secondary  btn-block" (click)="addSchoolAdmin()">
       <p>{{'Permissions.add_a_school' | translate}}</p>
-      <ion-icon (click)="addSchoolAdmin()" name="add"></ion-icon>
+      <ion-icon  name="add"></ion-icon>
     </div>
   </div>
   <div class="row" [hidden]="adminOrNot">
-    <div class="btn btn-outline-secondary  btn-block">
+    <div class="btn btn-outline-secondary  btn-block" (click)="addCodeGenerator()">
       <p>{{'Permissions.code_generator' | translate}}
         </p>
-      <ion-icon (click)="addCodeGenerator()" name="add"></ion-icon>
+      <ion-icon  name="add"></ion-icon>
     </div>
   </div>
   <div class="row" (click)="AddStaffSchool()" [hidden]="!adminOrNot">

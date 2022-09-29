@@ -141,6 +141,20 @@ export class AddCoursePage implements OnInit {
       school : "",
       curriculum :"",
     };  
+
+    // this.onAddSection(this.courseModel.section);
+    // this.courseModel.sectionDropdown = "Section 1";
+    // this.onSectionChange("Section 1");
+
+    // this.onAddChapter(this.courseModel.chapter);
+    // this.courseModel.chapterDropdown = "Chapter 1";
+    // this.onSectionChange("Chapter 1");
+
+    //  this.onAddTopic("Topic 1");
+    //  this.courseModel.topicDropdown = "Topic 1";
+    //  this.onTopicChange("Topic 1");
+
+  
   }
   
   onAddSection(sec) {
@@ -169,6 +183,7 @@ export class AddCoursePage implements OnInit {
     this.sectionQuery = this.sectionJSON.find(
       (a) => a.section[0].sectionName == value
     );
+    console.log(this.sectionQuery);
   }
 
   onAddChapter(value) {
@@ -205,6 +220,7 @@ export class AddCoursePage implements OnInit {
   onChapterChange(value) {
     this.selectedChapter = value;
     this.chapterQuery = this.sectionQuery.section[0].chapter.find( (a) => a.chapterName == value);
+    console.log("this.chapterQuery", this.chapterQuery);
   }
 
   onAddTopic(value) {
@@ -233,6 +249,7 @@ export class AddCoursePage implements OnInit {
         paragraph: [],
       });
     }
+
     this.successNotification.visible=true;
     this.successNotification.successMessage = "Topic added.";
     this.courseModel.topicName="";
@@ -244,7 +261,7 @@ export class AddCoursePage implements OnInit {
   }
 
   onAddParagraph(value) {
-    console.log(value);
+    
     if(this.courseModel.topicDropdown==''){
       this.validationError.formField = "Choose Topic";
       this.validationError.formValid = false;
@@ -313,10 +330,10 @@ export class AddCoursePage implements OnInit {
         console.log(model.curriculum.length);
         
         for(let j =0; j< model.curriculum.length; j++){
-          console.log('model.curriculum');
+          
           console.log(model.curriculum[j]);
           if(this.curriculumList[i]._id == model.curriculum[j]){
-            console.log('matched');
+            
             this.curriculumList[i].checked=true;
           }
         }

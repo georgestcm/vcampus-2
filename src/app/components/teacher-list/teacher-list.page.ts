@@ -10,7 +10,7 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./teacher-list.page.scss'],
 })
 export class TeacherListPage implements OnInit {
-  teacherList : any;
+  teacherList = [];
   showLoading : boolean = false;
   schoolId : string;
   role : any;
@@ -37,9 +37,20 @@ export class TeacherListPage implements OnInit {
   }
   getAllTeachers(){
     this.showLoading =true;
-    this.teacherService.getAllTeacherForAdmin().subscribe((data) =>{
-      this.teacherList = data;
-      console.log(data);
+    this.teacherList =[];
+    this.teacherService.getTeachersBySchoolId(this.schoolId).subscribe((data) =>{
+      //this.teacherList = data;
+      console.log("schoolid",this.schoolId);
+      //console.log(data.school.teacher[0]._id);
+      for(let i=0; i<data.school.teacher.length; i++){
+        if(data.school.teacher[i]._id != null)
+        {
+          const users = data.school.teacher[i]._id;
+          this.teacherList.push(users);
+        }
+        
+      }
+      console.log(this.teacherList);
       this.showLoading =false;
     },err =>{
       this.showLoading =false;

@@ -104,7 +104,7 @@ import { CollaborationPage } from "./components/collaboration/collaboration.page
 import { OnlineClassPage } from "./components/online-class/online-class.page";
 import { MeetingModelComponent } from "./components/meeting-model/meeting-model.component";
 import { MultiChoiceQuestionPage } from "./components/multi-choice-question/multi-choice-question.page";
-
+import { CodeGeneratorListsPage } from "./components/code-generator-lists/code-generator-lists.page";
 
 const config: SocketIoConfig = { url: environment.socketURL, options: {} };
 
@@ -175,7 +175,8 @@ export function CreateTranslateLoader(http: HttpClient) {
     CollaborationPage,
     OnlineClassPage,
     MeetingModelComponent,
-    MultiChoiceQuestionPage
+    MultiChoiceQuestionPage,
+    CodeGeneratorListsPage
   ],
   entryComponents: [
     LanguageSelectPage,

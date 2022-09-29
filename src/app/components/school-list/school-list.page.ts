@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/providers/auth.service';
 import { ModalController } from '@ionic/angular';
 import { EditSchoolModalComponent } from '../edit-school-modal/edit-school-modal.component';
-
+import { TeacherService } from '../teacher-list/teacher.service';
 @Component({
   selector: 'app-school-list',
   templateUrl: './school-list.page.html',
@@ -10,7 +10,7 @@ import { EditSchoolModalComponent } from '../edit-school-modal/edit-school-modal
 })
 export class SchoolListPage implements OnInit {
 
-  constructor(private _auth : AuthService, private modalController : ModalController) { }
+  constructor(private _auth : AuthService,private teacherService : TeacherService, private modalController : ModalController) { }
   schoolList : any;
   showLoading : boolean = false;
 
@@ -27,6 +27,20 @@ export class SchoolListPage implements OnInit {
       console.log(err);
       this.showLoading = false;
     })
+  }
+
+  async onClickDelete(school){
+    if(confirm("Are you want to delete this school?")){
+      this.showLoading =true;
+      this.teacherService.deleteUserPermanent(school._id).subscribe((data) =>{
+        alert("School deleted successfully.")
+        this.getAllSchools();
+        this.showLoading =false;
+      },err =>{
+        this.showLoading =false;
+      });
+    }
+    
   }
 
   async onClickEdit(school){

@@ -23,11 +23,19 @@ export class TeacherService {
       return this._httpClient.authGet("api/getAllAdminStaff");
     }
 
+    getAllCodeGenerator(){
+      return this._httpClient.authGet("api/getAllCodeGenerator");
+    }
+
     updateStaff(request){
-      return this._httpClient.authPut("/updateStaffDetail",request);
+      return this._httpClient.authPut("api/updateStaffDetail",request);
     }
 
     deleteUserPermanent(id){
       return this._httpClient.authDelete("api/deleteUserPermanent/"+id);
+    }
+
+    getTeachersBySchoolId(schoolId) {
+      return this._httpClient.authGet(`api/getAllTeachersBySchool/${schoolId}`);
     }
 }

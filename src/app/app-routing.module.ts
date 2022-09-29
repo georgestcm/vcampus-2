@@ -45,6 +45,7 @@ import { CourseSharePage } from "./components/course-share/course-share.page";
 import { CollaborationPage } from "./components/collaboration/collaboration.page";
 import { OnlineClassPage } from "./components/online-class/online-class.page";
 import { MultiChoiceQuestionPage } from "./components/multi-choice-question/multi-choice-question.page";
+import { CodeGeneratorListsPage } from "./components/code-generator-lists/code-generator-lists.page";
 
 
 const routes: Routes = [
@@ -147,6 +148,11 @@ const routes: Routes = [
         path: "update-profile",
           component: UpdateProfilePage,
           pathMatch: "full",
+      },
+      {
+        path: "code-generator-list",
+          component: CodeGeneratorListsPage,
+          pathMatch: "full",
       }
     ],
   },
@@ -210,6 +216,11 @@ const routes: Routes = [
       {
         path: "update-profile",
           component: UpdateProfilePage,
+          pathMatch: "full",
+      },
+      {
+        path: "code-generator-list",
+          component: CodeGeneratorListsPage,
           pathMatch: "full",
       }
     ],
@@ -613,6 +624,11 @@ const routes: Routes = [
     path: 'multi-choice-question',
     loadChildren: () => import('./components/multi-choice-question/multi-choice-question.module').then( m => m.MultiChoiceQuestionPageModule)
   },
+  {
+    path: 'code-generator-lists',
+    loadChildren: () => import('./components/code-generator-lists/code-generator-lists.module').then( m => m.CodeGeneratorListsPageModule)
+  },
+
 
 
 

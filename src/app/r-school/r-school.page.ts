@@ -14,10 +14,14 @@ export class RSchoolPage implements OnInit {
     last_name:''
   }
 
+  schoolName : string;
+
   ngOnInit() {
     this.storage.get('user').then((val) => {
+      console.log(val);
     this.userName.first_name = val.school.principal_first_name;
     this.userName.last_name = val.school.principal_last_name;
+    this.schoolName = val.school.school_name;
   })
   }
 

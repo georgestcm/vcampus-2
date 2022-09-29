@@ -13,7 +13,7 @@
   <ion-content>
     <ion-list>
       <ion-item lines="none" [routerLink]="['']"><div> <ion-icon name="chatboxes"></ion-icon>{{'r_teacher_menus.messages' |translate}} </div></ion-item>
-      <ion-item lines="none" (click)="toGroupChat()"><div> <ion-icon name="chatboxes"></ion-icon>{{'r_teacher_menus.group_chat' |translate}} </div></ion-item>
+      <ion-item lines="none" [routerLink]="['usersandgroup']" (click)="toGroupChat()"><div> <ion-icon name="chatboxes"></ion-icon>{{'r_teacher_menus.group_chat' |translate}} </div></ion-item>
       <!-- <ion-item lines="none" [routerLink]="['school-list']" (click)="toSchoolList()"><ion-icon name="home"></ion-icon>Schools</ion-item> -->
       <ion-item lines="none" [routerLink]="['student-list']" (click)="toStudentList()"><ion-icon name="people" ></ion-icon>{{'r_teacher_menus.students' |translate}}</ion-item>
       <ion-item lines="none" [routerLink]="['courses-list']" (click)="toCourseList()"><ion-icon name="book"></ion-icon>{{'r_teacher_menus.courses' |translate}}</ion-item>

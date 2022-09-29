@@ -101,7 +101,7 @@ export class LoginPage implements OnInit {
     } else if (Object.is(e.detail.value, "School")) {
       this.login_user_data.role_request = 3
       this.routeDirect = "rschool"
-    } else if (Object.is(e.detail.value, "School staff")) {
+    } else if (Object.is(e.detail.value, "School Staff")) {
       this.login_user_data.role_request = 4
       this.routeDirect = "rschoolstaff"
     } else if (Object.is(e.detail.value, "Teacher")) {

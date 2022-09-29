@@ -39,7 +39,7 @@ export class RStudentsPage implements OnInit {
   }
 
   toTakeQuiz(){
-    this.router.navigate(['rstudents/take-quiz'])
+    this.router.navigate(['rstudents/student-exam'])
   }
 
   toTeacherList() {

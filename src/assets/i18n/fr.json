@@ -32,19 +32,30 @@
       "Messages":"Messages",
       "Group_Chat":"Discussion de groupe",
       "Schools":"Écoles",
-      "School_Staff":"Personnel des écoles",
+      "School_Staff":"Éditrice",
       "Students":"Étudiants",
       "Teachers":"Enseignants",
       "courses":"Cours",
       "Permissions":"Autorisations",
-      "Log_out":"Se déconnecter"
+      "Log_out":"Se déconnecter",
+      "Code_Generator" : "Générateur de code"
+    },
+    "Editor" :{
+      "title" :"Liste des éditeurs",
+      "user_name" : "Nom d'utilisateur",
+      "first_name" :"Prénom",
+      "last_name" :"Nom de famille",
+      "email" : "E-mail",
+      "phone" : "Téléphoner",
+      "update_editor" : "Mettre à jour l'éditeur",
+      "save" : "sauvegarder"
     },
     "Permissions":{
       "permission":"Autorisations",
-      "add_admin_staff":"Personnel admin..",
+      "add_admin_staff":"Ajouter un éditeur",
       "add_a_school":"Ajouter école",
       "code_generator":"Générateur de code",
-      "add_a_staff":"Ajouter une portée",
+      "add_a_staff":"Ajouter un personel scolaire",
       "add_a_teacher":"Ajouter un enseignant",
       "curriculum":"Curriculum"
     },
@@ -73,7 +84,7 @@
       "username":"NOM D'UTILISATEUR",
       "first_name":"PRÉNOM",
       "last_name":"NOM DE FAMILLE",
-      "add_staff_btn":"AJOUTER",
+      "add_staff_btn":"éditeur",
       "close":"FERMER"
     },
     "Add_teacher": {
@@ -172,7 +183,7 @@
       "generated_on" :"Generated On"
     },
     "Edit_staff_modal":{
-      "title":"Mettre à jour le personnel",
+      "title":"Mise à jour",
       "update_success":"Mis à jour avec succés ",
       "first_name":"Prénom",
       "last_name":"Nom de famille",
