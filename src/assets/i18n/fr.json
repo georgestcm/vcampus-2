@@ -262,7 +262,8 @@
        "select" : "Sélectionner",
        "select_course" : "Sélectionnez le cours",
        "select_school" :"Sélectionnez l'école",
-       "add" : "Ajouter"
+       "add" : "Ajouter",
+       "answer_comment": "Répondre aux commentaires"
     },
     "create_exam":{
       "title":"Créer un examen",
@@ -315,5 +316,17 @@
     "meeting_name" :"Nom de la réunion",
     "meeting_link" : "Réunion",
     "meeting_share" : "Partager"
+},
+"student_asignments" :{
+  "title" : "Missions",
+  "enrolled_course" : "Cours inscrit",
+  "find_assignment" : "Rechercher des affectations"
+},
+"email" :{
+  "send_mail" : "Envoyer un e-mail",
+  "phone" : "Générateur de code Téléphone",
+  "email" : "E-mail du générateur de code",
+  "cost" : "Coût",
+  "toAddress" : "Adresser"
 }
 }

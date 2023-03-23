@@ -13,6 +13,7 @@ export class StudentExamPage implements OnInit {
 
   studentId : string;
   examList =[];
+  courseList =[];
   showLoading : boolean=false;
   constructor(private courseService : CourseService, private storage: Storage, 
     private modalController: ModalController) { }
@@ -28,25 +29,28 @@ export class StudentExamPage implements OnInit {
     this.showLoading =true;
     this.courseService.getAllEnrolledCourse(this.studentId).subscribe( res =>{
       this.showLoading=false;
-     if(res.length >0){
+      this.courseList = res[0];
+      //console.log(this.courseList);
+      console.log('All enrolled course : ', this.courseList);
+    //  if(res.length >0){
+    //   for(let x=0; x < res.length; x++){
+      
+      // for(let i=0; i< res[x].length; i++){
+      //   this.courseService.getAllExamByCourseId(res[x][i]._id).subscribe(exam =>{
+      //    const exams = exam;
+      //    console.log('examList ',exams);
+      //    if(exam.length>0){
+      //     this.examList.push(exam);
+      //    }
 
-     
-      for(let i=0; i< res[0].length; i++){
-        this.courseService.getAllExamByCourseId(res[0][i]._id).subscribe(exam =>{
-         const exams = exam;
-         if(exams.length>0){
-          this.examList.push(exams);
-          console.log(this.examList);
-         }
-         
-          
-          this.showLoading=false;
-        },error =>{
-          console.log(error);
-          this.showLoading=false;
-        })
-      }
-    }
+      //     this.showLoading=false;
+      //   },error =>{
+      //     console.log(error);
+      //     this.showLoading=false;
+      //   })
+      // }
+    //}
+    //}
     },err =>{
       console.log(err);
       this.showLoading=false;
@@ -62,6 +66,26 @@ export class StudentExamPage implements OnInit {
       this.getAllPendingExams();
     });
     return await modal.present();
+  }
+
+  onCourseChange(id){
+    this.examList=[];
+    this.courseService.getAllExamByCourseId(id).subscribe(exam =>{
+      const exams = exam;
+      
+      if(exam.length>0){
+       this.examList.push(exam);
+      }
+
+       this.showLoading=false;
+     },error =>{
+       console.log(error);
+       this.showLoading=false;
+     });
+  }
+
+  OnClickFind(){
+
   }
 
   }

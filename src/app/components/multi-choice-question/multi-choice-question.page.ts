@@ -26,6 +26,7 @@ export class MultiChoiceQuestionPage implements OnInit {
     Question_for :"",
     Question_options :[],
     Correct_answer :"",
+    Answer_comment: "",
     option :"",
   };
   schoolList: [];
@@ -135,6 +136,7 @@ export class MultiChoiceQuestionPage implements OnInit {
       Question_for :"",
       Question_options :[],
       Correct_answer :"",
+      Answer_comment: "",
       option :""
     };
   }

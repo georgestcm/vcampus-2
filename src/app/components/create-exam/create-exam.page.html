@@ -73,7 +73,7 @@
           <button (click)="showCreateExamModal();" class="btn btn-sm btn-success">
             <ion-icon name="md-create"></ion-icon>
           </button>
-          <button *ngIf="role==5"  class="btn btn-sm btn-danger">
+          <button (click)="onDeleteExam(q);" *ngIf="role==5"  class="btn btn-sm btn-danger">
             <ion-icon name="trash"></ion-icon>
           </button>
         </ion-buttons>

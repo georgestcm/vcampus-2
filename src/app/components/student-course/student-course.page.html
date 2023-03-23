@@ -24,11 +24,11 @@
   </div>
   
   <div class="row">
-    <div class="col-sm-6"  *ngFor="let curriculum of curriculumList">
+    <div class="col-sm-4"  *ngFor="let curriculum of curriculumList">
       <div class="card" style="width: 100%; margin-top:10px;">
-        <img src="https://www.alpineconventschool.com/wp-content/uploads/2021/03/curriculum_image_640.jpg" class="card-img-top" alt="...">
+        <img src="https://www.alpineconventschool.com/wp-content/uploads/2021/03/curriculum_image_640.jpg" style="height: 200px;" class="card-img-top" alt="...">
         <div class="card-body" style="height: 100px;">
-          <h5 class="card-title">{{curriculum.curriculum.curriculum}}</h5>
+          <h5 class="card-title">Curriculum Name: {{curriculum.curriculum.curriculum}}</h5>
         </div>
       <div class="card-body">
         <div class="row  alert-info" >

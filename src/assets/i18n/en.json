@@ -259,7 +259,8 @@
         "quiz" : "Quiz",
         "practice" : "Practice",
         "select" : "Select",
-        "add" : "Add"
+        "add" : "Add",
+        "answer_comment": "Answer Comments"
      },
      "create_exam":{
        "title":"Create Exam",
@@ -312,5 +313,18 @@
         "meeting_name" :"Meeting Name",
         "meeting_link" : "Meeting",
         "meeting_share" : "Share"
-    }
+    },
+    "student_asignments" :{
+      "title" : "Assignements",
+      "enrolled_course" : "Enrolled Course",
+      "find_assignment" : "Find Assignments"
+  },
+  "email" :{
+    "send_mail" : "Send Email",
+    "phone" : "Code Generator Phone",
+    "email" : "Code Generator Email",
+    "cost" : "Cost",
+    "toAddress" : "To Address"
+}
+
 }

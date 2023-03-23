@@ -3,6 +3,7 @@ import { CourseService } from 'src/app/providers/common-service/course.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { StudentExamStartModalComponent } from '../student-exam-start-modal/student-exam-start-modal.component';
+import { StudentExamResultViewModalComponent } from '../student-exam-result-view-modal/student-exam-result-view-modal.component';
 
 @Component({
   selector: 'app-student-course-view',
@@ -28,7 +29,7 @@ export class StudentCourseViewPage implements OnInit {
         console.log(res);
         this.prepareParagraph(res);
         this.courseService.getAllExamByCourseId(this.courseId).subscribe(exams =>{
-          console.log(exams);
+          console.log( 'exams', exams);
           this.examList =exams;
         });
       },err => {
@@ -59,6 +60,19 @@ export class StudentCourseViewPage implements OnInit {
   async showStartExamModal(exam) {
     const modal = await this.modalController.create({
       component: StudentExamStartModalComponent,
+      componentProps : { exam : exam}
+    });
+    modal.onDidDismiss().then(data => {
+      this.courseService.getAllExamByCourseId(this.courseId).subscribe(exams =>{
+        this.examList =exams;
+      });
+    });
+    return await modal.present();
+  }
+
+  async checkCorrectAnswer(exam) {
+    const modal = await this.modalController.create({
+      component: StudentExamResultViewModalComponent,
       componentProps : { exam : exam}
     });
     modal.onDidDismiss().then(data => {

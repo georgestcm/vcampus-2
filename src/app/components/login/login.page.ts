@@ -58,6 +58,8 @@ export class LoginPage implements OnInit {
 
     this.storage.get("role").then(res => {
       this.userRole = res !=null ? res :0;
+      if(res > 0)
+      this.continueToAccount(this.userRole);
     });
 
     Promise.all([this.storage.get('language'), this.storage.get('user'), this.storage.get('token')]).then(values => {

@@ -84,4 +84,16 @@ export class CreateExamPage implements OnInit {
   //   })
    }
 
+   onDeleteExam(q){
+    console.log(q);
+    this.courseService.deleteExam(q._id).subscribe( res =>{
+      
+      alert('Exam deleted successfully!');
+      this.getAllExamBySchool();
+    },err =>{
+      console.log(err);
+    })
+  }
+
+
 }

@@ -26,16 +26,19 @@ export class TeacherListPage implements OnInit {
         this.role = data;
         if(this.role == 3){
           this.schoolName = val.school.school_name + " - Teacher List";
+          this.getAllTeachersByRole();
+        }else{
+          this.getAllTeachers();
         }
       });
       
-      this.getAllTeachers();
+      
     });
     
      
     
   }
-  getAllTeachers(){
+  getAllTeachersByRole(){
     this.showLoading =true;
     this.teacherList =[];
     this.teacherService.getTeachersBySchoolId(this.schoolId).subscribe((data) =>{
@@ -51,6 +54,28 @@ export class TeacherListPage implements OnInit {
         
       }
       console.log(this.teacherList);
+      this.showLoading =false;
+    },err =>{
+      this.showLoading =false;
+    });
+  }
+
+  getAllTeachers(){
+    this.showLoading =true;
+    this.teacherList =[];
+    this.teacherService.getAllTeacherForAdmin().subscribe((data) =>{
+      this.teacherList = data;
+      console.log("teacherList",this.teacherList);
+      //console.log(data.school.teacher[0]._id);
+      // for(let i=0; i<data.school.teacher.length; i++){
+      //   if(data.school.teacher[i]._id != null)
+      //   {
+      //     const users = data.school.teacher[i]._id;
+      //     this.teacherList.push(users);
+      //   }
+        
+      // }
+      // console.log(this.teacherList);
       this.showLoading =false;
     },err =>{
       this.showLoading =false;

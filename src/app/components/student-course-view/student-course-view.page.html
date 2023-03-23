@@ -23,6 +23,7 @@
           <h4 style="color: rgba(27, 214, 27, 0.815);" *ngIf="exam.Exam_Status =='Completed'"><b>{{exam.Exam_Status | uppercase}}</b></h4>
           <p>Complete before : {{exam.Exam_EndDateTime | date:'dd-MMM-yy hh:mm'}}</p>
           <button (click)="showStartExamModal(exam)" *ngIf="exam.Exam_Status !='Completed'" class="btn btn-sm btn-outline btn-danger">Start</button>
+          <button (click)="checkCorrectAnswer(exam)" *ngIf="exam.Exam_Status =='Completed'" class="btn btn-sm btn-outline btn-success">Check Correct Answer</button>
         </ion-label>
         
       </ion-item>

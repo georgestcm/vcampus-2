@@ -1,7 +1,7 @@
 <ion-header>
   <ion-buttons slot="start">
   <ion-menu-button></ion-menu-button>
-  <ion-title>Assignments</ion-title>
+  <ion-title>{{'student_asignments.title' | translate}}</ion-title>
   </ion-buttons>
 </ion-header>
 
@@ -12,14 +12,33 @@
       </div>
       <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
     </div>
-  <div class="row">
+
+    <div class="input-group mb-3" >
+      <div class="input-group-prepend">
+        <span class="input-group-text"  id="inputGroupFileAddon01">{{'student_asignments.enrolled_course' | translate}}</span>
+      </div>
+       <select class="custom-select" required name="courseDropDown"
+        id="courseDropDown"
+       (change)="onCourseChange($event.target.value)">  
+        <option value="">--{{'Courses_list.select' | translate}}--</option>
+        <option *ngFor="let course of courseList" value={{course._id}}>
+          {{course.name}}
+        </option>
+      </select>
+      <!-- <div class="input-group-postpend">
+        <button class="btn btn-outline-primary" (click)="onClickFind()">{{'student_asignments.find_assignment' | translate}}</button>
+      </div> -->
+    </div>
+
+  <div class="row" padding>
     <h2 class="danger" *ngIf="examList.length ==0">No assignments found!</h2>
-    <div class="col-sm-6 " [ngClass]="exam.Exam_Status=='Pending'?'alert-danger':'alert-success'" *ngFor="let exam of examList[0]" >
+    <div class="col-sm-4 " [ngClass]="exam.Exam_Status=='Pending'?'alert-danger':'alert-success'" *ngFor="let exam of examList[0]" >
       <div class="card">
         <div class="card-body">
           
           <h5 class="card-title" *ngIf="exam.Exam_Status==='Pending'">You have pending <b>{{exam.Exam_Type}}</b></h5>
-          <p class="card-text"><b>{{exam.Exam_Name}}</b></p>
+          <p class="card-text"><b>Name: </b>{{exam.Exam_Name}}</p>
+          <p class="card-text"><b>Description: </b>{{exam.Exam_Description}}</p>
           <p class="card-text" *ngIf="exam.Exam_Status==='Completed'"><b>Scored {{exam.CorrectAnswer}} out of {{exam.TotalQuestion}}</b></p>
           <p style="color: red;" *ngIf="exam.Exam_Status==='Pending'" >Complete before: {{exam.Exam_EndDateTime | date:'dd,MMM yyyy hh:mm'}}</p>
           <p style="color: green;" *ngIf="exam.Exam_Status==='Completed'" >Completed on: {{exam.Exam_EndDateTime | date:'dd,MMM yyyy hh:mm'}}</p>

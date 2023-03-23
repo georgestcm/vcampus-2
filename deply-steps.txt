@@ -9,5 +9,7 @@
 
 ****************************** API ************************************
 1. git add .
-2. git commit 
-3. git push heroku feature/backend-structure-change:master
+2. git commit -m "commit message" 
+3. git push heroku feater/dev-api:master
+----X3. git push heroku feature/backend-structure-change:master
+

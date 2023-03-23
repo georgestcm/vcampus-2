@@ -106,6 +106,18 @@
         </tr>
         </table>
       </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"  id="questionTitle">{{'exam_popup.answer_comment' | translate}} *</span>
+          <input type="button" value="Add Media" (click)="showAddMediaModal()" class="btn btn-sm btn-primary">
+          <input type="button" value="Media List" (click)="showMediaListModal()" class="btn btn-sm btn-secondary" 
+         >
+        </div>
+        <!-- <input type="text" [(ngModel)]="questionModal.Question_title" name="questionTitle"  class="form-control">       -->
+
+        <editor style="width: 100%;"  name="answerComments" [init]="initMCE" 
+        [(ngModel)]="questionModal.Answer_comment"></editor>
+      </div>
       <input type="submit" class="btn btn-success btn-fill" [disabled]="!f.valid"  value="{{'exam_popup.save_question' | translate}}" />
       </form>
   </div>

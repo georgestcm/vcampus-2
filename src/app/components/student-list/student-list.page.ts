@@ -12,9 +12,17 @@ export class StudentListPage implements OnInit {
   studentList : any;
   ngOnInit() {
     this.storage.get('user').then((val) => {
-      console.log(val._id);
+      console.log(val);
+      this._auth.getListOfStudents().subscribe(res => {
+        console.log(res);
+        this.studentList = res;
+      },
+      err => 
+      {});
    if(val._id !=null){
-    this._auth.getAllStudents(val._id).subscribe(res => {
+    const teacherInSchool = val.teacherInSchool.schools[0]._id;
+    console.log(teacherInSchool);
+    this._auth.getAllStudents(teacherInSchool).subscribe(res => {
       console.log(res);
       this.studentList = res;
     },err =>{

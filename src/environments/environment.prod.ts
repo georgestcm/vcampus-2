@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://vcampus-api.herokuapp.com/',
+  apiUrl: 'https://vcampus-api-v2.herokuapp.com/',
   imageUrl: 'https://vcampus-api.herokuapp.com/uploads',
   presetPassword :"12345",
   socketURL : 'https://vcampus-api.herokuapp.com',

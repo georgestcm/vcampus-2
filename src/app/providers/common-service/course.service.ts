@@ -125,6 +125,10 @@ export class CourseService {
     return this._httpClient.authGet("api/get_exam_by_course/"+ courseId);
   }
 
+  deleteExam(examId) {
+    return this._httpClient.authDelete("api/delete_exam/"+ examId);
+  }
+
   deleteQuestion(questionId) {
     return this._httpClient.authDelete("api/delete_question/"+ questionId);
   }
@@ -170,5 +174,13 @@ export class CourseService {
 
   getAllEnrolledCurriculum(studentId) {
     return this._httpClient.authGet("api/get_all_enrolled_curriculum/"+studentId);
+  }
+
+  sendEmail(data) {
+    return this._httpClient.authPost("api/send-mail", data);
+  }
+
+  getAllCourseCodeByCreator(userId) {
+    return this._httpClient.authGet("api/get_all_course_code_by_creator/"+userId);
   }
 }

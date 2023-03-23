@@ -61,7 +61,7 @@
           <input type="checkbox"  name={{q._id}} [(ngModel)]="q.checked" value={{q._id}}>
         </td>
         <td>
-          {{q.Question_title}}
+          <div [innerHTML]="q.Question_title"></div>
         </td>
       </tr>
       </table>
