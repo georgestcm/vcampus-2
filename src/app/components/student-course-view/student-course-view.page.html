@@ -33,7 +33,7 @@
 
   <div class="col-md-6" >
  <div style="min-height: 550px;">
-  <div *ngIf="content !=null" style="border:solid 1px #08e46b; height: 555px; padding:5px">
+  <div *ngIf="content !=null" style=" padding:5px">
   <div [innerHTML]="content"></div>
 </div>
   <video *ngIf="content ==null" width="100%" style="height: 555px;" controls>
@@ -49,10 +49,10 @@
     </div>
     <div  style="min-height: 475px;border: solid 1px rgb(82, 179, 243);">
     <ion-list>
-      <ion-item *ngFor="let p of paragraphList" (click)="onItemClick(p)" >
+      <ion-item *ngFor="let p of selectedCourse?.chapters" (click)="onItemClick(p.courseContent)" >
         <ion-checkbox slot="start"></ion-checkbox>
         <ion-label>
-          <h2>{{p.title}} </h2>
+          <h2>{{p.chapterName}} </h2>
         </ion-label>
       </ion-item>
     </ion-list>

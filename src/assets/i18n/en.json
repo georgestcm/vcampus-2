@@ -215,6 +215,25 @@
        "collaboration" : "Collaboration",
        "online_class" : "Online Class"
      },
+     "r_editor_menus" :{
+      "messages" :"Messages",
+      "group_chat" : "Group Chat",
+      "students" : "Students",
+      "courses" : "Courses",
+      "exams" : "Exams",
+      "collaboration" : "Collaboration",
+      "online_class" : "Online Class"
+    },
+     "r_student_menus" :{
+      "role" : "Student",
+      "dashboard" :"Dashboard",
+      "assignemnts" : "Assignements",
+      "messages" : "Messages",
+      "group_chat" : "Group Chat",
+      "courses" : "Courses",
+      "update_profile" : "Update Profile",
+      "logout" : "Logout"
+    },
      "student_list":{
        "page_title" :"Student List",
        "user_name":"User Name",

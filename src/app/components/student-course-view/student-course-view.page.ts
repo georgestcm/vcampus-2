@@ -17,6 +17,7 @@ export class StudentCourseViewPage implements OnInit {
   content : any;
   counter =0;
   examList :any;
+  selectedCourse: any;
   constructor(private courseService: CourseService, 
     private route: ActivatedRoute,
     private modalController: ModalController) { }
@@ -26,11 +27,13 @@ export class StudentCourseViewPage implements OnInit {
     if (this.route.snapshot.paramMap.get('id')) {
       this.courseId = this.route.snapshot.paramMap.get('id');
       this.courseService.getCourse(this.courseId).subscribe( res => {
-        console.log(res);
-        this.prepareParagraph(res);
+       
+        this.selectedCourse = res;
+        console.log(this.selectedCourse);
+        //this.prepareParagraph(res);
         this.courseService.getAllExamByCourseId(this.courseId).subscribe(exams =>{
           console.log( 'exams', exams);
-          this.examList =exams;
+          this.examList = exams;
         });
       },err => {
         console.log(err);
@@ -53,8 +56,8 @@ export class StudentCourseViewPage implements OnInit {
    }
   }
 
-  onItemClick(paragraph){
-    this.content = paragraph.paragraphName;
+  onItemClick(courseContent){
+    this.content = courseContent;
   }
 
   async showStartExamModal(exam) {

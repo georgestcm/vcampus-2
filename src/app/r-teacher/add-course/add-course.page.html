@@ -73,7 +73,10 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupFileAddon01">Description</span>
           </div>
-          <textarea class="form-control" name="description" required rows="3" id="description" [(ngModel)]="courseModel.description" placeholder="Enter Description"></textarea>
+          <!-- <textarea class="form-control" name="description" required rows="2" id="description" [(ngModel)]="courseModel.description" placeholder="Enter Description"></textarea> -->
+          <editor style="width: 100%;" required name="description" [init]="initMCE" 
+          [(ngModel)]="courseModel.description"></editor>
+          
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -95,7 +98,7 @@
           <div class="input-group-prepend">
             
             <div class="input-group-text">
-              <input type="checkbox" name="repeatYearly" [(ngModel)]="courseModel.repeatYearly" aria-label="Repeat Yearly">
+              <input type="checkbox" name="repeatYearly" [checked]="courseModel.repeatYearly" [(ngModel)]="courseModel.repeatYearly" aria-label="Repeat Yearly">
             </div>
             <span class="input-group-text" >Repeat Yearly?</span>
           </div>
@@ -115,10 +118,10 @@
 <div class="col-md-7">
   <div class="card" >
     <div class="card-header">
-      Section & Paragraph
+      Chapter & Courses
     </div>
     <div class="card-body">
-      <div class="input-group mb-3">
+      <!-- <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text">Section *</span>
         </div>
@@ -126,8 +129,8 @@
         <div class="input-group-append">
           <button class="btn btn-primary" (click)="onAddSection(courseModel.section);" type="button" >Add</button>
         </div>
-      </div>
-      <div class="input-group mb-3">
+      </div> -->
+      <!-- <div class="input-group mb-3">
         <div class="input-group-prepend">
           <label class="input-group-text" for="ddlSection">Choose Section *</label>
         </div>
@@ -137,17 +140,27 @@
             {{section.sectionName}}
           </option>
         </select>
+      </div> -->
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" >Course Thumbnail*</span>
+        </div>
+        <input type="file" (change)="onFileChange($event)" class="form-control" /> 
+        <div *ngIf="previewThumbnail" class="input-group mt-3 mb-3">
+        <img  width="200" [src]="previewThumbnail" />
+      </div>
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text" >Chapter *</span>
+          <span class="input-group-text" >Enter Chapter Name*</span>
         </div>
-        <input type="text" class="form-control"  name="chapter" [(ngModel)]="courseModel.chapter"  placeholder="Enter Chapter" aria-label="Enter Chapter" aria-describedby="button-addon2">
-        <div class="input-group-append">
+        <textarea rows="2" class="form-control"  name="chapter" [(ngModel)]="courseModel.chapterName"  >
+        </textarea>
+        <!-- <div class="input-group-append">
           <button class="btn btn-primary" (click)="onAddChapter(courseModel.chapter);" type="button" >Add</button>
-        </div>
+        </div> -->
       </div>
-      <div class="input-group mb-3">
+      <!-- <div class="input-group mb-3">
         <div class="input-group-prepend">
           <label class="input-group-text" for="ddlChapter">Choose Chapter *</label>
         </div>
@@ -157,8 +170,8 @@
             {{chapter.chapterName}}
           </option>
         </select>
-      </div>
-      <div class="input-group mb-3">
+      </div> -->
+      <!-- <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupFileAddon01">Topic *</span>
         </div>
@@ -166,35 +179,54 @@
         <div class="input-group-append">
           <button class="btn btn-primary" type="button" (click)="onAddTopic(courseModel.topicName)" >Add</button>
         </div>
-      </div>
-      <div class="input-group mb-3">
+      </div> -->
+      <!-- <div class="input-group mb-3">
         <div class="input-group-prepend">
           <label class="input-group-text" for="ddlTopic">Choose Topic *</label>
         </div>
-        <select class="custom-select" [required]="courserId ==null" name="topicDropdown" [(ngModel)]="courseModel.topicDropdown" id="ddlTopic" (change)="onTopicChange($event.target.value)">
+        <select class="custom-select" [required]="courserId ==null" name="topicDropdown" [(ngModel)]="courseModel.topicDropdown" id="ddlTopic" 
+        (change)="onTopicChange($event.target.value)">
           <option value="">--Choose Topic--</option>
           <option *ngFor="let topic of topicList" value={{topic.topicName}}>
             {{topic.topicName}}
           </option>
         </select>
-      </div>
+      </div> -->
       <div class="input-group">
-        <div class="input-group-prepend">
+        <!-- <div class="input-group-prepend">
           <span class="input-group-text">Paragraph *</span>
           <input type="button" value="Add Media" class="btn btn-sm btn-primary"(click)="onClickAddMedia()">
           <input type="button" value="Media List" class="btn btn-sm btn-secondary" 
           (click)="showMediaListModal()">
+        </div> -->
+         <div class="input-group-prepend">
+         
+          <input type="button" value="Add Media" class="btn btn-sm btn-primary"(click)="onClickAddMedia()">
+          <input type="button" value="Media List" class="btn btn-sm btn-secondary" 
+          (click)="showMediaListModal()">
         </div>
+        <span class="input-group-text">Course Content *</span>
         <editor style="width: 100%;" name="paragraph" [init]="initMCE" 
-        [(ngModel)]="courseModel.paragraph"></editor>
+        [(ngModel)]="courseModel.courseContent"></editor>
         <!-- <textarea rows="3"  name="paragraph" [(ngModel)]="courseModel.paragraph" class="form-control" id="paragraph" placeholder="Enter paragraph"></textarea> -->
       </div>
       <div class="form-group">
         <!-- <pre>{{courseModel.paragraph | json}}</pre> -->
-        <input type="button" (click)="onAddParagraph(courseModel.paragraph)" class="btn btn-sm btn-primary float-right" value="Add Paragarph" />
+        <input type="button" (click)="onClickAddMore()" class="btn btn btn-success float-right" value="Add" />
       </div>
       <div class="form-group">&nbsp;</div>
-      
+      <div class="row">
+        <table class="table table-bordered table-sm" *ngIf="chapterList.length>0">
+          <tr>
+            <th>Paragraph Name</th>
+            <th>Course Content</th>
+          </tr>
+          <tr *ngFor="let c of chapterList">
+            <td>{{c.chapterName}}</td>
+            <td [innerHTML]="c.courseContent"></td>
+          </tr>
+        </table>
+      </div>
      
       <div >
         <input type="submit" class="btn btn-success float-left" [disabled]="!f.valid"  value="Save Course" />

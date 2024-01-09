@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-         {{'Course_detail_modal.title' | translate}}
+         {{'Course_detail_modal.title' | translate}} - [{{courseData.name}}]
         <button (click)="dismiss()" class="btn btn-sm btn-danger float-right">X</button>
     </div>
     <div class="card-body" style="height:400px;overflow: auto !important;">
@@ -8,9 +8,16 @@
             <div><b>{{'Course_detail_modal.curriculum' | translate}}: </b></div>
                <div> <ul *ngFor="let curr of courseData.curriculum"><li>{{curr.curriculum}}</li></ul>
             </div>
-        <div *ngFor="let section of courseData.sections">
-            <div><b>{{'Course_detail_modal.section' | translate}}: </b>{{section.section_name}}</div>
-            <div *ngFor="let chapter of section.chapters">
+        <div *ngFor="let chapter of courseData.chapters">
+            <div><b>{{'Course_detail_modal.chapter' | translate}}: </b>{{chapter.chapterName}}</div>
+            
+            <div style="margin-left: 15%;"><b>Course Content</b>
+                <div style="border: 1px solid #babfc5; padding: 5px;">
+                <div [innerHTML]="chapter.courseContent"></div>
+            </div>
+            </div>
+
+            <!-- <div *ngFor="let chapter of section.chapters">
                 <div style="margin-left: 5%;"><b>{{'Course_detail_modal.chapter' | translate}}: </b>{{chapter.chapter_name}}</div>
                 <div *ngFor="let topic of chapter.topics">
                     <div style="margin-left: 10%;"><b>{{'Course_detail_modal.topic' | translate}}: </b>{{topic.topic_name}}</div>
@@ -20,12 +27,12 @@
                             <div [innerHTML]="paragraph.paragraphName"></div>
                         </div>
                         </div>
-                        <!-- <div style="margin-left: 15%;"><b>Docs: </b>
+                         <div style="margin-left: 15%;"><b>Docs: </b>
                             <a *ngIf="paragraph.supportingDocs" [href]="''+ fileURL+'/'+paragraph.supportingDocs" target="blank">{{paragraph.supportingDocs}}</a>
                         </div> -->
-                    </div>
-                </div>
-            </div>
+                    <!-- </div>
+                </div> 
+            </div> -->
         </div>
     </div>
 </div>

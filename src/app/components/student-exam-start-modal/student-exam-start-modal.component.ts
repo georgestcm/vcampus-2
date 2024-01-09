@@ -72,7 +72,7 @@ export class StudentExamStartModalComponent implements OnInit {
       Exam_StartDateTime : this.startDateTime
     }
 
-    console.log(req);
+    
     
     this.courseService.updateExam(req,this.exam._id).subscribe(
       (data) => {

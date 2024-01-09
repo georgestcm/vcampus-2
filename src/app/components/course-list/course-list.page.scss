@@ -71,4 +71,7 @@ ion-header {
       border-radius: 5px;
       margin-top:10px;
   }
-  
+  ::ng-deep .sc-ion-modal-md-h {
+    --width: 90%;
+    --height: 70%;
+      }

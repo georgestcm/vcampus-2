@@ -37,7 +37,7 @@
              
               <div class="card-body" style="height: 100px;">
                 <h5 class="card-title">{{course.name}}</h5>
-                <p class="card-text">{{(course.description.length>55)? (course.description | slice:0:55)+'...':(course.description)}}</p>
+                <p [innerHTML]="(course.description.length>55)? (course.description | slice:0:55)+'...':(course.description)" class="card-text"></p>
               </div>
             <div class="card-body">
                 <button (click)="onClickStartLearning(course._id)" class="btn btn-sm btn-success">Start Learning</button>        

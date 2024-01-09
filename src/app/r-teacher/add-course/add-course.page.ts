@@ -46,6 +46,8 @@ export class AddCoursePage implements OnInit {
   documentList: Array<any> = [];
   initMCE :any;
   public uploader:FileUploader = new FileUploader({url: environment.apiUrl+'/course/uploadDocs', itemAlias: 'file'});
+  public thumbnailUploader:FileUploader = new FileUploader({url: environment.apiUrl+'/course/uploadThumbnails', itemAlias: 'file'});
+  previewThumbnail:string;
 
   constructor(private courseService: CourseService, 
     private storage : Storage,private route: ActivatedRoute,
@@ -83,6 +85,23 @@ export class AddCoursePage implements OnInit {
     //able to deal with the server response.
     this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
          console.log("ImageUpload:uploaded:", item, status, response);
+     };
+
+     this.thumbnailUploader.onAfterAddingFile = (file)=> { 
+      file.withCredentials = false; 
+      console.log('uploading... ');
+    };
+    //overide the onCompleteItem property of the uploader so we are 
+    //able to deal with the server response.
+    this.thumbnailUploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+         console.log("Thumbnail:uploaded:", item, status, response);
+         if(status ==200){
+          console.log("File uploaded successfully.");
+        }
+        else{
+          console.log("Something went wrong! please try again later.");
+          
+        }
      };
 
     if (this.route.snapshot.paramMap.get('id')) {
@@ -140,6 +159,9 @@ export class AddCoursePage implements OnInit {
       userId :"",
       school : "",
       curriculum :"",
+      chapterName: "",
+      courseContent: "",
+      courseThumbnail : "",
     };  
 
     // this.onAddSection(this.courseModel.section);
@@ -157,144 +179,149 @@ export class AddCoursePage implements OnInit {
   
   }
   
-  onAddSection(sec) {
-    if (sec === "") {
-      this.validationError.formField = "Section";
-      this.validationError.formValid = false;
-      this.validationError.errorMessage = " is required"     
-      return;
-    }
-    this.validationError.formValid = true;
-    let count = this.sectionList.length;
-    if (count == 0) {
-      this.sectionList.push({ id: 1, sectionName: sec });
-    } else {
-      this.sectionList.push({ id: count + 1, sectionName: sec });
-    }
-    let json = { section: [{ sectionName: sec, chapter: [] }] };
-    this.sectionJSON.push(json);
-    this.successNotification.visible=true;
-    this.successNotification.successMessage = "Section added.";
-    this.courseModel.section="";
-  }
+  // onAddSection(sec) {
+  //   if (sec === "") {
+  //     this.validationError.formField = "Section";
+  //     this.validationError.formValid = false;
+  //     this.validationError.errorMessage = " is required"     
+  //     return;
+  //   }
+  //   this.validationError.formValid = true;
+  //   let count = this.sectionList.length;
+  //   if (count == 0) {
+  //     this.sectionList.push({ id: 1, sectionName: sec });
+  //   } else {
+  //     this.sectionList.push({ id: count + 1, sectionName: sec });
+  //   }
+  //   let json = { section: [{ sectionName: sec, chapter: [] }] };
+  //   this.sectionJSON.push(json);
+  //   this.successNotification.visible=true;
+  //   this.successNotification.successMessage = "Section added.";
+  //   this.courseModel.section="";
+  // }
 
-  onSectionChange(value) {
-    this.selectedSection = value;
-    this.sectionQuery = this.sectionJSON.find(
-      (a) => a.section[0].sectionName == value
-    );
-    console.log(this.sectionQuery);
-  }
+  // onSectionChange(value) {
+  //   this.selectedSection = value;
+  //   this.sectionQuery = this.sectionJSON.find(
+  //     (a) => a.section[0].sectionName == value
+  //   );
+  //   console.log(this.sectionQuery);
+  // }
 
-  onAddChapter(value) {
-     if(this.courseModel.sectionDropdown==''){
-      this.validationError.formField = "Choose Section";
-      this.validationError.formValid = false;
-      this.validationError.errorMessage = " is required"
-      return;
-    } else if (value === "") {
-      this.validationError.formField = "Chapter Name";
-      this.validationError.formValid = false;
-      this.validationError.errorMessage = " is required"
-      return;
-    }
-    this.validationError.formValid = true;
-    let count = this.chapterList.length;
-    if (count == 0) {
-      this.chapterList.push({ id: 1, chapterName: value, sectionName : this.selectedSection });
-    } else {
-      this.chapterList.push({ id: count + 1, chapterName: value, sectionName : this.selectedSection });
-    }
-    if (this.sectionQuery != null) {
-      let indexSection = this.sectionJSON.indexOf(this.sectionQuery);
-      this.sectionJSON[indexSection].section[0].chapter.push({
-        chapterName: value,
-        topic: [],
-      });
-    }
-    this.successNotification.visible=true;
-    this.successNotification.successMessage = "Chapter added.";
-    this.courseModel.chapter="";
-  }
+  // onAddChapter(value) {
+  //    if(this.courseModel.sectionDropdown==''){
+  //     this.validationError.formField = "Choose Section";
+  //     this.validationError.formValid = false;
+  //     this.validationError.errorMessage = " is required"
+  //     return;
+  //   } else if (value === "") {
+  //     this.validationError.formField = "Chapter Name";
+  //     this.validationError.formValid = false;
+  //     this.validationError.errorMessage = " is required"
+  //     return;
+  //   }
+  //   this.validationError.formValid = true;
+  //   let count = this.chapterList.length;
+  //   if (count == 0) {
+  //     this.chapterList.push({ id: 1, chapterName: value, sectionName : this.selectedSection });
+  //   } else {
+  //     this.chapterList.push({ id: count + 1, chapterName: value, sectionName : this.selectedSection });
+  //   }
+  //   if (this.sectionQuery != null) {
+  //     let indexSection = this.sectionJSON.indexOf(this.sectionQuery);
+  //     this.sectionJSON[indexSection].section[0].chapter.push({
+  //       chapterName: value,
+  //       topic: [],
+  //     });
+  //   }
+  //   this.successNotification.visible=true;
+  //   this.successNotification.successMessage = "Chapter added.";
+  //   this.courseModel.chapter="";
+  // }
 
-  onChapterChange(value) {
-    this.selectedChapter = value;
-    this.chapterQuery = this.sectionQuery.section[0].chapter.find( (a) => a.chapterName == value);
-    console.log("this.chapterQuery", this.chapterQuery);
-  }
+  // onChapterChange(value) {
+  //   this.selectedChapter = value;
+  //   this.chapterQuery = this.sectionQuery.section[0].chapter.find( (a) => a.chapterName == value);
+  //   console.log("this.chapterQuery", this.chapterQuery);
+  // }
 
-  onAddTopic(value) {
-    if(this.courseModel.chapterDropdown==''){
-      this.validationError.formField = "Choose Chapter";
-      this.validationError.formValid = false;
-      this.validationError.errorMessage = " is required"
-      return;
-    }
-    else if (value === "") {
-      this.validationError.formField = "Topic";
-      this.validationError.formValid = false;
-      this.validationError.errorMessage = " is required"
-      return;
-    }
-    this.validationError.formValid = true;
-    let count = this.topicList.length;
-    if (count == 0) {
-      this.topicList.push({ id: 1, topicName: value, sectionName : this.selectedTopic, chapterName : this.selectedChapter });
-    } else {
-      this.topicList.push({ id: count + 1, topicName: value, sectionName : this.selectedTopic, chapterName : this.selectedChapter });
-    }
-    if (this.chapterQuery != null) {
-      this.chapterQuery.topic.push({
-        topicName: value,
-        paragraph: [],
-      });
-    }
+  // onAddTopic(value) {
+  //   if(this.courseModel.chapterDropdown==''){
+  //     this.validationError.formField = "Choose Chapter";
+  //     this.validationError.formValid = false;
+  //     this.validationError.errorMessage = " is required"
+  //     return;
+  //   }
+  //   else if (value === "") {
+  //     this.validationError.formField = "Topic";
+  //     this.validationError.formValid = false;
+  //     this.validationError.errorMessage = " is required"
+  //     return;
+  //   }
+  //   this.validationError.formValid = true;
+  //   let count = this.topicList.length;
+  //   if (count == 0) {
+  //     this.topicList.push({ id: 1, topicName: value, sectionName : this.selectedTopic, chapterName : this.selectedChapter });
+  //   } else {
+  //     this.topicList.push({ id: count + 1, topicName: value, sectionName : this.selectedTopic, chapterName : this.selectedChapter });
+  //   }
+  //   if (this.chapterQuery != null) {
+  //     this.chapterQuery.topic.push({
+  //       topicName: value,
+  //       paragraph: [],
+  //     });
+  //   }
 
-    this.successNotification.visible=true;
-    this.successNotification.successMessage = "Topic added.";
-    this.courseModel.topicName="";
-  }
+  //   this.successNotification.visible=true;
+  //   this.successNotification.successMessage = "Topic added.";
+  //   this.courseModel.topicName="";
+  // }
 
-  onTopicChange(value) {
-    this.selectedTopic = value;
-    this.topicQuery = this.chapterQuery.topic.find( (a) => a.topicName == value);
-  }
-
-  onAddParagraph(value) {
+  // onTopicChange(value) {
+  //   this.selectedTopic = value.topicName;
+  //   console.log(this.selectedTopic);
+  //   if(value !== undefined){
+  //     this.topicQuery = this.chapterQuery.topic.find( (a) => a.topicName == value);
+  //     console.log('topic', this.topicQuery);
+  //   }
     
-    if(this.courseModel.topicDropdown==''){
-      this.validationError.formField = "Choose Topic";
-      this.validationError.formValid = false;
-      this.validationError.errorMessage = " is required"
-      return;
-    }
-    else if (value === "") {
-      this.validationError.formField = "Paragraph";
-      this.validationError.formValid = false;
-      this.validationError.errorMessage = " is required"
-      return;
-    }
-    this.validationError.formValid = true;
-    let count = this.paragraphList.length;
-    if (count == 0) {
-      this.paragraphList.push({ id: 1, paragraphName: value, sectionName : this.selectedTopic, chapterName : this.selectedChapter, topicName: this.selectedTopic });
-    } else {
-      this.paragraphList.push({ id: count + 1, paragraphName: value, sectionName : this.selectedTopic, chapterName : this.selectedChapter, topicName: this.selectedTopic });
-    }
-    if (this.topicQuery != null) {
-      this.topicQuery.paragraph.push({
-        paragraphName: value,
-        supportingDocs: '',
-      });
-    }
-    this.successNotification.visible=true;
-    this.successNotification.successMessage = "Paragraph added.";
-    this.courseModel.paragraph="";
-  }
+  // }
 
-  onParagraphChange(value) {
-   this.selectedParagraph = value;
-  }
+  // onAddParagraph(value) {
+    
+  //   if(this.courseModel.topicDropdown==''){
+  //     this.validationError.formField = "Choose Topic";
+  //     this.validationError.formValid = false;
+  //     this.validationError.errorMessage = " is required"
+  //     return;
+  //   }
+  //   else if (value === "") {
+  //     this.validationError.formField = "Paragraph";
+  //     this.validationError.formValid = false;
+  //     this.validationError.errorMessage = " is required"
+  //     return;
+  //   }
+  //   this.validationError.formValid = true;
+  //   let count = this.paragraphList.length;
+  //   if (count == 0) {
+  //     this.paragraphList.push({ id: 1, paragraphName: value, sectionName : this.selectedTopic, chapterName : this.selectedChapter, topicName: this.selectedTopic });
+  //   } else {
+  //     this.paragraphList.push({ id: count + 1, paragraphName: value, sectionName : this.selectedTopic, chapterName : this.selectedChapter, topicName: this.selectedTopic });
+  //   }
+  //   if (this.topicQuery != null) {
+  //     this.topicQuery.paragraph.push({
+  //       paragraphName: value,
+  //       supportingDocs: '',
+  //     });
+  //   }
+  //   this.successNotification.visible=true;
+  //   this.successNotification.successMessage = "Paragraph added.";
+  //   this.courseModel.paragraph="";
+  // }
+
+  // onParagraphChange(value) {
+  //  this.selectedParagraph = value;
+  // }
 
   onSchoolChange(value){
     this.curriculumList =[];
@@ -345,18 +372,28 @@ export class AddCoursePage implements OnInit {
 
     
     console.log(this.courseModel.school);
-    for( let i=0; i<model.sections.length; i++){
-       this.sectionList.push({id : i+1, sectionName :model.sections[i].section_name});
-       for(let j=0; j<model.sections[i].chapters.length; j++){
-         this.chapterList.push({id : j+1, chapterName : model.sections[i].chapters[j].chapter_name});
-         for( let k =0; k<model.sections[i].chapters[j].topics.length; k++ ){
-           this.topicList.push({ id : k+1, topicName : model.sections[i].chapters[j].topics[k].topic_name });
-           for( let l =0; l< model.sections[i].chapters[j].topics[k].paragraph.length; l++){
-             this.paragraphList.push({ id : l+1, paragraphName : model.sections[i].chapters[j].topics[k].paragraph[l].paragraphName, supportingDocs : model.sections[i].chapters[j].topics[k].paragraph[l].supportingDocs })
-           }
-         }
-       }
-    }
+    // for( let i=0; i<model.sections.length; i++){
+    //    this.sectionList.push({id : i+1, sectionName :model.sections[i].section_name});
+    //    for(let j=0; j<model.sections[i].chapters.length; j++){
+    //      this.chapterList.push({id : j+1, chapterName : model.sections[i].chapters[j].chapter_name});
+    //      for( let k =0; k<model.sections[i].chapters[j].topics.length; k++ ){
+    //        this.topicList.push({ id : k+1, topicName : model.sections[i].chapters[j].topics[k].topic_name });
+    //        for( let l =0; l< model.sections[i].chapters[j].topics[k].paragraph.length; l++){
+    //          this.paragraphList.push({ id : l+1, paragraphName : model.sections[i].chapters[j].topics[k].paragraph[l].paragraphName, supportingDocs : model.sections[i].chapters[j].topics[k].paragraph[l].supportingDocs })
+    //        }
+    //      }
+    //    }
+    // }
+  }
+
+  onClickAddMore(){
+    this.chapterList.push({
+      "chapterName" :this.courseModel.chapterName,
+      "courseContent": this.courseModel.courseContent  
+    });
+    this.courseModel.chapterName="";
+    this.courseModel.courseContent="";
+   
   }
 
   onClickAddMedia(){
@@ -366,6 +403,7 @@ export class AddCoursePage implements OnInit {
   onSubmit(){
     this.courseModel.sections = this.sectionJSON;
     this.courseModel.userId = this.userId;
+    this.courseModel.chapterList = this.chapterList;
     this.courseModel.curriculum = this.curriculumList.filter(a=>a.checked).map(a=>a._id);
     console.log(this.courseModel);
     this.showLoading = true;
@@ -373,12 +411,13 @@ export class AddCoursePage implements OnInit {
       //Save 
       this.courseService.addCourse(this.courseModel).subscribe(res=> {
         console.log(res);
-        this.courseModel = {};
-        this.sectionJSON = [];
-        this.sectionList =[];
-        this.topicList = [];
+        this.onUploadThumbnail(res._id);
+         this.courseModel = {};
+        // this.sectionJSON = [];
+        // this.sectionList =[];
+        // this.topicList = [];
         this.chapterList = [];
-        this.paragraphList = [];
+        // this.paragraphList = [];
         
         this.showLoading = false;
         this.showSuccess =true;
@@ -452,18 +491,26 @@ export class AddCoursePage implements OnInit {
   async showMediaListModal() {
     const modal = await this.modalController.create({
       component: MediaListModalComponent,
-      componentProps : {"mediaList":this.mediaList,'documentList' : this.documentList}
+      componentProps : {"mediaList":this.mediaList,'documentList' : this.documentList, 'imageList': this.imageList}
     });
     modal.onDidDismiss().then(data => {
-      // this.mediaList=[];
-      // this.courseService.getMediaByUserId(this.userId).subscribe(res =>{
-      //   console.log(res);
-      //   res.forEach(element => {
-      //     console.log(element);
-      //     this.mediaList.push({title :element.title, value : this.fileURL+"/"+ element.fileName});
-      //   });
-      //   this.initMCE.image_list = this.mediaList;
-      // });
+       this.mediaList=[];
+       this.imageList =[];
+      this.courseService.getMediaByUserId(this.userId).subscribe(res =>{
+        console.log(res);
+        res.forEach(element => {
+          console.log(element);
+          var extn = element.fileName.split(".").pop();
+          
+          if(extn =='png' || extn == 'jpg' || extn == 'jpeg' || extn == 'gif'){
+            this.imageList.push({title :element.title, value : this.fileURL+"/"+ element.fileName});
+          }else{
+            this.mediaList.push({title :element.title, value : this.fileURL+"/"+ element.fileName});
+          }
+          
+        });
+        this.initMCE.image_list = this.imageList;
+      });
     });
     return await modal.present();
   }
@@ -476,6 +523,34 @@ export class AddCoursePage implements OnInit {
       console.log(err);
     });
   }
+
+  onUploadThumbnail(courseId){
+    console.log('calling...',courseId);
+    this.uploader.onBuildItemForm = (fileItem: any, form: any) => {
+      // form.append('title' , 'thumbnail');
+       form.append('courseId' , courseId);
+     };
+    this.uploader.uploadAll();
+    //this.courseModel.courseThumbnail="";
+    this.previewThumbnail="";
+  }
+  onFileChange(event) {
+    this.previewThumbnail ="";
+    if (event.target.files && event.target.files[0]) {
+      this.courseModel.courseThumbnail = event.target.files[0].name;
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.previewThumbnail = e.target.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+      this.onUploadThumbnail('64884c4ac179820014472bea');
+    }
+    
+    
+  }
 }
+
+
+
 
 //{"section":[{"sectionName":"1","chapter":[{"chapterName":"1","topic":[{"topicName":"some topic","paragraph":[{"paragraphName":"some pargraph","supportingDocs":""}]}]}]}]}";"
